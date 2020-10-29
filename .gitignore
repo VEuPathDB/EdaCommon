@@ -9,3 +9,6 @@ build
 .classpath
 .settings
 bin
+
+# Ignore IntelliJ files
+.idea
