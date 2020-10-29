@@ -5,14 +5,12 @@ uses:
 
 types:
 
-  Filters:
-    type: array
-    items: filter.API_Filter
-
   EntityCountPostRequest:
     additionalProperties: false
     properties:
-      filters: Filters
+      filters:
+        type: array
+        items: filter.API_Filter
 
   EntityCountPostResponse:
     additionalProperties: false
@@ -22,7 +20,9 @@ types:
   VariableDistributionPostRequest:
     additionalProperties: false
     properties:
-      filters: Filters
+      filters:
+        type: array
+        items: filter.API_Filter
 
   VariableDistributionPostResponse:
     additionalProperties: false
@@ -39,7 +39,9 @@ types:
     additionalProperties: false
     properties:
       outputVariableIds: string[]
-      filters: Filters
+      filters:
+        type: array
+        items: filter.API_Filter
 
   EntityTabularPostResponse:
     additionalProperties: false
