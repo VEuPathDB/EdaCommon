@@ -1,16 +1,11 @@
 #%RAML 1.0 Library
 
-uses:
-  filter: https://raw.githubusercontent.com/VEuPathDB/EdaCommon/main/schema/filter.raml
-
 types:
 
   EntityCountPostRequest:
     additionalProperties: false
     properties:
-      filters:
-        type: array
-        items: filter.API_Filter
+      filters: API_Filter[]
 
   EntityCountPostResponse:
     additionalProperties: false
@@ -20,9 +15,7 @@ types:
   VariableDistributionPostRequest:
     additionalProperties: false
     properties:
-      filters:
-        type: array
-        items: filter.API_Filter
+      filters: API_Filter[]
 
   VariableDistributionPostResponse:
     additionalProperties: false
@@ -39,9 +32,7 @@ types:
     additionalProperties: false
     properties:
       outputVariableIds: string[]
-      filters:
-        type: array
-        items: filter.API_Filter
+      filters: API_Filter[]
 
   EntityTabularPostResponse:
     additionalProperties: false
