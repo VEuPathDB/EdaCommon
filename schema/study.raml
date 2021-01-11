@@ -49,12 +49,16 @@ types:
       parentId: string
       type: API_VariableType
       isMultiValued: boolean
-      displayType: API_DisplayType
+      displayType: API_VariableDisplayType
+      dataShape: API_VariableDataShape
 
   API_VariableType:
     enum: [ 'category', 'string', 'number', 'date', 'longitude' ]
 
-  API_DisplayType:
+  API_VariableDataShape:
+    enum: [ 'continuous', 'categorical', 'ordinal', 'two-valued' ]
+
+  API_VariableDisplayType:
       enum: [ 'default', 'multifilter' ]
 
   API_VariablesCategory:
@@ -69,12 +73,10 @@ types:
     type: API_Variable
     discriminatorValue: number
     properties:
-      variableDataShape: boolean
       precision: integer
       units: string
 
   API_DateVariable:
     type: API_Variable
     discriminatorValue: date
-    properties:
-      variableDataShape: boolean
+
