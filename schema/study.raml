@@ -16,17 +16,13 @@ types:
     type: object
     properties:
       id:
-        required: true
         type: string
-      name:
-        required: true
-        type: string
+
 
   API_StudyDetail:
     type: object
     properties:
       id: string
-      name: string
       rootEntity: API_Entity
 
   API_Entity:
@@ -46,7 +42,7 @@ types:
       id: string
       providerLabel: string
       displayName: string
-      parentId: string
+      parentId?: string
       type: API_VariableType
       isMultiValued: boolean
       displayType: API_VariableDisplayType
