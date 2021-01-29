@@ -1,0 +1,55 @@
+version: "3.5"
+
+services:
+  subsetting:
+    image: veupathdb/eda-subsetting:${SUBSETTING_TAG:-latest}
+    networks:
+    - internal
+    environment:
+      APP_DB_HOST: 
+      APP_DB_PORT: 
+      APP_DB_USER: 
+      APP_DB_PASS: 
+      APP_DB_NAME: 
+      SERVER_PORT: ${SUBSETTING_SERVER_PORT:-8080}
+    labels:
+    - "com.centurylinklabs.watchtower.enable=${SUBSETTING_WATCHTOWER:-false}"
+    - "traefik.http.services.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.loadbalancer.server.port=8080"
+    - "traefik.http.routers.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.rule=Host(`${TRAEFIK_SUBSETTING_HOST:-edasubsetting-dev.local.apidb.org}`)"
+    - "traefik.http.routers.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.tls=true"
+    - "traefik.http.routers.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.entrypoints=${TRAEFIK_ENTRYPOINTS:-websecure}"
+    - "traefik.docker.network=traefik"
+
+
+  data:
+    image: veupathdb/eda-data:${DATA_TAG:-latest}
+    networks:
+    - internal
+    - traefik
+    environment:
+      SUBSETTING_SERVICE_URL: ${SUBSETTING_SERVICE_URL:-http://subsetting:8080}
+      STREAM_PROCESSING_SERVICE_URL: ${STREAM_PROCESSING_SERVICE_URL:-http://processing}
+      RSERVE_URL: ${RSERVE_URL:-http://rserve}
+    labels:
+    - "com.centurylinklabs.watchtower.enable=${DATA_WATCHTOWER:-false}"
+    - "traefik.http.services.${TRAEFIK_DATA_ROUTER:-edadata-dev}.loadbalancer.server.port=8080"
+    - "traefik.http.routers.${TRAEFIK_DATA_ROUTER:-edadata-dev}.rule=Host(`${TRAEFIK_DATA_HOST:-edadata-dev.local.apidb.org}`)"
+    - "traefik.http.routers.${TRAEFIK_DATA_ROUTER:-edadata-dev}.tls=true"
+    - "traefik.http.routers.${TRAEFIK_DATA_ROUTER:-edadata-dev}.entrypoints=${TRAEFIK_ENTRYPOINTS:-websecure}"
+    - "traefik.docker.network=traefik"
+
+  rserve:
+    image: veupathdb/rserve:${RSERVE_TAG:-latest}
+    networks:
+    - internal
+    environment:
+      RSERVE_PORT: ${RSERVE_PORT:-8081}
+    labels:
+    - "com.centurylinklabs.watchtower.enable=${RSERVE_WATCHTOWER:-false}"
+
+networks:
+  internal:
+    internal: true
+  traefik:
+    external: true
+
