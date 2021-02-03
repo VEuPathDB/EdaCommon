@@ -11,7 +11,7 @@ types:
       type: API_FilterType
 
   API_FilterType:
-    enum: [ 'stringSet', 'numberSet', 'dateSet', 'numberRange', 'dateRange' ]
+    enum: [ 'stringSet', 'numberSet', 'dateSet', 'numberRange', 'dateRange', 'longitudeRange' ]
 
   API_StringSetFilter:
     type: API_Filter
@@ -44,3 +44,10 @@ types:
     properties:
       min: string
       max: string
+
+  API_LongitudeRangeFilter:
+    type: API_Filter
+    discriminatorValue: 'longitudeRange'
+    properties:
+      left: number
+      right: number
