@@ -5,6 +5,7 @@ services:
     image: veupathdb/eda-subsetting:${SUBSETTING_TAG:-latest}
     networks:
     - internal
+    - traefik
     environment:
       APP_DB_HOST: 
       APP_DB_PORT: 
