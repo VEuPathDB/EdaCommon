@@ -19,8 +19,8 @@ To bring up the eda project via docker-compose, you'll need a few things.
 
 When everything comes up successfully, you'll be able to reach services at:
 
-https://edasubsetting-dev.local.apidb.org/
-https://edadata-dev.local.apidb.org/
+https://edasubsetting-dev.local.apidb.org:8443/
+https://edadata-dev.local.apidb.org:8443/
 
 # notes
 
