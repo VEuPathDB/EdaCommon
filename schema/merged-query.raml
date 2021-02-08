@@ -20,3 +20,12 @@ types:
       derivationType: DerivationType
       dependentVariables: VariableSpec[]
       construction: object # TBD
+
+  MergedEntityTabularPostRequest:
+    additionalProperties: false
+    properties:
+      studyId: string
+      filters: API_Filter[]
+      entityId: string
+      outputVariableIds: VariableSpec[]
+      derivedVariables: DerivedVariable[]
