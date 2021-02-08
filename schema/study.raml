@@ -31,6 +31,7 @@ types:
     type: object
     properties:
       id: string
+      idColumnName: string
       displayName: string
       displayNamePlural: string
       description: string
@@ -57,7 +58,7 @@ types:
     enum: [ 'continuous', 'categorical', 'ordinal', 'binary' ]
 
   API_VariableDisplayType:
-      enum: [ 'default', 'multifilter' ]
+      enum: [ 'default', 'multifilter', 'hidden' ]
 
   API_VariablesCategory:
     type: API_Variable
@@ -77,4 +78,8 @@ types:
   API_DateVariable:
     type: API_Variable
     discriminatorValue: date
+
+  API_LongitudeVariable:
+    type: API_Variable
+    discriminatorValue: longitude
 

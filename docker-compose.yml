@@ -5,6 +5,7 @@ services:
     image: veupathdb/eda-subsetting:${SUBSETTING_TAG:-latest}
     networks:
     - internal
+    - traefik
     environment:
       APP_DB_HOST: 
       APP_DB_PORT: 
@@ -17,7 +18,7 @@ services:
     - "traefik.http.services.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.loadbalancer.server.port=8080"
     - "traefik.http.routers.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.rule=Host(`${TRAEFIK_SUBSETTING_HOST:-edasubsetting-dev.local.apidb.org}`)"
     - "traefik.http.routers.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.tls=true"
-    - "traefik.http.routers.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.entrypoints=${TRAEFIK_ENTRYPOINTS:-websecure}"
+    - "traefik.http.routers.${TRAEFIK_SUBSETTING_ROUTER:-edasubsetting-dev}.entrypoints=${TRAEFIK_ENTRYPOINTS:-local}"
     - "traefik.docker.network=traefik"
 
 
@@ -35,7 +36,7 @@ services:
     - "traefik.http.services.${TRAEFIK_DATA_ROUTER:-edadata-dev}.loadbalancer.server.port=8080"
     - "traefik.http.routers.${TRAEFIK_DATA_ROUTER:-edadata-dev}.rule=Host(`${TRAEFIK_DATA_HOST:-edadata-dev.local.apidb.org}`)"
     - "traefik.http.routers.${TRAEFIK_DATA_ROUTER:-edadata-dev}.tls=true"
-    - "traefik.http.routers.${TRAEFIK_DATA_ROUTER:-edadata-dev}.entrypoints=${TRAEFIK_ENTRYPOINTS:-websecure}"
+    - "traefik.http.routers.${TRAEFIK_DATA_ROUTER:-edadata-dev}.entrypoints=${TRAEFIK_ENTRYPOINTS:-local}"
     - "traefik.docker.network=traefik"
 
   rserve:
