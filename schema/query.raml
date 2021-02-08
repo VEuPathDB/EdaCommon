@@ -2,12 +2,6 @@
 
 types:
 
-  VariableSpec:
-    additionalProperties: false
-    properties:
-      entityId: string
-      variableId: string
-
   EntityCountPostRequest:
     additionalProperties: false
     properties:
@@ -37,10 +31,19 @@ types:
   EntityTabularPostRequest:
     additionalProperties: false
     properties:
-      outputVariableIds: string[]
       filters: API_Filter[]
+      outputVariableIds: string[]
 
   EntityTabularPostResponse:
     additionalProperties: false
     properties:
       counts: string[][]
+
+  MergedEntityTabularPostRequest:
+    additionalProperties: false
+    properties:
+      studyId: string
+      filters: API_Filter[]
+      entityId: string
+      outputVariableIds: VariableSpec[]
+      derivedVariables: DerivedVariable[]
