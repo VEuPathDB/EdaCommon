@@ -7,6 +7,33 @@
 ################################################################################
 
 types:
+  VariableSpec:
+    type: object
+    additionalProperties: false
+    properties:
+      entityId: string
+      variableId: string
+  DerivationType:
+    type: string
+    enum:
+      - transform
+      - reduction
+  DerivedVariable:
+    type: VariableSpec
+    properties:
+      variableType: API_VariableType
+      derivationType: DerivationType
+      dependentVariables: VariableSpec[]
+      construction: object # TBD
+  MergedEntityTabularPostRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      studyId: string
+      filters: API_Filter[]
+      entityId: string
+      outputVariableIds: VariableSpec[]
+      derivedVariables: DerivedVariable[]
   EntityCountPostRequest:
     type: object
     additionalProperties: false
@@ -174,31 +201,4 @@ types:
     properties:
       left: number
       right: number
-  VariableSpec:
-    type: object
-    additionalProperties: false
-    properties:
-      entityId: string
-      variableId: string
-  DerivationType:
-    type: string
-    enum:
-      - transform
-      - reduction
-  DerivedVariable:
-    type: VariableSpec
-    properties:
-      variableType: API_VariableType
-      derivationType: DerivationType
-      dependentVariables: VariableSpec[]
-      construction: object # TBD
-  MergedEntityTabularPostRequest:
-    type: object
-    additionalProperties: false
-    properties:
-      studyId: string
-      filters: API_Filter[]
-      entityId: string
-      outputVariableIds: VariableSpec[]
-      derivedVariables: DerivedVariable[]
 
