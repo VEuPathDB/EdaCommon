@@ -12,3 +12,6 @@ bin
 
 # Ignore IntelliJ files
 .idea
+
+.tools/
+vendor/
