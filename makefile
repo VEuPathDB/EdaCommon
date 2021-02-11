@@ -48,7 +48,6 @@ test: install-dev-env gen-jaxrs gen-docs
 
 .PHONY: jar
 jar: install-dev-env gen-jaxrs gen-docs
-	@cp schema/library.raml src/main/resources
 	@./gradlew clean build
 
 .PHONY: install-dev-env
