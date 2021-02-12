@@ -1,6 +1,14 @@
 # EdaCommon
 Contains code, API and schema documents, and any other data needed by multiple EDA web services
 
+# Release Procedure
+
+1. Commit and push all changes that should be added to the release
+2. Update the project version in build.gradle.kts to the desired version number
+    1. e.g. version = "1.0.0"
+    2. Semantic versioning preferred
+3. 
+
 # docker-compose
 
 ## preliminary requirements

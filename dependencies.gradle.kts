@@ -23,6 +23,8 @@ dependencies {
     "${rootProject.projectDir.absolutePath}/vendor/fgputil-core-1.0.0.jar"
   ))
 
+  implementation("org.json:json:20190722")
+
   // Compatibility bridge to support the long dead log4j-1.X
   runtimeOnly("org.apache.logging.log4j:log4j-1.2-api:${log4j}")
 
