@@ -56,13 +56,13 @@ publishing {
       from(components["java"])
       pom {
         name.set("EDA Common Library")
-        description.set("Provides common schema and utilities for use in containerized VEuPathDB EDA services.")
+        description.set("Provides common schema and utilities for use in containerized VEuPathDB EDA services")
         url.set("https://github.com/VEuPathDB/EdaCommon")
         developers {
           developer {
             id.set("ryanrdoherty")
             name.set("Ryan Doherty")
-            email.set("epharper@upenn.edu")
+            email.set("rdoherty@upenn.edu")
             url.set("https://github.com/ryanrdoherty")
             organization.set("VEuPathDB")
           }
