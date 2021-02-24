@@ -43,8 +43,6 @@ services:
     image: veupathdb/rserve:${RSERVE_TAG:-latest}
     networks:
     - internal
-    environment:
-      RSERVE_PORT: ${RSERVE_PORT:-8081}
     labels:
     - "com.centurylinklabs.watchtower.enable=${RSERVE_WATCHTOWER:-false}"
 
