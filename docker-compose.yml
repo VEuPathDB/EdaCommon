@@ -7,8 +7,9 @@ services:
     - internal
     - traefik
     environment:
-      APP_DB_HOST: 
-      APP_DB_PORT: 
+      LDAP_SERVER:
+      ORACLE_BASE_DN:
+      APP_DB_TNS_NAME:
       APP_DB_USER: 
       APP_DB_PASS: 
       APP_DB_NAME: 
