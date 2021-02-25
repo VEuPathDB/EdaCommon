@@ -20,7 +20,6 @@ import java.util.Map;
     "isMultiValued",
     "displayType",
     "dataShape",
-    "precision",
     "units"
 })
 public class APINumberVariableImpl implements APINumberVariable {
@@ -47,9 +46,6 @@ public class APINumberVariableImpl implements APINumberVariable {
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
-
-  @JsonProperty("precision")
-  private int precision;
 
   @JsonProperty("units")
   private String units;
@@ -130,16 +126,6 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("dataShape")
   public void setDataShape(APIVariableDataShape dataShape) {
     this.dataShape = dataShape;
-  }
-
-  @JsonProperty("precision")
-  public int getPrecision() {
-    return this.precision;
-  }
-
-  @JsonProperty("precision")
-  public void setPrecision(int precision) {
-    this.precision = precision;
   }
 
   @JsonProperty("units")
