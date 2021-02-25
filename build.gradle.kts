@@ -16,7 +16,7 @@ java {
 
 // Project settings
 group   = "org.veupathdb.service.eda"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
   jcenter()
