@@ -15,8 +15,8 @@ types:
   API_StudyOverview:
     type: object
     properties:
-      id:
-        type: string
+      id: string
+      datasetId: string
 
   EntityIdGetResponse:
     type: API_Entity
@@ -25,6 +25,7 @@ types:
     type: object
     properties:
       id: string
+      datasetId: string
       rootEntity: API_Entity
 
   API_Entity:
@@ -72,7 +73,6 @@ types:
     type: API_Variable
     discriminatorValue: number
     properties:
-      precision: integer
       units: string
 
   API_DateVariable:

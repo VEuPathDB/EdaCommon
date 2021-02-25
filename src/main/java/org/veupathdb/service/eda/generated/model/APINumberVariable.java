@@ -59,12 +59,6 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("dataShape")
   void setDataShape(APIVariableDataShape dataShape);
 
-  @JsonProperty("precision")
-  int getPrecision();
-
-  @JsonProperty("precision")
-  void setPrecision(int precision);
-
   @JsonProperty("units")
   String getUnits();
 

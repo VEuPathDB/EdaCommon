@@ -16,6 +16,12 @@ public interface APIStudyOverview {
   @JsonProperty("id")
   void setId(String id);
 
+  @JsonProperty("datasetId")
+  String getDatasetId();
+
+  @JsonProperty("datasetId")
+  void setDatasetId(String datasetId);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 
