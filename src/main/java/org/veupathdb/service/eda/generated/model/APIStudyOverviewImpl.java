@@ -9,10 +9,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder("id")
+@JsonPropertyOrder({
+    "id",
+    "datasetId"
+})
 public class APIStudyOverviewImpl implements APIStudyOverview {
   @JsonProperty("id")
   private String id;
+
+  @JsonProperty("datasetId")
+  private String datasetId;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -25,6 +31,16 @@ public class APIStudyOverviewImpl implements APIStudyOverview {
   @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
+  }
+
+  @JsonProperty("datasetId")
+  public String getDatasetId() {
+    return this.datasetId;
+  }
+
+  @JsonProperty("datasetId")
+  public void setDatasetId(String datasetId) {
+    this.datasetId = datasetId;
   }
 
   @JsonAnyGetter
