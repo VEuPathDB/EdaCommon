@@ -18,6 +18,8 @@ java {
 group   = "org.veupathdb.service.eda"
 version = "1.1.0"
 
+tasks.register("print-version") { print(version) }
+
 repositories {
   jcenter()
   mavenCentral()

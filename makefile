@@ -1,5 +1,5 @@
 GEN_PACKAGE  := org.veupathdb.service.eda
-#APP_PACKAGE  := $(shell ./gradlew -q print-package)
+APP_VERSION  := $(shell ./gradlew -q print-version)
 PWD          := $(shell pwd)
 MAIN_DIR     := src/main/java/$(shell echo $(APP_PACKAGE) | sed 's/\./\//g')
 TEST_DIR     := $(shell echo $(MAIN_DIR) | sed 's/main/test/')
@@ -25,6 +25,9 @@ default:
 	@echo "$(C_BLUE)  make jar$(C_NONE)"
 	@echo "    Compiles a 'fat jar' from this project and it's dependencies."
 	@echo ""
+	@echo "$(C_BLUE)  make release$(C_NONE)"
+	@echo "    Builds release artifacts."
+	@echo ""
 	@echo "$(C_BLUE)  make install-dev-env$(C_NONE)"
 	@echo "    Ensures the current dev environment has the necessary "
 	@echo "    installable tools to build this project."
@@ -49,6 +52,11 @@ test: install-dev-env gen-jaxrs gen-docs
 .PHONY: jar
 jar: install-dev-env gen-jaxrs gen-docs
 	@./gradlew clean build
+
+.PHONY: release
+release: jar
+	@./gradlew publishToMavenLocal
+	@cp ~/.m2/repository/org/veupathdb/service/eda/eda-common/$(APP_VERSION)/eda-common-$(APP_VERSION).pom build/libs
 
 .PHONY: install-dev-env
 install-dev-env:
