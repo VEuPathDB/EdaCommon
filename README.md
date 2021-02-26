@@ -22,10 +22,10 @@ Contains code, API and schema documents, and any other data needed by multiple E
     1. Select the new version
     1. Leave Target Path empty (will be auto-filled later)
     1. Select the four files in EdaCommon/build/libs and click 'Upload'
-        1. eda-common-1.1.0.pom
-        1. eda-common-1.1.0.jar
-        1. eda-common-1.1.0-javadoc.jar
-        1. eda-common-1.1.0-sources.jar
+        1. eda-common-1.0.0.pom
+        1. eda-common-1.0.0.jar
+        1. eda-common-1.0.0-javadoc.jar
+        1. eda-common-1.0.0-sources.jar
     1. Click "Publish All" in the informational box
 1. After some time, confirm the artifacts are available at:
     1. https://jcenter.bintray.com/org/veupathdb/service/eda/eda-common
