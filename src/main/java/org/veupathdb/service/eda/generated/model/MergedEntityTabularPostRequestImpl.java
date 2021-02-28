@@ -10,7 +10,7 @@ import java.util.List;
     "studyId",
     "filters",
     "entityId",
-    "outputVariableIds",
+    "outputVariables",
     "derivedVariables"
 })
 public class MergedEntityTabularPostRequestImpl implements MergedEntityTabularPostRequest {
@@ -23,8 +23,8 @@ public class MergedEntityTabularPostRequestImpl implements MergedEntityTabularPo
   @JsonProperty("entityId")
   private String entityId;
 
-  @JsonProperty("outputVariableIds")
-  private List<VariableSpec> outputVariableIds;
+  @JsonProperty("outputVariables")
+  private List<VariableSpec> outputVariables;
 
   @JsonProperty("derivedVariables")
   private List<DerivedVariable> derivedVariables;
@@ -59,14 +59,14 @@ public class MergedEntityTabularPostRequestImpl implements MergedEntityTabularPo
     this.entityId = entityId;
   }
 
-  @JsonProperty("outputVariableIds")
-  public List<VariableSpec> getOutputVariableIds() {
-    return this.outputVariableIds;
+  @JsonProperty("outputVariables")
+  public List<VariableSpec> getOutputVariables() {
+    return this.outputVariables;
   }
 
-  @JsonProperty("outputVariableIds")
-  public void setOutputVariableIds(List<VariableSpec> outputVariableIds) {
-    this.outputVariableIds = outputVariableIds;
+  @JsonProperty("outputVariables")
+  public void setOutputVariables(List<VariableSpec> outputVariables) {
+    this.outputVariables = outputVariables;
   }
 
   @JsonProperty("derivedVariables")

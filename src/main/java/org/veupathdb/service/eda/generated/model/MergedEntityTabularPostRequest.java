@@ -26,11 +26,11 @@ public interface MergedEntityTabularPostRequest {
   @JsonProperty("entityId")
   void setEntityId(String entityId);
 
-  @JsonProperty("outputVariableIds")
-  List<VariableSpec> getOutputVariableIds();
+  @JsonProperty("outputVariables")
+  List<VariableSpec> getOutputVariables();
 
-  @JsonProperty("outputVariableIds")
-  void setOutputVariableIds(List<VariableSpec> outputVariableIds);
+  @JsonProperty("outputVariables")
+  void setOutputVariables(List<VariableSpec> outputVariables);
 
   @JsonProperty("derivedVariables")
   List<DerivedVariable> getDerivedVariables();
