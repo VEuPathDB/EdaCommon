@@ -20,6 +20,7 @@ dependencies {
   // FgpUtil jars
   implementation(files(
     "${rootProject.projectDir.absolutePath}/vendor/fgputil-core-1.0.0.jar",
+    "${rootProject.projectDir.absolutePath}/vendor/fgputil-client-1.0.0.jar",
     "${rootProject.projectDir.absolutePath}/vendor/fgputil-json-1.0.0.jar",
     "${rootProject.projectDir.absolutePath}/vendor/fgputil-web-1.0.0.jar"
   ))
