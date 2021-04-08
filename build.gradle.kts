@@ -23,6 +23,14 @@ tasks.register("print-version") { print(version) }
 repositories {
   jcenter()
   mavenCentral()
+  maven {
+    name = "GitHubPackages"
+    url  = uri("https://maven.pkg.github.com/veupathdb/maven-packages")
+    credentials {
+      username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+      password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+    }
+  }
 }
 
 java {
@@ -53,6 +61,16 @@ val test by tasks.getting(Test::class) {
 }
 
 publishing {
+  repositories {
+    maven {
+      name = "GitHub"
+      url  = uri("https://maven.pkg.github.com/veupathdb/maven-packages")
+      credentials {
+        username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+        password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+      }
+    }
+  }
   publications {
     create<MavenPublication>("gpr") {
       from(components["java"])
