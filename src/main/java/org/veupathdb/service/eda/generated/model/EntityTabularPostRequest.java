@@ -14,9 +14,9 @@ public interface EntityTabularPostRequest {
   @JsonProperty("filters")
   void setFilters(List<APIFilter> filters);
 
-  @JsonProperty("outputVariableIds")
-  List<String> getOutputVariableIds();
+  @JsonProperty("outputVariableSpecs")
+  List<VariableSpec> getOutputVariableSpecs();
 
-  @JsonProperty("outputVariableIds")
-  void setOutputVariableIds(List<String> outputVariableIds);
+  @JsonProperty("outputVariableSpecs")
+  void setOutputVariableSpecs(List<VariableSpec> outputVariableSpecs);
 }

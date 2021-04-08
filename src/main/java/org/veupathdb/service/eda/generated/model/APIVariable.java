@@ -72,6 +72,18 @@ public interface APIVariable {
   @JsonProperty("dataShape")
   void setDataShape(APIVariableDataShape dataShape);
 
+  @JsonProperty("isFeatured")
+  boolean getIsFeatured();
+
+  @JsonProperty("isFeatured")
+  void setIsFeatured(boolean isFeatured);
+
+  @JsonProperty("isTemporal")
+  boolean getIsTemporal();
+
+  @JsonProperty("isTemporal")
+  void setIsTemporal(boolean isTemporal);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 

@@ -8,14 +8,14 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "filters",
-    "outputVariableIds"
+    "outputVariableSpecs"
 })
 public class EntityTabularPostRequestImpl implements EntityTabularPostRequest {
   @JsonProperty("filters")
   private List<APIFilter> filters;
 
-  @JsonProperty("outputVariableIds")
-  private List<String> outputVariableIds;
+  @JsonProperty("outputVariableSpecs")
+  private List<VariableSpec> outputVariableSpecs;
 
   @JsonProperty("filters")
   public List<APIFilter> getFilters() {
@@ -27,13 +27,13 @@ public class EntityTabularPostRequestImpl implements EntityTabularPostRequest {
     this.filters = filters;
   }
 
-  @JsonProperty("outputVariableIds")
-  public List<String> getOutputVariableIds() {
-    return this.outputVariableIds;
+  @JsonProperty("outputVariableSpecs")
+  public List<VariableSpec> getOutputVariableSpecs() {
+    return this.outputVariableSpecs;
   }
 
-  @JsonProperty("outputVariableIds")
-  public void setOutputVariableIds(List<String> outputVariableIds) {
-    this.outputVariableIds = outputVariableIds;
+  @JsonProperty("outputVariableSpecs")
+  public void setOutputVariableSpecs(List<VariableSpec> outputVariableSpecs) {
+    this.outputVariableSpecs = outputVariableSpecs;
   }
 }

@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "entityId",
-    "variableId"
+    "variableId",
+    "unitsId",
+    "scaleId"
 })
 public class VariableSpecImpl implements VariableSpec {
   @JsonProperty("entityId")
@@ -15,6 +17,12 @@ public class VariableSpecImpl implements VariableSpec {
 
   @JsonProperty("variableId")
   private String variableId;
+
+  @JsonProperty("unitsId")
+  private String unitsId;
+
+  @JsonProperty("scaleId")
+  private String scaleId;
 
   @JsonProperty("entityId")
   public String getEntityId() {
@@ -34,5 +42,25 @@ public class VariableSpecImpl implements VariableSpec {
   @JsonProperty("variableId")
   public void setVariableId(String variableId) {
     this.variableId = variableId;
+  }
+
+  @JsonProperty("unitsId")
+  public String getUnitsId() {
+    return this.unitsId;
+  }
+
+  @JsonProperty("unitsId")
+  public void setUnitsId(String unitsId) {
+    this.unitsId = unitsId;
+  }
+
+  @JsonProperty("scaleId")
+  public String getScaleId() {
+    return this.scaleId;
+  }
+
+  @JsonProperty("scaleId")
+  public void setScaleId(String scaleId) {
+    this.scaleId = scaleId;
   }
 }

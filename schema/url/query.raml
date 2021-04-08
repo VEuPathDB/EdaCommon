@@ -2,6 +2,14 @@
 
 types:
 
+  VariableSpec:
+    additionalProperties: false
+    properties:
+      entityId: string
+      variableId: string
+      unitsId?: string
+      scaleId?: string
+
   EntityCountPostRequest:
     additionalProperties: false
     properties:
@@ -32,7 +40,7 @@ types:
     additionalProperties: false
     properties:
       filters: API_Filter[]
-      outputVariableIds: string[]
+      outputVariableSpecs:  VariableSpec[]
 
   EntityTabularPostResponse:
     additionalProperties: false

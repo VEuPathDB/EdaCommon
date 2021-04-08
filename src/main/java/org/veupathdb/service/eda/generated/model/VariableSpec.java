@@ -18,4 +18,16 @@ public interface VariableSpec {
 
   @JsonProperty("variableId")
   void setVariableId(String variableId);
+
+  @JsonProperty("unitsId")
+  String getUnitsId();
+
+  @JsonProperty("unitsId")
+  void setUnitsId(String unitsId);
+
+  @JsonProperty("scaleId")
+  String getScaleId();
+
+  @JsonProperty("scaleId")
+  void setScaleId(String scaleId);
 }

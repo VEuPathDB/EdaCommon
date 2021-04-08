@@ -51,6 +51,8 @@ types:
       isMultiValued: boolean
       displayType: API_VariableDisplayType
       dataShape: API_VariableDataShape
+      isFeatured: boolean
+      isTemporal: boolean
 
   API_VariableType:
     enum: [ 'category', 'string', 'number', 'date', 'longitude' ]
@@ -73,7 +75,11 @@ types:
     type: API_Variable
     discriminatorValue: number
     properties:
-      units: string
+      unitsId: string
+      unitsDisplayName: string
+      precision: integer
+      scaleId: string
+      scaleDisplayName: string
 
   API_DateVariable:
     type: API_Variable

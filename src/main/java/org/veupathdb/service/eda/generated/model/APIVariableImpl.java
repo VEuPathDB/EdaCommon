@@ -17,7 +17,9 @@ import java.util.Map;
     "type",
     "isMultiValued",
     "displayType",
-    "dataShape"
+    "dataShape",
+    "isFeatured",
+    "isTemporal"
 })
 public class APIVariableImpl implements APIVariable {
   @JsonProperty("id")
@@ -43,6 +45,12 @@ public class APIVariableImpl implements APIVariable {
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
+
+  @JsonProperty("isFeatured")
+  private boolean isFeatured;
+
+  @JsonProperty("isTemporal")
+  private boolean isTemporal;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -120,6 +128,26 @@ public class APIVariableImpl implements APIVariable {
   @JsonProperty("dataShape")
   public void setDataShape(APIVariableDataShape dataShape) {
     this.dataShape = dataShape;
+  }
+
+  @JsonProperty("isFeatured")
+  public boolean getIsFeatured() {
+    return this.isFeatured;
+  }
+
+  @JsonProperty("isFeatured")
+  public void setIsFeatured(boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  @JsonProperty("isTemporal")
+  public boolean getIsTemporal() {
+    return this.isTemporal;
+  }
+
+  @JsonProperty("isTemporal")
+  public void setIsTemporal(boolean isTemporal) {
+    this.isTemporal = isTemporal;
   }
 
   @JsonAnyGetter

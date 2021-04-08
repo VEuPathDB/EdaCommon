@@ -59,11 +59,47 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("dataShape")
   void setDataShape(APIVariableDataShape dataShape);
 
-  @JsonProperty("units")
-  String getUnits();
+  @JsonProperty("isFeatured")
+  boolean getIsFeatured();
 
-  @JsonProperty("units")
-  void setUnits(String units);
+  @JsonProperty("isFeatured")
+  void setIsFeatured(boolean isFeatured);
+
+  @JsonProperty("isTemporal")
+  boolean getIsTemporal();
+
+  @JsonProperty("isTemporal")
+  void setIsTemporal(boolean isTemporal);
+
+  @JsonProperty("unitsId")
+  String getUnitsId();
+
+  @JsonProperty("unitsId")
+  void setUnitsId(String unitsId);
+
+  @JsonProperty("unitsDisplayName")
+  String getUnitsDisplayName();
+
+  @JsonProperty("unitsDisplayName")
+  void setUnitsDisplayName(String unitsDisplayName);
+
+  @JsonProperty("precision")
+  int getPrecision();
+
+  @JsonProperty("precision")
+  void setPrecision(int precision);
+
+  @JsonProperty("scaleId")
+  String getScaleId();
+
+  @JsonProperty("scaleId")
+  void setScaleId(String scaleId);
+
+  @JsonProperty("scaleDisplayName")
+  String getScaleDisplayName();
+
+  @JsonProperty("scaleDisplayName")
+  void setScaleDisplayName(String scaleDisplayName);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

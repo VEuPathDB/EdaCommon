@@ -9,6 +9,8 @@ import java.util.List;
 @JsonPropertyOrder({
     "entityId",
     "variableId",
+    "unitsId",
+    "scaleId",
     "variableType",
     "derivationType",
     "dependentVariables",
@@ -20,6 +22,12 @@ public class DerivedVariableImpl implements DerivedVariable {
 
   @JsonProperty("variableId")
   private String variableId;
+
+  @JsonProperty("unitsId")
+  private String unitsId;
+
+  @JsonProperty("scaleId")
+  private String scaleId;
 
   @JsonProperty("variableType")
   private APIVariableType variableType;
@@ -51,6 +59,26 @@ public class DerivedVariableImpl implements DerivedVariable {
   @JsonProperty("variableId")
   public void setVariableId(String variableId) {
     this.variableId = variableId;
+  }
+
+  @JsonProperty("unitsId")
+  public String getUnitsId() {
+    return this.unitsId;
+  }
+
+  @JsonProperty("unitsId")
+  public void setUnitsId(String unitsId) {
+    this.unitsId = unitsId;
+  }
+
+  @JsonProperty("scaleId")
+  public String getScaleId() {
+    return this.scaleId;
+  }
+
+  @JsonProperty("scaleId")
+  public void setScaleId(String scaleId) {
+    this.scaleId = scaleId;
   }
 
   @JsonProperty("variableType")

@@ -20,7 +20,13 @@ import java.util.Map;
     "isMultiValued",
     "displayType",
     "dataShape",
-    "units"
+    "isFeatured",
+    "isTemporal",
+    "unitsId",
+    "unitsDisplayName",
+    "precision",
+    "scaleId",
+    "scaleDisplayName"
 })
 public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("id")
@@ -47,8 +53,26 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
 
-  @JsonProperty("units")
-  private String units;
+  @JsonProperty("isFeatured")
+  private boolean isFeatured;
+
+  @JsonProperty("isTemporal")
+  private boolean isTemporal;
+
+  @JsonProperty("unitsId")
+  private String unitsId;
+
+  @JsonProperty("unitsDisplayName")
+  private String unitsDisplayName;
+
+  @JsonProperty("precision")
+  private int precision;
+
+  @JsonProperty("scaleId")
+  private String scaleId;
+
+  @JsonProperty("scaleDisplayName")
+  private String scaleDisplayName;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -128,14 +152,74 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.dataShape = dataShape;
   }
 
-  @JsonProperty("units")
-  public String getUnits() {
-    return this.units;
+  @JsonProperty("isFeatured")
+  public boolean getIsFeatured() {
+    return this.isFeatured;
   }
 
-  @JsonProperty("units")
-  public void setUnits(String units) {
-    this.units = units;
+  @JsonProperty("isFeatured")
+  public void setIsFeatured(boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  @JsonProperty("isTemporal")
+  public boolean getIsTemporal() {
+    return this.isTemporal;
+  }
+
+  @JsonProperty("isTemporal")
+  public void setIsTemporal(boolean isTemporal) {
+    this.isTemporal = isTemporal;
+  }
+
+  @JsonProperty("unitsId")
+  public String getUnitsId() {
+    return this.unitsId;
+  }
+
+  @JsonProperty("unitsId")
+  public void setUnitsId(String unitsId) {
+    this.unitsId = unitsId;
+  }
+
+  @JsonProperty("unitsDisplayName")
+  public String getUnitsDisplayName() {
+    return this.unitsDisplayName;
+  }
+
+  @JsonProperty("unitsDisplayName")
+  public void setUnitsDisplayName(String unitsDisplayName) {
+    this.unitsDisplayName = unitsDisplayName;
+  }
+
+  @JsonProperty("precision")
+  public int getPrecision() {
+    return this.precision;
+  }
+
+  @JsonProperty("precision")
+  public void setPrecision(int precision) {
+    this.precision = precision;
+  }
+
+  @JsonProperty("scaleId")
+  public String getScaleId() {
+    return this.scaleId;
+  }
+
+  @JsonProperty("scaleId")
+  public void setScaleId(String scaleId) {
+    this.scaleId = scaleId;
+  }
+
+  @JsonProperty("scaleDisplayName")
+  public String getScaleDisplayName() {
+    return this.scaleDisplayName;
+  }
+
+  @JsonProperty("scaleDisplayName")
+  public void setScaleDisplayName(String scaleDisplayName) {
+    this.scaleDisplayName = scaleDisplayName;
   }
 
   @JsonAnyGetter
