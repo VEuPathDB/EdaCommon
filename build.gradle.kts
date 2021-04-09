@@ -1,9 +1,7 @@
-import com.jfrog.bintray.gradle.BintrayExtension
 
 plugins {
   `java-library`
   `maven-publish`
-  id("com.jfrog.bintray") version "1.8.5"
 }
 
 apply(from = "${projectDir.absolutePath}/dependencies.gradle.kts")
@@ -21,7 +19,6 @@ version = "3.2.0"
 tasks.register("print-version") { print(version) }
 
 repositories {
-  jcenter()
   mavenCentral()
   maven {
     name = "GitHubPackages"
@@ -66,8 +63,8 @@ publishing {
       name = "GitHub"
       url  = uri("https://maven.pkg.github.com/veupathdb/maven-packages")
       credentials {
-        username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
-        password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+        username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+        password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
       }
     }
   }
@@ -113,16 +110,3 @@ publishing {
 //
 //  dependsOn("test")
 //}
-
-bintray {
-  user = project.findProperty("bintray.user") as String? ?: ""
-  key  = project.findProperty("bintray.pass") as String? ?: ""
-  publish = true
-  setPublications("gpr")
-  pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
-    repo = "maven"
-    name = "eda-common"
-    userOrg = "veupathdb"
-    setVersion(rootProject.version)
-  })
-}
