@@ -10,9 +10,11 @@ import java.util.List;
     "entityId",
     "variableId",
     "variableType",
+    "variableDataShape",
     "derivationType",
     "functionName",
-    "inputVars"
+    "inputVars",
+    "config"
 })
 public class DerivedVariableImpl implements DerivedVariable {
   @JsonProperty("entityId")
@@ -24,6 +26,9 @@ public class DerivedVariableImpl implements DerivedVariable {
   @JsonProperty("variableType")
   private APIVariableType variableType;
 
+  @JsonProperty("variableDataShape")
+  private APIVariableDataShape variableDataShape;
+
   @JsonProperty("derivationType")
   private DerivationType derivationType;
 
@@ -32,6 +37,9 @@ public class DerivedVariableImpl implements DerivedVariable {
 
   @JsonProperty("inputVars")
   private List<VariableSpec> inputVars;
+
+  @JsonProperty("config")
+  private Object config;
 
   @JsonProperty("entityId")
   public String getEntityId() {
@@ -63,6 +71,16 @@ public class DerivedVariableImpl implements DerivedVariable {
     this.variableType = variableType;
   }
 
+  @JsonProperty("variableDataShape")
+  public APIVariableDataShape getVariableDataShape() {
+    return this.variableDataShape;
+  }
+
+  @JsonProperty("variableDataShape")
+  public void setVariableDataShape(APIVariableDataShape variableDataShape) {
+    this.variableDataShape = variableDataShape;
+  }
+
   @JsonProperty("derivationType")
   public DerivationType getDerivationType() {
     return this.derivationType;
@@ -91,5 +109,15 @@ public class DerivedVariableImpl implements DerivedVariable {
   @JsonProperty("inputVars")
   public void setInputVars(List<VariableSpec> inputVars) {
     this.inputVars = inputVars;
+  }
+
+  @JsonProperty("config")
+  public Object getConfig() {
+    return this.config;
+  }
+
+  @JsonProperty("config")
+  public void setConfig(Object config) {
+    this.config = config;
   }
 }

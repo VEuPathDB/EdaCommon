@@ -26,6 +26,12 @@ public interface DerivedVariable extends VariableSpec {
   @JsonProperty("variableType")
   void setVariableType(APIVariableType variableType);
 
+  @JsonProperty("variableDataShape")
+  APIVariableDataShape getVariableDataShape();
+
+  @JsonProperty("variableDataShape")
+  void setVariableDataShape(APIVariableDataShape variableDataShape);
+
   @JsonProperty("derivationType")
   DerivationType getDerivationType();
 
@@ -43,4 +49,10 @@ public interface DerivedVariable extends VariableSpec {
 
   @JsonProperty("inputVars")
   void setInputVars(List<VariableSpec> inputVars);
+
+  @JsonProperty("config")
+  Object getConfig();
+
+  @JsonProperty("config")
+  void setConfig(Object config);
 }
