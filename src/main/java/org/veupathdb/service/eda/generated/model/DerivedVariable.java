@@ -32,15 +32,15 @@ public interface DerivedVariable extends VariableSpec {
   @JsonProperty("derivationType")
   void setDerivationType(DerivationType derivationType);
 
-  @JsonProperty("dependentVariables")
-  List<VariableSpec> getDependentVariables();
+  @JsonProperty("functionName")
+  String getFunctionName();
 
-  @JsonProperty("dependentVariables")
-  void setDependentVariables(List<VariableSpec> dependentVariables);
+  @JsonProperty("functionName")
+  void setFunctionName(String functionName);
 
-  @JsonProperty("construction")
-  Object getConstruction();
+  @JsonProperty("inputVars")
+  List<VariableSpec> getInputVars();
 
-  @JsonProperty("construction")
-  void setConstruction(Object construction);
+  @JsonProperty("inputVars")
+  void setInputVars(List<VariableSpec> inputVars);
 }

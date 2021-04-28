@@ -14,4 +14,6 @@ public enum DerivationType {
   DerivationType(String name) {
     this.name = name;
   }
+  public String getValue(){ return name; } 
 }
+
