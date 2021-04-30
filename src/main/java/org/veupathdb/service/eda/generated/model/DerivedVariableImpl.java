@@ -12,9 +12,11 @@ import java.util.List;
     "unitsId",
     "scaleId",
     "variableType",
+    "variableDataShape",
     "derivationType",
-    "dependentVariables",
-    "construction"
+    "functionName",
+    "inputVars",
+    "config"
 })
 public class DerivedVariableImpl implements DerivedVariable {
   @JsonProperty("entityId")
@@ -32,14 +34,20 @@ public class DerivedVariableImpl implements DerivedVariable {
   @JsonProperty("variableType")
   private APIVariableType variableType;
 
+  @JsonProperty("variableDataShape")
+  private APIVariableDataShape variableDataShape;
+
   @JsonProperty("derivationType")
   private DerivationType derivationType;
 
-  @JsonProperty("dependentVariables")
-  private List<VariableSpec> dependentVariables;
+  @JsonProperty("functionName")
+  private String functionName;
 
-  @JsonProperty("construction")
-  private Object construction;
+  @JsonProperty("inputVars")
+  private List<VariableSpec> inputVars;
+
+  @JsonProperty("config")
+  private Object config;
 
   @JsonProperty("entityId")
   public String getEntityId() {
@@ -91,6 +99,16 @@ public class DerivedVariableImpl implements DerivedVariable {
     this.variableType = variableType;
   }
 
+  @JsonProperty("variableDataShape")
+  public APIVariableDataShape getVariableDataShape() {
+    return this.variableDataShape;
+  }
+
+  @JsonProperty("variableDataShape")
+  public void setVariableDataShape(APIVariableDataShape variableDataShape) {
+    this.variableDataShape = variableDataShape;
+  }
+
   @JsonProperty("derivationType")
   public DerivationType getDerivationType() {
     return this.derivationType;
@@ -101,23 +119,33 @@ public class DerivedVariableImpl implements DerivedVariable {
     this.derivationType = derivationType;
   }
 
-  @JsonProperty("dependentVariables")
-  public List<VariableSpec> getDependentVariables() {
-    return this.dependentVariables;
+  @JsonProperty("functionName")
+  public String getFunctionName() {
+    return this.functionName;
   }
 
-  @JsonProperty("dependentVariables")
-  public void setDependentVariables(List<VariableSpec> dependentVariables) {
-    this.dependentVariables = dependentVariables;
+  @JsonProperty("functionName")
+  public void setFunctionName(String functionName) {
+    this.functionName = functionName;
   }
 
-  @JsonProperty("construction")
-  public Object getConstruction() {
-    return this.construction;
+  @JsonProperty("inputVars")
+  public List<VariableSpec> getInputVars() {
+    return this.inputVars;
   }
 
-  @JsonProperty("construction")
-  public void setConstruction(Object construction) {
-    this.construction = construction;
+  @JsonProperty("inputVars")
+  public void setInputVars(List<VariableSpec> inputVars) {
+    this.inputVars = inputVars;
+  }
+
+  @JsonProperty("config")
+  public Object getConfig() {
+    return this.config;
+  }
+
+  @JsonProperty("config")
+  public void setConfig(Object config) {
+    this.config = config;
   }
 }

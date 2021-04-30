@@ -23,4 +23,6 @@ public enum APIVariableType {
   APIVariableType(String name) {
     this.name = name;
   }
+  public String getValue(){ return name; } 
 }
+

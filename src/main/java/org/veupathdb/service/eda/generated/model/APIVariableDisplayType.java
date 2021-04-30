@@ -17,4 +17,6 @@ public enum APIVariableDisplayType {
   APIVariableDisplayType(String name) {
     this.name = name;
   }
+  public String getValue(){ return name; } 
 }
+

@@ -2,7 +2,10 @@ package org.veupathdb.service.eda.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.gusdb.fgputil.json.JsonUtil;
+import org.veupathdb.service.eda.generated.model.APIVariableDataShape;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
 import org.veupathdb.service.eda.generated.model.DerivationType;
 import org.veupathdb.service.eda.generated.model.VariableSpec;
@@ -32,32 +35,46 @@ public class VariableDef extends VariableSpecImpl {
   private final APIVariableType _type;
 
   @JsonIgnore
+  private final APIVariableDataShape _dataShape;
+
+  @JsonIgnore
   private final VariableSource _source;
 
-  public VariableDef(String entityId, String variableId, APIVariableType type, VariableSource source) {
+  public VariableDef(
+      String entityId,
+      String variableId,
+      APIVariableType type,
+      APIVariableDataShape dataShape,
+      VariableSource source) {
     setEntityId(entityId);
     setVariableId(variableId);
     _type = type;
+    _dataShape = dataShape;
     _source = source;
   }
 
-  public VariableDef(String entityId, String variableId, APIVariableType type, DerivationType derivationType) {
-    setEntityId(entityId);
-    setVariableId(variableId);
-    _type = type;
-    _source = switch(derivationType) {
-      case REDUCTION -> DERIVED_BY_REDUCTION;
-      case TRANSFORM -> DERIVED_BY_TRANSFORM;
-    };
-  }
-
-  public static String toDotNotation(VariableSpec var) {
-    return var.getEntityId() + "." + var.getVariableId();
+  public VariableDef(
+      String entityId,
+      String variableId,
+      APIVariableType type,
+      APIVariableDataShape dataShape,
+      DerivationType derivationType) {
+    this(entityId, variableId, type, dataShape,
+      switch(derivationType) {
+        case REDUCTION -> DERIVED_BY_REDUCTION;
+        case TRANSFORM -> DERIVED_BY_TRANSFORM;
+      }
+    );
   }
 
   @JsonIgnore
   public APIVariableType getType() {
     return _type;
+  }
+
+  @JsonIgnore
+  public APIVariableDataShape getDataShape() {
+    return _dataShape;
   }
 
   @JsonIgnore
@@ -68,6 +85,14 @@ public class VariableDef extends VariableSpecImpl {
   @Override
   public String toString() {
     return JsonUtil.serializeObject(this);
+  }
+
+  public static String toDotNotation(VariableSpec var) {
+    return var.getEntityId() + "." + var.getVariableId();
+  }
+
+  public static <T extends VariableSpec> List<String> toDotNotation(List<T> vars) {
+    return vars.stream().map(var -> toDotNotation(var)).collect(Collectors.toList());
   }
 
   public static boolean isSameVariable(VariableSpec v1, VariableSpec v2) {

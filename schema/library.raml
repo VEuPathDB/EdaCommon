@@ -71,9 +71,11 @@ types:
     type: VariableSpec
     properties:
       variableType: API_VariableType
+      variableDataShape: API_VariableDataShape
       derivationType: DerivationType
-      dependentVariables: VariableSpec[]
-      construction: object # TBD
+      functionName: string
+      inputVars: VariableSpec[]
+      config: object # TBD
   MergedEntityTabularPostRequest:
     type: object
     additionalProperties: false

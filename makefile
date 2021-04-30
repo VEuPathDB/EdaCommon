@@ -57,6 +57,7 @@ jar: install-dev-env gen-jaxrs gen-docs
 release: jar
 	@./gradlew publishToMavenLocal
 	@cp ~/.m2/repository/org/veupathdb/service/eda/eda-common/$(APP_VERSION)/eda-common-$(APP_VERSION).pom build/libs
+	@./gradlew publish
 
 .PHONY: install-dev-env
 install-dev-env:

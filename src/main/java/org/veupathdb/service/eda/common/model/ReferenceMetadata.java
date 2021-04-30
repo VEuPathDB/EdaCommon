@@ -1,19 +1,14 @@
 package org.veupathdb.service.eda.common.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.gusdb.fgputil.FormatUtil;
 import org.gusdb.fgputil.Tuples.TwoTuple;
 import org.gusdb.fgputil.functional.TreeNode;
-import org.gusdb.fgputil.json.JsonUtil;
-import org.gusdb.fgputil.validation.ValidationBundle.ValidationBundleBuilder;
-import org.gusdb.fgputil.validation.ValidationException;
 import org.veupathdb.service.eda.generated.model.APIEntity;
 import org.veupathdb.service.eda.generated.model.APIStudyDetail;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
@@ -65,6 +60,7 @@ public class ReferenceMetadata {
           vd.getEntityId(),
           vd.getVariableId(),
           vd.getType(),
+          vd.getDataShape(),
           VariableSource.INHERITED)));
 
     // process this entity's native vars
@@ -74,6 +70,7 @@ public class ReferenceMetadata {
           entity.getId(),
           var.getId(),
           var.getType(),
+          var.getDataShape(),
           VariableSource.NATIVE))
       .forEach(vd -> {
         // add variables for this entity
@@ -89,20 +86,18 @@ public class ReferenceMetadata {
       // only derived vars for this entity
       .filter(dr -> dr.getEntityId().equals(entity.getId()))
       // skip if entity already contains the variable; TODO: will throw later
-      .filter(dr -> !entityDef.hasVariable(dr))
+      .filter(dr -> !entityDef.getVariable(dr).isPresent())
       .map(dr -> new VariableDef(
           entity.getId(),
           dr.getVariableId(),
           dr.getVariableType(),
+          dr.getVariableDataShape(),
           dr.getDerivationType()))
 
       .forEach(vd -> entityDef.add(vd));
 
     // put this entity in a node
     TreeNode<EntityDef> node = new TreeNode<>(entityDef);
-
-    // log resulting list
-    //LOG.debug("Supplemented Entity: " + entityDef);
 
     // add child entities
     for (APIEntity childEntity : entity.getChildren()) {
@@ -117,6 +112,14 @@ public class ReferenceMetadata {
     return _studyId;
   }
 
+  public Optional<EntityDef> getEntity(String entityId) {
+    return Optional.ofNullable(_entityMap.get(entityId));
+  }
+
+  public Optional<VariableDef> getVariable(VariableSpec var) {
+    return getEntity(var.getEntityId()).flatMap(e -> e.getVariable(var));
+  }
+
   public List<DerivedVariable> getDerivedVariables() {
     return _derivedVariables;
   }
@@ -125,77 +128,79 @@ public class ReferenceMetadata {
     return _derivedVariables.stream().filter(dr -> VariableDef.isSameVariable(dr, var)).findFirst();
   }
 
-  public boolean containsEntity(String entityId) {
-    return _entityMap.containsKey(entityId);
-  }
-
-  public boolean isNativeVarOfEntity(String variableId, String entityId) {
-    return _entityMap.get(entityId).getVariableOpt(VariableDef.newVariableSpec(entityId, variableId))
-        .map(foundVar -> foundVar.getSource().equals(VariableSource.NATIVE)).orElse(false);
-  }
-
-  public EntityDef getValidEntity(ValidationBundleBuilder validation, String entityId) throws ValidationException {
-    EntityDef entity = _entityMap.get(entityId);
-    if (entity == null) {
-      validation.addError(getNoEntityMsg(entityId));
-      validation.build().throwIfInvalid();
-    }
-    return entity;
-  }
-
-  public EntityDef getEntity(String entityId) {
-    return Optional.ofNullable(_entityMap.get(entityId))
-      .orElseThrow(() -> new RuntimeException(getNoEntityMsg(entityId)));
-  }
-
-  public VariableDef getVariableDef(VariableSpec var) {
-    return getEntity(var.getEntityId()).getVariable(var);
-  }
-
-  private String getNoEntityMsg(String entityId) {
-    return "No entity exists on study '" + getStudyId() + "' with ID '" + entityId + "'.";
-  }
-
-  public void validateVariableName(ValidationBundleBuilder validation,
-                                   EntityDef entity, String variableUse, VariableSpec variable) {
-    List<APIVariableType> nonCategoryTypes = Arrays.stream(APIVariableType.values())
-        .filter(type -> !type.equals(APIVariableType.CATEGORY))
+  /**
+   * Returns the child entities of the passed entity
+   *
+   * @param targetEntity
+   * @return
+   */
+  public List<EntityDef> getChildren(EntityDef targetEntity) {
+    return _entityTree
+        .findFirst(node -> node.getId().equals(targetEntity.getId()))
+        .getChildNodes()
+        .stream()
+        .map(node -> node.getContents())
         .collect(Collectors.toList());
-    validateVariableNameAndType(validation, entity, variableUse, variable, nonCategoryTypes.toArray(new APIVariableType[0]));
   }
 
-  public void validateVariableNameAndType(ValidationBundleBuilder validation,
-                                          EntityDef entity, String variableUse, VariableSpec varSpec, APIVariableType... allowedTypes) {
-    List<APIVariableType> allowedTypesList = Arrays.asList(allowedTypes);
-    if (allowedTypesList.contains(APIVariableType.CATEGORY)) {
-      throw new RuntimeException("Plugin should not be using categories as variables.");
-    }
-    String varDesc = "Variable " + JsonUtil.serializeObject(varSpec) + ", used for " + variableUse + ", ";
-    if (!entity.hasVariable(varSpec)) {
-      validation.addError(varDesc + "does not exist in entity " + entity.getId());
-    }
-    else if (!allowedTypesList.contains(entity.getVariable(varSpec).getType())) {
-      validation.addError(varDesc + "must be one of the following types: " + FormatUtil.join(allowedTypes, ", "));
-    }
+  public List<EntityDef> getDescendants(EntityDef targetEntity) {
+    return _entityTree
+        .findFirst(node -> node.getId().equals(targetEntity.getId()))
+        // find all nodes in this subtree except the root
+        .findAll(entity -> !entity.getId().equals(targetEntity.getId()))
+        .stream()
+        .map(node -> node.getContents())
+        .collect(Collectors.toList());
   }
 
+  /**
+   * Returns the ancestor entities of the passed entity, ordered from the bottom (parent) up to the root
+   *
+   * @param targetEntity
+   * @return
+   */
   public List<EntityDef> getAncestors(EntityDef targetEntity) {
-    return Optional.ofNullable(getAncestors(targetEntity, _entityTree, new ArrayList<>()))
-        .orElseThrow(() -> new RuntimeException("Target entity '" + targetEntity.getId() + "' could not be found in entity tree."));
+    return getAncestors(targetEntity, _entityTree, new ArrayList<>())
+        .orElseThrow(() -> new RuntimeException(
+            "Target entity '" + targetEntity.getId() +
+            "' could not be found in entity tree."));
   }
 
-  private static List<EntityDef> getAncestors(EntityDef targetEntity, TreeNode<EntityDef> entityTree, List<EntityDef> ancestors) {
+  private static Optional<List<EntityDef>> getAncestors(EntityDef targetEntity, TreeNode<EntityDef> entityTree, List<EntityDef> ancestors) {
     if (entityTree.getContents().getId().equals(targetEntity.getId())) {
-      return ancestors; // done
+      return Optional.of(ancestors); // entity found
     }
     for (TreeNode<EntityDef> child : entityTree.getChildNodes()) {
       List<EntityDef> supplementedAncestors = new ArrayList<>(ancestors);
       supplementedAncestors.add(0, entityTree.getContents()); // in ascending order (up the tree)
-      List<EntityDef> listForFoundEntity = getAncestors(targetEntity, child, supplementedAncestors);
-      if (listForFoundEntity != null) {
+      Optional<List<EntityDef>> listForFoundEntity = getAncestors(targetEntity, child, supplementedAncestors);
+      if (listForFoundEntity.isPresent()) {
+        // entity found in this branch
         return listForFoundEntity;
       }
     }
-    return null;
+    // entity not found in this branch
+    return Optional.empty();
   }
+
+  public List<VariableDef> getTabularColumns(EntityDef targetEntity, List<VariableSpec> requestedVars) {
+
+    List<VariableDef> columns = new ArrayList<>();
+
+    // first column is the ID col for the returned entity
+    columns.add(targetEntity.getIdColumnDef());
+
+    // next cols are the ID cols for ancestor entities (up the tree)
+    for (EntityDef ancestor : getAncestors(targetEntity)) {
+      columns.add(ancestor.getIdColumnDef());
+    }
+
+    // then add requested vars in the order requested
+    for (VariableSpec requestedVar : requestedVars) {
+      columns.add(getVariable(requestedVar).orElseThrow());
+    }
+
+    return columns;
+  }
+
 }

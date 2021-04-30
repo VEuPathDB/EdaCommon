@@ -26,4 +26,6 @@ public enum APIFilterType {
   APIFilterType(String name) {
     this.name = name;
   }
+  public String getValue(){ return name; } 
 }
+

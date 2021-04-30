@@ -20,4 +20,6 @@ public enum APIVariableDataShape {
   APIVariableDataShape(String name) {
     this.name = name;
   }
+  public String getValue(){ return name; } 
 }
+
