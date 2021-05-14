@@ -6,13 +6,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
     "datasetId",
-    "rootEntity"
+    "rootEntity",
+    "units",
+    "scale"
 })
 public class APIStudyDetailImpl implements APIStudyDetail {
   @JsonProperty("id")
@@ -23,6 +26,12 @@ public class APIStudyDetailImpl implements APIStudyDetail {
 
   @JsonProperty("rootEntity")
   private APIEntity rootEntity;
+
+  @JsonProperty("units")
+  private List<UnitsGroup> units;
+
+  @JsonProperty("scale")
+  private List<ScaleOption> scale;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -55,6 +64,26 @@ public class APIStudyDetailImpl implements APIStudyDetail {
   @JsonProperty("rootEntity")
   public void setRootEntity(APIEntity rootEntity) {
     this.rootEntity = rootEntity;
+  }
+
+  @JsonProperty("units")
+  public List<UnitsGroup> getUnits() {
+    return this.units;
+  }
+
+  @JsonProperty("units")
+  public void setUnits(List<UnitsGroup> units) {
+    this.units = units;
+  }
+
+  @JsonProperty("scale")
+  public List<ScaleOption> getScale() {
+    return this.scale;
+  }
+
+  @JsonProperty("scale")
+  public void setScale(List<ScaleOption> scale) {
+    this.scale = scale;
   }
 
   @JsonAnyGetter

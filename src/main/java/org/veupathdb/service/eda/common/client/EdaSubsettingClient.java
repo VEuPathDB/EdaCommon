@@ -81,7 +81,7 @@ public class EdaSubsettingClient extends StreamingDataClient {
     // build request object
     EntityTabularPostRequest request = new EntityTabularPostRequestImpl();
     request.setFilters(subset);
-    request.setOutputVariableSpecs(spec.stream().collect(Collectors.toList()));
+    request.setOutputVariableSpecs(spec);
 
     // build request url
     String url = getUrl("/studies/" + metadata.getStudyId() + "/entities/" + spec.getEntityId() + "/tabular");

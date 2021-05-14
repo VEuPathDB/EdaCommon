@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
 import java.util.Map;
 
 @JsonDeserialize(
@@ -27,6 +28,18 @@ public interface APIStudyDetail {
 
   @JsonProperty("rootEntity")
   void setRootEntity(APIEntity rootEntity);
+
+  @JsonProperty("units")
+  List<UnitsGroup> getUnits();
+
+  @JsonProperty("units")
+  void setUnits(List<UnitsGroup> units);
+
+  @JsonProperty("scale")
+  List<ScaleOption> getScale();
+
+  @JsonProperty("scale")
+  void setScale(List<ScaleOption> scale);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

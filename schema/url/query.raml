@@ -2,11 +2,16 @@
 
 types:
 
-  VariableSpec:
+  VariableSpecBaseIds:
     additionalProperties: false
     properties:
       entityId: string
       variableId: string
+
+  VariableSpec:
+    type: VariableSpecBaseIds
+    additionalProperties: false
+    properties:
       unitsId?: string
       scaleId?: string
 

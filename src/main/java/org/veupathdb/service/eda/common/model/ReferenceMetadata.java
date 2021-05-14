@@ -9,10 +9,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gusdb.fgputil.Tuples.TwoTuple;
 import org.gusdb.fgputil.functional.TreeNode;
+import org.veupathdb.service.eda.common.model.InternalVariableDefs.InternalVariableDef;
 import org.veupathdb.service.eda.generated.model.APIEntity;
 import org.veupathdb.service.eda.generated.model.APIStudyDetail;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
 import org.veupathdb.service.eda.generated.model.DerivedVariable;
+import org.veupathdb.service.eda.generated.model.ScaleOption;
+import org.veupathdb.service.eda.generated.model.UnitsGroup;
 import org.veupathdb.service.eda.generated.model.VariableSpec;
 
 import static org.gusdb.fgputil.functional.Functions.getMapFromList;
@@ -25,12 +28,16 @@ public class ReferenceMetadata {
   private final TreeNode<EntityDef> _entityTree;
   private final Map<String,EntityDef> _entityMap;
   private final List<DerivedVariable> _derivedVariables;
+  private final List<UnitsGroup> _unitsGroups;
+  private final List<ScaleOption> _scaleOptions;
 
   public ReferenceMetadata(APIStudyDetail study, List<DerivedVariable> derivedVariables) {
     _studyId = study.getId();
-    _entityTree = buildEntityTree(study.getRootEntity(), derivedVariables, new ArrayList<>());
+    _entityTree = buildEntityTree(study.getRootEntity(), derivedVariables, new ArrayList<>(), this);
     _entityMap = buildEntityMap(_entityTree);
     _derivedVariables = derivedVariables;
+    _unitsGroups = study.getUnits();
+    _scaleOptions = study.getScale();
   }
 
   private static Map<String, EntityDef> buildEntityMap(TreeNode<EntityDef> entityTree) {
@@ -50,31 +57,41 @@ public class ReferenceMetadata {
    * @return root of a tree of entity defs containing all available vars on those entities
    */
   private static TreeNode<EntityDef> buildEntityTree(APIEntity entity,
-      List<DerivedVariable> allSpecifiedDerivedVariables, List<VariableDef> ancestorVars) {
+      List<DerivedVariable> allSpecifiedDerivedVariables,
+      List<InternalVariableDef> ancestorVars, ReferenceMetadata parentObj) {
 
     EntityDef entityDef = new EntityDef(entity.getId(), entity.getDisplayName(), entity.getIdColumnName());
 
     // add inherited variables from parent
     ancestorVars.stream()
-      .forEach(vd -> entityDef.add(new VariableDef(
+      .forEach(vd -> entityDef.addVariable(new InternalVariableDef(
           vd.getEntityId(),
           vd.getVariableId(),
           vd.getType(),
           vd.getDataShape(),
-          VariableSource.INHERITED)));
+          vd.getUnitsGroupId(),
+          vd.getDefaultUnitsId(),
+          vd.getDefaultScaleId(),
+          VariableSource.INHERITED,
+          parentObj)));
 
     // process this entity's native vars
     entity.getVariables().stream()
       .filter(var -> !var.getType().equals(APIVariableType.CATEGORY))
-      .map(var -> new VariableDef(
+      .map(var -> new InternalVariableDef(
           entity.getId(),
           var.getId(),
           var.getType(),
+          var.getType(),
           var.getDataShape(),
-          VariableSource.NATIVE))
+          var.getUnitsGroupId(),
+          var.getDefaultUnitsId(),
+          var.getDefaultScaleId(),
+          VariableSource.NATIVE,
+          parentObj))
       .forEach(vd -> {
         // add variables for this entity
-        entityDef.add(vd);
+        entityDef.addVariable(vd);
 
         // add this entity's native vars to ancestorVars list (copy will be passed to children)
         ancestorVars.add(vd);
@@ -90,10 +107,11 @@ public class ReferenceMetadata {
       .map(dr -> new VariableDef(
           entity.getId(),
           dr.getVariableId(),
+          null,
+          null,
           dr.getVariableType(),
           dr.getVariableDataShape(),
           dr.getDerivationType()))
-
       .forEach(vd -> entityDef.add(vd));
 
     // put this entity in a node
@@ -125,7 +143,7 @@ public class ReferenceMetadata {
   }
 
   public Optional<DerivedVariable> findDerivedVariable(VariableSpec var) {
-    return _derivedVariables.stream().filter(dr -> VariableDef.isSameVariable(dr, var)).findFirst();
+    return _derivedVariables.stream().filter(dr -> VariableDef.hasSameEntityAndVarId(dr, var)).findFirst();
   }
 
   /**
@@ -203,4 +221,7 @@ public class ReferenceMetadata {
     return columns;
   }
 
+  public boolean isValidScaleId(String scaleId) {
+    return _scaleOptions.stream().anyMatch(opt -> opt.getScaleId().equals(scaleId));
+  }
 }

@@ -71,6 +71,24 @@ public interface APIVariablesCategory extends APIVariable {
   @JsonProperty("isTemporal")
   void setIsTemporal(boolean isTemporal);
 
+  @JsonProperty("unitsGroupId")
+  String getUnitsGroupId();
+
+  @JsonProperty("unitsGroupId")
+  void setUnitsGroupId(String unitsGroupId);
+
+  @JsonProperty("defaultUnitsId")
+  String getDefaultUnitsId();
+
+  @JsonProperty("defaultUnitsId")
+  void setDefaultUnitsId(String defaultUnitsId);
+
+  @JsonProperty("defaultScaleId")
+  String getDefaultScaleId();
+
+  @JsonProperty("defaultScaleId")
+  void setDefaultScaleId(String defaultScaleId);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 

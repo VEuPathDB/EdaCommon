@@ -71,35 +71,29 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("isTemporal")
   void setIsTemporal(boolean isTemporal);
 
-  @JsonProperty("unitsId")
-  String getUnitsId();
+  @JsonProperty("unitsGroupId")
+  String getUnitsGroupId();
 
-  @JsonProperty("unitsId")
-  void setUnitsId(String unitsId);
+  @JsonProperty("unitsGroupId")
+  void setUnitsGroupId(String unitsGroupId);
 
-  @JsonProperty("unitsDisplayName")
-  String getUnitsDisplayName();
+  @JsonProperty("defaultUnitsId")
+  String getDefaultUnitsId();
 
-  @JsonProperty("unitsDisplayName")
-  void setUnitsDisplayName(String unitsDisplayName);
+  @JsonProperty("defaultUnitsId")
+  void setDefaultUnitsId(String defaultUnitsId);
+
+  @JsonProperty("defaultScaleId")
+  String getDefaultScaleId();
+
+  @JsonProperty("defaultScaleId")
+  void setDefaultScaleId(String defaultScaleId);
 
   @JsonProperty("precision")
   int getPrecision();
 
   @JsonProperty("precision")
   void setPrecision(int precision);
-
-  @JsonProperty("scaleId")
-  String getScaleId();
-
-  @JsonProperty("scaleId")
-  void setScaleId(String scaleId);
-
-  @JsonProperty("scaleDisplayName")
-  String getScaleDisplayName();
-
-  @JsonProperty("scaleDisplayName")
-  void setScaleDisplayName(String scaleDisplayName);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

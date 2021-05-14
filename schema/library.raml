@@ -56,12 +56,6 @@ types:
     properties:
       left: number
       right: number
-  VariableSpec2:
-    type: object
-    additionalProperties: false
-    properties:
-      entityId: string
-      variableId: string
   DerivationType:
     type: string
     enum:
@@ -85,12 +79,16 @@ types:
       entityId: string
       outputVariables: VariableSpec[]
       derivedVariables: DerivedVariable[]
-  VariableSpec:
+  VariableSpecBaseIds:
     type: object
     additionalProperties: false
     properties:
       entityId: string
       variableId: string
+  VariableSpec:
+    type: VariableSpecBaseIds
+    additionalProperties: false
+    properties:
       unitsId?: string
       scaleId?: string
   EntityCountPostRequest:
@@ -152,6 +150,29 @@ types:
       id: string
       datasetId: string
       rootEntity: API_Entity
+      units: UnitsGroup[]
+      scale: ScaleOption[]
+  UnitsGroup:
+    type: object
+    properties:
+      unitsGroupId: string
+      displayName: string
+      members: UnitOption[]
+  UnitOption:
+    type: object
+    properties:
+      unitsId: string
+      displayName: string
+  ScaleOption:
+    type: object
+    properties:
+      scaleId: string
+      displayName: string
+  VariableAspect:
+    type: object
+    properties:
+      id: string
+      display: string
   API_Entity:
     type: object
     properties:
@@ -176,6 +197,9 @@ types:
       dataShape: API_VariableDataShape
       isFeatured: boolean
       isTemporal: boolean
+      unitsGroupId: string
+      defaultUnitsId: string
+      defaultScaleId: string
   API_VariableType:
     type: string
     enum:
@@ -207,11 +231,8 @@ types:
     type: API_Variable
     discriminatorValue: number
     properties:
-      unitsId: string
-      unitsDisplayName: string
       precision: integer
-      scaleId: string
-      scaleDisplayName: string
+      defaultScaleId: string
   API_DateVariable:
     type: API_Variable
     discriminatorValue: date

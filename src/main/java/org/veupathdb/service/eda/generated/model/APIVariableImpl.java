@@ -19,7 +19,10 @@ import java.util.Map;
     "displayType",
     "dataShape",
     "isFeatured",
-    "isTemporal"
+    "isTemporal",
+    "unitsGroupId",
+    "defaultUnitsId",
+    "defaultScaleId"
 })
 public class APIVariableImpl implements APIVariable {
   @JsonProperty("id")
@@ -51,6 +54,15 @@ public class APIVariableImpl implements APIVariable {
 
   @JsonProperty("isTemporal")
   private boolean isTemporal;
+
+  @JsonProperty("unitsGroupId")
+  private String unitsGroupId;
+
+  @JsonProperty("defaultUnitsId")
+  private String defaultUnitsId;
+
+  @JsonProperty("defaultScaleId")
+  private String defaultScaleId;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -148,6 +160,36 @@ public class APIVariableImpl implements APIVariable {
   @JsonProperty("isTemporal")
   public void setIsTemporal(boolean isTemporal) {
     this.isTemporal = isTemporal;
+  }
+
+  @JsonProperty("unitsGroupId")
+  public String getUnitsGroupId() {
+    return this.unitsGroupId;
+  }
+
+  @JsonProperty("unitsGroupId")
+  public void setUnitsGroupId(String unitsGroupId) {
+    this.unitsGroupId = unitsGroupId;
+  }
+
+  @JsonProperty("defaultUnitsId")
+  public String getDefaultUnitsId() {
+    return this.defaultUnitsId;
+  }
+
+  @JsonProperty("defaultUnitsId")
+  public void setDefaultUnitsId(String defaultUnitsId) {
+    this.defaultUnitsId = defaultUnitsId;
+  }
+
+  @JsonProperty("defaultScaleId")
+  public String getDefaultScaleId() {
+    return this.defaultScaleId;
+  }
+
+  @JsonProperty("defaultScaleId")
+  public void setDefaultScaleId(String defaultScaleId) {
+    this.defaultScaleId = defaultScaleId;
   }
 
   @JsonAnyGetter

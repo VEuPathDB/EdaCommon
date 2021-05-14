@@ -9,6 +9,7 @@ import org.veupathdb.service.eda.generated.model.APIVariableDataShape;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
 import org.veupathdb.service.eda.generated.model.DerivationType;
 import org.veupathdb.service.eda.generated.model.VariableSpec;
+import org.veupathdb.service.eda.generated.model.VariableSpecBaseIds;
 import org.veupathdb.service.eda.generated.model.VariableSpecImpl;
 
 import static org.veupathdb.service.eda.common.model.VariableSource.DERIVED_BY_REDUCTION;
@@ -20,15 +21,33 @@ import static org.veupathdb.service.eda.common.model.VariableSource.DERIVED_BY_T
  */
 @JsonPropertyOrder({
     "entityId",
-    "variableId"
+    "variableId",
+    "unitsId",
+    "scaleId"
 })
 public class VariableDef extends VariableSpecImpl {
 
-  public static VariableSpec newVariableSpec(String entityId, String variableId) {
+  private static VariableSpec newVariableSpec(String entityId, String variableId) {
     VariableSpec spec = new VariableSpecImpl();
     spec.setEntityId(entityId);
     spec.setVariableId(variableId);
     return spec;
+  }
+
+  public static String toDotNotation(VariableSpec var) {
+    return
+      var.getEntityId() + "." +
+      var.getVariableId() + "." +
+      var.getUnitsId() + "." +
+      var.getScaleId();
+  }
+
+  public static <T extends VariableSpec> List<String> toDotNotation(List<T> vars) {
+    return vars.stream().map(var -> toDotNotation(var)).collect(Collectors.toList());
+  }
+
+  public static boolean hasSameEntityAndVarId(VariableSpecBaseIds v1, VariableSpecBaseIds v2) {
+    return v1.getEntityId().equals(v2.getEntityId()) && v1.getVariableId().equals(v2.getVariableId());
   }
 
   @JsonIgnore
@@ -43,11 +62,15 @@ public class VariableDef extends VariableSpecImpl {
   public VariableDef(
       String entityId,
       String variableId,
+      String unitsId,
+      String scaleId,
       APIVariableType type,
       APIVariableDataShape dataShape,
       VariableSource source) {
     setEntityId(entityId);
     setVariableId(variableId);
+    setUnitsId(unitsId);
+    setScaleId(scaleId);
     _type = type;
     _dataShape = dataShape;
     _source = source;
@@ -56,10 +79,12 @@ public class VariableDef extends VariableSpecImpl {
   public VariableDef(
       String entityId,
       String variableId,
+      String unitsId,
+      String scaleId,
       APIVariableType type,
       APIVariableDataShape dataShape,
       DerivationType derivationType) {
-    this(entityId, variableId, type, dataShape,
+    this(entityId, variableId, unitsId, scaleId, type, dataShape,
       switch(derivationType) {
         case REDUCTION -> DERIVED_BY_REDUCTION;
         case TRANSFORM -> DERIVED_BY_TRANSFORM;
@@ -87,15 +112,4 @@ public class VariableDef extends VariableSpecImpl {
     return JsonUtil.serializeObject(this);
   }
 
-  public static String toDotNotation(VariableSpec var) {
-    return var.getEntityId() + "." + var.getVariableId();
-  }
-
-  public static <T extends VariableSpec> List<String> toDotNotation(List<T> vars) {
-    return vars.stream().map(var -> toDotNotation(var)).collect(Collectors.toList());
-  }
-
-  public static boolean isSameVariable(VariableSpec v1, VariableSpec v2) {
-    return v1.getEntityId().equals(v2.getEntityId()) && v1.getVariableId().equals(v2.getVariableId());
-  }
 }

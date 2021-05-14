@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(
-    as = VariableSpecImpl.class
+    as = VariableSpecBaseIdsImpl.class
 )
-public interface VariableSpec extends VariableSpecBaseIds {
+public interface VariableSpecBaseIds {
   @JsonProperty("entityId")
   String getEntityId();
 
@@ -18,16 +18,4 @@ public interface VariableSpec extends VariableSpecBaseIds {
 
   @JsonProperty("variableId")
   void setVariableId(String variableId);
-
-  @JsonProperty("unitsId")
-  String getUnitsId();
-
-  @JsonProperty("unitsId")
-  void setUnitsId(String unitsId);
-
-  @JsonProperty("scaleId")
-  String getScaleId();
-
-  @JsonProperty("scaleId")
-  void setScaleId(String scaleId);
 }
