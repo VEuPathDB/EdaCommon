@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gusdb.fgputil.Tuples.TwoTuple;
 import org.gusdb.fgputil.functional.TreeNode;
-import org.veupathdb.service.eda.common.model.InternalVariableDefs.InternalVariableDef;
 import org.veupathdb.service.eda.generated.model.APIEntity;
 import org.veupathdb.service.eda.generated.model.APIStudyDetail;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
@@ -19,6 +18,8 @@ import org.veupathdb.service.eda.generated.model.UnitsGroup;
 import org.veupathdb.service.eda.generated.model.VariableSpec;
 
 import static org.gusdb.fgputil.functional.Functions.getMapFromList;
+import static org.veupathdb.service.eda.common.model.VariableSource.DERIVED_BY_REDUCTION;
+import static org.veupathdb.service.eda.common.model.VariableSource.DERIVED_BY_TRANSFORM;
 
 public class ReferenceMetadata {
 
@@ -60,7 +61,7 @@ public class ReferenceMetadata {
       List<DerivedVariable> allSpecifiedDerivedVariables,
       List<InternalVariableDef> ancestorVars, ReferenceMetadata parentObj) {
 
-    EntityDef entityDef = new EntityDef(entity.getId(), entity.getDisplayName(), entity.getIdColumnName());
+    EntityDef entityDef = new EntityDef(entity.getId(), entity.getDisplayName(), entity.getIdColumnName(), parentObj);
 
     // add inherited variables from parent
     ancestorVars.stream()
@@ -81,7 +82,6 @@ public class ReferenceMetadata {
       .map(var -> new InternalVariableDef(
           entity.getId(),
           var.getId(),
-          var.getType(),
           var.getType(),
           var.getDataShape(),
           var.getUnitsGroupId(),
@@ -104,15 +104,20 @@ public class ReferenceMetadata {
       .filter(dr -> dr.getEntityId().equals(entity.getId()))
       // skip if entity already contains the variable; TODO: will throw later
       .filter(dr -> !entityDef.getVariable(dr).isPresent())
-      .map(dr -> new VariableDef(
+      .map(dr -> new InternalVariableDef(
           entity.getId(),
           dr.getVariableId(),
-          null,
-          null,
           dr.getVariableType(),
           dr.getVariableDataShape(),
-          dr.getDerivationType()))
-      .forEach(vd -> entityDef.add(vd));
+          null,
+          null,
+          null,
+          switch(dr.getDerivationType()) {
+            case REDUCTION -> DERIVED_BY_REDUCTION;
+            case TRANSFORM -> DERIVED_BY_TRANSFORM;
+          },
+          parentObj))
+      .forEach(vd -> entityDef.addVariable(vd));
 
     // put this entity in a node
     TreeNode<EntityDef> node = new TreeNode<>(entityDef);
@@ -120,7 +125,7 @@ public class ReferenceMetadata {
     // add child entities
     for (APIEntity childEntity : entity.getChildren()) {
       // create new array list each time; don't want branches of entity tree polluting each other
-      node.addChildNode(buildEntityTree(childEntity, allSpecifiedDerivedVariables, new ArrayList<>(ancestorVars)));
+      node.addChildNode(buildEntityTree(childEntity, allSpecifiedDerivedVariables, new ArrayList<>(ancestorVars), parentObj));
     }
 
     return node;
@@ -223,5 +228,15 @@ public class ReferenceMetadata {
 
   public boolean isValidScaleId(String scaleId) {
     return _scaleOptions.stream().anyMatch(opt -> opt.getScaleId().equals(scaleId));
+  }
+
+  public boolean isValidUnitsId(String unitsGroupId, String unitsId) {
+    return _unitsGroups.stream()
+        .filter(group -> group.getUnitsGroupId().equals(unitsGroupId))
+        .findFirst()
+        .flatMap(group -> group.getMembers().stream()
+            .filter(unitOption -> unitOption.getUnitsId().equals(unitsId))
+            .findFirst())
+        .isPresent();
   }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 @JsonDeserialize(
     as = APIStudyDetailImpl.class
 )
-public interface APIStudyDetail {
+public interface APIStudyDetail extends APIStudyOverview {
   @JsonProperty("id")
   String getId();
 

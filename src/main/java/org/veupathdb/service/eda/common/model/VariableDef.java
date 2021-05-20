@@ -76,22 +76,6 @@ public class VariableDef extends VariableSpecImpl {
     _source = source;
   }
 
-  public VariableDef(
-      String entityId,
-      String variableId,
-      String unitsId,
-      String scaleId,
-      APIVariableType type,
-      APIVariableDataShape dataShape,
-      DerivationType derivationType) {
-    this(entityId, variableId, unitsId, scaleId, type, dataShape,
-      switch(derivationType) {
-        case REDUCTION -> DERIVED_BY_REDUCTION;
-        case TRANSFORM -> DERIVED_BY_TRANSFORM;
-      }
-    );
-  }
-
   @JsonIgnore
   public APIVariableType getType() {
     return _type;

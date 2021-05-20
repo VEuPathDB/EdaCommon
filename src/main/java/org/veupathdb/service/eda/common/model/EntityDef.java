@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.json.JSONObject;
-import org.veupathdb.service.eda.common.model.InternalVariableDefs.InternalVariableDef;
-import org.veupathdb.service.eda.common.model.InternalVariableDefs.NonNumericInternalVariableDef;
 import org.veupathdb.service.eda.generated.model.APIVariableDataShape;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
 import org.veupathdb.service.eda.generated.model.VariableSpec;
@@ -17,14 +15,16 @@ public class EntityDef {
   private final String _displayName;
   private final InternalVariableDef _idColumnDef;
   private final List<InternalVariableDef> _variables;
+  private final ReferenceMetadata _parentObj;
 
-  public EntityDef(String id, String displayName, String idColumnName) {
+  public EntityDef(String id, String displayName, String idColumnName, ReferenceMetadata parentObj) {
     _id = id;
     _displayName = displayName;
-    _idColumnDef = new NonNumericInternalVariableDef(_id, idColumnName, APIVariableType.STRING,
-        APIVariableDataShape.CONTINUOUS ,VariableSource.ID);
+    _idColumnDef = new InternalVariableDef(_id, idColumnName, APIVariableType.STRING,
+        APIVariableDataShape.CONTINUOUS, null, null, null, VariableSource.ID, parentObj);
     _variables = new ArrayList<>();
     _variables.add(_idColumnDef);
+    _parentObj = parentObj;
   }
 
   public String getId() {
@@ -40,11 +40,10 @@ public class EntityDef {
   }
 
   public Optional<VariableDef> getVariable(VariableSpec var) {
-    return stream()
+    return _variables.stream()
       .filter(v -> VariableDef.hasSameEntityAndVarId(v, var))
       .findFirst()
-      .map(v -> v.to)
-      .map()
+      .map(v -> v.toVariableDef(var.getUnitsId(), var.getScaleId()));
   }
 
   @Override
@@ -53,8 +52,10 @@ public class EntityDef {
       .put("id", _id)
       .put("displayName", _displayName)
       .put("idColumnName", _idColumnDef.getVariableId())
-      .put("variables", stream()
-        .map(var -> VariableDef.toDotNotation(var) + ":" + var.getType().toString().toLowerCase())
+      .put("variables", _variables.stream()
+        .map(var -> var.getVariableId() + ":" +
+            var.getType().toString().toLowerCase() + ":" +
+            var.getDataShape().toString().toLowerCase())
         .collect(Collectors.toList()))
       .toString(2);
   }
