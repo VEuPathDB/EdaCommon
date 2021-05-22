@@ -46,6 +46,19 @@ public class EntityDef {
       .map(v -> v.toVariableDef(var.getUnitsId(), var.getScaleId()));
   }
 
+  public List<VariableDef> getVariablesWithDefaultUnitsAndScale() {
+    return _variables.stream()
+      .map(v -> v.toVariableDef(v.getDefaultUnitsId(), v.getDefaultScaleId()))
+      .collect(Collectors.toList());
+  }
+
+  public VariableDef findFirstNativeVar() {
+    // find first native var in entity to work around no-vars bug in subsetting service
+    return getVariablesWithDefaultUnitsAndScale().stream()
+        .filter(var -> VariableSource.NATIVE.equals(var.getSource()))
+        .findFirst().orElseThrow(); // should have at least one native var
+  }
+
   @Override
   public String toString() {
     return new JSONObject()

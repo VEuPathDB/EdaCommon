@@ -13,4 +13,10 @@ public enum VariableSource {
   public boolean isResident() {
     return !equals(INHERITED);
   }
+  public boolean isDerived() {
+    return equals(DERIVED_BY_REDUCTION) || equals(DERIVED_BY_TRANSFORM);
+  }
+  public boolean isInherited() {
+    return equals(INHERITED);
+  }
 }
