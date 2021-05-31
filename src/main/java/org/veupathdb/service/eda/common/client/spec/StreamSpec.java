@@ -11,8 +11,8 @@ import org.veupathdb.service.eda.generated.model.VariableSpec;
 
 public class StreamSpec extends ArrayList<VariableSpec> {
 
-  private String _streamName;
-  private String _entityId;
+  private final String _streamName;
+  private final String _entityId;
 
   public StreamSpec(String streamName, String entityId) {
     _streamName = streamName;
