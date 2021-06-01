@@ -42,6 +42,12 @@ public class VariableDef extends VariableSpecImpl {
       var.getScaleId();
   }
 
+  public static class PkVariableDef extends VariableDef {
+    public PkVariableDef(String entityId, String pkColumnName) {
+      super(entityId, pkColumnName, null, null, APIVariableType.STRING, APIVariableDataShape.CONTINUOUS, VariableSource.ID);
+    }
+  }
+
   public static <T extends VariableSpec> List<String> toDotNotation(List<T> vars) {
     return vars.stream().map(var -> toDotNotation(var)).collect(Collectors.toList());
   }
