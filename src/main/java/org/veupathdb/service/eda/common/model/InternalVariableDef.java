@@ -60,11 +60,23 @@ class InternalVariableDef extends VariableSpecBaseIdsImpl {
   }
 
   public VariableDef toVariableDef(String unitsId, String scaleId) {
-    if (!bothOrNeitherNull(_unitsGroupId, unitsId) || (_unitsGroupId != null && !_metadata.isValidUnitsId(_unitsGroupId, unitsId))) {
-      throw new IllegalArgumentException("Invalid units ID '" + unitsId + "' for variable " + getEntityId() + ":" + getVariableId());
+    if (unitsId != null) { // passed value not null
+      if (_defaultUnitsId == null || !_metadata.isValidUnitsId(_unitsGroupId, unitsId)) {
+        throw new IllegalArgumentException("Invalid units ID '" + unitsId + "' for variable " + getEntityId() + ":" + getVariableId());
+      }
     }
-    if (!bothOrNeitherNull(_defaultScaleId, scaleId) || (_defaultScaleId != null && !_metadata.isValidScaleId(scaleId))) {
-      throw new IllegalArgumentException("Invalid scale ID '" + scaleId + "' for variable " + getEntityId() + ":" + getVariableId());
+    else if (_defaultUnitsId != null) {
+      // assign default if null passed in but units is relevant to this var
+      unitsId = _defaultUnitsId;
+    }
+    if (scaleId != null) { // passed value not null
+      if (_defaultScaleId == null || !_metadata.isValidScaleId(scaleId)) {
+        throw new IllegalArgumentException("Invalid scale ID '" + scaleId + "' for variable " + getEntityId() + ":" + getVariableId());
+      }
+    }
+    else if (_defaultScaleId != null) {
+      // assign default if null passed in but scale is relevant to this var
+      scaleId = _defaultScaleId;
     }
     return new VariableDef(getEntityId(), getVariableId(), unitsId, scaleId, getType(), getDataShape(), getSource());
   }
