@@ -15,6 +15,7 @@ import org.gusdb.fgputil.functional.FunctionalInterfaces;
 import org.veupathdb.service.eda.common.client.spec.StreamSpec;
 import org.veupathdb.service.eda.common.client.spec.StreamSpecValidator;
 import org.veupathdb.service.eda.common.model.ReferenceMetadata;
+import org.veupathdb.service.eda.common.model.VariableDef;
 import org.veupathdb.service.eda.generated.model.APIFilter;
 import org.veupathdb.service.eda.generated.model.VariableSpec;
 
@@ -25,8 +26,6 @@ public abstract class StreamingDataClient {
   private final String _serviceBaseUrl;
 
   public abstract StreamSpecValidator getStreamSpecValidator();
-
-  public abstract String varToColumnHeader(VariableSpec var);
 
   public abstract ResponseFuture getTabularDataStream(
       ReferenceMetadata metadata,
@@ -89,5 +88,9 @@ public abstract class StreamingDataClient {
       // throw as a runtime exception
       throw new RuntimeException("Unable to fetch all required data", e);
     }
+  }
+
+  public String varToColumnHeader(VariableSpec var) {
+    return VariableDef.toDotNotation(var);
   }
 }

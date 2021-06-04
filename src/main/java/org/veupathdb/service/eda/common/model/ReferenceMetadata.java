@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gusdb.fgputil.Tuples.TwoTuple;
 import org.gusdb.fgputil.functional.TreeNode;
+import org.gusdb.fgputil.json.JsonUtil;
 import org.veupathdb.service.eda.generated.model.APIEntity;
 import org.veupathdb.service.eda.generated.model.APIStudyDetail;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
@@ -220,7 +221,9 @@ public class ReferenceMetadata {
 
     // then add requested vars in the order requested
     for (VariableSpec requestedVar : requestedVars) {
-      columns.add(getVariable(requestedVar).orElseThrow());
+      columns.add(getVariable(requestedVar).orElseThrow(() ->
+          new RuntimeException("Could not find variable " +
+              JsonUtil.serializeObject(requestedVar) + " in study " + getStudyId())));
     }
 
     return columns;

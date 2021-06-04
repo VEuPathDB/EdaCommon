@@ -26,11 +26,6 @@ public class EdaMergingClient extends StreamingDataClient {
   }
 
   @Override
-  public String varToColumnHeader(VariableSpec var) {
-    return VariableDef.toDotNotation(var);
-  }
-
-  @Override
   public ResponseFuture getTabularDataStream(
       ReferenceMetadata metadata,
       List<APIFilter> subset,

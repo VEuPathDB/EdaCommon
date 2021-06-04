@@ -68,11 +68,6 @@ public class EdaSubsettingClient extends StreamingDataClient {
   }
 
   @Override
-  public String varToColumnHeader(VariableSpec var) {
-    return var.getVariableId();
-  }
-
-  @Override
   public ResponseFuture getTabularDataStream(
       ReferenceMetadata metadata,
       List<APIFilter> subset,
