@@ -7,23 +7,35 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeName("category")
 @JsonPropertyOrder({
     "id",
+    "parentId",
     "providerLabel",
     "displayName",
-    "parentId",
-    "type",
-    "isMultiValued",
+    "definition",
+    "vocabulary",
     "displayType",
+    "displayOrder",
+    "isTemporal",
+    "isFeatured",
+    "isMergeKey",
+    "isRepeated",
+    "type",
+    "distinctValuesCount",
+    "isMultiValued",
     "dataShape"
 })
 public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("id")
   private String id;
+
+  @JsonProperty("parentId")
+  private String parentId;
 
   @JsonProperty("providerLabel")
   private String providerLabel;
@@ -31,17 +43,38 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("displayName")
   private String displayName;
 
-  @JsonProperty("parentId")
-  private String parentId;
+  @JsonProperty("definition")
+  private String definition;
+
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
+
+  @JsonProperty("displayType")
+  private APIVariableDisplayType displayType;
+
+  @JsonProperty("displayOrder")
+  private Number displayOrder;
+
+  @JsonProperty("isTemporal")
+  private boolean isTemporal;
+
+  @JsonProperty("isFeatured")
+  private boolean isFeatured;
+
+  @JsonProperty("isMergeKey")
+  private boolean isMergeKey;
+
+  @JsonProperty("isRepeated")
+  private boolean isRepeated;
 
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
+  @JsonProperty("distinctValuesCount")
+  private Number distinctValuesCount;
+
   @JsonProperty("isMultiValued")
   private boolean isMultiValued;
-
-  @JsonProperty("displayType")
-  private APIVariableDisplayType displayType;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
@@ -57,6 +90,16 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
+  }
+
+  @JsonProperty("parentId")
+  public String getParentId() {
+    return this.parentId;
+  }
+
+  @JsonProperty("parentId")
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
   }
 
   @JsonProperty("providerLabel")
@@ -79,29 +122,24 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
     this.displayName = displayName;
   }
 
-  @JsonProperty("parentId")
-  public String getParentId() {
-    return this.parentId;
+  @JsonProperty("definition")
+  public String getDefinition() {
+    return this.definition;
   }
 
-  @JsonProperty("parentId")
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
+  @JsonProperty("definition")
+  public void setDefinition(String definition) {
+    this.definition = definition;
   }
 
-  @JsonProperty("type")
-  public APIVariableType getType() {
-    return this.type;
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
   }
 
-  @JsonProperty("isMultiValued")
-  public boolean getIsMultiValued() {
-    return this.isMultiValued;
-  }
-
-  @JsonProperty("isMultiValued")
-  public void setIsMultiValued(boolean isMultiValued) {
-    this.isMultiValued = isMultiValued;
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
   }
 
   @JsonProperty("displayType")
@@ -112,6 +150,81 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("displayType")
   public void setDisplayType(APIVariableDisplayType displayType) {
     this.displayType = displayType;
+  }
+
+  @JsonProperty("displayOrder")
+  public Number getDisplayOrder() {
+    return this.displayOrder;
+  }
+
+  @JsonProperty("displayOrder")
+  public void setDisplayOrder(Number displayOrder) {
+    this.displayOrder = displayOrder;
+  }
+
+  @JsonProperty("isTemporal")
+  public boolean getIsTemporal() {
+    return this.isTemporal;
+  }
+
+  @JsonProperty("isTemporal")
+  public void setIsTemporal(boolean isTemporal) {
+    this.isTemporal = isTemporal;
+  }
+
+  @JsonProperty("isFeatured")
+  public boolean getIsFeatured() {
+    return this.isFeatured;
+  }
+
+  @JsonProperty("isFeatured")
+  public void setIsFeatured(boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  @JsonProperty("isMergeKey")
+  public boolean getIsMergeKey() {
+    return this.isMergeKey;
+  }
+
+  @JsonProperty("isMergeKey")
+  public void setIsMergeKey(boolean isMergeKey) {
+    this.isMergeKey = isMergeKey;
+  }
+
+  @JsonProperty("isRepeated")
+  public boolean getIsRepeated() {
+    return this.isRepeated;
+  }
+
+  @JsonProperty("isRepeated")
+  public void setIsRepeated(boolean isRepeated) {
+    this.isRepeated = isRepeated;
+  }
+
+  @JsonProperty("type")
+  public APIVariableType getType() {
+    return this.type;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public Number getDistinctValuesCount() {
+    return this.distinctValuesCount;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public void setDistinctValuesCount(Number distinctValuesCount) {
+    this.distinctValuesCount = distinctValuesCount;
+  }
+
+  @JsonProperty("isMultiValued")
+  public boolean getIsMultiValued() {
+    return this.isMultiValued;
+  }
+
+  @JsonProperty("isMultiValued")
+  public void setIsMultiValued(boolean isMultiValued) {
+    this.isMultiValued = isMultiValued;
   }
 
   @JsonProperty("dataShape")

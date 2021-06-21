@@ -44,12 +44,20 @@ types:
     discriminator: type
     properties:
       id: string
+      parentId?: string
       providerLabel: string
       displayName: string
-      parentId?: string
-      type: API_VariableType
-      isMultiValued: boolean
+      definition: string
+      vocabulary?: string[]
       displayType: API_VariableDisplayType
+      displayOrder?: number
+      isTemporal: boolean
+      isFeatured: boolean
+      isMergeKey: boolean
+      isRepeated: boolean
+      type: API_VariableType
+      distinctValuesCount: number
+      isMultiValued: boolean
       dataShape: API_VariableDataShape
 
   API_VariableType:
@@ -74,10 +82,24 @@ types:
     discriminatorValue: number
     properties:
       units: string
+      precision: number
+      displayRangeMin?: number
+      displayRangeMax?: number
+      rangeMin?: number
+      rangeMax?: number
+      binWidthOverride?: number
+      binWidthComputed?: number
 
   API_DateVariable:
     type: API_Variable
     discriminatorValue: date
+    properties:
+      displayRangeMin?: number
+      displayRangeMax?: number
+      rangeMin?: number
+      rangeMax?: number
+      binWidthOverride?: number
+      binWidthComputed?: number
 
   API_LongitudeVariable:
     type: API_Variable

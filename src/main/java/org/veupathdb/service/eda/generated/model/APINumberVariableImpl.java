@@ -7,24 +7,43 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeName("number")
 @JsonPropertyOrder({
     "id",
+    "parentId",
     "providerLabel",
     "displayName",
-    "parentId",
-    "type",
-    "isMultiValued",
+    "definition",
+    "vocabulary",
     "displayType",
+    "displayOrder",
+    "isTemporal",
+    "isFeatured",
+    "isMergeKey",
+    "isRepeated",
+    "type",
+    "distinctValuesCount",
+    "isMultiValued",
     "dataShape",
-    "units"
+    "units",
+    "precision",
+    "displayRangeMin",
+    "displayRangeMax",
+    "rangeMin",
+    "rangeMax",
+    "binWidthOverride",
+    "binWidthComputed"
 })
 public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("id")
   private String id;
+
+  @JsonProperty("parentId")
+  private String parentId;
 
   @JsonProperty("providerLabel")
   private String providerLabel;
@@ -32,23 +51,65 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("displayName")
   private String displayName;
 
-  @JsonProperty("parentId")
-  private String parentId;
+  @JsonProperty("definition")
+  private String definition;
+
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
+
+  @JsonProperty("displayType")
+  private APIVariableDisplayType displayType;
+
+  @JsonProperty("displayOrder")
+  private Number displayOrder;
+
+  @JsonProperty("isTemporal")
+  private boolean isTemporal;
+
+  @JsonProperty("isFeatured")
+  private boolean isFeatured;
+
+  @JsonProperty("isMergeKey")
+  private boolean isMergeKey;
+
+  @JsonProperty("isRepeated")
+  private boolean isRepeated;
 
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
+  @JsonProperty("distinctValuesCount")
+  private Number distinctValuesCount;
+
   @JsonProperty("isMultiValued")
   private boolean isMultiValued;
-
-  @JsonProperty("displayType")
-  private APIVariableDisplayType displayType;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
 
   @JsonProperty("units")
   private String units;
+
+  @JsonProperty("precision")
+  private Number precision;
+
+  @JsonProperty("displayRangeMin")
+  private Number displayRangeMin;
+
+  @JsonProperty("displayRangeMax")
+  private Number displayRangeMax;
+
+  @JsonProperty("rangeMin")
+  private Number rangeMin;
+
+  @JsonProperty("rangeMax")
+  private Number rangeMax;
+
+  @JsonProperty("binWidthOverride")
+  private Number binWidthOverride;
+
+  @JsonProperty("binWidthComputed")
+  private Number binWidthComputed;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -61,6 +122,16 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
+  }
+
+  @JsonProperty("parentId")
+  public String getParentId() {
+    return this.parentId;
+  }
+
+  @JsonProperty("parentId")
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
   }
 
   @JsonProperty("providerLabel")
@@ -83,29 +154,24 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.displayName = displayName;
   }
 
-  @JsonProperty("parentId")
-  public String getParentId() {
-    return this.parentId;
+  @JsonProperty("definition")
+  public String getDefinition() {
+    return this.definition;
   }
 
-  @JsonProperty("parentId")
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
+  @JsonProperty("definition")
+  public void setDefinition(String definition) {
+    this.definition = definition;
   }
 
-  @JsonProperty("type")
-  public APIVariableType getType() {
-    return this.type;
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
   }
 
-  @JsonProperty("isMultiValued")
-  public boolean getIsMultiValued() {
-    return this.isMultiValued;
-  }
-
-  @JsonProperty("isMultiValued")
-  public void setIsMultiValued(boolean isMultiValued) {
-    this.isMultiValued = isMultiValued;
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
   }
 
   @JsonProperty("displayType")
@@ -116,6 +182,81 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("displayType")
   public void setDisplayType(APIVariableDisplayType displayType) {
     this.displayType = displayType;
+  }
+
+  @JsonProperty("displayOrder")
+  public Number getDisplayOrder() {
+    return this.displayOrder;
+  }
+
+  @JsonProperty("displayOrder")
+  public void setDisplayOrder(Number displayOrder) {
+    this.displayOrder = displayOrder;
+  }
+
+  @JsonProperty("isTemporal")
+  public boolean getIsTemporal() {
+    return this.isTemporal;
+  }
+
+  @JsonProperty("isTemporal")
+  public void setIsTemporal(boolean isTemporal) {
+    this.isTemporal = isTemporal;
+  }
+
+  @JsonProperty("isFeatured")
+  public boolean getIsFeatured() {
+    return this.isFeatured;
+  }
+
+  @JsonProperty("isFeatured")
+  public void setIsFeatured(boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  @JsonProperty("isMergeKey")
+  public boolean getIsMergeKey() {
+    return this.isMergeKey;
+  }
+
+  @JsonProperty("isMergeKey")
+  public void setIsMergeKey(boolean isMergeKey) {
+    this.isMergeKey = isMergeKey;
+  }
+
+  @JsonProperty("isRepeated")
+  public boolean getIsRepeated() {
+    return this.isRepeated;
+  }
+
+  @JsonProperty("isRepeated")
+  public void setIsRepeated(boolean isRepeated) {
+    this.isRepeated = isRepeated;
+  }
+
+  @JsonProperty("type")
+  public APIVariableType getType() {
+    return this.type;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public Number getDistinctValuesCount() {
+    return this.distinctValuesCount;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public void setDistinctValuesCount(Number distinctValuesCount) {
+    this.distinctValuesCount = distinctValuesCount;
+  }
+
+  @JsonProperty("isMultiValued")
+  public boolean getIsMultiValued() {
+    return this.isMultiValued;
+  }
+
+  @JsonProperty("isMultiValued")
+  public void setIsMultiValued(boolean isMultiValued) {
+    this.isMultiValued = isMultiValued;
   }
 
   @JsonProperty("dataShape")
@@ -136,6 +277,76 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("units")
   public void setUnits(String units) {
     this.units = units;
+  }
+
+  @JsonProperty("precision")
+  public Number getPrecision() {
+    return this.precision;
+  }
+
+  @JsonProperty("precision")
+  public void setPrecision(Number precision) {
+    this.precision = precision;
+  }
+
+  @JsonProperty("displayRangeMin")
+  public Number getDisplayRangeMin() {
+    return this.displayRangeMin;
+  }
+
+  @JsonProperty("displayRangeMin")
+  public void setDisplayRangeMin(Number displayRangeMin) {
+    this.displayRangeMin = displayRangeMin;
+  }
+
+  @JsonProperty("displayRangeMax")
+  public Number getDisplayRangeMax() {
+    return this.displayRangeMax;
+  }
+
+  @JsonProperty("displayRangeMax")
+  public void setDisplayRangeMax(Number displayRangeMax) {
+    this.displayRangeMax = displayRangeMax;
+  }
+
+  @JsonProperty("rangeMin")
+  public Number getRangeMin() {
+    return this.rangeMin;
+  }
+
+  @JsonProperty("rangeMin")
+  public void setRangeMin(Number rangeMin) {
+    this.rangeMin = rangeMin;
+  }
+
+  @JsonProperty("rangeMax")
+  public Number getRangeMax() {
+    return this.rangeMax;
+  }
+
+  @JsonProperty("rangeMax")
+  public void setRangeMax(Number rangeMax) {
+    this.rangeMax = rangeMax;
+  }
+
+  @JsonProperty("binWidthOverride")
+  public Number getBinWidthOverride() {
+    return this.binWidthOverride;
+  }
+
+  @JsonProperty("binWidthOverride")
+  public void setBinWidthOverride(Number binWidthOverride) {
+    this.binWidthOverride = binWidthOverride;
+  }
+
+  @JsonProperty("binWidthComputed")
+  public Number getBinWidthComputed() {
+    return this.binWidthComputed;
+  }
+
+  @JsonProperty("binWidthComputed")
+  public void setBinWidthComputed(Number binWidthComputed) {
+    this.binWidthComputed = binWidthComputed;
   }
 
   @JsonAnyGetter
