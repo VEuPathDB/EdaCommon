@@ -24,7 +24,6 @@ import java.util.Map;
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "isRepeated",
     "type",
     "distinctValuesCount",
     "isMultiValued",
@@ -34,7 +33,7 @@ import java.util.Map;
     "rangeMin",
     "rangeMax",
     "binWidthOverride",
-    "binWidthComputed"
+    "binWidth"
 })
 public class APIDateVariableImpl implements APIDateVariable {
   @JsonProperty("id")
@@ -70,9 +69,6 @@ public class APIDateVariableImpl implements APIDateVariable {
   @JsonProperty("isMergeKey")
   private boolean isMergeKey;
 
-  @JsonProperty("isRepeated")
-  private boolean isRepeated;
-
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
@@ -86,22 +82,22 @@ public class APIDateVariableImpl implements APIDateVariable {
   private APIVariableDataShape dataShape;
 
   @JsonProperty("displayRangeMin")
-  private Number displayRangeMin;
+  private String displayRangeMin;
 
   @JsonProperty("displayRangeMax")
-  private Number displayRangeMax;
+  private String displayRangeMax;
 
   @JsonProperty("rangeMin")
-  private Number rangeMin;
+  private String rangeMin;
 
   @JsonProperty("rangeMax")
-  private Number rangeMax;
+  private String rangeMax;
 
   @JsonProperty("binWidthOverride")
-  private Number binWidthOverride;
+  private String binWidthOverride;
 
-  @JsonProperty("binWidthComputed")
-  private Number binWidthComputed;
+  @JsonProperty("binWidth")
+  private String binWidth;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -216,16 +212,6 @@ public class APIDateVariableImpl implements APIDateVariable {
     this.isMergeKey = isMergeKey;
   }
 
-  @JsonProperty("isRepeated")
-  public boolean getIsRepeated() {
-    return this.isRepeated;
-  }
-
-  @JsonProperty("isRepeated")
-  public void setIsRepeated(boolean isRepeated) {
-    this.isRepeated = isRepeated;
-  }
-
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
@@ -262,63 +248,63 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("displayRangeMin")
-  public Number getDisplayRangeMin() {
+  public String getDisplayRangeMin() {
     return this.displayRangeMin;
   }
 
   @JsonProperty("displayRangeMin")
-  public void setDisplayRangeMin(Number displayRangeMin) {
+  public void setDisplayRangeMin(String displayRangeMin) {
     this.displayRangeMin = displayRangeMin;
   }
 
   @JsonProperty("displayRangeMax")
-  public Number getDisplayRangeMax() {
+  public String getDisplayRangeMax() {
     return this.displayRangeMax;
   }
 
   @JsonProperty("displayRangeMax")
-  public void setDisplayRangeMax(Number displayRangeMax) {
+  public void setDisplayRangeMax(String displayRangeMax) {
     this.displayRangeMax = displayRangeMax;
   }
 
   @JsonProperty("rangeMin")
-  public Number getRangeMin() {
+  public String getRangeMin() {
     return this.rangeMin;
   }
 
   @JsonProperty("rangeMin")
-  public void setRangeMin(Number rangeMin) {
+  public void setRangeMin(String rangeMin) {
     this.rangeMin = rangeMin;
   }
 
   @JsonProperty("rangeMax")
-  public Number getRangeMax() {
+  public String getRangeMax() {
     return this.rangeMax;
   }
 
   @JsonProperty("rangeMax")
-  public void setRangeMax(Number rangeMax) {
+  public void setRangeMax(String rangeMax) {
     this.rangeMax = rangeMax;
   }
 
   @JsonProperty("binWidthOverride")
-  public Number getBinWidthOverride() {
+  public String getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Number binWidthOverride) {
+  public void setBinWidthOverride(String binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 
-  @JsonProperty("binWidthComputed")
-  public Number getBinWidthComputed() {
-    return this.binWidthComputed;
+  @JsonProperty("binWidth")
+  public String getBinWidth() {
+    return this.binWidth;
   }
 
-  @JsonProperty("binWidthComputed")
-  public void setBinWidthComputed(Number binWidthComputed) {
-    this.binWidthComputed = binWidthComputed;
+  @JsonProperty("binWidth")
+  public void setBinWidth(String binWidth) {
+    this.binWidth = binWidth;
   }
 
   @JsonAnyGetter

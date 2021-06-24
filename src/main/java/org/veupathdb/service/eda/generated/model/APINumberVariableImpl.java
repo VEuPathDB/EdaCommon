@@ -24,7 +24,6 @@ import java.util.Map;
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "isRepeated",
     "type",
     "distinctValuesCount",
     "isMultiValued",
@@ -36,7 +35,7 @@ import java.util.Map;
     "rangeMin",
     "rangeMax",
     "binWidthOverride",
-    "binWidthComputed"
+    "binWidth"
 })
 public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("id")
@@ -72,9 +71,6 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("isMergeKey")
   private boolean isMergeKey;
 
-  @JsonProperty("isRepeated")
-  private boolean isRepeated;
-
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
@@ -108,8 +104,8 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("binWidthOverride")
   private Number binWidthOverride;
 
-  @JsonProperty("binWidthComputed")
-  private Number binWidthComputed;
+  @JsonProperty("binWidth")
+  private Number binWidth;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -224,16 +220,6 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.isMergeKey = isMergeKey;
   }
 
-  @JsonProperty("isRepeated")
-  public boolean getIsRepeated() {
-    return this.isRepeated;
-  }
-
-  @JsonProperty("isRepeated")
-  public void setIsRepeated(boolean isRepeated) {
-    this.isRepeated = isRepeated;
-  }
-
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
@@ -339,14 +325,14 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.binWidthOverride = binWidthOverride;
   }
 
-  @JsonProperty("binWidthComputed")
-  public Number getBinWidthComputed() {
-    return this.binWidthComputed;
+  @JsonProperty("binWidth")
+  public Number getBinWidth() {
+    return this.binWidth;
   }
 
-  @JsonProperty("binWidthComputed")
-  public void setBinWidthComputed(Number binWidthComputed) {
-    this.binWidthComputed = binWidthComputed;
+  @JsonProperty("binWidth")
+  public void setBinWidth(Number binWidth) {
+    this.binWidth = binWidth;
   }
 
   @JsonAnyGetter

@@ -47,14 +47,13 @@ types:
       parentId?: string
       providerLabel: string
       displayName: string
-      definition: string
+      definition?: string
       vocabulary?: string[]
       displayType: API_VariableDisplayType
       displayOrder?: number
       isTemporal: boolean
       isFeatured: boolean
       isMergeKey: boolean
-      isRepeated: boolean
       type: API_VariableType
       distinctValuesCount: number
       isMultiValued: boolean
@@ -88,18 +87,18 @@ types:
       rangeMin?: number
       rangeMax?: number
       binWidthOverride?: number
-      binWidthComputed?: number
+      binWidth?: number
 
   API_DateVariable:
     type: API_Variable
     discriminatorValue: date
     properties:
-      displayRangeMin?: number
-      displayRangeMax?: number
-      rangeMin?: number
-      rangeMax?: number
-      binWidthOverride?: number
-      binWidthComputed?: number
+      displayRangeMin?: string
+      displayRangeMax?: string
+      rangeMin?: string
+      rangeMax?: string
+      binWidthOverride?: string
+      binWidth?: string
 
   API_LongitudeVariable:
     type: API_Variable

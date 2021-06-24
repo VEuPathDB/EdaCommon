@@ -22,7 +22,6 @@ import java.util.Map;
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "isRepeated",
     "type",
     "distinctValuesCount",
     "isMultiValued",
@@ -61,9 +60,6 @@ public class APIVariableImpl implements APIVariable {
 
   @JsonProperty("isMergeKey")
   private boolean isMergeKey;
-
-  @JsonProperty("isRepeated")
-  private boolean isRepeated;
 
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
@@ -188,16 +184,6 @@ public class APIVariableImpl implements APIVariable {
   @JsonProperty("isMergeKey")
   public void setIsMergeKey(boolean isMergeKey) {
     this.isMergeKey = isMergeKey;
-  }
-
-  @JsonProperty("isRepeated")
-  public boolean getIsRepeated() {
-    return this.isRepeated;
-  }
-
-  @JsonProperty("isRepeated")
-  public void setIsRepeated(boolean isRepeated) {
-    this.isRepeated = isRepeated;
   }
 
   @JsonProperty("type")

@@ -81,12 +81,6 @@ public interface APIStringVariable extends APIVariable {
   @JsonProperty("isMergeKey")
   void setIsMergeKey(boolean isMergeKey);
 
-  @JsonProperty("isRepeated")
-  boolean getIsRepeated();
-
-  @JsonProperty("isRepeated")
-  void setIsRepeated(boolean isRepeated);
-
   @JsonProperty("type")
   APIVariableType getType();
 

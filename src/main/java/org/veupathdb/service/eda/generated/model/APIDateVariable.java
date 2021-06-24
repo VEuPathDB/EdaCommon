@@ -81,12 +81,6 @@ public interface APIDateVariable extends APIVariable {
   @JsonProperty("isMergeKey")
   void setIsMergeKey(boolean isMergeKey);
 
-  @JsonProperty("isRepeated")
-  boolean getIsRepeated();
-
-  @JsonProperty("isRepeated")
-  void setIsRepeated(boolean isRepeated);
-
   @JsonProperty("type")
   APIVariableType getType();
 
@@ -109,40 +103,40 @@ public interface APIDateVariable extends APIVariable {
   void setDataShape(APIVariableDataShape dataShape);
 
   @JsonProperty("displayRangeMin")
-  Number getDisplayRangeMin();
+  String getDisplayRangeMin();
 
   @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(Number displayRangeMin);
+  void setDisplayRangeMin(String displayRangeMin);
 
   @JsonProperty("displayRangeMax")
-  Number getDisplayRangeMax();
+  String getDisplayRangeMax();
 
   @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(Number displayRangeMax);
+  void setDisplayRangeMax(String displayRangeMax);
 
   @JsonProperty("rangeMin")
-  Number getRangeMin();
+  String getRangeMin();
 
   @JsonProperty("rangeMin")
-  void setRangeMin(Number rangeMin);
+  void setRangeMin(String rangeMin);
 
   @JsonProperty("rangeMax")
-  Number getRangeMax();
+  String getRangeMax();
 
   @JsonProperty("rangeMax")
-  void setRangeMax(Number rangeMax);
+  void setRangeMax(String rangeMax);
 
   @JsonProperty("binWidthOverride")
-  Number getBinWidthOverride();
+  String getBinWidthOverride();
 
   @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Number binWidthOverride);
+  void setBinWidthOverride(String binWidthOverride);
 
-  @JsonProperty("binWidthComputed")
-  Number getBinWidthComputed();
+  @JsonProperty("binWidth")
+  String getBinWidth();
 
-  @JsonProperty("binWidthComputed")
-  void setBinWidthComputed(Number binWidthComputed);
+  @JsonProperty("binWidth")
+  void setBinWidth(String binWidth);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

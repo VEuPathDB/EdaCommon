@@ -81,12 +81,6 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("isMergeKey")
   void setIsMergeKey(boolean isMergeKey);
 
-  @JsonProperty("isRepeated")
-  boolean getIsRepeated();
-
-  @JsonProperty("isRepeated")
-  void setIsRepeated(boolean isRepeated);
-
   @JsonProperty("type")
   APIVariableType getType();
 
@@ -150,11 +144,11 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("binWidthOverride")
   void setBinWidthOverride(Number binWidthOverride);
 
-  @JsonProperty("binWidthComputed")
-  Number getBinWidthComputed();
+  @JsonProperty("binWidth")
+  Number getBinWidth();
 
-  @JsonProperty("binWidthComputed")
-  void setBinWidthComputed(Number binWidthComputed);
+  @JsonProperty("binWidth")
+  void setBinWidth(Number binWidth);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
