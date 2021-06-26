@@ -63,6 +63,21 @@ public interface APIStringVariable extends APIVariable {
   @JsonProperty("displayOrder")
   void setDisplayOrder(Number displayOrder);
 
+  @JsonProperty("type")
+  APIVariableType getType();
+
+  @JsonProperty("dataShape")
+  APIVariableDataShape getDataShape();
+
+  @JsonProperty("dataShape")
+  void setDataShape(APIVariableDataShape dataShape);
+
+  @JsonProperty("distinctValuesCount")
+  Number getDistinctValuesCount();
+
+  @JsonProperty("distinctValuesCount")
+  void setDistinctValuesCount(Number distinctValuesCount);
+
   @JsonProperty("isTemporal")
   boolean getIsTemporal();
 
@@ -81,26 +96,11 @@ public interface APIStringVariable extends APIVariable {
   @JsonProperty("isMergeKey")
   void setIsMergeKey(boolean isMergeKey);
 
-  @JsonProperty("type")
-  APIVariableType getType();
-
-  @JsonProperty("distinctValuesCount")
-  Number getDistinctValuesCount();
-
-  @JsonProperty("distinctValuesCount")
-  void setDistinctValuesCount(Number distinctValuesCount);
-
   @JsonProperty("isMultiValued")
   boolean getIsMultiValued();
 
   @JsonProperty("isMultiValued")
   void setIsMultiValued(boolean isMultiValued);
-
-  @JsonProperty("dataShape")
-  APIVariableDataShape getDataShape();
-
-  @JsonProperty("dataShape")
-  void setDataShape(APIVariableDataShape dataShape);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

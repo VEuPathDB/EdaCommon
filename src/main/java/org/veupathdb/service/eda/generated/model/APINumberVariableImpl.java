@@ -21,12 +21,7 @@ import java.util.Map;
     "vocabulary",
     "displayType",
     "displayOrder",
-    "isTemporal",
-    "isFeatured",
-    "isMergeKey",
     "type",
-    "distinctValuesCount",
-    "isMultiValued",
     "dataShape",
     "units",
     "precision",
@@ -35,7 +30,12 @@ import java.util.Map;
     "rangeMin",
     "rangeMax",
     "binWidthOverride",
-    "binWidth"
+    "binWidth",
+    "distinctValuesCount",
+    "isTemporal",
+    "isFeatured",
+    "isMergeKey",
+    "isMultiValued"
 })
 public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("id")
@@ -62,23 +62,8 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("displayOrder")
   private Number displayOrder;
 
-  @JsonProperty("isTemporal")
-  private boolean isTemporal;
-
-  @JsonProperty("isFeatured")
-  private boolean isFeatured;
-
-  @JsonProperty("isMergeKey")
-  private boolean isMergeKey;
-
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
-
-  @JsonProperty("distinctValuesCount")
-  private Number distinctValuesCount;
-
-  @JsonProperty("isMultiValued")
-  private boolean isMultiValued;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
@@ -106,6 +91,21 @@ public class APINumberVariableImpl implements APINumberVariable {
 
   @JsonProperty("binWidth")
   private Number binWidth;
+
+  @JsonProperty("distinctValuesCount")
+  private Number distinctValuesCount;
+
+  @JsonProperty("isTemporal")
+  private boolean isTemporal;
+
+  @JsonProperty("isFeatured")
+  private boolean isFeatured;
+
+  @JsonProperty("isMergeKey")
+  private boolean isMergeKey;
+
+  @JsonProperty("isMultiValued")
+  private boolean isMultiValued;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -190,59 +190,9 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.displayOrder = displayOrder;
   }
 
-  @JsonProperty("isTemporal")
-  public boolean getIsTemporal() {
-    return this.isTemporal;
-  }
-
-  @JsonProperty("isTemporal")
-  public void setIsTemporal(boolean isTemporal) {
-    this.isTemporal = isTemporal;
-  }
-
-  @JsonProperty("isFeatured")
-  public boolean getIsFeatured() {
-    return this.isFeatured;
-  }
-
-  @JsonProperty("isFeatured")
-  public void setIsFeatured(boolean isFeatured) {
-    this.isFeatured = isFeatured;
-  }
-
-  @JsonProperty("isMergeKey")
-  public boolean getIsMergeKey() {
-    return this.isMergeKey;
-  }
-
-  @JsonProperty("isMergeKey")
-  public void setIsMergeKey(boolean isMergeKey) {
-    this.isMergeKey = isMergeKey;
-  }
-
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
-  }
-
-  @JsonProperty("distinctValuesCount")
-  public Number getDistinctValuesCount() {
-    return this.distinctValuesCount;
-  }
-
-  @JsonProperty("distinctValuesCount")
-  public void setDistinctValuesCount(Number distinctValuesCount) {
-    this.distinctValuesCount = distinctValuesCount;
-  }
-
-  @JsonProperty("isMultiValued")
-  public boolean getIsMultiValued() {
-    return this.isMultiValued;
-  }
-
-  @JsonProperty("isMultiValued")
-  public void setIsMultiValued(boolean isMultiValued) {
-    this.isMultiValued = isMultiValued;
   }
 
   @JsonProperty("dataShape")
@@ -333,6 +283,56 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("binWidth")
   public void setBinWidth(Number binWidth) {
     this.binWidth = binWidth;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public Number getDistinctValuesCount() {
+    return this.distinctValuesCount;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public void setDistinctValuesCount(Number distinctValuesCount) {
+    this.distinctValuesCount = distinctValuesCount;
+  }
+
+  @JsonProperty("isTemporal")
+  public boolean getIsTemporal() {
+    return this.isTemporal;
+  }
+
+  @JsonProperty("isTemporal")
+  public void setIsTemporal(boolean isTemporal) {
+    this.isTemporal = isTemporal;
+  }
+
+  @JsonProperty("isFeatured")
+  public boolean getIsFeatured() {
+    return this.isFeatured;
+  }
+
+  @JsonProperty("isFeatured")
+  public void setIsFeatured(boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  @JsonProperty("isMergeKey")
+  public boolean getIsMergeKey() {
+    return this.isMergeKey;
+  }
+
+  @JsonProperty("isMergeKey")
+  public void setIsMergeKey(boolean isMergeKey) {
+    this.isMergeKey = isMergeKey;
+  }
+
+  @JsonProperty("isMultiValued")
+  public boolean getIsMultiValued() {
+    return this.isMultiValued;
+  }
+
+  @JsonProperty("isMultiValued")
+  public void setIsMultiValued(boolean isMultiValued) {
+    this.isMultiValued = isMultiValued;
   }
 
   @JsonAnyGetter

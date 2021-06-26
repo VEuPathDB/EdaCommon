@@ -63,38 +63,8 @@ public interface APIVariablesCategory extends APIVariable {
   @JsonProperty("displayOrder")
   void setDisplayOrder(Number displayOrder);
 
-  @JsonProperty("isTemporal")
-  boolean getIsTemporal();
-
-  @JsonProperty("isTemporal")
-  void setIsTemporal(boolean isTemporal);
-
-  @JsonProperty("isFeatured")
-  boolean getIsFeatured();
-
-  @JsonProperty("isFeatured")
-  void setIsFeatured(boolean isFeatured);
-
-  @JsonProperty("isMergeKey")
-  boolean getIsMergeKey();
-
-  @JsonProperty("isMergeKey")
-  void setIsMergeKey(boolean isMergeKey);
-
   @JsonProperty("type")
   APIVariableType getType();
-
-  @JsonProperty("distinctValuesCount")
-  Number getDistinctValuesCount();
-
-  @JsonProperty("distinctValuesCount")
-  void setDistinctValuesCount(Number distinctValuesCount);
-
-  @JsonProperty("isMultiValued")
-  boolean getIsMultiValued();
-
-  @JsonProperty("isMultiValued")
-  void setIsMultiValued(boolean isMultiValued);
 
   @JsonProperty("dataShape")
   APIVariableDataShape getDataShape();

@@ -51,13 +51,8 @@ types:
       vocabulary?: string[]
       displayType: API_VariableDisplayType
       displayOrder?: number
-      isTemporal: boolean
-      isFeatured: boolean
-      isMergeKey: boolean
       type: API_VariableType
-      distinctValuesCount: number
-      isMultiValued: boolean
-      dataShape: API_VariableDataShape
+      dataShape?: API_VariableDataShape
 
   API_VariableType:
     enum: [ 'category', 'string', 'number', 'date', 'longitude' ]
@@ -75,6 +70,13 @@ types:
   API_StringVariable:
     type: API_Variable
     discriminatorValue: string
+    properties:
+      distinctValuesCount: number
+      isTemporal: boolean
+      isFeatured: boolean
+      isMergeKey: boolean
+      isMultiValued: boolean
+
 
   API_NumberVariable:
     type: API_Variable
@@ -88,6 +90,11 @@ types:
       rangeMax?: number
       binWidthOverride?: number
       binWidth?: number
+      distinctValuesCount: number
+      isTemporal: boolean
+      isFeatured: boolean
+      isMergeKey: boolean
+      isMultiValued: boolean
 
   API_DateVariable:
     type: API_Variable
@@ -99,8 +106,19 @@ types:
       rangeMax?: string
       binWidthOverride?: string
       binWidth?: string
+      distinctValuesCount: number
+      isTemporal: boolean
+      isFeatured: boolean
+      isMergeKey: boolean
+      isMultiValued: boolean
 
   API_LongitudeVariable:
     type: API_Variable
     discriminatorValue: longitude
+    properties:
+      distinctValuesCount: number
+      isTemporal: boolean
+      isFeatured: boolean
+      isMergeKey: boolean
+      isMultiValued: boolean
 

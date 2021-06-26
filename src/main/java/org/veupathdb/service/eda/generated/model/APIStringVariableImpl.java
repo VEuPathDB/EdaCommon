@@ -21,13 +21,13 @@ import java.util.Map;
     "vocabulary",
     "displayType",
     "displayOrder",
+    "type",
+    "dataShape",
+    "distinctValuesCount",
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "type",
-    "distinctValuesCount",
-    "isMultiValued",
-    "dataShape"
+    "isMultiValued"
 })
 public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("id")
@@ -54,6 +54,15 @@ public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("displayOrder")
   private Number displayOrder;
 
+  @JsonProperty("type")
+  private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
+
+  @JsonProperty("dataShape")
+  private APIVariableDataShape dataShape;
+
+  @JsonProperty("distinctValuesCount")
+  private Number distinctValuesCount;
+
   @JsonProperty("isTemporal")
   private boolean isTemporal;
 
@@ -63,17 +72,8 @@ public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("isMergeKey")
   private boolean isMergeKey;
 
-  @JsonProperty("type")
-  private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
-
-  @JsonProperty("distinctValuesCount")
-  private Number distinctValuesCount;
-
   @JsonProperty("isMultiValued")
   private boolean isMultiValued;
-
-  @JsonProperty("dataShape")
-  private APIVariableDataShape dataShape;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -158,6 +158,31 @@ public class APIStringVariableImpl implements APIStringVariable {
     this.displayOrder = displayOrder;
   }
 
+  @JsonProperty("type")
+  public APIVariableType getType() {
+    return this.type;
+  }
+
+  @JsonProperty("dataShape")
+  public APIVariableDataShape getDataShape() {
+    return this.dataShape;
+  }
+
+  @JsonProperty("dataShape")
+  public void setDataShape(APIVariableDataShape dataShape) {
+    this.dataShape = dataShape;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public Number getDistinctValuesCount() {
+    return this.distinctValuesCount;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public void setDistinctValuesCount(Number distinctValuesCount) {
+    this.distinctValuesCount = distinctValuesCount;
+  }
+
   @JsonProperty("isTemporal")
   public boolean getIsTemporal() {
     return this.isTemporal;
@@ -188,21 +213,6 @@ public class APIStringVariableImpl implements APIStringVariable {
     this.isMergeKey = isMergeKey;
   }
 
-  @JsonProperty("type")
-  public APIVariableType getType() {
-    return this.type;
-  }
-
-  @JsonProperty("distinctValuesCount")
-  public Number getDistinctValuesCount() {
-    return this.distinctValuesCount;
-  }
-
-  @JsonProperty("distinctValuesCount")
-  public void setDistinctValuesCount(Number distinctValuesCount) {
-    this.distinctValuesCount = distinctValuesCount;
-  }
-
   @JsonProperty("isMultiValued")
   public boolean getIsMultiValued() {
     return this.isMultiValued;
@@ -211,16 +221,6 @@ public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
-  }
-
-  @JsonProperty("dataShape")
-  public APIVariableDataShape getDataShape() {
-    return this.dataShape;
-  }
-
-  @JsonProperty("dataShape")
-  public void setDataShape(APIVariableDataShape dataShape) {
-    this.dataShape = dataShape;
   }
 
   @JsonAnyGetter
