@@ -19,4 +19,10 @@ public interface EntityTabularPostRequest {
 
   @JsonProperty("outputVariableIds")
   void setOutputVariableIds(List<String> outputVariableIds);
+
+  @JsonProperty("reportConfig")
+  APITabularReportConfig getReportConfig();
+
+  @JsonProperty("reportConfig")
+  void setReportConfig(APITabularReportConfig reportConfig);
 }
