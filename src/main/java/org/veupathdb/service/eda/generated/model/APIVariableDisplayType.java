@@ -19,3 +19,4 @@ public enum APIVariableDisplayType {
   }
   public String getValue(){ return name; } 
 }
+
