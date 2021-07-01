@@ -7,21 +7,24 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeName("category")
 @JsonPropertyOrder({
     "id",
+    "parentId",
     "providerLabel",
     "displayName",
-    "parentId",
-    "type",
-    "isMultiValued",
+    "definition",
+    "vocabulary",
     "displayType",
+    "type",
     "dataShape",
     "isFeatured",
     "isTemporal",
+    "displayOrder",
     "unitsGroupId",
     "defaultUnitsId",
     "defaultScaleId"
@@ -30,23 +33,26 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("id")
   private String id;
 
+  @JsonProperty("parentId")
+  private String parentId;
+
   @JsonProperty("providerLabel")
   private String providerLabel;
 
   @JsonProperty("displayName")
   private String displayName;
 
-  @JsonProperty("parentId")
-  private String parentId;
+  @JsonProperty("definition")
+  private String definition;
 
-  @JsonProperty("type")
-  private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
-
-  @JsonProperty("isMultiValued")
-  private boolean isMultiValued;
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
 
   @JsonProperty("displayType")
   private APIVariableDisplayType displayType;
+
+  @JsonProperty("type")
+  private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
@@ -56,6 +62,9 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
 
   @JsonProperty("isTemporal")
   private boolean isTemporal;
+
+  @JsonProperty("displayOrder")
+  private Number displayOrder;
 
   @JsonProperty("unitsGroupId")
   private String unitsGroupId;
@@ -79,6 +88,16 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
     this.id = id;
   }
 
+  @JsonProperty("parentId")
+  public String getParentId() {
+    return this.parentId;
+  }
+
+  @JsonProperty("parentId")
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
+  }
+
   @JsonProperty("providerLabel")
   public String getProviderLabel() {
     return this.providerLabel;
@@ -99,29 +118,24 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
     this.displayName = displayName;
   }
 
-  @JsonProperty("parentId")
-  public String getParentId() {
-    return this.parentId;
+  @JsonProperty("definition")
+  public String getDefinition() {
+    return this.definition;
   }
 
-  @JsonProperty("parentId")
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
+  @JsonProperty("definition")
+  public void setDefinition(String definition) {
+    this.definition = definition;
   }
 
-  @JsonProperty("type")
-  public APIVariableType getType() {
-    return this.type;
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
   }
 
-  @JsonProperty("isMultiValued")
-  public boolean getIsMultiValued() {
-    return this.isMultiValued;
-  }
-
-  @JsonProperty("isMultiValued")
-  public void setIsMultiValued(boolean isMultiValued) {
-    this.isMultiValued = isMultiValued;
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
   }
 
   @JsonProperty("displayType")
@@ -132,6 +146,11 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("displayType")
   public void setDisplayType(APIVariableDisplayType displayType) {
     this.displayType = displayType;
+  }
+
+  @JsonProperty("type")
+  public APIVariableType getType() {
+    return this.type;
   }
 
   @JsonProperty("dataShape")
@@ -162,6 +181,16 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("isTemporal")
   public void setIsTemporal(boolean isTemporal) {
     this.isTemporal = isTemporal;
+  }
+
+  @JsonProperty("displayOrder")
+  public Number getDisplayOrder() {
+    return this.displayOrder;
+  }
+
+  @JsonProperty("displayOrder")
+  public void setDisplayOrder(Number displayOrder) {
+    this.displayOrder = displayOrder;
   }
 
   @JsonProperty("unitsGroupId")

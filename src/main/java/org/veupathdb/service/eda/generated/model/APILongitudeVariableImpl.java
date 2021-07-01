@@ -7,28 +7,37 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeName("longitude")
 @JsonPropertyOrder({
     "id",
+    "parentId",
     "providerLabel",
     "displayName",
-    "parentId",
-    "type",
-    "isMultiValued",
+    "definition",
+    "vocabulary",
     "displayType",
+    "type",
     "dataShape",
     "isFeatured",
     "isTemporal",
+    "displayOrder",
     "unitsGroupId",
     "defaultUnitsId",
-    "defaultScaleId"
+    "defaultScaleId",
+    "distinctValuesCount",
+    "isMergeKey",
+    "isMultiValued"
 })
 public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("id")
   private String id;
+
+  @JsonProperty("parentId")
+  private String parentId;
 
   @JsonProperty("providerLabel")
   private String providerLabel;
@@ -36,17 +45,17 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("displayName")
   private String displayName;
 
-  @JsonProperty("parentId")
-  private String parentId;
+  @JsonProperty("definition")
+  private String definition;
 
-  @JsonProperty("type")
-  private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
-
-  @JsonProperty("isMultiValued")
-  private boolean isMultiValued;
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
 
   @JsonProperty("displayType")
   private APIVariableDisplayType displayType;
+
+  @JsonProperty("type")
+  private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
@@ -57,6 +66,9 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("isTemporal")
   private boolean isTemporal;
 
+  @JsonProperty("displayOrder")
+  private Number displayOrder;
+
   @JsonProperty("unitsGroupId")
   private String unitsGroupId;
 
@@ -65,6 +77,15 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
 
   @JsonProperty("defaultScaleId")
   private String defaultScaleId;
+
+  @JsonProperty("distinctValuesCount")
+  private Number distinctValuesCount;
+
+  @JsonProperty("isMergeKey")
+  private boolean isMergeKey;
+
+  @JsonProperty("isMultiValued")
+  private boolean isMultiValued;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -77,6 +98,16 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
+  }
+
+  @JsonProperty("parentId")
+  public String getParentId() {
+    return this.parentId;
+  }
+
+  @JsonProperty("parentId")
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
   }
 
   @JsonProperty("providerLabel")
@@ -99,29 +130,24 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
     this.displayName = displayName;
   }
 
-  @JsonProperty("parentId")
-  public String getParentId() {
-    return this.parentId;
+  @JsonProperty("definition")
+  public String getDefinition() {
+    return this.definition;
   }
 
-  @JsonProperty("parentId")
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
+  @JsonProperty("definition")
+  public void setDefinition(String definition) {
+    this.definition = definition;
   }
 
-  @JsonProperty("type")
-  public APIVariableType getType() {
-    return this.type;
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
   }
 
-  @JsonProperty("isMultiValued")
-  public boolean getIsMultiValued() {
-    return this.isMultiValued;
-  }
-
-  @JsonProperty("isMultiValued")
-  public void setIsMultiValued(boolean isMultiValued) {
-    this.isMultiValued = isMultiValued;
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
   }
 
   @JsonProperty("displayType")
@@ -132,6 +158,11 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("displayType")
   public void setDisplayType(APIVariableDisplayType displayType) {
     this.displayType = displayType;
+  }
+
+  @JsonProperty("type")
+  public APIVariableType getType() {
+    return this.type;
   }
 
   @JsonProperty("dataShape")
@@ -164,6 +195,16 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
     this.isTemporal = isTemporal;
   }
 
+  @JsonProperty("displayOrder")
+  public Number getDisplayOrder() {
+    return this.displayOrder;
+  }
+
+  @JsonProperty("displayOrder")
+  public void setDisplayOrder(Number displayOrder) {
+    this.displayOrder = displayOrder;
+  }
+
   @JsonProperty("unitsGroupId")
   public String getUnitsGroupId() {
     return this.unitsGroupId;
@@ -192,6 +233,36 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("defaultScaleId")
   public void setDefaultScaleId(String defaultScaleId) {
     this.defaultScaleId = defaultScaleId;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public Number getDistinctValuesCount() {
+    return this.distinctValuesCount;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public void setDistinctValuesCount(Number distinctValuesCount) {
+    this.distinctValuesCount = distinctValuesCount;
+  }
+
+  @JsonProperty("isMergeKey")
+  public boolean getIsMergeKey() {
+    return this.isMergeKey;
+  }
+
+  @JsonProperty("isMergeKey")
+  public void setIsMergeKey(boolean isMergeKey) {
+    this.isMergeKey = isMergeKey;
+  }
+
+  @JsonProperty("isMultiValued")
+  public boolean getIsMultiValued() {
+    return this.isMultiValued;
+  }
+
+  @JsonProperty("isMultiValued")
+  public void setIsMultiValued(boolean isMultiValued) {
+    this.isMultiValued = isMultiValued;
   }
 
   @JsonAnyGetter

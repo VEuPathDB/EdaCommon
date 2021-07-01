@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
 import java.util.Map;
 
 @JsonTypeName("number")
@@ -20,6 +21,12 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("id")
   void setId(String id);
 
+  @JsonProperty("parentId")
+  String getParentId();
+
+  @JsonProperty("parentId")
+  void setParentId(String parentId);
+
   @JsonProperty("providerLabel")
   String getProviderLabel();
 
@@ -32,26 +39,26 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("displayName")
   void setDisplayName(String displayName);
 
-  @JsonProperty("parentId")
-  String getParentId();
+  @JsonProperty("definition")
+  String getDefinition();
 
-  @JsonProperty("parentId")
-  void setParentId(String parentId);
+  @JsonProperty("definition")
+  void setDefinition(String definition);
 
-  @JsonProperty("type")
-  APIVariableType getType();
+  @JsonProperty("vocabulary")
+  List<String> getVocabulary();
 
-  @JsonProperty("isMultiValued")
-  boolean getIsMultiValued();
-
-  @JsonProperty("isMultiValued")
-  void setIsMultiValued(boolean isMultiValued);
+  @JsonProperty("vocabulary")
+  void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("displayType")
   APIVariableDisplayType getDisplayType();
 
   @JsonProperty("displayType")
   void setDisplayType(APIVariableDisplayType displayType);
+
+  @JsonProperty("type")
+  APIVariableType getType();
 
   @JsonProperty("dataShape")
   APIVariableDataShape getDataShape();
@@ -71,6 +78,12 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("isTemporal")
   void setIsTemporal(boolean isTemporal);
 
+  @JsonProperty("displayOrder")
+  Number getDisplayOrder();
+
+  @JsonProperty("displayOrder")
+  void setDisplayOrder(Number displayOrder);
+
   @JsonProperty("unitsGroupId")
   String getUnitsGroupId();
 
@@ -89,11 +102,71 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("defaultScaleId")
   void setDefaultScaleId(String defaultScaleId);
 
-  @JsonProperty("precision")
-  int getPrecision();
+  @JsonProperty("units")
+  String getUnits();
+
+  @JsonProperty("units")
+  void setUnits(String units);
 
   @JsonProperty("precision")
-  void setPrecision(int precision);
+  Number getPrecision();
+
+  @JsonProperty("precision")
+  void setPrecision(Number precision);
+
+  @JsonProperty("displayRangeMin")
+  Number getDisplayRangeMin();
+
+  @JsonProperty("displayRangeMin")
+  void setDisplayRangeMin(Number displayRangeMin);
+
+  @JsonProperty("displayRangeMax")
+  Number getDisplayRangeMax();
+
+  @JsonProperty("displayRangeMax")
+  void setDisplayRangeMax(Number displayRangeMax);
+
+  @JsonProperty("rangeMin")
+  Number getRangeMin();
+
+  @JsonProperty("rangeMin")
+  void setRangeMin(Number rangeMin);
+
+  @JsonProperty("rangeMax")
+  Number getRangeMax();
+
+  @JsonProperty("rangeMax")
+  void setRangeMax(Number rangeMax);
+
+  @JsonProperty("binWidthOverride")
+  Number getBinWidthOverride();
+
+  @JsonProperty("binWidthOverride")
+  void setBinWidthOverride(Number binWidthOverride);
+
+  @JsonProperty("binWidth")
+  Number getBinWidth();
+
+  @JsonProperty("binWidth")
+  void setBinWidth(Number binWidth);
+
+  @JsonProperty("distinctValuesCount")
+  Number getDistinctValuesCount();
+
+  @JsonProperty("distinctValuesCount")
+  void setDistinctValuesCount(Number distinctValuesCount);
+
+  @JsonProperty("isMergeKey")
+  boolean getIsMergeKey();
+
+  @JsonProperty("isMergeKey")
+  void setIsMergeKey(boolean isMergeKey);
+
+  @JsonProperty("isMultiValued")
+  boolean getIsMultiValued();
+
+  @JsonProperty("isMultiValued")
+  void setIsMultiValued(boolean isMultiValued);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
