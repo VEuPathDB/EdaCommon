@@ -49,7 +49,7 @@ public class VariableDef extends VariableSpecImpl {
   }
 
   public static <T extends VariableSpec> List<String> toDotNotation(List<T> vars) {
-    return vars.stream().map(var -> toDotNotation(var)).collect(Collectors.toList());
+    return vars.stream().map(VariableDef::toDotNotation).collect(Collectors.toList());
   }
 
   public static boolean hasSameEntityAndVarId(VariableSpecBaseIds v1, VariableSpecBaseIds v2) {
