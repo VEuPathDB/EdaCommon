@@ -1,35 +1,22 @@
 package org.veupathdb.service.eda.generated.model;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.util.Map;
+import java.util.List;
 
 @JsonDeserialize(
     as = VariableDistributionPostResponseImpl.class
 )
 public interface VariableDistributionPostResponse {
-  @JsonProperty("entitiesCount")
-  int getEntitiesCount();
+  @JsonProperty("histogram")
+  List<HistogramBin> getHistogram();
 
-  @JsonProperty("entitiesCount")
-  void setEntitiesCount(int entitiesCount);
+  @JsonProperty("histogram")
+  void setHistogram(List<HistogramBin> histogram);
 
-  @JsonProperty("distribution")
-  DistributionType getDistribution();
+  @JsonProperty("statistics")
+  HistogramStats getStatistics();
 
-  @JsonProperty("distribution")
-  void setDistribution(DistributionType distribution);
-
-  @JsonDeserialize(
-      as = VariableDistributionPostResponseImpl.DistributionTypeImpl.class
-  )
-  interface DistributionType {
-    @JsonAnyGetter
-    Map<String, Object> getAdditionalProperties();
-
-    @JsonAnySetter
-    void setAdditionalProperties(String key, Object value);
-  }
+  @JsonProperty("statistics")
+  void setStatistics(HistogramStats statistics);
 }
