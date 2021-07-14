@@ -11,12 +11,12 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "sortingVariableIds",
+    "sortingColumns",
     "pagingConfig"
 })
 public class APITabularReportConfigImpl implements APITabularReportConfig {
-  @JsonProperty("sortingVariableIds")
-  private List<String> sortingVariableIds;
+  @JsonProperty("sortingColumns")
+  private List<String> sortingColumns;
 
   @JsonProperty("pagingConfig")
   private APIPagingConfig pagingConfig;
@@ -24,14 +24,14 @@ public class APITabularReportConfigImpl implements APITabularReportConfig {
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
 
-  @JsonProperty("sortingVariableIds")
-  public List<String> getSortingVariableIds() {
-    return this.sortingVariableIds;
+  @JsonProperty("sortingColumns")
+  public List<String> getSortingColumns() {
+    return this.sortingColumns;
   }
 
-  @JsonProperty("sortingVariableIds")
-  public void setSortingVariableIds(List<String> sortingVariableIds) {
-    this.sortingVariableIds = sortingVariableIds;
+  @JsonProperty("sortingColumns")
+  public void setSortingColumns(List<String> sortingColumns) {
+    this.sortingColumns = sortingColumns;
   }
 
   @JsonProperty("pagingConfig")
