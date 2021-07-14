@@ -1,59 +1,39 @@
 package org.veupathdb.service.eda.generated.model;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.util.Map;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "entitiesCount",
-    "distribution"
+    "histogram",
+    "statistics"
 })
 public class VariableDistributionPostResponseImpl implements VariableDistributionPostResponse {
-  @JsonProperty("entitiesCount")
-  private int entitiesCount;
+  @JsonProperty("histogram")
+  private List<HistogramBin> histogram;
 
-  @JsonProperty("distribution")
-  private VariableDistributionPostResponse.DistributionType distribution;
+  @JsonProperty("statistics")
+  private HistogramStats statistics;
 
-  @JsonProperty("entitiesCount")
-  public int getEntitiesCount() {
-    return this.entitiesCount;
+  @JsonProperty("histogram")
+  public List<HistogramBin> getHistogram() {
+    return this.histogram;
   }
 
-  @JsonProperty("entitiesCount")
-  public void setEntitiesCount(int entitiesCount) {
-    this.entitiesCount = entitiesCount;
+  @JsonProperty("histogram")
+  public void setHistogram(List<HistogramBin> histogram) {
+    this.histogram = histogram;
   }
 
-  @JsonProperty("distribution")
-  public VariableDistributionPostResponse.DistributionType getDistribution() {
-    return this.distribution;
+  @JsonProperty("statistics")
+  public HistogramStats getStatistics() {
+    return this.statistics;
   }
 
-  @JsonProperty("distribution")
-  public void setDistribution(VariableDistributionPostResponse.DistributionType distribution) {
-    this.distribution = distribution;
-  }
-
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  @JsonPropertyOrder
-  public static class DistributionTypeImpl implements VariableDistributionPostResponse.DistributionType {
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new ExcludingMap();
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-      return additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperties(String key, Object value) {
-      this.additionalProperties.put(key, value);
-    }
+  @JsonProperty("statistics")
+  public void setStatistics(HistogramStats statistics) {
+    this.statistics = statistics;
   }
 }

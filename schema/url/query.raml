@@ -12,22 +12,6 @@ types:
     properties:
       count: integer
 
-  VariableDistributionPostRequest:
-    additionalProperties: false
-    properties:
-      filters: API_Filter[]
-
-  VariableDistributionPostResponse:
-    additionalProperties: false
-    properties:
-      entitiesCount:
-        type: integer
-        minimum: 0
-      distribution:
-        type: object
-        properties:
-          //: integer
-
   EntityTabularPostRequest:
     additionalProperties: false
     properties:
@@ -38,3 +22,52 @@ types:
     additionalProperties: false
     properties:
       counts: string[][]
+
+  BinUnits:
+    type: string
+    enum: ['day','week','month','year']
+
+  BinSpecWithRange:
+    additionalProperties: false
+    properties:
+      displayRangeMin: any  # number | string
+      displayRangeMax: any  # number | string
+      binWidth: number      # for date, numeric vars
+      binUnits?: BinUnits   # for date vars
+
+  ValueSpec:
+    type: string
+    enum: ['count', 'proportion']
+
+  VariableDistributionPostRequest:
+    additionalProperties: false
+    properties:
+      filters: API_Filter[]
+      binSpec?: BinSpecWithRange
+      valueSpec: ValueSpec
+
+  HistogramBin:
+    additionalProperties: false
+    properties:
+      value: number
+      binStart: string
+      binEnd: string
+      binLabel: string
+
+  HistogramStats:
+    additionalProperties: false
+    properties:
+      subsetMin?: any # number | string
+      subsetMax?: any # number | string
+      subsetMean?: any # number | string
+      numVarValues: integer
+      numDistinctValues: integer
+      numDistinctEntityRecords: integer
+      numMissingCases: integer
+      #multiValueDistribution?: integer[] # TODO: maybe add later
+
+  VariableDistributionPostResponse:
+    additionalProperties: false
+    properties:
+      histogram: HistogramBin[]
+      statistics: HistogramStats

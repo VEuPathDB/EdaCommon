@@ -97,16 +97,22 @@ public interface APIDateVariable extends APIVariable {
   void setRangeMax(String rangeMax);
 
   @JsonProperty("binWidthOverride")
-  String getBinWidthOverride();
+  Number getBinWidthOverride();
 
   @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(String binWidthOverride);
+  void setBinWidthOverride(Number binWidthOverride);
 
   @JsonProperty("binWidth")
-  String getBinWidth();
+  Number getBinWidth();
 
   @JsonProperty("binWidth")
-  void setBinWidth(String binWidth);
+  void setBinWidth(Number binWidth);
+
+  @JsonProperty("binUnits")
+  BinUnits getBinUnits();
+
+  @JsonProperty("binUnits")
+  void setBinUnits(BinUnits binUnits);
 
   @JsonProperty("distinctValuesCount")
   Number getDistinctValuesCount();
