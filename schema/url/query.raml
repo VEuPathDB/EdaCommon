@@ -27,22 +27,24 @@ types:
     type: string
     enum: ['day','week','month','year']
 
-  BinSpec:
+  BinSpecWithRange:
     additionalProperties: false
     properties:
       displayRangeMin: any  # number | string
       displayRangeMax: any  # number | string
-      binWidth?: number     # for numeric vars
+      binWidth: number      # for date, numeric vars
       binUnits?: BinUnits   # for date vars
+
+  ValueSpec:
+    type: string
+    enum: ['count', 'proportion']
 
   VariableDistributionPostRequest:
     additionalProperties: false
     properties:
       filters: API_Filter[]
-      binSpec?: BinSpec
-      valueSpec:
-        type: string
-        enum: ['count', 'proportion']
+      binSpec?: BinSpecWithRange
+      valueSpec: ValueSpec
 
   HistogramBin:
     additionalProperties: false
@@ -59,9 +61,10 @@ types:
       subsetMax?: any # number | string
       subsetMean?: any # number | string
       numVarValues: integer
+      numDistinctValues: integer
       numDistinctEntityRecords: integer
       numMissingCases: integer
-      #multiValueDistribution?: integer[] # TODO: add later
+      #multiValueDistribution?: integer[] # TODO: maybe add later
 
   VariableDistributionPostResponse:
     additionalProperties: false

@@ -15,30 +15,14 @@ public interface VariableDistributionPostRequest {
   void setFilters(List<APIFilter> filters);
 
   @JsonProperty("binSpec")
-  BinSpec getBinSpec();
+  BinSpecWithRange getBinSpec();
 
   @JsonProperty("binSpec")
-  void setBinSpec(BinSpec binSpec);
+  void setBinSpec(BinSpecWithRange binSpec);
 
   @JsonProperty("valueSpec")
-  ValueSpecType getValueSpec();
+  ValueSpec getValueSpec();
 
   @JsonProperty("valueSpec")
-  void setValueSpec(ValueSpecType valueSpec);
-
-  enum ValueSpecType {
-    @JsonProperty("count")
-    COUNT("count"),
-
-    @JsonProperty("proportion")
-    PROPORTION("proportion");
-
-    private String name;
-
-    ValueSpecType(String name) {
-      this.name = name;
-    }
-    public String getValue(){ return name; } 
+  void setValueSpec(ValueSpec valueSpec);
 }
-}
-

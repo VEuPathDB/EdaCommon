@@ -31,6 +31,12 @@ public interface HistogramStats {
   @JsonProperty("numVarValues")
   void setNumVarValues(int numVarValues);
 
+  @JsonProperty("numDistinctValues")
+  int getNumDistinctValues();
+
+  @JsonProperty("numDistinctValues")
+  void setNumDistinctValues(int numDistinctValues);
+
   @JsonProperty("numDistinctEntityRecords")
   int getNumDistinctEntityRecords();
 

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "subsetMax",
     "subsetMean",
     "numVarValues",
+    "numDistinctValues",
     "numDistinctEntityRecords",
     "numMissingCases"
 })
@@ -25,6 +26,9 @@ public class HistogramStatsImpl implements HistogramStats {
 
   @JsonProperty("numVarValues")
   private int numVarValues;
+
+  @JsonProperty("numDistinctValues")
+  private int numDistinctValues;
 
   @JsonProperty("numDistinctEntityRecords")
   private int numDistinctEntityRecords;
@@ -70,6 +74,16 @@ public class HistogramStatsImpl implements HistogramStats {
   @JsonProperty("numVarValues")
   public void setNumVarValues(int numVarValues) {
     this.numVarValues = numVarValues;
+  }
+
+  @JsonProperty("numDistinctValues")
+  public int getNumDistinctValues() {
+    return this.numDistinctValues;
+  }
+
+  @JsonProperty("numDistinctValues")
+  public void setNumDistinctValues(int numDistinctValues) {
+    this.numDistinctValues = numDistinctValues;
   }
 
   @JsonProperty("numDistinctEntityRecords")

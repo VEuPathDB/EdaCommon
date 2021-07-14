@@ -16,10 +16,10 @@ public class VariableDistributionPostRequestImpl implements VariableDistribution
   private List<APIFilter> filters;
 
   @JsonProperty("binSpec")
-  private BinSpec binSpec;
+  private BinSpecWithRange binSpec;
 
   @JsonProperty("valueSpec")
-  private VariableDistributionPostRequest.ValueSpecType valueSpec;
+  private ValueSpec valueSpec;
 
   @JsonProperty("filters")
   public List<APIFilter> getFilters() {
@@ -32,22 +32,22 @@ public class VariableDistributionPostRequestImpl implements VariableDistribution
   }
 
   @JsonProperty("binSpec")
-  public BinSpec getBinSpec() {
+  public BinSpecWithRange getBinSpec() {
     return this.binSpec;
   }
 
   @JsonProperty("binSpec")
-  public void setBinSpec(BinSpec binSpec) {
+  public void setBinSpec(BinSpecWithRange binSpec) {
     this.binSpec = binSpec;
   }
 
   @JsonProperty("valueSpec")
-  public VariableDistributionPostRequest.ValueSpecType getValueSpec() {
+  public ValueSpec getValueSpec() {
     return this.valueSpec;
   }
 
   @JsonProperty("valueSpec")
-  public void setValueSpec(VariableDistributionPostRequest.ValueSpecType valueSpec) {
+  public void setValueSpec(ValueSpec valueSpec) {
     this.valueSpec = valueSpec;
   }
 }
