@@ -13,19 +13,5 @@ Contains code, API and schema documents, and any other data needed by multiple E
 1. Visit https://github.com/VEuPathDB/EdaCommon/tags and create a Release
     1. Title can be set to the name of the tag
     1. Add description as desired (covering highlights of release)
-1. Visit https://bintray.com/beta/#/veupathdb/maven/eda-common and add a Version
-    1. Name should be 1.0.0 (without the 'v')
-    1. Choose today's date
-1. In EdaCommon, run: \> make release
-1. Go back to https://bintray.com/beta/#/veupathdb/maven/eda-common
-    1. Choose (top right) Actions -> Upload Files
-    1. Select the new version
-    1. Leave Target Path empty (will be auto-filled later)
-    1. Select the four files in EdaCommon/build/libs and click 'Upload'
-        1. eda-common-1.0.0.pom
-        1. eda-common-1.0.0.jar
-        1. eda-common-1.0.0-javadoc.jar
-        1. eda-common-1.0.0-sources.jar
-    1. Click "Publish All" in the informational box
-1. After some time, confirm the artifacts are available at:
-    1. https://jcenter.bintray.com/org/veupathdb/service/eda/eda-common
+1. Go back to EdaCommon and run 'make release'
+    1. This will create and publish project artifacts to github packages
