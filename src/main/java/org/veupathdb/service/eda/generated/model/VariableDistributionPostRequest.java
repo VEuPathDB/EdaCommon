@@ -13,4 +13,16 @@ public interface VariableDistributionPostRequest {
 
   @JsonProperty("filters")
   void setFilters(List<APIFilter> filters);
+
+  @JsonProperty("binSpec")
+  BinSpecWithRange getBinSpec();
+
+  @JsonProperty("binSpec")
+  void setBinSpec(BinSpecWithRange binSpec);
+
+  @JsonProperty("valueSpec")
+  ValueSpec getValueSpec();
+
+  @JsonProperty("valueSpec")
+  void setValueSpec(ValueSpec valueSpec);
 }

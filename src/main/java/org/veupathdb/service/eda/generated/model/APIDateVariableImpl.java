@@ -29,6 +29,7 @@ import java.util.Map;
     "rangeMax",
     "binWidthOverride",
     "binWidth",
+    "binUnits",
     "distinctValuesCount",
     "isTemporal",
     "isFeatured",
@@ -79,10 +80,13 @@ public class APIDateVariableImpl implements APIDateVariable {
   private String rangeMax;
 
   @JsonProperty("binWidthOverride")
-  private String binWidthOverride;
+  private Number binWidthOverride;
 
   @JsonProperty("binWidth")
-  private String binWidth;
+  private Number binWidth;
+
+  @JsonProperty("binUnits")
+  private BinUnits binUnits;
 
   @JsonProperty("distinctValuesCount")
   private Number distinctValuesCount;
@@ -238,23 +242,33 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("binWidthOverride")
-  public String getBinWidthOverride() {
+  public Number getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(String binWidthOverride) {
+  public void setBinWidthOverride(Number binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 
   @JsonProperty("binWidth")
-  public String getBinWidth() {
+  public Number getBinWidth() {
     return this.binWidth;
   }
 
   @JsonProperty("binWidth")
-  public void setBinWidth(String binWidth) {
+  public void setBinWidth(Number binWidth) {
     this.binWidth = binWidth;
+  }
+
+  @JsonProperty("binUnits")
+  public BinUnits getBinUnits() {
+    return this.binUnits;
+  }
+
+  @JsonProperty("binUnits")
+  public void setBinUnits(BinUnits binUnits) {
+    this.binUnits = binUnits;
   }
 
   @JsonProperty("distinctValuesCount")
