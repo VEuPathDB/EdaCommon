@@ -10,10 +10,13 @@ import org.apache.logging.log4j.Logger;
 import org.gusdb.fgputil.Range;
 import org.gusdb.fgputil.Tuples.TwoTuple;
 import org.gusdb.fgputil.functional.TreeNode;
+import org.veupathdb.service.eda.common.model.VariableDef.DataRange;
 import org.veupathdb.service.eda.common.model.VariableDef.DataRanges;
 import org.veupathdb.service.eda.generated.model.APIDateVariable;
 import org.veupathdb.service.eda.generated.model.APIEntity;
+import org.veupathdb.service.eda.generated.model.APILongitudeVariable;
 import org.veupathdb.service.eda.generated.model.APINumberVariable;
+import org.veupathdb.service.eda.generated.model.APIStringVariable;
 import org.veupathdb.service.eda.generated.model.APIStudyDetail;
 import org.veupathdb.service.eda.generated.model.APIVariable;
 import org.veupathdb.service.eda.generated.model.APIVariableDataShape;
@@ -67,6 +70,7 @@ public class ReferenceMetadata {
           vd.getVariableId(),
           vd.getType(),
           vd.getDataShape(),
+          vd.isMultiValue(),
           vd.getDataRanges(),
           VariableSource.INHERITED)));
 
@@ -78,6 +82,7 @@ public class ReferenceMetadata {
           var.getId(),
           var.getType(),
           var.getDataShape(),
+          isMultiValue(var),
           getDataRanges(var),
           VariableSource.NATIVE))
       .forEach(vd -> {
@@ -116,6 +121,16 @@ public class ReferenceMetadata {
     return node;
   }
 
+  private static boolean isMultiValue(APIVariable var) {
+    return switch(var.getType()) {
+      case DATE -> ((APIDateVariable)var).getIsMultiValued();
+      case STRING -> ((APIStringVariable)var).getIsMultiValued();
+      case NUMBER -> ((APINumberVariable)var).getIsMultiValued();
+      case LONGITUDE -> ((APILongitudeVariable)var).getIsMultiValued();
+      case CATEGORY -> false;
+    };
+  }
+
   private static Optional<DataRanges> getDataRanges(APIVariable var) {
     if (var.getDataShape() != APIVariableDataShape.CONTINUOUS) {
       return Optional.empty();
@@ -124,21 +139,21 @@ public class ReferenceMetadata {
       case NUMBER:
         APINumberVariable numVar = (APINumberVariable)var;
         return Optional.of(new DataRanges(
-            new Range<>(
+            new DataRange(
                 numVar.getRangeMin().toString(),
                 numVar.getRangeMax().toString()),
-            new Range<>(
-                numVar.getDisplayRangeMin().toString(),
-                numVar.getDisplayRangeMax().toString())));
+            new DataRange(
+                Optional.ofNullable(numVar.getDisplayRangeMin()).orElse(numVar.getRangeMin()).toString(),
+                Optional.ofNullable(numVar.getDisplayRangeMax()).orElse(numVar.getRangeMax()).toString())));
       case DATE:
         APIDateVariable dateVar = (APIDateVariable)var;
         return Optional.of(new DataRanges(
-            new Range<>(
+            new DataRange(
                 dateVar.getRangeMin(),
                 dateVar.getRangeMax()),
-            new Range<>(
-                dateVar.getDisplayRangeMin(),
-                dateVar.getDisplayRangeMax())));
+            new DataRange(
+                Optional.ofNullable(dateVar.getDisplayRangeMin()).orElse(dateVar.getRangeMin()),
+                Optional.ofNullable(dateVar.getDisplayRangeMax()).orElse(dateVar.getRangeMax()))));
       default:
         return Optional.empty();
     }

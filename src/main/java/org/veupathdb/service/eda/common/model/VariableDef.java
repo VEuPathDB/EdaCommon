@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import org.gusdb.fgputil.Range;
-import org.gusdb.fgputil.Tuples;
 import org.gusdb.fgputil.Tuples.TwoTuple;
 import org.gusdb.fgputil.json.JsonUtil;
-import org.veupathdb.service.eda.generated.model.APIVariable;
 import org.veupathdb.service.eda.generated.model.APIVariableDataShape;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
 import org.veupathdb.service.eda.generated.model.DerivationType;
@@ -36,10 +33,16 @@ public class VariableDef extends VariableSpecImpl {
     return spec;
   }
 
-  public static class DataRanges extends TwoTuple<Range<String>,Range<String>> {
-    public DataRanges(Range<String> dataRange, Range<String> displayRange) { super(dataRange, displayRange); }
-    public Range<String> getDataRange() { return getFirst(); }
-    public Range<String> getDisplayRange() { return getSecond(); }
+  public static class DataRange extends TwoTuple<String,String> {
+    public DataRange(String start, String end) { super(start, end); }
+    public String getStart() { return getFirst(); }
+    public String getEnd() { return getSecond(); }
+  }
+
+  public static class DataRanges extends TwoTuple<DataRange,DataRange> {
+    public DataRanges(DataRange dataRange, DataRange displayRange) { super(dataRange, displayRange); }
+    public DataRange getDataRange() { return getFirst(); }
+    public DataRange getDisplayRange() { return getSecond(); }
   }
 
   @JsonIgnore
@@ -52,6 +55,9 @@ public class VariableDef extends VariableSpecImpl {
   private final VariableSource _source;
 
   @JsonIgnore
+  private final boolean _isMultiValue;
+
+  @JsonIgnore
   private final Optional<DataRanges> _dataRanges;
 
   public VariableDef(
@@ -59,12 +65,14 @@ public class VariableDef extends VariableSpecImpl {
       String variableId,
       APIVariableType type,
       APIVariableDataShape dataShape,
+      boolean isMultiValue,
       Optional<DataRanges> dataRanges,
       VariableSource source) {
     setEntityId(entityId);
     setVariableId(variableId);
     _type = type;
     _dataShape = dataShape;
+    _isMultiValue = isMultiValue;
     _dataRanges = dataRanges;
     _source = source;
   }
@@ -75,7 +83,7 @@ public class VariableDef extends VariableSpecImpl {
       APIVariableType type,
       APIVariableDataShape dataShape,
       DerivationType derivationType) {
-    this(entityId, variableId, type, dataShape, Optional.empty(),
+    this(entityId, variableId, type, dataShape, false, Optional.empty(),
       switch(derivationType) {
         case REDUCTION -> DERIVED_BY_REDUCTION;
         case TRANSFORM -> DERIVED_BY_TRANSFORM;
@@ -91,6 +99,11 @@ public class VariableDef extends VariableSpecImpl {
   @JsonIgnore
   public APIVariableDataShape getDataShape() {
     return _dataShape;
+  }
+
+  @JsonIgnore
+  public boolean isMultiValue() {
+    return _isMultiValue;
   }
 
   @JsonIgnore
