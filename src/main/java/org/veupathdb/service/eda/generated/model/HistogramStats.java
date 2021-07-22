@@ -7,6 +7,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
     as = HistogramStatsImpl.class
 )
 public interface HistogramStats {
+  @JsonProperty("subsetSize")
+  int getSubsetSize();
+
+  @JsonProperty("subsetSize")
+  void setSubsetSize(int subsetSize);
+
   @JsonProperty("subsetMin")
   Object getSubsetMin();
 

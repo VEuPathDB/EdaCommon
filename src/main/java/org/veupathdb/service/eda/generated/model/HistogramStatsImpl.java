@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+    "subsetSize",
     "subsetMin",
     "subsetMax",
     "subsetMean",
@@ -15,6 +16,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "numMissingCases"
 })
 public class HistogramStatsImpl implements HistogramStats {
+  @JsonProperty("subsetSize")
+  private int subsetSize;
+
   @JsonProperty("subsetMin")
   private Object subsetMin;
 
@@ -35,6 +39,16 @@ public class HistogramStatsImpl implements HistogramStats {
 
   @JsonProperty("numMissingCases")
   private int numMissingCases;
+
+  @JsonProperty("subsetSize")
+  public int getSubsetSize() {
+    return this.subsetSize;
+  }
+
+  @JsonProperty("subsetSize")
+  public void setSubsetSize(int subsetSize) {
+    this.subsetSize = subsetSize;
+  }
 
   @JsonProperty("subsetMin")
   public Object getSubsetMin() {
