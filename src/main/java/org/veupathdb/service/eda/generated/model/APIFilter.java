@@ -14,11 +14,12 @@ import java.util.Map;
     property = "type"
 )
 @JsonSubTypes({
-    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIStringSetFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APINumberRangeFilter.class),
-    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIDateRangeFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIDateSetFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APILongitudeRangeFilter.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIMultiFilter.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIStringSetFilter.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIDateRangeFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APINumberSetFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIFilter.class)
 })
@@ -33,12 +34,6 @@ public interface APIFilter {
 
   @JsonProperty("entityId")
   void setEntityId(String entityId);
-
-  @JsonProperty("variableId")
-  String getVariableId();
-
-  @JsonProperty("variableId")
-  void setVariableId(String variableId);
 
   @JsonProperty("type")
   APIFilterType getType();

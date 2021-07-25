@@ -7,32 +7,29 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonTypeName("dateRange")
+@JsonTypeName("multiFilter")
 @JsonPropertyOrder({
     "entityId",
     "type",
-    "variableId",
-    "min",
-    "max"
+    "operation",
+    "subFilters"
 })
-public class APIDateRangeFilterImpl implements APIDateRangeFilter {
+public class APIMultiFilterImpl implements APIMultiFilter {
   @JsonProperty("entityId")
   private String entityId;
 
   @JsonProperty("type")
   private final APIFilterType type = _DISCRIMINATOR_TYPE_NAME;
 
-  @JsonProperty("variableId")
-  private String variableId;
+  @JsonProperty("operation")
+  private APIBooleanOperationType operation;
 
-  @JsonProperty("min")
-  private String min;
-
-  @JsonProperty("max")
-  private String max;
+  @JsonProperty("subFilters")
+  private List<APIMultiFilterSubFilter> subFilters;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -52,34 +49,24 @@ public class APIDateRangeFilterImpl implements APIDateRangeFilter {
     return this.type;
   }
 
-  @JsonProperty("variableId")
-  public String getVariableId() {
-    return this.variableId;
+  @JsonProperty("operation")
+  public APIBooleanOperationType getOperation() {
+    return this.operation;
   }
 
-  @JsonProperty("variableId")
-  public void setVariableId(String variableId) {
-    this.variableId = variableId;
+  @JsonProperty("operation")
+  public void setOperation(APIBooleanOperationType operation) {
+    this.operation = operation;
   }
 
-  @JsonProperty("min")
-  public String getMin() {
-    return this.min;
+  @JsonProperty("subFilters")
+  public List<APIMultiFilterSubFilter> getSubFilters() {
+    return this.subFilters;
   }
 
-  @JsonProperty("min")
-  public void setMin(String min) {
-    this.min = min;
-  }
-
-  @JsonProperty("max")
-  public String getMax() {
-    return this.max;
-  }
-
-  @JsonProperty("max")
-  public void setMax(String max) {
-    this.max = max;
+  @JsonProperty("subFilters")
+  public void setSubFilters(List<APIMultiFilterSubFilter> subFilters) {
+    this.subFilters = subFilters;
   }
 
   @JsonAnyGetter

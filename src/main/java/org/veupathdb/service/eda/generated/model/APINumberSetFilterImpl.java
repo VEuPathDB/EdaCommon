@@ -14,19 +14,19 @@ import java.util.Map;
 @JsonTypeName("numberSet")
 @JsonPropertyOrder({
     "entityId",
-    "variableId",
     "type",
+    "variableId",
     "numberSet"
 })
 public class APINumberSetFilterImpl implements APINumberSetFilter {
   @JsonProperty("entityId")
   private String entityId;
 
-  @JsonProperty("variableId")
-  private String variableId;
-
   @JsonProperty("type")
   private final APIFilterType type = _DISCRIMINATOR_TYPE_NAME;
+
+  @JsonProperty("variableId")
+  private String variableId;
 
   @JsonProperty("numberSet")
   private List<Number> numberSet;
@@ -44,6 +44,11 @@ public class APINumberSetFilterImpl implements APINumberSetFilter {
     this.entityId = entityId;
   }
 
+  @JsonProperty("type")
+  public APIFilterType getType() {
+    return this.type;
+  }
+
   @JsonProperty("variableId")
   public String getVariableId() {
     return this.variableId;
@@ -52,11 +57,6 @@ public class APINumberSetFilterImpl implements APINumberSetFilter {
   @JsonProperty("variableId")
   public void setVariableId(String variableId) {
     this.variableId = variableId;
-  }
-
-  @JsonProperty("type")
-  public APIFilterType getType() {
-    return this.type;
   }
 
   @JsonProperty("numberSet")

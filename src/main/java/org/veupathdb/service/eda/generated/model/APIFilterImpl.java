@@ -11,15 +11,11 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "entityId",
-    "variableId",
     "type"
 })
 public class APIFilterImpl implements APIFilter {
   @JsonProperty("entityId")
   private String entityId;
-
-  @JsonProperty("variableId")
-  private String variableId;
 
   @JsonProperty("type")
   private final APIFilterType type = _DISCRIMINATOR_TYPE_NAME;
@@ -35,16 +31,6 @@ public class APIFilterImpl implements APIFilter {
   @JsonProperty("entityId")
   public void setEntityId(String entityId) {
     this.entityId = entityId;
-  }
-
-  @JsonProperty("variableId")
-  public String getVariableId() {
-    return this.variableId;
-  }
-
-  @JsonProperty("variableId")
-  public void setVariableId(String variableId) {
-    this.variableId = variableId;
   }
 
   @JsonProperty("type")

@@ -21,14 +21,14 @@ public interface APINumberSetFilter extends APIFilter {
   @JsonProperty("entityId")
   void setEntityId(String entityId);
 
+  @JsonProperty("type")
+  APIFilterType getType();
+
   @JsonProperty("variableId")
   String getVariableId();
 
   @JsonProperty("variableId")
   void setVariableId(String variableId);
-
-  @JsonProperty("type")
-  APIFilterType getType();
 
   @JsonProperty("numberSet")
   List<Number> getNumberSet();
