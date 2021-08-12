@@ -19,7 +19,10 @@ public enum APIFilterType {
   DATERANGE("dateRange"),
 
   @JsonProperty("longitudeRange")
-  LONGITUDERANGE("longitudeRange");
+  LONGITUDERANGE("longitudeRange"),
+
+  @JsonProperty("multiFilter")
+  MULTIFILTER("multiFilter");
 
   private String name;
 
@@ -28,4 +31,3 @@ public enum APIFilterType {
   }
   public String getValue(){ return name; } 
 }
-

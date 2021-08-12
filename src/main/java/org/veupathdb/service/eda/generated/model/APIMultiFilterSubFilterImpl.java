@@ -6,51 +6,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonTypeName("dateRange")
 @JsonPropertyOrder({
-    "entityId",
-    "type",
     "variableId",
-    "min",
-    "max"
+    "stringSet"
 })
-public class APIDateRangeFilterImpl implements APIDateRangeFilter {
-  @JsonProperty("entityId")
-  private String entityId;
-
-  @JsonProperty("type")
-  private final APIFilterType type = _DISCRIMINATOR_TYPE_NAME;
-
+public class APIMultiFilterSubFilterImpl implements APIMultiFilterSubFilter {
   @JsonProperty("variableId")
   private String variableId;
 
-  @JsonProperty("min")
-  private String min;
-
-  @JsonProperty("max")
-  private String max;
+  @JsonProperty("stringSet")
+  private List<String> stringSet;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
-
-  @JsonProperty("entityId")
-  public String getEntityId() {
-    return this.entityId;
-  }
-
-  @JsonProperty("entityId")
-  public void setEntityId(String entityId) {
-    this.entityId = entityId;
-  }
-
-  @JsonProperty("type")
-  public APIFilterType getType() {
-    return this.type;
-  }
 
   @JsonProperty("variableId")
   public String getVariableId() {
@@ -62,24 +34,14 @@ public class APIDateRangeFilterImpl implements APIDateRangeFilter {
     this.variableId = variableId;
   }
 
-  @JsonProperty("min")
-  public String getMin() {
-    return this.min;
+  @JsonProperty("stringSet")
+  public List<String> getStringSet() {
+    return this.stringSet;
   }
 
-  @JsonProperty("min")
-  public void setMin(String min) {
-    this.min = min;
-  }
-
-  @JsonProperty("max")
-  public String getMax() {
-    return this.max;
-  }
-
-  @JsonProperty("max")
-  public void setMax(String max) {
-    this.max = max;
+  @JsonProperty("stringSet")
+  public void setStringSet(List<String> stringSet) {
+    this.stringSet = stringSet;
   }
 
   @JsonAnyGetter

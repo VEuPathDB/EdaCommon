@@ -5,14 +5,15 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
 import java.util.Map;
 
-@JsonTypeName("dateRange")
+@JsonTypeName("multiFilter")
 @JsonDeserialize(
-    as = APIDateRangeFilterImpl.class
+    as = APIMultiFilterImpl.class
 )
-public interface APIDateRangeFilter extends APIFilter {
-  APIFilterType _DISCRIMINATOR_TYPE_NAME = APIFilterType.DATERANGE;
+public interface APIMultiFilter extends APIFilter {
+  APIFilterType _DISCRIMINATOR_TYPE_NAME = APIFilterType.MULTIFILTER;
 
   @JsonProperty("entityId")
   String getEntityId();
@@ -23,23 +24,17 @@ public interface APIDateRangeFilter extends APIFilter {
   @JsonProperty("type")
   APIFilterType getType();
 
-  @JsonProperty("variableId")
-  String getVariableId();
+  @JsonProperty("operation")
+  APIBooleanOperationType getOperation();
 
-  @JsonProperty("variableId")
-  void setVariableId(String variableId);
+  @JsonProperty("operation")
+  void setOperation(APIBooleanOperationType operation);
 
-  @JsonProperty("min")
-  String getMin();
+  @JsonProperty("subFilters")
+  List<APIMultiFilterSubFilter> getSubFilters();
 
-  @JsonProperty("min")
-  void setMin(String min);
-
-  @JsonProperty("max")
-  String getMax();
-
-  @JsonProperty("max")
-  void setMax(String max);
+  @JsonProperty("subFilters")
+  void setSubFilters(List<APIMultiFilterSubFilter> subFilters);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

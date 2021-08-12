@@ -13,8 +13,8 @@ import java.util.Map;
 @JsonTypeName("numberRange")
 @JsonPropertyOrder({
     "entityId",
-    "variableId",
     "type",
+    "variableId",
     "min",
     "max"
 })
@@ -22,11 +22,11 @@ public class APINumberRangeFilterImpl implements APINumberRangeFilter {
   @JsonProperty("entityId")
   private String entityId;
 
-  @JsonProperty("variableId")
-  private String variableId;
-
   @JsonProperty("type")
   private final APIFilterType type = _DISCRIMINATOR_TYPE_NAME;
+
+  @JsonProperty("variableId")
+  private String variableId;
 
   @JsonProperty("min")
   private Number min;
@@ -47,6 +47,11 @@ public class APINumberRangeFilterImpl implements APINumberRangeFilter {
     this.entityId = entityId;
   }
 
+  @JsonProperty("type")
+  public APIFilterType getType() {
+    return this.type;
+  }
+
   @JsonProperty("variableId")
   public String getVariableId() {
     return this.variableId;
@@ -55,11 +60,6 @@ public class APINumberRangeFilterImpl implements APINumberRangeFilter {
   @JsonProperty("variableId")
   public void setVariableId(String variableId) {
     this.variableId = variableId;
-  }
-
-  @JsonProperty("type")
-  public APIFilterType getType() {
-    return this.type;
   }
 
   @JsonProperty("min")

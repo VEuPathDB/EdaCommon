@@ -2,16 +2,16 @@ package org.veupathdb.service.eda.generated.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum DerivationType {
-  @JsonProperty("transform")
-  TRANSFORM("transform"),
+public enum APIBooleanOperationType {
+  @JsonProperty("intersect")
+  INTERSECT("intersect"),
 
-  @JsonProperty("reduction")
-  REDUCTION("reduction");
+  @JsonProperty("union")
+  UNION("union");
 
   private String name;
 
-  DerivationType(String name) {
+  APIBooleanOperationType(String name) {
     this.name = name;
   }
   public String getValue(){ return name; } 

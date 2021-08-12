@@ -20,14 +20,14 @@ public interface APILongitudeRangeFilter extends APIFilter {
   @JsonProperty("entityId")
   void setEntityId(String entityId);
 
+  @JsonProperty("type")
+  APIFilterType getType();
+
   @JsonProperty("variableId")
   String getVariableId();
 
   @JsonProperty("variableId")
   void setVariableId(String variableId);
-
-  @JsonProperty("type")
-  APIFilterType getType();
 
   @JsonProperty("left")
   Number getLeft();
