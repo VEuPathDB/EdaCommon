@@ -15,6 +15,7 @@ import java.util.Map;
     property = "type"
 )
 @JsonSubTypes({
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIIntegerVariable.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIStringVariable.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIDateVariable.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APILongitudeVariable.class),

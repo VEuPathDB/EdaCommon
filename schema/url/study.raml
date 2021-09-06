@@ -55,7 +55,7 @@ types:
       dataShape?: API_VariableDataShape
 
   API_VariableType:
-    enum: [ 'category', 'string', 'number', 'date', 'longitude' ]
+    enum: [ 'category', 'string', 'number', 'date', 'longitude', 'integer']
 
   API_VariableDataShape:
     enum: [ 'continuous', 'categorical', 'ordinal', 'binary' ]
@@ -84,6 +84,23 @@ types:
     properties:
       units: string
       precision: number
+      displayRangeMin?: number
+      displayRangeMax?: number
+      rangeMin?: number
+      rangeMax?: number
+      binWidthOverride?: number
+      binWidth?: number
+      distinctValuesCount: number
+      isTemporal: boolean
+      isFeatured: boolean
+      isMergeKey: boolean
+      isMultiValued: boolean
+
+  API_IntegerVariable:
+    type: API_Variable
+    discriminatorValue: integer
+    properties:
+      units: string
       displayRangeMin?: number
       displayRangeMax?: number
       rangeMin?: number

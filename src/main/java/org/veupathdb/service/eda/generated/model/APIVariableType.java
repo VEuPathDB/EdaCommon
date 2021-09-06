@@ -16,7 +16,10 @@ public enum APIVariableType {
   DATE("date"),
 
   @JsonProperty("longitude")
-  LONGITUDE("longitude");
+  LONGITUDE("longitude"),
+
+  @JsonProperty("integer")
+  INTEGER("integer");
 
   private String name;
 

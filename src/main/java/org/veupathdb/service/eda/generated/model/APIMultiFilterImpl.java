@@ -16,6 +16,7 @@ import java.util.Map;
     "entityId",
     "type",
     "operation",
+    "multiFilterVariableId",
     "subFilters"
 })
 public class APIMultiFilterImpl implements APIMultiFilter {
@@ -27,6 +28,9 @@ public class APIMultiFilterImpl implements APIMultiFilter {
 
   @JsonProperty("operation")
   private APIBooleanOperationType operation;
+
+  @JsonProperty("multiFilterVariableId")
+  private String multiFilterVariableId;
 
   @JsonProperty("subFilters")
   private List<APIMultiFilterSubFilter> subFilters;
@@ -57,6 +61,16 @@ public class APIMultiFilterImpl implements APIMultiFilter {
   @JsonProperty("operation")
   public void setOperation(APIBooleanOperationType operation) {
     this.operation = operation;
+  }
+
+  @JsonProperty("multiFilterVariableId")
+  public String getMultiFilterVariableId() {
+    return this.multiFilterVariableId;
+  }
+
+  @JsonProperty("multiFilterVariableId")
+  public void setMultiFilterVariableId(String multiFilterVariableId) {
+    this.multiFilterVariableId = multiFilterVariableId;
   }
 
   @JsonProperty("subFilters")
