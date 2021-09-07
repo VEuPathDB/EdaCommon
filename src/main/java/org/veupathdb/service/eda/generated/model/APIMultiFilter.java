@@ -30,11 +30,11 @@ public interface APIMultiFilter extends APIFilter {
   @JsonProperty("operation")
   void setOperation(APIBooleanOperationType operation);
 
-  @JsonProperty("multiFilterVariableId")
-  String getMultiFilterVariableId();
+  @JsonProperty("variableId")
+  String getVariableId();
 
-  @JsonProperty("multiFilterVariableId")
-  void setMultiFilterVariableId(String multiFilterVariableId);
+  @JsonProperty("variableId")
+  void setVariableId(String variableId);
 
   @JsonProperty("subFilters")
   List<APIMultiFilterSubFilter> getSubFilters();
