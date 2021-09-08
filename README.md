@@ -13,5 +13,7 @@ Contains code, API and schema documents, and any other data needed by multiple E
 1. Visit https://github.com/VEuPathDB/EdaCommon/tags and create a Release
     1. Title can be set to the name of the tag
     1. Add description as desired (covering highlights of release)
-1. Go back to EdaCommon and run 'make release'
-    1. This will create and publish project artifacts to github packages
+1. Go back to EdaCommon and run
+    1. git pull (if you made any changes above in the github web UI)
+    1. 'make release'
+        1. This will create and publish project artifacts to github packages
