@@ -31,3 +31,4 @@ public enum APIFilterType {
   }
   public String getValue(){ return name; } 
 }
+

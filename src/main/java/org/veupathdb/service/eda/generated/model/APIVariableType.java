@@ -28,3 +28,4 @@ public enum APIVariableType {
   }
   public String getValue(){ return name; } 
 }
+
