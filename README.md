@@ -17,3 +17,9 @@ Contains code, API and schema documents, and any other data needed by multiple E
     1. git pull (if you made any changes above in the github web UI)
     1. 'make release'
         1. This will create and publish project artifacts to github packages
+1. Dependent EDA projects will need to be upgraded to the new version.  Open dependencies.gradle.kts in each of the following projects and change the version of EdaCommon to the new release:
+    1. EdaSubsettingService
+    1. EdaMergingService
+    1. EdaDataService
+    1. EdaUserService
+    1. EdaComputeService
