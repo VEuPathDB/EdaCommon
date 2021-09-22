@@ -16,4 +16,3 @@ public enum APIBooleanOperationType {
   }
   public String getValue(){ return name; } 
 }
-

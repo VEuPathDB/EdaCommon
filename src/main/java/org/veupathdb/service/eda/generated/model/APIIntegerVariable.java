@@ -121,28 +121,28 @@ public interface APIIntegerVariable extends APIVariable {
   void setDistinctValuesCount(Number distinctValuesCount);
 
   @JsonProperty("isTemporal")
-  boolean getIsTemporal();
+  Boolean getIsTemporal();
 
   @JsonProperty("isTemporal")
-  void setIsTemporal(boolean isTemporal);
+  void setIsTemporal(Boolean isTemporal);
 
   @JsonProperty("isFeatured")
-  boolean getIsFeatured();
+  Boolean getIsFeatured();
 
   @JsonProperty("isFeatured")
-  void setIsFeatured(boolean isFeatured);
+  void setIsFeatured(Boolean isFeatured);
 
   @JsonProperty("isMergeKey")
-  boolean getIsMergeKey();
+  Boolean getIsMergeKey();
 
   @JsonProperty("isMergeKey")
-  void setIsMergeKey(boolean isMergeKey);
+  void setIsMergeKey(Boolean isMergeKey);
 
   @JsonProperty("isMultiValued")
-  boolean getIsMultiValued();
+  Boolean getIsMultiValued();
 
   @JsonProperty("isMultiValued")
-  void setIsMultiValued(boolean isMultiValued);
+  void setIsMultiValued(Boolean isMultiValued);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

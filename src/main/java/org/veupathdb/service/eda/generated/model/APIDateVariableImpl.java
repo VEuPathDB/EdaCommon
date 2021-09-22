@@ -92,16 +92,16 @@ public class APIDateVariableImpl implements APIDateVariable {
   private Number distinctValuesCount;
 
   @JsonProperty("isTemporal")
-  private boolean isTemporal;
+  private Boolean isTemporal;
 
   @JsonProperty("isFeatured")
-  private boolean isFeatured;
+  private Boolean isFeatured;
 
   @JsonProperty("isMergeKey")
-  private boolean isMergeKey;
+  private Boolean isMergeKey;
 
   @JsonProperty("isMultiValued")
-  private boolean isMultiValued;
+  private Boolean isMultiValued;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -282,42 +282,42 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("isTemporal")
-  public boolean getIsTemporal() {
+  public Boolean getIsTemporal() {
     return this.isTemporal;
   }
 
   @JsonProperty("isTemporal")
-  public void setIsTemporal(boolean isTemporal) {
+  public void setIsTemporal(Boolean isTemporal) {
     this.isTemporal = isTemporal;
   }
 
   @JsonProperty("isFeatured")
-  public boolean getIsFeatured() {
+  public Boolean getIsFeatured() {
     return this.isFeatured;
   }
 
   @JsonProperty("isFeatured")
-  public void setIsFeatured(boolean isFeatured) {
+  public void setIsFeatured(Boolean isFeatured) {
     this.isFeatured = isFeatured;
   }
 
   @JsonProperty("isMergeKey")
-  public boolean getIsMergeKey() {
+  public Boolean getIsMergeKey() {
     return this.isMergeKey;
   }
 
   @JsonProperty("isMergeKey")
-  public void setIsMergeKey(boolean isMergeKey) {
+  public void setIsMergeKey(Boolean isMergeKey) {
     this.isMergeKey = isMergeKey;
   }
 
   @JsonProperty("isMultiValued")
-  public boolean getIsMultiValued() {
+  public Boolean getIsMultiValued() {
     return this.isMultiValued;
   }
 
   @JsonProperty("isMultiValued")
-  public void setIsMultiValued(boolean isMultiValued) {
+  public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
   }
 

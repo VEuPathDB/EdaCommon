@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 )
 public interface EntityCountPostResponse {
   @JsonProperty("count")
-  int getCount();
+  Integer getCount();
 
   @JsonProperty("count")
-  void setCount(int count);
+  void setCount(Integer count);
 }

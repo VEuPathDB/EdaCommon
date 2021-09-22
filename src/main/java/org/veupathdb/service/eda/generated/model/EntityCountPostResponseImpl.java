@@ -8,15 +8,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder("count")
 public class EntityCountPostResponseImpl implements EntityCountPostResponse {
   @JsonProperty("count")
-  private int count;
+  private Integer count;
 
   @JsonProperty("count")
-  public int getCount() {
+  public Integer getCount() {
     return this.count;
   }
 
   @JsonProperty("count")
-  public void setCount(int count) {
+  public void setCount(Integer count) {
     this.count = count;
   }
 }
