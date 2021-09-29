@@ -18,23 +18,24 @@ import java.util.Map;
     "providerLabel",
     "displayName",
     "definition",
-    "vocabulary",
     "displayType",
     "displayOrder",
+    "isCategory",
     "type",
     "dataShape",
+    "vocabulary",
+    "distinctValuesCount",
+    "isTemporal",
+    "isFeatured",
+    "isMergeKey",
+    "isMultiValued",
     "units",
     "displayRangeMin",
     "displayRangeMax",
     "rangeMin",
     "rangeMax",
-    "binWidthOverride",
     "binWidth",
-    "distinctValuesCount",
-    "isTemporal",
-    "isFeatured",
-    "isMergeKey",
-    "isMultiValued"
+    "binWidthOverride"
 })
 public class APIIntegerVariableImpl implements APIIntegerVariable {
   @JsonProperty("id")
@@ -52,14 +53,14 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
   @JsonProperty("definition")
   private String definition;
 
-  @JsonProperty("vocabulary")
-  private List<String> vocabulary;
-
   @JsonProperty("displayType")
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
   private Number displayOrder;
+
+  @JsonProperty("isCategory")
+  private String isCategory;
 
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
@@ -67,26 +68,8 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
 
-  @JsonProperty("units")
-  private String units;
-
-  @JsonProperty("displayRangeMin")
-  private Number displayRangeMin;
-
-  @JsonProperty("displayRangeMax")
-  private Number displayRangeMax;
-
-  @JsonProperty("rangeMin")
-  private Number rangeMin;
-
-  @JsonProperty("rangeMax")
-  private Number rangeMax;
-
-  @JsonProperty("binWidthOverride")
-  private Number binWidthOverride;
-
-  @JsonProperty("binWidth")
-  private Number binWidth;
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
   private Number distinctValuesCount;
@@ -102,6 +85,27 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
+
+  @JsonProperty("units")
+  private String units;
+
+  @JsonProperty("displayRangeMin")
+  private Integer displayRangeMin;
+
+  @JsonProperty("displayRangeMax")
+  private Integer displayRangeMax;
+
+  @JsonProperty("rangeMin")
+  private Integer rangeMin;
+
+  @JsonProperty("rangeMax")
+  private Integer rangeMax;
+
+  @JsonProperty("binWidth")
+  private Integer binWidth;
+
+  @JsonProperty("binWidthOverride")
+  private Integer binWidthOverride;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -156,16 +160,6 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
     this.definition = definition;
   }
 
-  @JsonProperty("vocabulary")
-  public List<String> getVocabulary() {
-    return this.vocabulary;
-  }
-
-  @JsonProperty("vocabulary")
-  public void setVocabulary(List<String> vocabulary) {
-    this.vocabulary = vocabulary;
-  }
-
   @JsonProperty("displayType")
   public APIVariableDisplayType getDisplayType() {
     return this.displayType;
@@ -186,6 +180,16 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
     this.displayOrder = displayOrder;
   }
 
+  @JsonProperty("isCategory")
+  public String getIsCategory() {
+    return this.isCategory;
+  }
+
+  @JsonProperty("isCategory")
+  public void setIsCategory(String isCategory) {
+    this.isCategory = isCategory;
+  }
+
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
@@ -201,74 +205,14 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
     this.dataShape = dataShape;
   }
 
-  @JsonProperty("units")
-  public String getUnits() {
-    return this.units;
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
   }
 
-  @JsonProperty("units")
-  public void setUnits(String units) {
-    this.units = units;
-  }
-
-  @JsonProperty("displayRangeMin")
-  public Number getDisplayRangeMin() {
-    return this.displayRangeMin;
-  }
-
-  @JsonProperty("displayRangeMin")
-  public void setDisplayRangeMin(Number displayRangeMin) {
-    this.displayRangeMin = displayRangeMin;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public Number getDisplayRangeMax() {
-    return this.displayRangeMax;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public void setDisplayRangeMax(Number displayRangeMax) {
-    this.displayRangeMax = displayRangeMax;
-  }
-
-  @JsonProperty("rangeMin")
-  public Number getRangeMin() {
-    return this.rangeMin;
-  }
-
-  @JsonProperty("rangeMin")
-  public void setRangeMin(Number rangeMin) {
-    this.rangeMin = rangeMin;
-  }
-
-  @JsonProperty("rangeMax")
-  public Number getRangeMax() {
-    return this.rangeMax;
-  }
-
-  @JsonProperty("rangeMax")
-  public void setRangeMax(Number rangeMax) {
-    this.rangeMax = rangeMax;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public Number getBinWidthOverride() {
-    return this.binWidthOverride;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Number binWidthOverride) {
-    this.binWidthOverride = binWidthOverride;
-  }
-
-  @JsonProperty("binWidth")
-  public Number getBinWidth() {
-    return this.binWidth;
-  }
-
-  @JsonProperty("binWidth")
-  public void setBinWidth(Number binWidth) {
-    this.binWidth = binWidth;
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
   }
 
   @JsonProperty("distinctValuesCount")
@@ -319,6 +263,76 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
+  }
+
+  @JsonProperty("units")
+  public String getUnits() {
+    return this.units;
+  }
+
+  @JsonProperty("units")
+  public void setUnits(String units) {
+    this.units = units;
+  }
+
+  @JsonProperty("displayRangeMin")
+  public Integer getDisplayRangeMin() {
+    return this.displayRangeMin;
+  }
+
+  @JsonProperty("displayRangeMin")
+  public void setDisplayRangeMin(Integer displayRangeMin) {
+    this.displayRangeMin = displayRangeMin;
+  }
+
+  @JsonProperty("displayRangeMax")
+  public Integer getDisplayRangeMax() {
+    return this.displayRangeMax;
+  }
+
+  @JsonProperty("displayRangeMax")
+  public void setDisplayRangeMax(Integer displayRangeMax) {
+    this.displayRangeMax = displayRangeMax;
+  }
+
+  @JsonProperty("rangeMin")
+  public Integer getRangeMin() {
+    return this.rangeMin;
+  }
+
+  @JsonProperty("rangeMin")
+  public void setRangeMin(Integer rangeMin) {
+    this.rangeMin = rangeMin;
+  }
+
+  @JsonProperty("rangeMax")
+  public Integer getRangeMax() {
+    return this.rangeMax;
+  }
+
+  @JsonProperty("rangeMax")
+  public void setRangeMax(Integer rangeMax) {
+    this.rangeMax = rangeMax;
+  }
+
+  @JsonProperty("binWidth")
+  public Integer getBinWidth() {
+    return this.binWidth;
+  }
+
+  @JsonProperty("binWidth")
+  public void setBinWidth(Integer binWidth) {
+    this.binWidth = binWidth;
+  }
+
+  @JsonProperty("binWidthOverride")
+  public Integer getBinWidthOverride() {
+    return this.binWidthOverride;
+  }
+
+  @JsonProperty("binWidthOverride")
+  public void setBinWidthOverride(Integer binWidthOverride) {
+    this.binWidthOverride = binWidthOverride;
   }
 
   @JsonAnyGetter

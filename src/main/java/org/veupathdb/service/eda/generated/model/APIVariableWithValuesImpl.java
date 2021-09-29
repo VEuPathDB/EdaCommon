@@ -6,12 +6,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonTypeName("date")
 @JsonPropertyOrder({
     "id",
     "parentId",
@@ -28,16 +26,9 @@ import java.util.Map;
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "isMultiValued",
-    "displayRangeMin",
-    "displayRangeMax",
-    "rangeMin",
-    "rangeMax",
-    "binWidth",
-    "binWidthOverride",
-    "binUnits"
+    "isMultiValued"
 })
-public class APIDateVariableImpl implements APIDateVariable {
+public class APIVariableWithValuesImpl implements APIVariableWithValues {
   @JsonProperty("id")
   private String id;
 
@@ -85,27 +76,6 @@ public class APIDateVariableImpl implements APIDateVariable {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
-
-  @JsonProperty("displayRangeMin")
-  private String displayRangeMin;
-
-  @JsonProperty("displayRangeMax")
-  private String displayRangeMax;
-
-  @JsonProperty("rangeMin")
-  private String rangeMin;
-
-  @JsonProperty("rangeMax")
-  private String rangeMax;
-
-  @JsonProperty("binWidth")
-  private Number binWidth;
-
-  @JsonProperty("binWidthOverride")
-  private Number binWidthOverride;
-
-  @JsonProperty("binUnits")
-  private BinUnits binUnits;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -263,76 +233,6 @@ public class APIDateVariableImpl implements APIDateVariable {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
-  }
-
-  @JsonProperty("displayRangeMin")
-  public String getDisplayRangeMin() {
-    return this.displayRangeMin;
-  }
-
-  @JsonProperty("displayRangeMin")
-  public void setDisplayRangeMin(String displayRangeMin) {
-    this.displayRangeMin = displayRangeMin;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public String getDisplayRangeMax() {
-    return this.displayRangeMax;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public void setDisplayRangeMax(String displayRangeMax) {
-    this.displayRangeMax = displayRangeMax;
-  }
-
-  @JsonProperty("rangeMin")
-  public String getRangeMin() {
-    return this.rangeMin;
-  }
-
-  @JsonProperty("rangeMin")
-  public void setRangeMin(String rangeMin) {
-    this.rangeMin = rangeMin;
-  }
-
-  @JsonProperty("rangeMax")
-  public String getRangeMax() {
-    return this.rangeMax;
-  }
-
-  @JsonProperty("rangeMax")
-  public void setRangeMax(String rangeMax) {
-    this.rangeMax = rangeMax;
-  }
-
-  @JsonProperty("binWidth")
-  public Number getBinWidth() {
-    return this.binWidth;
-  }
-
-  @JsonProperty("binWidth")
-  public void setBinWidth(Number binWidth) {
-    this.binWidth = binWidth;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public Number getBinWidthOverride() {
-    return this.binWidthOverride;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Number binWidthOverride) {
-    this.binWidthOverride = binWidthOverride;
-  }
-
-  @JsonProperty("binUnits")
-  public BinUnits getBinUnits() {
-    return this.binUnits;
-  }
-
-  @JsonProperty("binUnits")
-  public void setBinUnits(BinUnits binUnits) {
-    this.binUnits = binUnits;
   }
 
   @JsonAnyGetter

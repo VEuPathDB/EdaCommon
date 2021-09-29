@@ -12,7 +12,7 @@ import java.util.Map;
 @JsonDeserialize(
     as = APIStringVariableImpl.class
 )
-public interface APIStringVariable extends APIVariable {
+public interface APIStringVariable extends APIVariableWithValues {
   APIVariableType _DISCRIMINATOR_TYPE_NAME = APIVariableType.STRING;
 
   @JsonProperty("id")
@@ -45,12 +45,6 @@ public interface APIStringVariable extends APIVariable {
   @JsonProperty("definition")
   void setDefinition(String definition);
 
-  @JsonProperty("vocabulary")
-  List<String> getVocabulary();
-
-  @JsonProperty("vocabulary")
-  void setVocabulary(List<String> vocabulary);
-
   @JsonProperty("displayType")
   APIVariableDisplayType getDisplayType();
 
@@ -63,6 +57,12 @@ public interface APIStringVariable extends APIVariable {
   @JsonProperty("displayOrder")
   void setDisplayOrder(Number displayOrder);
 
+  @JsonProperty("isCategory")
+  String getIsCategory();
+
+  @JsonProperty("isCategory")
+  void setIsCategory(String isCategory);
+
   @JsonProperty("type")
   APIVariableType getType();
 
@@ -71,6 +71,12 @@ public interface APIStringVariable extends APIVariable {
 
   @JsonProperty("dataShape")
   void setDataShape(APIVariableDataShape dataShape);
+
+  @JsonProperty("vocabulary")
+  List<String> getVocabulary();
+
+  @JsonProperty("vocabulary")
+  void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("distinctValuesCount")
   Number getDistinctValuesCount();

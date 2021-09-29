@@ -12,7 +12,7 @@ import java.util.Map;
 @JsonDeserialize(
     as = APIDateVariableImpl.class
 )
-public interface APIDateVariable extends APIVariable {
+public interface APIDateVariable extends APIVariableWithValues {
   APIVariableType _DISCRIMINATOR_TYPE_NAME = APIVariableType.DATE;
 
   @JsonProperty("id")
@@ -45,12 +45,6 @@ public interface APIDateVariable extends APIVariable {
   @JsonProperty("definition")
   void setDefinition(String definition);
 
-  @JsonProperty("vocabulary")
-  List<String> getVocabulary();
-
-  @JsonProperty("vocabulary")
-  void setVocabulary(List<String> vocabulary);
-
   @JsonProperty("displayType")
   APIVariableDisplayType getDisplayType();
 
@@ -63,6 +57,12 @@ public interface APIDateVariable extends APIVariable {
   @JsonProperty("displayOrder")
   void setDisplayOrder(Number displayOrder);
 
+  @JsonProperty("isCategory")
+  String getIsCategory();
+
+  @JsonProperty("isCategory")
+  void setIsCategory(String isCategory);
+
   @JsonProperty("type")
   APIVariableType getType();
 
@@ -72,47 +72,11 @@ public interface APIDateVariable extends APIVariable {
   @JsonProperty("dataShape")
   void setDataShape(APIVariableDataShape dataShape);
 
-  @JsonProperty("displayRangeMin")
-  String getDisplayRangeMin();
+  @JsonProperty("vocabulary")
+  List<String> getVocabulary();
 
-  @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(String displayRangeMin);
-
-  @JsonProperty("displayRangeMax")
-  String getDisplayRangeMax();
-
-  @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(String displayRangeMax);
-
-  @JsonProperty("rangeMin")
-  String getRangeMin();
-
-  @JsonProperty("rangeMin")
-  void setRangeMin(String rangeMin);
-
-  @JsonProperty("rangeMax")
-  String getRangeMax();
-
-  @JsonProperty("rangeMax")
-  void setRangeMax(String rangeMax);
-
-  @JsonProperty("binWidthOverride")
-  Number getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Number binWidthOverride);
-
-  @JsonProperty("binWidth")
-  Number getBinWidth();
-
-  @JsonProperty("binWidth")
-  void setBinWidth(Number binWidth);
-
-  @JsonProperty("binUnits")
-  BinUnits getBinUnits();
-
-  @JsonProperty("binUnits")
-  void setBinUnits(BinUnits binUnits);
+  @JsonProperty("vocabulary")
+  void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("distinctValuesCount")
   Number getDistinctValuesCount();
@@ -143,6 +107,48 @@ public interface APIDateVariable extends APIVariable {
 
   @JsonProperty("isMultiValued")
   void setIsMultiValued(Boolean isMultiValued);
+
+  @JsonProperty("displayRangeMin")
+  String getDisplayRangeMin();
+
+  @JsonProperty("displayRangeMin")
+  void setDisplayRangeMin(String displayRangeMin);
+
+  @JsonProperty("displayRangeMax")
+  String getDisplayRangeMax();
+
+  @JsonProperty("displayRangeMax")
+  void setDisplayRangeMax(String displayRangeMax);
+
+  @JsonProperty("rangeMin")
+  String getRangeMin();
+
+  @JsonProperty("rangeMin")
+  void setRangeMin(String rangeMin);
+
+  @JsonProperty("rangeMax")
+  String getRangeMax();
+
+  @JsonProperty("rangeMax")
+  void setRangeMax(String rangeMax);
+
+  @JsonProperty("binWidth")
+  Number getBinWidth();
+
+  @JsonProperty("binWidth")
+  void setBinWidth(Number binWidth);
+
+  @JsonProperty("binWidthOverride")
+  Number getBinWidthOverride();
+
+  @JsonProperty("binWidthOverride")
+  void setBinWidthOverride(Number binWidthOverride);
+
+  @JsonProperty("binUnits")
+  BinUnits getBinUnits();
+
+  @JsonProperty("binUnits")
+  void setBinUnits(BinUnits binUnits);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

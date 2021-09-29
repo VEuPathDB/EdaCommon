@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.util.List;
 import java.util.Map;
 
 @JsonTypeName("category")
@@ -45,12 +44,6 @@ public interface APIVariablesCategory extends APIVariable {
   @JsonProperty("definition")
   void setDefinition(String definition);
 
-  @JsonProperty("vocabulary")
-  List<String> getVocabulary();
-
-  @JsonProperty("vocabulary")
-  void setVocabulary(List<String> vocabulary);
-
   @JsonProperty("displayType")
   APIVariableDisplayType getDisplayType();
 
@@ -63,14 +56,14 @@ public interface APIVariablesCategory extends APIVariable {
   @JsonProperty("displayOrder")
   void setDisplayOrder(Number displayOrder);
 
+  @JsonProperty("isCategory")
+  String getIsCategory();
+
+  @JsonProperty("isCategory")
+  void setIsCategory(String isCategory);
+
   @JsonProperty("type")
   APIVariableType getType();
-
-  @JsonProperty("dataShape")
-  APIVariableDataShape getDataShape();
-
-  @JsonProperty("dataShape")
-  void setDataShape(APIVariableDataShape dataShape);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

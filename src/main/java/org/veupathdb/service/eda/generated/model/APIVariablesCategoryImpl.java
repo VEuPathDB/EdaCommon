@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,11 +17,10 @@ import java.util.Map;
     "providerLabel",
     "displayName",
     "definition",
-    "vocabulary",
     "displayType",
     "displayOrder",
-    "type",
-    "dataShape"
+    "isCategory",
+    "type"
 })
 public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("id")
@@ -40,20 +38,17 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   @JsonProperty("definition")
   private String definition;
 
-  @JsonProperty("vocabulary")
-  private List<String> vocabulary;
-
   @JsonProperty("displayType")
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
   private Number displayOrder;
 
+  @JsonProperty("isCategory")
+  private String isCategory;
+
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
-
-  @JsonProperty("dataShape")
-  private APIVariableDataShape dataShape;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -108,16 +103,6 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
     this.definition = definition;
   }
 
-  @JsonProperty("vocabulary")
-  public List<String> getVocabulary() {
-    return this.vocabulary;
-  }
-
-  @JsonProperty("vocabulary")
-  public void setVocabulary(List<String> vocabulary) {
-    this.vocabulary = vocabulary;
-  }
-
   @JsonProperty("displayType")
   public APIVariableDisplayType getDisplayType() {
     return this.displayType;
@@ -138,19 +123,19 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
     this.displayOrder = displayOrder;
   }
 
+  @JsonProperty("isCategory")
+  public String getIsCategory() {
+    return this.isCategory;
+  }
+
+  @JsonProperty("isCategory")
+  public void setIsCategory(String isCategory) {
+    this.isCategory = isCategory;
+  }
+
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
-  }
-
-  @JsonProperty("dataShape")
-  public APIVariableDataShape getDataShape() {
-    return this.dataShape;
-  }
-
-  @JsonProperty("dataShape")
-  public void setDataShape(APIVariableDataShape dataShape) {
-    this.dataShape = dataShape;
   }
 
   @JsonAnyGetter

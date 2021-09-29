@@ -12,7 +12,7 @@ import java.util.Map;
 @JsonDeserialize(
     as = APIIntegerVariableImpl.class
 )
-public interface APIIntegerVariable extends APIVariable {
+public interface APIIntegerVariable extends APIVariableWithValues {
   APIVariableType _DISCRIMINATOR_TYPE_NAME = APIVariableType.INTEGER;
 
   @JsonProperty("id")
@@ -45,12 +45,6 @@ public interface APIIntegerVariable extends APIVariable {
   @JsonProperty("definition")
   void setDefinition(String definition);
 
-  @JsonProperty("vocabulary")
-  List<String> getVocabulary();
-
-  @JsonProperty("vocabulary")
-  void setVocabulary(List<String> vocabulary);
-
   @JsonProperty("displayType")
   APIVariableDisplayType getDisplayType();
 
@@ -63,6 +57,12 @@ public interface APIIntegerVariable extends APIVariable {
   @JsonProperty("displayOrder")
   void setDisplayOrder(Number displayOrder);
 
+  @JsonProperty("isCategory")
+  String getIsCategory();
+
+  @JsonProperty("isCategory")
+  void setIsCategory(String isCategory);
+
   @JsonProperty("type")
   APIVariableType getType();
 
@@ -72,47 +72,11 @@ public interface APIIntegerVariable extends APIVariable {
   @JsonProperty("dataShape")
   void setDataShape(APIVariableDataShape dataShape);
 
-  @JsonProperty("units")
-  String getUnits();
+  @JsonProperty("vocabulary")
+  List<String> getVocabulary();
 
-  @JsonProperty("units")
-  void setUnits(String units);
-
-  @JsonProperty("displayRangeMin")
-  Number getDisplayRangeMin();
-
-  @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(Number displayRangeMin);
-
-  @JsonProperty("displayRangeMax")
-  Number getDisplayRangeMax();
-
-  @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(Number displayRangeMax);
-
-  @JsonProperty("rangeMin")
-  Number getRangeMin();
-
-  @JsonProperty("rangeMin")
-  void setRangeMin(Number rangeMin);
-
-  @JsonProperty("rangeMax")
-  Number getRangeMax();
-
-  @JsonProperty("rangeMax")
-  void setRangeMax(Number rangeMax);
-
-  @JsonProperty("binWidthOverride")
-  Number getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Number binWidthOverride);
-
-  @JsonProperty("binWidth")
-  Number getBinWidth();
-
-  @JsonProperty("binWidth")
-  void setBinWidth(Number binWidth);
+  @JsonProperty("vocabulary")
+  void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("distinctValuesCount")
   Number getDistinctValuesCount();
@@ -143,6 +107,48 @@ public interface APIIntegerVariable extends APIVariable {
 
   @JsonProperty("isMultiValued")
   void setIsMultiValued(Boolean isMultiValued);
+
+  @JsonProperty("units")
+  String getUnits();
+
+  @JsonProperty("units")
+  void setUnits(String units);
+
+  @JsonProperty("displayRangeMin")
+  Integer getDisplayRangeMin();
+
+  @JsonProperty("displayRangeMin")
+  void setDisplayRangeMin(Integer displayRangeMin);
+
+  @JsonProperty("displayRangeMax")
+  Integer getDisplayRangeMax();
+
+  @JsonProperty("displayRangeMax")
+  void setDisplayRangeMax(Integer displayRangeMax);
+
+  @JsonProperty("rangeMin")
+  Integer getRangeMin();
+
+  @JsonProperty("rangeMin")
+  void setRangeMin(Integer rangeMin);
+
+  @JsonProperty("rangeMax")
+  Integer getRangeMax();
+
+  @JsonProperty("rangeMax")
+  void setRangeMax(Integer rangeMax);
+
+  @JsonProperty("binWidth")
+  Integer getBinWidth();
+
+  @JsonProperty("binWidth")
+  void setBinWidth(Integer binWidth);
+
+  @JsonProperty("binWidthOverride")
+  Integer getBinWidthOverride();
+
+  @JsonProperty("binWidthOverride")
+  void setBinWidthOverride(Integer binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

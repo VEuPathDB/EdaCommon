@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
 import java.util.Map;
 
 @JsonTypeInfo(
@@ -14,14 +15,17 @@ import java.util.Map;
     property = "type"
 )
 @JsonSubTypes({
-    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIVariableWithValues.class),
-    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIVariablesCategory.class),
-    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIVariable.class)
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIIntegerVariable.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIStringVariable.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIDateVariable.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APILongitudeVariable.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APINumberVariable.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIVariableWithValues.class)
 })
 @JsonDeserialize(
-    as = APIVariableImpl.class
+    as = APIVariableWithValuesImpl.class
 )
-public interface APIVariable {
+public interface APIVariableWithValues extends APIVariable {
   APIVariableType _DISCRIMINATOR_TYPE_NAME = null;
 
   @JsonProperty("id")
@@ -74,6 +78,48 @@ public interface APIVariable {
 
   @JsonProperty("type")
   APIVariableType getType();
+
+  @JsonProperty("dataShape")
+  APIVariableDataShape getDataShape();
+
+  @JsonProperty("dataShape")
+  void setDataShape(APIVariableDataShape dataShape);
+
+  @JsonProperty("vocabulary")
+  List<String> getVocabulary();
+
+  @JsonProperty("vocabulary")
+  void setVocabulary(List<String> vocabulary);
+
+  @JsonProperty("distinctValuesCount")
+  Number getDistinctValuesCount();
+
+  @JsonProperty("distinctValuesCount")
+  void setDistinctValuesCount(Number distinctValuesCount);
+
+  @JsonProperty("isTemporal")
+  Boolean getIsTemporal();
+
+  @JsonProperty("isTemporal")
+  void setIsTemporal(Boolean isTemporal);
+
+  @JsonProperty("isFeatured")
+  Boolean getIsFeatured();
+
+  @JsonProperty("isFeatured")
+  void setIsFeatured(Boolean isFeatured);
+
+  @JsonProperty("isMergeKey")
+  Boolean getIsMergeKey();
+
+  @JsonProperty("isMergeKey")
+  void setIsMergeKey(Boolean isMergeKey);
+
+  @JsonProperty("isMultiValued")
+  Boolean getIsMultiValued();
+
+  @JsonProperty("isMultiValued")
+  void setIsMultiValued(Boolean isMultiValued);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

@@ -12,7 +12,7 @@ import java.util.Map;
 @JsonDeserialize(
     as = APINumberVariableImpl.class
 )
-public interface APINumberVariable extends APIVariable {
+public interface APINumberVariable extends APIVariableWithValues {
   APIVariableType _DISCRIMINATOR_TYPE_NAME = APIVariableType.NUMBER;
 
   @JsonProperty("id")
@@ -45,12 +45,6 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("definition")
   void setDefinition(String definition);
 
-  @JsonProperty("vocabulary")
-  List<String> getVocabulary();
-
-  @JsonProperty("vocabulary")
-  void setVocabulary(List<String> vocabulary);
-
   @JsonProperty("displayType")
   APIVariableDisplayType getDisplayType();
 
@@ -63,6 +57,12 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("displayOrder")
   void setDisplayOrder(Number displayOrder);
 
+  @JsonProperty("isCategory")
+  String getIsCategory();
+
+  @JsonProperty("isCategory")
+  void setIsCategory(String isCategory);
+
   @JsonProperty("type")
   APIVariableType getType();
 
@@ -71,6 +71,42 @@ public interface APINumberVariable extends APIVariable {
 
   @JsonProperty("dataShape")
   void setDataShape(APIVariableDataShape dataShape);
+
+  @JsonProperty("vocabulary")
+  List<String> getVocabulary();
+
+  @JsonProperty("vocabulary")
+  void setVocabulary(List<String> vocabulary);
+
+  @JsonProperty("distinctValuesCount")
+  Number getDistinctValuesCount();
+
+  @JsonProperty("distinctValuesCount")
+  void setDistinctValuesCount(Number distinctValuesCount);
+
+  @JsonProperty("isTemporal")
+  Boolean getIsTemporal();
+
+  @JsonProperty("isTemporal")
+  void setIsTemporal(Boolean isTemporal);
+
+  @JsonProperty("isFeatured")
+  Boolean getIsFeatured();
+
+  @JsonProperty("isFeatured")
+  void setIsFeatured(Boolean isFeatured);
+
+  @JsonProperty("isMergeKey")
+  Boolean getIsMergeKey();
+
+  @JsonProperty("isMergeKey")
+  void setIsMergeKey(Boolean isMergeKey);
+
+  @JsonProperty("isMultiValued")
+  Boolean getIsMultiValued();
+
+  @JsonProperty("isMultiValued")
+  void setIsMultiValued(Boolean isMultiValued);
 
   @JsonProperty("units")
   String getUnits();
@@ -108,47 +144,17 @@ public interface APINumberVariable extends APIVariable {
   @JsonProperty("rangeMax")
   void setRangeMax(Number rangeMax);
 
-  @JsonProperty("binWidthOverride")
-  Number getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Number binWidthOverride);
-
   @JsonProperty("binWidth")
   Number getBinWidth();
 
   @JsonProperty("binWidth")
   void setBinWidth(Number binWidth);
 
-  @JsonProperty("distinctValuesCount")
-  Number getDistinctValuesCount();
+  @JsonProperty("binWidthOverride")
+  Number getBinWidthOverride();
 
-  @JsonProperty("distinctValuesCount")
-  void setDistinctValuesCount(Number distinctValuesCount);
-
-  @JsonProperty("isTemporal")
-  Boolean getIsTemporal();
-
-  @JsonProperty("isTemporal")
-  void setIsTemporal(Boolean isTemporal);
-
-  @JsonProperty("isFeatured")
-  Boolean getIsFeatured();
-
-  @JsonProperty("isFeatured")
-  void setIsFeatured(Boolean isFeatured);
-
-  @JsonProperty("isMergeKey")
-  Boolean getIsMergeKey();
-
-  @JsonProperty("isMergeKey")
-  void setIsMergeKey(Boolean isMergeKey);
-
-  @JsonProperty("isMultiValued")
-  Boolean getIsMultiValued();
-
-  @JsonProperty("isMultiValued")
-  void setIsMultiValued(Boolean isMultiValued);
+  @JsonProperty("binWidthOverride")
+  void setBinWidthOverride(Number binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

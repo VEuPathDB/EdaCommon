@@ -18,16 +18,18 @@ import java.util.Map;
     "providerLabel",
     "displayName",
     "definition",
-    "vocabulary",
     "displayType",
     "displayOrder",
+    "isCategory",
     "type",
     "dataShape",
+    "vocabulary",
     "distinctValuesCount",
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "isMultiValued"
+    "isMultiValued",
+    "precision"
 })
 public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("id")
@@ -45,20 +47,23 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("definition")
   private String definition;
 
-  @JsonProperty("vocabulary")
-  private List<String> vocabulary;
-
   @JsonProperty("displayType")
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
   private Number displayOrder;
 
+  @JsonProperty("isCategory")
+  private String isCategory;
+
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
+
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
   private Number distinctValuesCount;
@@ -74,6 +79,9 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
+
+  @JsonProperty("precision")
+  private Number precision;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -128,16 +136,6 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
     this.definition = definition;
   }
 
-  @JsonProperty("vocabulary")
-  public List<String> getVocabulary() {
-    return this.vocabulary;
-  }
-
-  @JsonProperty("vocabulary")
-  public void setVocabulary(List<String> vocabulary) {
-    this.vocabulary = vocabulary;
-  }
-
   @JsonProperty("displayType")
   public APIVariableDisplayType getDisplayType() {
     return this.displayType;
@@ -158,6 +156,16 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
     this.displayOrder = displayOrder;
   }
 
+  @JsonProperty("isCategory")
+  public String getIsCategory() {
+    return this.isCategory;
+  }
+
+  @JsonProperty("isCategory")
+  public void setIsCategory(String isCategory) {
+    this.isCategory = isCategory;
+  }
+
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
@@ -171,6 +179,16 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("dataShape")
   public void setDataShape(APIVariableDataShape dataShape) {
     this.dataShape = dataShape;
+  }
+
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
+  }
+
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
   }
 
   @JsonProperty("distinctValuesCount")
@@ -221,6 +239,16 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
+  }
+
+  @JsonProperty("precision")
+  public Number getPrecision() {
+    return this.precision;
+  }
+
+  @JsonProperty("precision")
+  public void setPrecision(Number precision) {
+    this.precision = precision;
   }
 
   @JsonAnyGetter

@@ -18,11 +18,12 @@ import java.util.Map;
     "providerLabel",
     "displayName",
     "definition",
-    "vocabulary",
     "displayType",
     "displayOrder",
+    "isCategory",
     "type",
     "dataShape",
+    "vocabulary",
     "distinctValuesCount",
     "isTemporal",
     "isFeatured",
@@ -45,20 +46,23 @@ public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("definition")
   private String definition;
 
-  @JsonProperty("vocabulary")
-  private List<String> vocabulary;
-
   @JsonProperty("displayType")
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
   private Number displayOrder;
 
+  @JsonProperty("isCategory")
+  private String isCategory;
+
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
+
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
   private Number distinctValuesCount;
@@ -128,16 +132,6 @@ public class APIStringVariableImpl implements APIStringVariable {
     this.definition = definition;
   }
 
-  @JsonProperty("vocabulary")
-  public List<String> getVocabulary() {
-    return this.vocabulary;
-  }
-
-  @JsonProperty("vocabulary")
-  public void setVocabulary(List<String> vocabulary) {
-    this.vocabulary = vocabulary;
-  }
-
   @JsonProperty("displayType")
   public APIVariableDisplayType getDisplayType() {
     return this.displayType;
@@ -158,6 +152,16 @@ public class APIStringVariableImpl implements APIStringVariable {
     this.displayOrder = displayOrder;
   }
 
+  @JsonProperty("isCategory")
+  public String getIsCategory() {
+    return this.isCategory;
+  }
+
+  @JsonProperty("isCategory")
+  public void setIsCategory(String isCategory) {
+    this.isCategory = isCategory;
+  }
+
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
@@ -171,6 +175,16 @@ public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("dataShape")
   public void setDataShape(APIVariableDataShape dataShape) {
     this.dataShape = dataShape;
+  }
+
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
+  }
+
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
   }
 
   @JsonProperty("distinctValuesCount")
