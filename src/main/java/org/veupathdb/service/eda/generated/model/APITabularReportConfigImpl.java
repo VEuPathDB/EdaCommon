@@ -11,37 +11,37 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "sortingColumns",
-    "pagingConfig"
+    "sorting",
+    "paging"
 })
 public class APITabularReportConfigImpl implements APITabularReportConfig {
-  @JsonProperty("sortingColumns")
-  private List<String> sortingColumns;
+  @JsonProperty("sorting")
+  private List<SortSpecEntry> sorting;
 
-  @JsonProperty("pagingConfig")
-  private APIPagingConfig pagingConfig;
+  @JsonProperty("paging")
+  private APIPagingConfig paging;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
 
-  @JsonProperty("sortingColumns")
-  public List<String> getSortingColumns() {
-    return this.sortingColumns;
+  @JsonProperty("sorting")
+  public List<SortSpecEntry> getSorting() {
+    return this.sorting;
   }
 
-  @JsonProperty("sortingColumns")
-  public void setSortingColumns(List<String> sortingColumns) {
-    this.sortingColumns = sortingColumns;
+  @JsonProperty("sorting")
+  public void setSorting(List<SortSpecEntry> sorting) {
+    this.sorting = sorting;
   }
 
-  @JsonProperty("pagingConfig")
-  public APIPagingConfig getPagingConfig() {
-    return this.pagingConfig;
+  @JsonProperty("paging")
+  public APIPagingConfig getPaging() {
+    return this.paging;
   }
 
-  @JsonProperty("pagingConfig")
-  public void setPagingConfig(APIPagingConfig pagingConfig) {
-    this.pagingConfig = pagingConfig;
+  @JsonProperty("paging")
+  public void setPaging(APIPagingConfig paging) {
+    this.paging = paging;
   }
 
   @JsonAnyGetter

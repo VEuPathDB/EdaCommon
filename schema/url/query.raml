@@ -24,6 +24,16 @@ types:
     properties:
       counts: string[][]
 
+  SortDirection:
+    type: string
+    enum: [ 'asc', 'desc' ]
+
+  SortSpecEntry:
+    additionalProperties: false
+    properties:
+      key: string
+      direction: SortDirection
+
   API_PagingConfig:
     type: object
     properties:
@@ -33,8 +43,8 @@ types:
   API_TabularReportConfig:
     type: object
     properties:
-      sortingColumns?: string[]
-      pagingConfig?: API_PagingConfig
+      sorting?: SortSpecEntry[]
+      paging?: API_PagingConfig
 
   BinUnits:
     type: string

@@ -11,17 +11,17 @@ import java.util.Map;
     as = APITabularReportConfigImpl.class
 )
 public interface APITabularReportConfig {
-  @JsonProperty("sortingColumns")
-  List<String> getSortingColumns();
+  @JsonProperty("sorting")
+  List<SortSpecEntry> getSorting();
 
-  @JsonProperty("sortingColumns")
-  void setSortingColumns(List<String> sortingColumns);
+  @JsonProperty("sorting")
+  void setSorting(List<SortSpecEntry> sorting);
 
-  @JsonProperty("pagingConfig")
-  APIPagingConfig getPagingConfig();
+  @JsonProperty("paging")
+  APIPagingConfig getPaging();
 
-  @JsonProperty("pagingConfig")
-  void setPagingConfig(APIPagingConfig pagingConfig);
+  @JsonProperty("paging")
+  void setPaging(APIPagingConfig paging);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
