@@ -15,31 +15,31 @@ import java.util.Map;
 })
 public class APIPagingConfigImpl implements APIPagingConfig {
   @JsonProperty("numRows")
-  private Integer numRows;
+  private Long numRows;
 
   @JsonProperty("offset")
-  private Integer offset;
+  private Long offset;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
 
   @JsonProperty("numRows")
-  public Integer getNumRows() {
+  public Long getNumRows() {
     return this.numRows;
   }
 
   @JsonProperty("numRows")
-  public void setNumRows(Integer numRows) {
+  public void setNumRows(Long numRows) {
     this.numRows = numRows;
   }
 
   @JsonProperty("offset")
-  public Integer getOffset() {
+  public Long getOffset() {
     return this.offset;
   }
 
   @JsonProperty("offset")
-  public void setOffset(Integer offset) {
+  public void setOffset(Long offset) {
     this.offset = offset;
   }
 

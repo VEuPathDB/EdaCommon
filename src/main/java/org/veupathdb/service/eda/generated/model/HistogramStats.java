@@ -8,10 +8,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 )
 public interface HistogramStats {
   @JsonProperty("subsetSize")
-  Integer getSubsetSize();
+  Long getSubsetSize();
 
   @JsonProperty("subsetSize")
-  void setSubsetSize(Integer subsetSize);
+  void setSubsetSize(Long subsetSize);
 
   @JsonProperty("subsetMin")
   Object getSubsetMin();
@@ -32,26 +32,26 @@ public interface HistogramStats {
   void setSubsetMean(Object subsetMean);
 
   @JsonProperty("numVarValues")
-  Integer getNumVarValues();
+  Long getNumVarValues();
 
   @JsonProperty("numVarValues")
-  void setNumVarValues(Integer numVarValues);
+  void setNumVarValues(Long numVarValues);
 
   @JsonProperty("numDistinctValues")
-  Integer getNumDistinctValues();
+  Long getNumDistinctValues();
 
   @JsonProperty("numDistinctValues")
-  void setNumDistinctValues(Integer numDistinctValues);
+  void setNumDistinctValues(Long numDistinctValues);
 
   @JsonProperty("numDistinctEntityRecords")
-  Integer getNumDistinctEntityRecords();
+  Long getNumDistinctEntityRecords();
 
   @JsonProperty("numDistinctEntityRecords")
-  void setNumDistinctEntityRecords(Integer numDistinctEntityRecords);
+  void setNumDistinctEntityRecords(Long numDistinctEntityRecords);
 
   @JsonProperty("numMissingCases")
-  Integer getNumMissingCases();
+  Long getNumMissingCases();
 
   @JsonProperty("numMissingCases")
-  void setNumMissingCases(Integer numMissingCases);
+  void setNumMissingCases(Long numMissingCases);
 }

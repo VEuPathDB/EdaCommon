@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class HistogramStatsImpl implements HistogramStats {
   @JsonProperty("subsetSize")
-  private Integer subsetSize;
+  private Long subsetSize;
 
   @JsonProperty("subsetMin")
   private Object subsetMin;
@@ -29,24 +29,24 @@ public class HistogramStatsImpl implements HistogramStats {
   private Object subsetMean;
 
   @JsonProperty("numVarValues")
-  private Integer numVarValues;
+  private Long numVarValues;
 
   @JsonProperty("numDistinctValues")
-  private Integer numDistinctValues;
+  private Long numDistinctValues;
 
   @JsonProperty("numDistinctEntityRecords")
-  private Integer numDistinctEntityRecords;
+  private Long numDistinctEntityRecords;
 
   @JsonProperty("numMissingCases")
-  private Integer numMissingCases;
+  private Long numMissingCases;
 
   @JsonProperty("subsetSize")
-  public Integer getSubsetSize() {
+  public Long getSubsetSize() {
     return this.subsetSize;
   }
 
   @JsonProperty("subsetSize")
-  public void setSubsetSize(Integer subsetSize) {
+  public void setSubsetSize(Long subsetSize) {
     this.subsetSize = subsetSize;
   }
 
@@ -81,42 +81,42 @@ public class HistogramStatsImpl implements HistogramStats {
   }
 
   @JsonProperty("numVarValues")
-  public Integer getNumVarValues() {
+  public Long getNumVarValues() {
     return this.numVarValues;
   }
 
   @JsonProperty("numVarValues")
-  public void setNumVarValues(Integer numVarValues) {
+  public void setNumVarValues(Long numVarValues) {
     this.numVarValues = numVarValues;
   }
 
   @JsonProperty("numDistinctValues")
-  public Integer getNumDistinctValues() {
+  public Long getNumDistinctValues() {
     return this.numDistinctValues;
   }
 
   @JsonProperty("numDistinctValues")
-  public void setNumDistinctValues(Integer numDistinctValues) {
+  public void setNumDistinctValues(Long numDistinctValues) {
     this.numDistinctValues = numDistinctValues;
   }
 
   @JsonProperty("numDistinctEntityRecords")
-  public Integer getNumDistinctEntityRecords() {
+  public Long getNumDistinctEntityRecords() {
     return this.numDistinctEntityRecords;
   }
 
   @JsonProperty("numDistinctEntityRecords")
-  public void setNumDistinctEntityRecords(Integer numDistinctEntityRecords) {
+  public void setNumDistinctEntityRecords(Long numDistinctEntityRecords) {
     this.numDistinctEntityRecords = numDistinctEntityRecords;
   }
 
   @JsonProperty("numMissingCases")
-  public Integer getNumMissingCases() {
+  public Long getNumMissingCases() {
     return this.numMissingCases;
   }
 
   @JsonProperty("numMissingCases")
-  public void setNumMissingCases(Integer numMissingCases) {
+  public void setNumMissingCases(Long numMissingCases) {
     this.numMissingCases = numMissingCases;
   }
 }

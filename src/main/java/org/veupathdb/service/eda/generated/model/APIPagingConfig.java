@@ -11,16 +11,16 @@ import java.util.Map;
 )
 public interface APIPagingConfig {
   @JsonProperty("numRows")
-  Integer getNumRows();
+  Long getNumRows();
 
   @JsonProperty("numRows")
-  void setNumRows(Integer numRows);
+  void setNumRows(Long numRows);
 
   @JsonProperty("offset")
-  Integer getOffset();
+  Long getOffset();
 
   @JsonProperty("offset")
-  void setOffset(Integer offset);
+  void setOffset(Long offset);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
