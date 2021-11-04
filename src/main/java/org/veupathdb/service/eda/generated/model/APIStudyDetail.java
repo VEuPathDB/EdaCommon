@@ -16,12 +16,6 @@ public interface APIStudyDetail {
   @JsonProperty("id")
   void setId(String id);
 
-  @JsonProperty("datasetId")
-  String getDatasetId();
-
-  @JsonProperty("datasetId")
-  void setDatasetId(String datasetId);
-
   @JsonProperty("rootEntity")
   APIEntity getRootEntity();
 
