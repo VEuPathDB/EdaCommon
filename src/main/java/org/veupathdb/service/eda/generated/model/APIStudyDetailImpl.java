@@ -11,15 +11,11 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "datasetId",
     "rootEntity"
 })
 public class APIStudyDetailImpl implements APIStudyDetail {
   @JsonProperty("id")
   private String id;
-
-  @JsonProperty("datasetId")
-  private String datasetId;
 
   @JsonProperty("rootEntity")
   private APIEntity rootEntity;
@@ -35,16 +31,6 @@ public class APIStudyDetailImpl implements APIStudyDetail {
   @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
-  }
-
-  @JsonProperty("datasetId")
-  public String getDatasetId() {
-    return this.datasetId;
-  }
-
-  @JsonProperty("datasetId")
-  public void setDatasetId(String datasetId) {
-    this.datasetId = datasetId;
   }
 
   @JsonProperty("rootEntity")
