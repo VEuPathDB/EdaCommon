@@ -14,7 +14,7 @@ java {
 
 // Project settings
 group   = "org.veupathdb.service.eda"
-version = "6.0.0"
+version = "6.0.1"
 
 tasks.register("print-version") { print(version) }
 
