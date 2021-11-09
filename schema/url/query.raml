@@ -40,11 +40,16 @@ types:
       numRows: integer
       offset: integer
 
+  TabularHeaderFormat:
+    type: string
+    enum: [ 'standard', 'display' ]
+
   API_TabularReportConfig:
     type: object
     properties:
       sorting?: SortSpecEntry[]
       paging?: API_PagingConfig
+      headerFormat?: TabularHeaderFormat
 
   BinUnits:
     type: string

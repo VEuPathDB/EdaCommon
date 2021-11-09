@@ -12,7 +12,8 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "sorting",
-    "paging"
+    "paging",
+    "headerFormat"
 })
 public class APITabularReportConfigImpl implements APITabularReportConfig {
   @JsonProperty("sorting")
@@ -20,6 +21,9 @@ public class APITabularReportConfigImpl implements APITabularReportConfig {
 
   @JsonProperty("paging")
   private APIPagingConfig paging;
+
+  @JsonProperty("headerFormat")
+  private TabularHeaderFormat headerFormat;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -42,6 +46,16 @@ public class APITabularReportConfigImpl implements APITabularReportConfig {
   @JsonProperty("paging")
   public void setPaging(APIPagingConfig paging) {
     this.paging = paging;
+  }
+
+  @JsonProperty("headerFormat")
+  public TabularHeaderFormat getHeaderFormat() {
+    return this.headerFormat;
+  }
+
+  @JsonProperty("headerFormat")
+  public void setHeaderFormat(TabularHeaderFormat headerFormat) {
+    this.headerFormat = headerFormat;
   }
 
   @JsonAnyGetter

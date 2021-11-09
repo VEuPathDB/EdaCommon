@@ -23,6 +23,12 @@ public interface APITabularReportConfig {
   @JsonProperty("paging")
   void setPaging(APIPagingConfig paging);
 
+  @JsonProperty("headerFormat")
+  TabularHeaderFormat getHeaderFormat();
+
+  @JsonProperty("headerFormat")
+  void setHeaderFormat(TabularHeaderFormat headerFormat);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 
