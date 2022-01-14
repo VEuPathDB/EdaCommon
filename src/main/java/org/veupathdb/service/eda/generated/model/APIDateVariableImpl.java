@@ -22,6 +22,7 @@ import java.util.Map;
     "displayOrder",
     "isCategory",
     "type",
+    "hideFrom",
     "dataShape",
     "vocabulary",
     "distinctValuesCount",
@@ -64,6 +65,9 @@ public class APIDateVariableImpl implements APIDateVariable {
 
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
+
+  @JsonProperty("hideFrom")
+  private List<String> hideFrom;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
@@ -193,6 +197,16 @@ public class APIDateVariableImpl implements APIDateVariable {
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
+  }
+
+  @JsonProperty("hideFrom")
+  public List<String> getHideFrom() {
+    return this.hideFrom;
+  }
+
+  @JsonProperty("hideFrom")
+  public void setHideFrom(List<String> hideFrom) {
+    this.hideFrom = hideFrom;
   }
 
   @JsonProperty("dataShape")

@@ -66,6 +66,12 @@ public interface APILongitudeVariable extends APIVariableWithValues {
   @JsonProperty("type")
   APIVariableType getType();
 
+  @JsonProperty("hideFrom")
+  List<String> getHideFrom();
+
+  @JsonProperty("hideFrom")
+  void setHideFrom(List<String> hideFrom);
+
   @JsonProperty("dataShape")
   APIVariableDataShape getDataShape();
 

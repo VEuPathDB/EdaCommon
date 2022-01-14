@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,7 +19,8 @@ import java.util.Map;
     "displayType",
     "displayOrder",
     "isCategory",
-    "type"
+    "type",
+    "hideFrom"
 })
 public class APIVariableImpl implements APIVariable {
   @JsonProperty("id")
@@ -47,6 +49,9 @@ public class APIVariableImpl implements APIVariable {
 
   @JsonProperty("type")
   private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
+
+  @JsonProperty("hideFrom")
+  private List<String> hideFrom;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -134,6 +139,16 @@ public class APIVariableImpl implements APIVariable {
   @JsonProperty("type")
   public APIVariableType getType() {
     return this.type;
+  }
+
+  @JsonProperty("hideFrom")
+  public List<String> getHideFrom() {
+    return this.hideFrom;
+  }
+
+  @JsonProperty("hideFrom")
+  public void setHideFrom(List<String> hideFrom) {
+    this.hideFrom = hideFrom;
   }
 
   @JsonAnyGetter

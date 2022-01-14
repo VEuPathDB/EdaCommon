@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
 import java.util.Map;
 
 @JsonTypeInfo(
@@ -74,6 +75,12 @@ public interface APIVariable {
 
   @JsonProperty("type")
   APIVariableType getType();
+
+  @JsonProperty("hideFrom")
+  List<String> getHideFrom();
+
+  @JsonProperty("hideFrom")
+  void setHideFrom(List<String> hideFrom);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

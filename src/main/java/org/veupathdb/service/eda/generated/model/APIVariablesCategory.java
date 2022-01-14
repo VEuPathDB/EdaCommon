@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
 import java.util.Map;
 
 @JsonTypeName("category")
@@ -64,6 +65,12 @@ public interface APIVariablesCategory extends APIVariable {
 
   @JsonProperty("type")
   APIVariableType getType();
+
+  @JsonProperty("hideFrom")
+  List<String> getHideFrom();
+
+  @JsonProperty("hideFrom")
+  void setHideFrom(List<String> hideFrom);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
