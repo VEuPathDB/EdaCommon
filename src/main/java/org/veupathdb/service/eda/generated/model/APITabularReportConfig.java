@@ -29,6 +29,12 @@ public interface APITabularReportConfig {
   @JsonProperty("headerFormat")
   void setHeaderFormat(TabularHeaderFormat headerFormat);
 
+  @JsonProperty("trimTimeFromDateVars")
+  Boolean getTrimTimeFromDateVars();
+
+  @JsonProperty("trimTimeFromDateVars")
+  void setTrimTimeFromDateVars(Boolean trimTimeFromDateVars);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 
