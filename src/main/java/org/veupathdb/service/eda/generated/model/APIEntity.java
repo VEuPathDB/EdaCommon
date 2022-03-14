@@ -53,6 +53,12 @@ public interface APIEntity {
   @JsonProperty("variables")
   void setVariables(List<APIVariable> variables);
 
+  @JsonProperty("collections")
+  List<APICollection> getCollections();
+
+  @JsonProperty("collections")
+  void setCollections(List<APICollection> collections);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 

@@ -36,6 +36,63 @@ types:
       description: string
       children?: API_Entity[]
       variables: API_Variable[]
+      collections: API_Collection[]
+
+  # a way to ensure collection type and all child var types match? or just manual validation?
+  API_Collection:
+    type: object
+    discriminator: type
+    properties: 
+      id: string
+      displayName: string
+      description: string
+      vocabulary?: string[]
+      distinctValuesCount: number
+      type: API_CollectionType
+      variables: API_Variable[]
+  
+  # are there others we need? 
+  # string is possible, but idk if ive seen a strong use case. 
+  # havent even thought about what longitude might mean as a collection if anything
+  API_CollectionType:
+    enum: [ 'number', 'date', 'integer' ]
+
+  API_NumberCollection:
+    type: API_Collection
+    discriminatorValue: number
+    properties:
+      units: string
+      precision: number
+      displayRangeMin?: number
+      displayRangeMax?: number
+      rangeMin?: number
+      rangeMax?: number
+      binWidth?: number
+      binWidthOverride?: number
+
+  API_IntegerCollection:
+    type: API_Collection
+    discriminatorValue: integer
+    properties:
+      units: string
+      displayRangeMin?: integer
+      displayRangeMax?: integer
+      rangeMin?: integer
+      rangeMax?: integer
+      binWidth?: integer
+      binWidthOverride?: integer
+
+  API_DateCollection:
+    type: API_Collection
+    discriminatorValue: date
+    properties:
+      displayRangeMin?: string
+      displayRangeMax?: string
+      rangeMin?: string
+      rangeMax?: string
+      binWidth?: number
+      binWidthOverride?: number
+      binUnits?: BinUnits
 
   API_Variable:
     type: object
@@ -69,6 +126,10 @@ types:
   API_VariableDataShape:
     enum: [ 'continuous', 'categorical', 'ordinal', 'binary' ]
 
+  # think if we really wanted to get crazy we could make multifilter a type of collection instead
+  # seems all multifilters are conceptually also collections, its just not all collections are multifilters
+  # not sure in practice if there is a strong use case for continuous multifilters in subsetting or categorical collecions in vizs
+  # so likely not worth the effort
   API_VariableDisplayType:
       enum: [ 'default', 'multifilter', 'hidden' ]
 

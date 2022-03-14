@@ -12,38 +12,34 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "idColumnName",
     "displayName",
-    "displayNamePlural",
     "description",
-    "children",
-    "variables",
-    "collections"
+    "vocabulary",
+    "distinctValuesCount",
+    "type",
+    "variables"
 })
-public class EntityIdGetResponseImpl implements EntityIdGetResponse {
+public class APICollectionImpl implements APICollection {
   @JsonProperty("id")
   private String id;
-
-  @JsonProperty("idColumnName")
-  private String idColumnName;
 
   @JsonProperty("displayName")
   private String displayName;
 
-  @JsonProperty("displayNamePlural")
-  private String displayNamePlural;
-
   @JsonProperty("description")
   private String description;
 
-  @JsonProperty("children")
-  private List<APIEntity> children;
+  @JsonProperty("vocabulary")
+  private List<String> vocabulary;
+
+  @JsonProperty("distinctValuesCount")
+  private Number distinctValuesCount;
+
+  @JsonProperty("type")
+  private final APICollectionType type = _DISCRIMINATOR_TYPE_NAME;
 
   @JsonProperty("variables")
   private List<APIVariable> variables;
-
-  @JsonProperty("collections")
-  private List<APICollection> collections;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -58,16 +54,6 @@ public class EntityIdGetResponseImpl implements EntityIdGetResponse {
     this.id = id;
   }
 
-  @JsonProperty("idColumnName")
-  public String getIdColumnName() {
-    return this.idColumnName;
-  }
-
-  @JsonProperty("idColumnName")
-  public void setIdColumnName(String idColumnName) {
-    this.idColumnName = idColumnName;
-  }
-
   @JsonProperty("displayName")
   public String getDisplayName() {
     return this.displayName;
@@ -76,16 +62,6 @@ public class EntityIdGetResponseImpl implements EntityIdGetResponse {
   @JsonProperty("displayName")
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
-  }
-
-  @JsonProperty("displayNamePlural")
-  public String getDisplayNamePlural() {
-    return this.displayNamePlural;
-  }
-
-  @JsonProperty("displayNamePlural")
-  public void setDisplayNamePlural(String displayNamePlural) {
-    this.displayNamePlural = displayNamePlural;
   }
 
   @JsonProperty("description")
@@ -98,14 +74,29 @@ public class EntityIdGetResponseImpl implements EntityIdGetResponse {
     this.description = description;
   }
 
-  @JsonProperty("children")
-  public List<APIEntity> getChildren() {
-    return this.children;
+  @JsonProperty("vocabulary")
+  public List<String> getVocabulary() {
+    return this.vocabulary;
   }
 
-  @JsonProperty("children")
-  public void setChildren(List<APIEntity> children) {
-    this.children = children;
+  @JsonProperty("vocabulary")
+  public void setVocabulary(List<String> vocabulary) {
+    this.vocabulary = vocabulary;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public Number getDistinctValuesCount() {
+    return this.distinctValuesCount;
+  }
+
+  @JsonProperty("distinctValuesCount")
+  public void setDistinctValuesCount(Number distinctValuesCount) {
+    this.distinctValuesCount = distinctValuesCount;
+  }
+
+  @JsonProperty("type")
+  public APICollectionType getType() {
+    return this.type;
   }
 
   @JsonProperty("variables")
@@ -116,16 +107,6 @@ public class EntityIdGetResponseImpl implements EntityIdGetResponse {
   @JsonProperty("variables")
   public void setVariables(List<APIVariable> variables) {
     this.variables = variables;
-  }
-
-  @JsonProperty("collections")
-  public List<APICollection> getCollections() {
-    return this.collections;
-  }
-
-  @JsonProperty("collections")
-  public void setCollections(List<APICollection> collections) {
-    this.collections = collections;
   }
 
   @JsonAnyGetter

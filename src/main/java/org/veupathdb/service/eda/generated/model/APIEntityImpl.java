@@ -17,7 +17,8 @@ import java.util.Map;
     "displayNamePlural",
     "description",
     "children",
-    "variables"
+    "variables",
+    "collections"
 })
 public class APIEntityImpl implements APIEntity {
   @JsonProperty("id")
@@ -40,6 +41,9 @@ public class APIEntityImpl implements APIEntity {
 
   @JsonProperty("variables")
   private List<APIVariable> variables;
+
+  @JsonProperty("collections")
+  private List<APICollection> collections;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -112,6 +116,16 @@ public class APIEntityImpl implements APIEntity {
   @JsonProperty("variables")
   public void setVariables(List<APIVariable> variables) {
     this.variables = variables;
+  }
+
+  @JsonProperty("collections")
+  public List<APICollection> getCollections() {
+    return this.collections;
+  }
+
+  @JsonProperty("collections")
+  public void setCollections(List<APICollection> collections) {
+    this.collections = collections;
   }
 
   @JsonAnyGetter
