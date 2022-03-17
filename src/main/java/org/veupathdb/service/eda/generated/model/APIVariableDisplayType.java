@@ -9,6 +9,9 @@ public enum APIVariableDisplayType {
   @JsonProperty("multifilter")
   MULTIFILTER("multifilter"),
 
+  @JsonProperty("geoaggregator")
+  GEOAGGREGATOR("geoaggregator"),
+
   @JsonProperty("hidden")
   HIDDEN("hidden");
 
