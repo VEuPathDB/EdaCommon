@@ -6,14 +6,20 @@ public enum APIVariableDisplayType {
   @JsonProperty("default")
   DEFAULT("default"),
 
+  @JsonProperty("hidden")
+  HIDDEN("hidden"),
+
   @JsonProperty("multifilter")
   MULTIFILTER("multifilter"),
 
   @JsonProperty("geoaggregator")
   GEOAGGREGATOR("geoaggregator"),
 
-  @JsonProperty("hidden")
-  HIDDEN("hidden");
+  @JsonProperty("latitude")
+  LATITUDE("latitude"),
+
+  @JsonProperty("longitude")
+  LONGITUDE("longitude");
 
   private String name;
 
