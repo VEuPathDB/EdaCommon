@@ -24,7 +24,6 @@ import java.util.Map;
     "displayRangeMax",
     "rangeMin",
     "rangeMax",
-    "binWidth",
     "binWidthOverride",
     "binUnits"
 })
@@ -61,9 +60,6 @@ public class APIDateCollectionImpl implements APIDateCollection {
 
   @JsonProperty("rangeMax")
   private String rangeMax;
-
-  @JsonProperty("binWidth")
-  private Number binWidth;
 
   @JsonProperty("binWidthOverride")
   private Number binWidthOverride;
@@ -177,16 +173,6 @@ public class APIDateCollectionImpl implements APIDateCollection {
   @JsonProperty("rangeMax")
   public void setRangeMax(String rangeMax) {
     this.rangeMax = rangeMax;
-  }
-
-  @JsonProperty("binWidth")
-  public Number getBinWidth() {
-    return this.binWidth;
-  }
-
-  @JsonProperty("binWidth")
-  public void setBinWidth(Number binWidth) {
-    this.binWidth = binWidth;
   }
 
   @JsonProperty("binWidthOverride")

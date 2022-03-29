@@ -51,9 +51,6 @@ types:
       type: API_CollectionType
       variables: API_Variable[]
   
-  # are there others we need? 
-  # string is possible, but idk if ive seen a strong use case. 
-  # havent even thought about what longitude might mean as a collection if anything
   API_CollectionType:
     enum: [ 'number', 'date', 'integer' ]
 
@@ -67,7 +64,6 @@ types:
       displayRangeMax?: number
       rangeMin?: number
       rangeMax?: number
-      binWidth?: number
       binWidthOverride?: number
 
   API_IntegerCollection:
@@ -79,7 +75,6 @@ types:
       displayRangeMax?: integer
       rangeMin?: integer
       rangeMax?: integer
-      binWidth?: integer
       binWidthOverride?: integer
 
   API_DateCollection:
@@ -90,7 +85,6 @@ types:
       displayRangeMax?: string
       rangeMin?: string
       rangeMax?: string
-      binWidth?: number
       binWidthOverride?: number
       binUnits?: BinUnits
 
@@ -126,10 +120,6 @@ types:
   API_VariableDataShape:
     enum: [ 'continuous', 'categorical', 'ordinal', 'binary' ]
 
-  # think if we really wanted to get crazy we could make multifilter a type of collection instead
-  # seems all multifilters are conceptually also collections, its just not all collections are multifilters
-  # not sure in practice if there is a strong use case for continuous multifilters in subsetting or categorical collecions in vizs
-  # so likely not worth the effort
   API_VariableDisplayType:
       enum: [ 'default', 'multifilter', 'hidden' ]
 
@@ -183,3 +173,11 @@ types:
       binWidth?: number
       binWidthOverride?: number
       binUnits?: BinUnits
+  
+  # not sure where to put this. 
+  # think maybe this is what the data service will consume rather than VariableSpec?
+  CollectionSpec:
+    additionalProperties: false
+    properties:
+      entityId: string
+      collectionId: string

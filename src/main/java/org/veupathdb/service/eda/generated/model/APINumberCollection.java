@@ -90,12 +90,6 @@ public interface APINumberCollection extends APICollection {
   @JsonProperty("rangeMax")
   void setRangeMax(Number rangeMax);
 
-  @JsonProperty("binWidth")
-  Number getBinWidth();
-
-  @JsonProperty("binWidth")
-  void setBinWidth(Number binWidth);
-
   @JsonProperty("binWidthOverride")
   Number getBinWidthOverride();
 

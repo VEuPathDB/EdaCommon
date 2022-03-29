@@ -25,7 +25,6 @@ import java.util.Map;
     "displayRangeMax",
     "rangeMin",
     "rangeMax",
-    "binWidth",
     "binWidthOverride"
 })
 public class APIIntegerCollectionImpl implements APIIntegerCollection {
@@ -64,9 +63,6 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
 
   @JsonProperty("rangeMax")
   private Long rangeMax;
-
-  @JsonProperty("binWidth")
-  private Long binWidth;
 
   @JsonProperty("binWidthOverride")
   private Long binWidthOverride;
@@ -187,16 +183,6 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
   @JsonProperty("rangeMax")
   public void setRangeMax(Long rangeMax) {
     this.rangeMax = rangeMax;
-  }
-
-  @JsonProperty("binWidth")
-  public Long getBinWidth() {
-    return this.binWidth;
-  }
-
-  @JsonProperty("binWidth")
-  public void setBinWidth(Long binWidth) {
-    this.binWidth = binWidth;
   }
 
   @JsonProperty("binWidthOverride")
