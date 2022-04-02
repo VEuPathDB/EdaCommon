@@ -114,6 +114,12 @@ public interface APILongitudeVariable extends APIVariableWithValues {
   @JsonProperty("isMultiValued")
   void setIsMultiValued(Boolean isMultiValued);
 
+  @JsonProperty("imputeZero")
+  Boolean getImputeZero();
+
+  @JsonProperty("imputeZero")
+  void setImputeZero(Boolean imputeZero);
+
   @JsonProperty("precision")
   Number getPrecision();
 

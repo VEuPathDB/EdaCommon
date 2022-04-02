@@ -30,6 +30,7 @@ import java.util.Map;
     "isFeatured",
     "isMergeKey",
     "isMultiValued",
+    "imputeZero",
     "displayRangeMin",
     "displayRangeMax",
     "rangeMin",
@@ -89,6 +90,9 @@ public class APIDateVariableImpl implements APIDateVariable {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
+
+  @JsonProperty("imputeZero")
+  private Boolean imputeZero;
 
   @JsonProperty("displayRangeMin")
   private String displayRangeMin;
@@ -277,6 +281,16 @@ public class APIDateVariableImpl implements APIDateVariable {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
+  }
+
+  @JsonProperty("imputeZero")
+  public Boolean getImputeZero() {
+    return this.imputeZero;
+  }
+
+  @JsonProperty("imputeZero")
+  public void setImputeZero(Boolean imputeZero) {
+    this.imputeZero = imputeZero;
   }
 
   @JsonProperty("displayRangeMin")

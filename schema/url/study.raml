@@ -45,12 +45,13 @@ types:
     properties: 
       id: string
       displayName: string
-      description: string
+      type: API_CollectionType
+      dataShape: API_VariableDataShape
       vocabulary?: string[]
       distinctValuesCount: number
-      type: API_CollectionType
-      variables: API_Variable[]
-  
+      memberVariableIds: string[]
+      imputeZero: boolean
+
   API_CollectionType:
     enum: [ 'number', 'date', 'integer' ]
 
@@ -113,6 +114,7 @@ types:
       isFeatured: boolean
       isMergeKey: boolean
       isMultiValued: boolean
+      imputeZero: boolean
 
   API_VariableType:
     enum: [ 'category', 'string', 'number', 'date', 'longitude', 'integer' ]
@@ -121,7 +123,7 @@ types:
     enum: [ 'continuous', 'categorical', 'ordinal', 'binary' ]
 
   API_VariableDisplayType:
-      enum: [ 'default', 'multifilter', 'hidden' ]
+      enum: [ 'default', 'hidden', 'multifilter', 'geoaggregator', 'latitude', 'longitude' ]
 
   API_VariablesCategory:
     type: API_Variable

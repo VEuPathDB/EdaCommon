@@ -114,6 +114,12 @@ public interface APINumberVariable extends APIVariableWithValues {
   @JsonProperty("isMultiValued")
   void setIsMultiValued(Boolean isMultiValued);
 
+  @JsonProperty("imputeZero")
+  Boolean getImputeZero();
+
+  @JsonProperty("imputeZero")
+  void setImputeZero(Boolean imputeZero);
+
   @JsonProperty("units")
   String getUnits();
 

@@ -38,11 +38,14 @@ public interface APICollection {
   @JsonProperty("displayName")
   void setDisplayName(String displayName);
 
-  @JsonProperty("description")
-  String getDescription();
+  @JsonProperty("type")
+  APICollectionType getType();
 
-  @JsonProperty("description")
-  void setDescription(String description);
+  @JsonProperty("dataShape")
+  APIVariableDataShape getDataShape();
+
+  @JsonProperty("dataShape")
+  void setDataShape(APIVariableDataShape dataShape);
 
   @JsonProperty("vocabulary")
   List<String> getVocabulary();
@@ -56,14 +59,17 @@ public interface APICollection {
   @JsonProperty("distinctValuesCount")
   void setDistinctValuesCount(Number distinctValuesCount);
 
-  @JsonProperty("type")
-  APICollectionType getType();
+  @JsonProperty("memberVariableIds")
+  List<String> getMemberVariableIds();
 
-  @JsonProperty("variables")
-  List<APIVariable> getVariables();
+  @JsonProperty("memberVariableIds")
+  void setMemberVariableIds(List<String> memberVariableIds);
 
-  @JsonProperty("variables")
-  void setVariables(List<APIVariable> variables);
+  @JsonProperty("imputeZero")
+  Boolean getImputeZero();
+
+  @JsonProperty("imputeZero")
+  void setImputeZero(Boolean imputeZero);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

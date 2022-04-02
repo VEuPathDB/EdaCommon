@@ -30,6 +30,7 @@ import java.util.Map;
     "isFeatured",
     "isMergeKey",
     "isMultiValued",
+    "imputeZero",
     "units",
     "precision",
     "displayRangeMin",
@@ -90,6 +91,9 @@ public class APINumberVariableImpl implements APINumberVariable {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
+
+  @JsonProperty("imputeZero")
+  private Boolean imputeZero;
 
   @JsonProperty("units")
   private String units;
@@ -281,6 +285,16 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
+  }
+
+  @JsonProperty("imputeZero")
+  public Boolean getImputeZero() {
+    return this.imputeZero;
+  }
+
+  @JsonProperty("imputeZero")
+  public void setImputeZero(Boolean imputeZero) {
+    this.imputeZero = imputeZero;
   }
 
   @JsonProperty("units")

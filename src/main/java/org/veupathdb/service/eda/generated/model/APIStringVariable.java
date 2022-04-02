@@ -114,6 +114,12 @@ public interface APIStringVariable extends APIVariableWithValues {
   @JsonProperty("isMultiValued")
   void setIsMultiValued(Boolean isMultiValued);
 
+  @JsonProperty("imputeZero")
+  Boolean getImputeZero();
+
+  @JsonProperty("imputeZero")
+  void setImputeZero(Boolean imputeZero);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 

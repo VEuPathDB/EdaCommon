@@ -44,11 +44,12 @@ types:
     properties:
       id: string
       displayName: string
-      description: string
+      type: API_CollectionType
+      dataShape: API_VariableDataShape
       vocabulary?: string[]
       distinctValuesCount: number
-      type: API_CollectionType
-      variables: API_Variable[]
+      memberVariableIds: string[]
+      imputeZero: boolean
   API_CollectionType:
     type: string
     enum:
@@ -110,6 +111,7 @@ types:
       isFeatured: boolean
       isMergeKey: boolean
       isMultiValued: boolean
+      imputeZero: boolean
   API_VariableType:
     type: string
     enum:
@@ -130,8 +132,11 @@ types:
     type: string
     enum:
       - default
-      - multifilter
       - hidden
+      - multifilter
+      - geoaggregator
+      - latitude
+      - longitude
   API_VariablesCategory:
     type: API_Variable
     discriminatorValue: category

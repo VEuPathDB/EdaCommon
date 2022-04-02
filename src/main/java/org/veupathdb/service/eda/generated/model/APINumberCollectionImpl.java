@@ -15,11 +15,12 @@ import java.util.Map;
 @JsonPropertyOrder({
     "id",
     "displayName",
-    "description",
+    "type",
+    "dataShape",
     "vocabulary",
     "distinctValuesCount",
-    "type",
-    "variables",
+    "memberVariableIds",
+    "imputeZero",
     "units",
     "precision",
     "displayRangeMin",
@@ -35,8 +36,11 @@ public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("displayName")
   private String displayName;
 
-  @JsonProperty("description")
-  private String description;
+  @JsonProperty("type")
+  private final APICollectionType type = _DISCRIMINATOR_TYPE_NAME;
+
+  @JsonProperty("dataShape")
+  private APIVariableDataShape dataShape;
 
   @JsonProperty("vocabulary")
   private List<String> vocabulary;
@@ -44,11 +48,11 @@ public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("distinctValuesCount")
   private Number distinctValuesCount;
 
-  @JsonProperty("type")
-  private final APICollectionType type = _DISCRIMINATOR_TYPE_NAME;
+  @JsonProperty("memberVariableIds")
+  private List<String> memberVariableIds;
 
-  @JsonProperty("variables")
-  private List<APIVariable> variables;
+  @JsonProperty("imputeZero")
+  private Boolean imputeZero;
 
   @JsonProperty("units")
   private String units;
@@ -94,14 +98,19 @@ public class APINumberCollectionImpl implements APINumberCollection {
     this.displayName = displayName;
   }
 
-  @JsonProperty("description")
-  public String getDescription() {
-    return this.description;
+  @JsonProperty("type")
+  public APICollectionType getType() {
+    return this.type;
   }
 
-  @JsonProperty("description")
-  public void setDescription(String description) {
-    this.description = description;
+  @JsonProperty("dataShape")
+  public APIVariableDataShape getDataShape() {
+    return this.dataShape;
+  }
+
+  @JsonProperty("dataShape")
+  public void setDataShape(APIVariableDataShape dataShape) {
+    this.dataShape = dataShape;
   }
 
   @JsonProperty("vocabulary")
@@ -124,19 +133,24 @@ public class APINumberCollectionImpl implements APINumberCollection {
     this.distinctValuesCount = distinctValuesCount;
   }
 
-  @JsonProperty("type")
-  public APICollectionType getType() {
-    return this.type;
+  @JsonProperty("memberVariableIds")
+  public List<String> getMemberVariableIds() {
+    return this.memberVariableIds;
   }
 
-  @JsonProperty("variables")
-  public List<APIVariable> getVariables() {
-    return this.variables;
+  @JsonProperty("memberVariableIds")
+  public void setMemberVariableIds(List<String> memberVariableIds) {
+    this.memberVariableIds = memberVariableIds;
   }
 
-  @JsonProperty("variables")
-  public void setVariables(List<APIVariable> variables) {
-    this.variables = variables;
+  @JsonProperty("imputeZero")
+  public Boolean getImputeZero() {
+    return this.imputeZero;
+  }
+
+  @JsonProperty("imputeZero")
+  public void setImputeZero(Boolean imputeZero) {
+    this.imputeZero = imputeZero;
   }
 
   @JsonProperty("units")

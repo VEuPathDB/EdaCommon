@@ -27,7 +27,8 @@ import java.util.Map;
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "isMultiValued"
+    "isMultiValued",
+    "imputeZero"
 })
 public class APIVariableWithValuesImpl implements APIVariableWithValues {
   @JsonProperty("id")
@@ -80,6 +81,9 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
+
+  @JsonProperty("imputeZero")
+  private Boolean imputeZero;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -247,6 +251,16 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
+  }
+
+  @JsonProperty("imputeZero")
+  public Boolean getImputeZero() {
+    return this.imputeZero;
+  }
+
+  @JsonProperty("imputeZero")
+  public void setImputeZero(Boolean imputeZero) {
+    this.imputeZero = imputeZero;
   }
 
   @JsonAnyGetter

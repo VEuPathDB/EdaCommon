@@ -30,6 +30,7 @@ import java.util.Map;
     "isFeatured",
     "isMergeKey",
     "isMultiValued",
+    "imputeZero",
     "precision"
 })
 public class APILongitudeVariableImpl implements APILongitudeVariable {
@@ -83,6 +84,9 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
+
+  @JsonProperty("imputeZero")
+  private Boolean imputeZero;
 
   @JsonProperty("precision")
   private Number precision;
@@ -253,6 +257,16 @@ public class APILongitudeVariableImpl implements APILongitudeVariable {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
+  }
+
+  @JsonProperty("imputeZero")
+  public Boolean getImputeZero() {
+    return this.imputeZero;
+  }
+
+  @JsonProperty("imputeZero")
+  public void setImputeZero(Boolean imputeZero) {
+    this.imputeZero = imputeZero;
   }
 
   @JsonProperty("precision")
