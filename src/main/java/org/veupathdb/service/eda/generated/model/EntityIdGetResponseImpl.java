@@ -16,6 +16,7 @@ import java.util.Map;
     "displayName",
     "displayNamePlural",
     "description",
+    "isManyToOneWithParent",
     "children",
     "variables",
     "collections"
@@ -35,6 +36,9 @@ public class EntityIdGetResponseImpl implements EntityIdGetResponse {
 
   @JsonProperty("description")
   private String description;
+
+  @JsonProperty("isManyToOneWithParent")
+  private Boolean isManyToOneWithParent;
 
   @JsonProperty("children")
   private List<APIEntity> children;
@@ -96,6 +100,16 @@ public class EntityIdGetResponseImpl implements EntityIdGetResponse {
   @JsonProperty("description")
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  @JsonProperty("isManyToOneWithParent")
+  public Boolean getIsManyToOneWithParent() {
+    return this.isManyToOneWithParent;
+  }
+
+  @JsonProperty("isManyToOneWithParent")
+  public void setIsManyToOneWithParent(Boolean isManyToOneWithParent) {
+    this.isManyToOneWithParent = isManyToOneWithParent;
   }
 
   @JsonProperty("children")

@@ -41,6 +41,12 @@ public interface APIEntity {
   @JsonProperty("description")
   void setDescription(String description);
 
+  @JsonProperty("isManyToOneWithParent")
+  Boolean getIsManyToOneWithParent();
+
+  @JsonProperty("isManyToOneWithParent")
+  void setIsManyToOneWithParent(Boolean isManyToOneWithParent);
+
   @JsonProperty("children")
   List<APIEntity> getChildren();
 
