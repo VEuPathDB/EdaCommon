@@ -9,6 +9,12 @@ types:
       entityId: string
       variableId: string
 
+  CollectionSpec:
+    additionalProperties: false
+    properties:
+      entityId: string
+      collectionId: string
+
   DerivationType:
     type: string
     enum: ['transform', 'reduction']
