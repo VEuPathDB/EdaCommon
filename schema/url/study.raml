@@ -157,12 +157,24 @@ types:
     discriminatorValue: integer
     properties:
       units: string
-      displayRangeMin?: integer
-      displayRangeMax?: integer
-      rangeMin?: integer
-      rangeMax?: integer
-      binWidth?: integer
-      binWidthOverride?: integer
+      displayRangeMin?:
+        format: int64
+        type: integer
+      displayRangeMax?:
+        format: int64
+        type: integer
+      rangeMin?:
+        format: int64
+        type: integer
+      rangeMax?:
+        format: int64
+        type: integer
+      binWidth?:
+        format: int64
+        type: integer
+      binWidthOverride?:
+        format: int64
+        type: integer
 
   API_DateVariable:
     type: API_VariableWithValues

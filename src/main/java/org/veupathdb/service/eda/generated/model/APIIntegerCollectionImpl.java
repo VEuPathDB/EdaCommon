@@ -57,19 +57,19 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
   private String units;
 
   @JsonProperty("displayRangeMin")
-  private Long displayRangeMin;
+  private Integer displayRangeMin;
 
   @JsonProperty("displayRangeMax")
-  private Long displayRangeMax;
+  private Integer displayRangeMax;
 
   @JsonProperty("rangeMin")
-  private Long rangeMin;
+  private Integer rangeMin;
 
   @JsonProperty("rangeMax")
-  private Long rangeMax;
+  private Integer rangeMax;
 
   @JsonProperty("binWidthOverride")
-  private Long binWidthOverride;
+  private Integer binWidthOverride;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -160,52 +160,52 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
   }
 
   @JsonProperty("displayRangeMin")
-  public Long getDisplayRangeMin() {
+  public Integer getDisplayRangeMin() {
     return this.displayRangeMin;
   }
 
   @JsonProperty("displayRangeMin")
-  public void setDisplayRangeMin(Long displayRangeMin) {
+  public void setDisplayRangeMin(Integer displayRangeMin) {
     this.displayRangeMin = displayRangeMin;
   }
 
   @JsonProperty("displayRangeMax")
-  public Long getDisplayRangeMax() {
+  public Integer getDisplayRangeMax() {
     return this.displayRangeMax;
   }
 
   @JsonProperty("displayRangeMax")
-  public void setDisplayRangeMax(Long displayRangeMax) {
+  public void setDisplayRangeMax(Integer displayRangeMax) {
     this.displayRangeMax = displayRangeMax;
   }
 
   @JsonProperty("rangeMin")
-  public Long getRangeMin() {
+  public Integer getRangeMin() {
     return this.rangeMin;
   }
 
   @JsonProperty("rangeMin")
-  public void setRangeMin(Long rangeMin) {
+  public void setRangeMin(Integer rangeMin) {
     this.rangeMin = rangeMin;
   }
 
   @JsonProperty("rangeMax")
-  public Long getRangeMax() {
+  public Integer getRangeMax() {
     return this.rangeMax;
   }
 
   @JsonProperty("rangeMax")
-  public void setRangeMax(Long rangeMax) {
+  public void setRangeMax(Integer rangeMax) {
     this.rangeMax = rangeMax;
   }
 
   @JsonProperty("binWidthOverride")
-  public Long getBinWidthOverride() {
+  public Integer getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Long binWidthOverride) {
+  public void setBinWidthOverride(Integer binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 
