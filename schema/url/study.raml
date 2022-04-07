@@ -86,9 +86,7 @@ types:
       rangeMax?:
         type: integer
         format: int64
-      binWidthOverride?:
-        type: integer
-        format: int64
+      binWidthOverride?: integer
 
   API_DateCollection:
     type: API_Collection
@@ -98,9 +96,7 @@ types:
       displayRangeMax?: string
       rangeMin?: string
       rangeMax?: string
-      binWidthOverride?:
-        type: integer
-        format: int64
+      binWidthOverride?: integer
       binUnits?: BinUnits
 
   API_Variable:
@@ -187,12 +183,8 @@ types:
       rangeMax?:
         type: integer
         format: int64
-      binWidth?:
-        type: integer
-        format: int64
-      binWidthOverride?:
-        type: integer
-        format: int64
+      binWidth?: integer
+      binWidthOverride?: integer
 
   API_DateVariable:
     type: API_VariableWithValues
@@ -202,10 +194,6 @@ types:
       displayRangeMax?: string
       rangeMin?: string
       rangeMax?: string
-      binWidth?:
-        type: integer
-        format: int64
-      binWidthOverride?:
-        type: integer
-        format: int64
+      binWidth?: integer
+      binWidthOverride?: integer
       binUnits?: BinUnits

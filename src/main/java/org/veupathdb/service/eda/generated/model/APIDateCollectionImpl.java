@@ -66,7 +66,7 @@ public class APIDateCollectionImpl implements APIDateCollection {
   private String rangeMax;
 
   @JsonProperty("binWidthOverride")
-  private Long binWidthOverride;
+  private Integer binWidthOverride;
 
   @JsonProperty("binUnits")
   private BinUnits binUnits;
@@ -190,12 +190,12 @@ public class APIDateCollectionImpl implements APIDateCollection {
   }
 
   @JsonProperty("binWidthOverride")
-  public Long getBinWidthOverride() {
+  public Integer getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Long binWidthOverride) {
+  public void setBinWidthOverride(Integer binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 

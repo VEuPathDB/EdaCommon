@@ -151,16 +151,16 @@ public interface APIIntegerVariable extends APIVariableWithValues {
   void setRangeMax(Long rangeMax);
 
   @JsonProperty("binWidth")
-  Long getBinWidth();
+  Integer getBinWidth();
 
   @JsonProperty("binWidth")
-  void setBinWidth(Long binWidth);
+  void setBinWidth(Integer binWidth);
 
   @JsonProperty("binWidthOverride")
-  Long getBinWidthOverride();
+  Integer getBinWidthOverride();
 
   @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Long binWidthOverride);
+  void setBinWidthOverride(Integer binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

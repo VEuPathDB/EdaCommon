@@ -85,10 +85,10 @@ public interface APIDateCollection extends APICollection {
   void setRangeMax(String rangeMax);
 
   @JsonProperty("binWidthOverride")
-  Long getBinWidthOverride();
+  Integer getBinWidthOverride();
 
   @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Long binWidthOverride);
+  void setBinWidthOverride(Integer binWidthOverride);
 
   @JsonProperty("binUnits")
   BinUnits getBinUnits();

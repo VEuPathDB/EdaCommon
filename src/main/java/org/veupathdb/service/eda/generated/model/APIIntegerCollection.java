@@ -91,10 +91,10 @@ public interface APIIntegerCollection extends APICollection {
   void setRangeMax(Long rangeMax);
 
   @JsonProperty("binWidthOverride")
-  Long getBinWidthOverride();
+  Integer getBinWidthOverride();
 
   @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Long binWidthOverride);
+  void setBinWidthOverride(Integer binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

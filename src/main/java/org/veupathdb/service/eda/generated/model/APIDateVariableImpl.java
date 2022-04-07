@@ -107,10 +107,10 @@ public class APIDateVariableImpl implements APIDateVariable {
   private String rangeMax;
 
   @JsonProperty("binWidth")
-  private Long binWidth;
+  private Integer binWidth;
 
   @JsonProperty("binWidthOverride")
-  private Long binWidthOverride;
+  private Integer binWidthOverride;
 
   @JsonProperty("binUnits")
   private BinUnits binUnits;
@@ -334,22 +334,22 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("binWidth")
-  public Long getBinWidth() {
+  public Integer getBinWidth() {
     return this.binWidth;
   }
 
   @JsonProperty("binWidth")
-  public void setBinWidth(Long binWidth) {
+  public void setBinWidth(Integer binWidth) {
     this.binWidth = binWidth;
   }
 
   @JsonProperty("binWidthOverride")
-  public Long getBinWidthOverride() {
+  public Integer getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Long binWidthOverride) {
+  public void setBinWidthOverride(Integer binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 

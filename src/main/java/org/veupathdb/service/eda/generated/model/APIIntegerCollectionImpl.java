@@ -69,7 +69,7 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
   private Long rangeMax;
 
   @JsonProperty("binWidthOverride")
-  private Long binWidthOverride;
+  private Integer binWidthOverride;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -200,12 +200,12 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
   }
 
   @JsonProperty("binWidthOverride")
-  public Long getBinWidthOverride() {
+  public Integer getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Long binWidthOverride) {
+  public void setBinWidthOverride(Integer binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 

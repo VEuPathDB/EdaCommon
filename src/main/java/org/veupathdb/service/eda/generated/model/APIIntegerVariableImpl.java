@@ -110,10 +110,10 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
   private Long rangeMax;
 
   @JsonProperty("binWidth")
-  private Long binWidth;
+  private Integer binWidth;
 
   @JsonProperty("binWidthOverride")
-  private Long binWidthOverride;
+  private Integer binWidthOverride;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -344,22 +344,22 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
   }
 
   @JsonProperty("binWidth")
-  public Long getBinWidth() {
+  public Integer getBinWidth() {
     return this.binWidth;
   }
 
   @JsonProperty("binWidth")
-  public void setBinWidth(Long binWidth) {
+  public void setBinWidth(Integer binWidth) {
     this.binWidth = binWidth;
   }
 
   @JsonProperty("binWidthOverride")
-  public Long getBinWidthOverride() {
+  public Integer getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Long binWidthOverride) {
+  public void setBinWidthOverride(Integer binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 
