@@ -48,7 +48,9 @@ types:
       type: API_CollectionType
       dataShape: API_VariableDataShape
       vocabulary?: string[]
-      distinctValuesCount: number
+      distinctValuesCount:
+        type: integer
+        format: int64
       memberVariableIds: string[]
       imputeZero: boolean
 
@@ -72,11 +74,21 @@ types:
     discriminatorValue: integer
     properties:
       units: string
-      displayRangeMin?: integer
-      displayRangeMax?: integer
-      rangeMin?: integer
-      rangeMax?: integer
-      binWidthOverride?: integer
+      displayRangeMin?:
+        type: integer
+        format: int64
+      displayRangeMax?:
+        type: integer
+        format: int64
+      rangeMin?:
+        type: integer
+        format: int64
+      rangeMax?:
+        type: integer
+        format: int64
+      binWidthOverride?:
+        type: integer
+        format: int64
 
   API_DateCollection:
     type: API_Collection
@@ -86,7 +98,9 @@ types:
       displayRangeMax?: string
       rangeMin?: string
       rangeMax?: string
-      binWidthOverride?: number
+      binWidthOverride?:
+        type: integer
+        format: int64
       binUnits?: BinUnits
 
   API_Variable:
@@ -99,7 +113,9 @@ types:
       displayName: string
       definition?: string
       displayType: API_VariableDisplayType
-      displayOrder?: number
+      displayOrder?:
+        type: integer
+        format: int64
       isCategory: string
       type: API_VariableType
       hideFrom: string[]
@@ -109,7 +125,9 @@ types:
     properties:
       dataShape?: API_VariableDataShape
       vocabulary?: string[]
-      distinctValuesCount: number
+      distinctValuesCount:
+        type: integer
+        format: int64
       isTemporal: boolean
       isFeatured: boolean
       isMergeKey: boolean
@@ -158,23 +176,23 @@ types:
     properties:
       units: string
       displayRangeMin?:
-        format: int64
         type: integer
+        format: int64
       displayRangeMax?:
-        format: int64
         type: integer
+        format: int64
       rangeMin?:
-        format: int64
         type: integer
+        format: int64
       rangeMax?:
-        format: int64
         type: integer
+        format: int64
       binWidth?:
-        format: int64
         type: integer
+        format: int64
       binWidthOverride?:
-        format: int64
         type: integer
+        format: int64
 
   API_DateVariable:
     type: API_VariableWithValues
@@ -184,6 +202,10 @@ types:
       displayRangeMax?: string
       rangeMin?: string
       rangeMax?: string
-      binWidth?: number
-      binWidthOverride?: number
+      binWidth?:
+        type: integer
+        format: int64
+      binWidthOverride?:
+        type: integer
+        format: int64
       binUnits?: BinUnits

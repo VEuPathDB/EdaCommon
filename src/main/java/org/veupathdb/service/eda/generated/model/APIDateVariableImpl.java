@@ -59,7 +59,7 @@ public class APIDateVariableImpl implements APIDateVariable {
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
-  private Number displayOrder;
+  private Long displayOrder;
 
   @JsonProperty("isCategory")
   private String isCategory;
@@ -77,7 +77,7 @@ public class APIDateVariableImpl implements APIDateVariable {
   private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
-  private Number distinctValuesCount;
+  private Long distinctValuesCount;
 
   @JsonProperty("isTemporal")
   private Boolean isTemporal;
@@ -107,10 +107,10 @@ public class APIDateVariableImpl implements APIDateVariable {
   private String rangeMax;
 
   @JsonProperty("binWidth")
-  private Number binWidth;
+  private Long binWidth;
 
   @JsonProperty("binWidthOverride")
-  private Number binWidthOverride;
+  private Long binWidthOverride;
 
   @JsonProperty("binUnits")
   private BinUnits binUnits;
@@ -179,12 +179,12 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("displayOrder")
-  public Number getDisplayOrder() {
+  public Long getDisplayOrder() {
     return this.displayOrder;
   }
 
   @JsonProperty("displayOrder")
-  public void setDisplayOrder(Number displayOrder) {
+  public void setDisplayOrder(Long displayOrder) {
     this.displayOrder = displayOrder;
   }
 
@@ -234,12 +234,12 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("distinctValuesCount")
-  public Number getDistinctValuesCount() {
+  public Long getDistinctValuesCount() {
     return this.distinctValuesCount;
   }
 
   @JsonProperty("distinctValuesCount")
-  public void setDistinctValuesCount(Number distinctValuesCount) {
+  public void setDistinctValuesCount(Long distinctValuesCount) {
     this.distinctValuesCount = distinctValuesCount;
   }
 
@@ -334,22 +334,22 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("binWidth")
-  public Number getBinWidth() {
+  public Long getBinWidth() {
     return this.binWidth;
   }
 
   @JsonProperty("binWidth")
-  public void setBinWidth(Number binWidth) {
+  public void setBinWidth(Long binWidth) {
     this.binWidth = binWidth;
   }
 
   @JsonProperty("binWidthOverride")
-  public Number getBinWidthOverride() {
+  public Long getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Number binWidthOverride) {
+  public void setBinWidthOverride(Long binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 

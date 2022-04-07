@@ -43,10 +43,10 @@ public interface APIIntegerCollection extends APICollection {
   void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("distinctValuesCount")
-  Number getDistinctValuesCount();
+  Long getDistinctValuesCount();
 
   @JsonProperty("distinctValuesCount")
-  void setDistinctValuesCount(Number distinctValuesCount);
+  void setDistinctValuesCount(Long distinctValuesCount);
 
   @JsonProperty("memberVariableIds")
   List<String> getMemberVariableIds();
@@ -67,34 +67,34 @@ public interface APIIntegerCollection extends APICollection {
   void setUnits(String units);
 
   @JsonProperty("displayRangeMin")
-  Integer getDisplayRangeMin();
+  Long getDisplayRangeMin();
 
   @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(Integer displayRangeMin);
+  void setDisplayRangeMin(Long displayRangeMin);
 
   @JsonProperty("displayRangeMax")
-  Integer getDisplayRangeMax();
+  Long getDisplayRangeMax();
 
   @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(Integer displayRangeMax);
+  void setDisplayRangeMax(Long displayRangeMax);
 
   @JsonProperty("rangeMin")
-  Integer getRangeMin();
+  Long getRangeMin();
 
   @JsonProperty("rangeMin")
-  void setRangeMin(Integer rangeMin);
+  void setRangeMin(Long rangeMin);
 
   @JsonProperty("rangeMax")
-  Integer getRangeMax();
+  Long getRangeMax();
 
   @JsonProperty("rangeMax")
-  void setRangeMax(Integer rangeMax);
+  void setRangeMax(Long rangeMax);
 
   @JsonProperty("binWidthOverride")
-  Integer getBinWidthOverride();
+  Long getBinWidthOverride();
 
   @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Integer binWidthOverride);
+  void setBinWidthOverride(Long binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

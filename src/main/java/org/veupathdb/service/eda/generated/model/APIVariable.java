@@ -62,10 +62,10 @@ public interface APIVariable {
   void setDisplayType(APIVariableDisplayType displayType);
 
   @JsonProperty("displayOrder")
-  Number getDisplayOrder();
+  Long getDisplayOrder();
 
   @JsonProperty("displayOrder")
-  void setDisplayOrder(Number displayOrder);
+  void setDisplayOrder(Long displayOrder);
 
   @JsonProperty("isCategory")
   String getIsCategory();

@@ -54,10 +54,10 @@ public interface APICollection {
   void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("distinctValuesCount")
-  Number getDistinctValuesCount();
+  Long getDistinctValuesCount();
 
   @JsonProperty("distinctValuesCount")
-  void setDistinctValuesCount(Number distinctValuesCount);
+  void setDistinctValuesCount(Long distinctValuesCount);
 
   @JsonProperty("memberVariableIds")
   List<String> getMemberVariableIds();

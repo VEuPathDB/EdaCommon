@@ -46,7 +46,7 @@ public class APINumberCollectionImpl implements APINumberCollection {
   private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
-  private Number distinctValuesCount;
+  private Long distinctValuesCount;
 
   @JsonProperty("memberVariableIds")
   private List<String> memberVariableIds;
@@ -124,12 +124,12 @@ public class APINumberCollectionImpl implements APINumberCollection {
   }
 
   @JsonProperty("distinctValuesCount")
-  public Number getDistinctValuesCount() {
+  public Long getDistinctValuesCount() {
     return this.distinctValuesCount;
   }
 
   @JsonProperty("distinctValuesCount")
-  public void setDistinctValuesCount(Number distinctValuesCount) {
+  public void setDistinctValuesCount(Long distinctValuesCount) {
     this.distinctValuesCount = distinctValuesCount;
   }
 

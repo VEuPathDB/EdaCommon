@@ -52,7 +52,7 @@ public class APIStringVariableImpl implements APIStringVariable {
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
-  private Number displayOrder;
+  private Long displayOrder;
 
   @JsonProperty("isCategory")
   private String isCategory;
@@ -70,7 +70,7 @@ public class APIStringVariableImpl implements APIStringVariable {
   private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
-  private Number distinctValuesCount;
+  private Long distinctValuesCount;
 
   @JsonProperty("isTemporal")
   private Boolean isTemporal;
@@ -151,12 +151,12 @@ public class APIStringVariableImpl implements APIStringVariable {
   }
 
   @JsonProperty("displayOrder")
-  public Number getDisplayOrder() {
+  public Long getDisplayOrder() {
     return this.displayOrder;
   }
 
   @JsonProperty("displayOrder")
-  public void setDisplayOrder(Number displayOrder) {
+  public void setDisplayOrder(Long displayOrder) {
     this.displayOrder = displayOrder;
   }
 
@@ -206,12 +206,12 @@ public class APIStringVariableImpl implements APIStringVariable {
   }
 
   @JsonProperty("distinctValuesCount")
-  public Number getDistinctValuesCount() {
+  public Long getDistinctValuesCount() {
     return this.distinctValuesCount;
   }
 
   @JsonProperty("distinctValuesCount")
-  public void setDistinctValuesCount(Number distinctValuesCount) {
+  public void setDistinctValuesCount(Long distinctValuesCount) {
     this.distinctValuesCount = distinctValuesCount;
   }
 

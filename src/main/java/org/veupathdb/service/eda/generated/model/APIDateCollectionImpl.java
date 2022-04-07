@@ -45,7 +45,7 @@ public class APIDateCollectionImpl implements APIDateCollection {
   private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
-  private Number distinctValuesCount;
+  private Long distinctValuesCount;
 
   @JsonProperty("memberVariableIds")
   private List<String> memberVariableIds;
@@ -66,7 +66,7 @@ public class APIDateCollectionImpl implements APIDateCollection {
   private String rangeMax;
 
   @JsonProperty("binWidthOverride")
-  private Number binWidthOverride;
+  private Long binWidthOverride;
 
   @JsonProperty("binUnits")
   private BinUnits binUnits;
@@ -120,12 +120,12 @@ public class APIDateCollectionImpl implements APIDateCollection {
   }
 
   @JsonProperty("distinctValuesCount")
-  public Number getDistinctValuesCount() {
+  public Long getDistinctValuesCount() {
     return this.distinctValuesCount;
   }
 
   @JsonProperty("distinctValuesCount")
-  public void setDistinctValuesCount(Number distinctValuesCount) {
+  public void setDistinctValuesCount(Long distinctValuesCount) {
     this.distinctValuesCount = distinctValuesCount;
   }
 
@@ -190,12 +190,12 @@ public class APIDateCollectionImpl implements APIDateCollection {
   }
 
   @JsonProperty("binWidthOverride")
-  public Number getBinWidthOverride() {
+  public Long getBinWidthOverride() {
     return this.binWidthOverride;
   }
 
   @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Number binWidthOverride) {
+  public void setBinWidthOverride(Long binWidthOverride) {
     this.binWidthOverride = binWidthOverride;
   }
 
