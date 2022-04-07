@@ -346,8 +346,12 @@ types:
       rangeMax?:
         type: integer
         format: int64
-      binWidth?: integer
-      binWidthOverride?: integer
+      binWidth?:
+        type: integer
+        format: int64
+      binWidthOverride?:
+        type: integer
+        format: int64
   API_DateVariable:
     type: API_VariableWithValues
     discriminatorValue: date
