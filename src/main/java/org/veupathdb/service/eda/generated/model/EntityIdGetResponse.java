@@ -10,7 +10,7 @@ import java.util.Map;
 @JsonDeserialize(
     as = EntityIdGetResponseImpl.class
 )
-public interface EntityIdGetResponse extends APIEntity {
+public interface EntityIdGetResponse {
   @JsonProperty("id")
   String getId();
 
@@ -46,12 +46,6 @@ public interface EntityIdGetResponse extends APIEntity {
 
   @JsonProperty("isManyToOneWithParent")
   void setIsManyToOneWithParent(Boolean isManyToOneWithParent);
-
-  @JsonProperty("children")
-  List<APIEntity> getChildren();
-
-  @JsonProperty("children")
-  void setChildren(List<APIEntity> children);
 
   @JsonProperty("variables")
   List<APIVariable> getVariables();

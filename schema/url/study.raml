@@ -18,15 +18,6 @@ types:
       id: string
 
   EntityIdGetResponse:
-    type: API_Entity
-
-  API_StudyDetail:
-    type: object
-    properties:
-      id: string
-      rootEntity: API_Entity
-
-  API_Entity:
     type: object
     properties:
       id: string
@@ -35,9 +26,19 @@ types:
       displayNamePlural: string
       description: string
       isManyToOneWithParent: boolean
-      children?: API_Entity[]
       variables: API_Variable[]
       collections: API_Collection[]
+
+  API_StudyDetail:
+    type: object
+    properties:
+      id: string
+      rootEntity: API_Entity
+
+  API_Entity:
+    type: EntityIdGetResponse
+    properties:
+      children?: API_Entity[]
 
   API_Collection:
     type: object

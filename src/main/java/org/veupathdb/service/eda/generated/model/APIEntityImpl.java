@@ -17,9 +17,9 @@ import java.util.Map;
     "displayNamePlural",
     "description",
     "isManyToOneWithParent",
-    "children",
     "variables",
-    "collections"
+    "collections",
+    "children"
 })
 public class APIEntityImpl implements APIEntity {
   @JsonProperty("id")
@@ -40,14 +40,14 @@ public class APIEntityImpl implements APIEntity {
   @JsonProperty("isManyToOneWithParent")
   private Boolean isManyToOneWithParent;
 
-  @JsonProperty("children")
-  private List<APIEntity> children;
-
   @JsonProperty("variables")
   private List<APIVariable> variables;
 
   @JsonProperty("collections")
   private List<APICollection> collections;
+
+  @JsonProperty("children")
+  private List<APIEntity> children;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -112,16 +112,6 @@ public class APIEntityImpl implements APIEntity {
     this.isManyToOneWithParent = isManyToOneWithParent;
   }
 
-  @JsonProperty("children")
-  public List<APIEntity> getChildren() {
-    return this.children;
-  }
-
-  @JsonProperty("children")
-  public void setChildren(List<APIEntity> children) {
-    this.children = children;
-  }
-
   @JsonProperty("variables")
   public List<APIVariable> getVariables() {
     return this.variables;
@@ -140,6 +130,16 @@ public class APIEntityImpl implements APIEntity {
   @JsonProperty("collections")
   public void setCollections(List<APICollection> collections) {
     this.collections = collections;
+  }
+
+  @JsonProperty("children")
+  public List<APIEntity> getChildren() {
+    return this.children;
+  }
+
+  @JsonProperty("children")
+  public void setChildren(List<APIEntity> children) {
+    this.children = children;
   }
 
   @JsonAnyGetter
