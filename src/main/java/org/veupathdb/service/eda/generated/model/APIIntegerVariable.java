@@ -120,47 +120,17 @@ public interface APIIntegerVariable extends APIVariableWithValues {
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
 
+  @JsonProperty("distributionDefaults")
+  APIIntegerDistributionDefaults getDistributionDefaults();
+
+  @JsonProperty("distributionDefaults")
+  void setDistributionDefaults(APIIntegerDistributionDefaults distributionDefaults);
+
   @JsonProperty("units")
   String getUnits();
 
   @JsonProperty("units")
   void setUnits(String units);
-
-  @JsonProperty("displayRangeMin")
-  Long getDisplayRangeMin();
-
-  @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(Long displayRangeMin);
-
-  @JsonProperty("displayRangeMax")
-  Long getDisplayRangeMax();
-
-  @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(Long displayRangeMax);
-
-  @JsonProperty("rangeMin")
-  Long getRangeMin();
-
-  @JsonProperty("rangeMin")
-  void setRangeMin(Long rangeMin);
-
-  @JsonProperty("rangeMax")
-  Long getRangeMax();
-
-  @JsonProperty("rangeMax")
-  void setRangeMax(Long rangeMax);
-
-  @JsonProperty("binWidth")
-  Long getBinWidth();
-
-  @JsonProperty("binWidth")
-  void setBinWidth(Long binWidth);
-
-  @JsonProperty("binWidthOverride")
-  Long getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Long binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

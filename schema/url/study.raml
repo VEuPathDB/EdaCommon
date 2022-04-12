@@ -48,7 +48,7 @@ types:
       type: API_CollectionType
       dataShape: API_VariableDataShape
       vocabulary?: string[]
-      distinctValuesCount:
+      distinctValuesCount?:
         type: integer
         format: int64
       memberVariableIds: string[]
@@ -61,43 +61,22 @@ types:
     type: API_Collection
     discriminatorValue: number
     properties:
+      distributionDefaults: API_NumberDistributionDefaults
       units: string
       precision: number
-      displayRangeMin?: number
-      displayRangeMax?: number
-      rangeMin?: number
-      rangeMax?: number
-      binWidthOverride?: number
 
   API_IntegerCollection:
     type: API_Collection
     discriminatorValue: integer
     properties:
+      distributionDefaults: API_IntegerDistributionDefaults
       units: string
-      displayRangeMin?:
-        type: integer
-        format: int64
-      displayRangeMax?:
-        type: integer
-        format: int64
-      rangeMin?:
-        type: integer
-        format: int64
-      rangeMax?:
-        type: integer
-        format: int64
-      binWidthOverride?: integer
 
   API_DateCollection:
     type: API_Collection
     discriminatorValue: date
     properties:
-      displayRangeMin?: string
-      displayRangeMax?: string
-      rangeMin?: string
-      rangeMax?: string
-      binWidthOverride?: integer
-      binUnits?: BinUnits
+      distributionDefaults: API_DateDistributionDefaults
 
   API_Variable:
     type: object
@@ -153,12 +132,8 @@ types:
     properties:
       precision: number
 
-  API_NumberVariable:
-    type: API_VariableWithValues
-    discriminatorValue: number
+  API_NumberDistributionDefaults:
     properties:
-      units: string
-      precision: number
       displayRangeMin?: number
       displayRangeMax?: number
       rangeMin?: number
@@ -166,11 +141,8 @@ types:
       binWidth?: number
       binWidthOverride?: number
 
-  API_IntegerVariable:
-    type: API_VariableWithValues
-    discriminatorValue: integer
+  API_IntegerDistributionDefaults:
     properties:
-      units: string
       displayRangeMin?:
         type: integer
         format: int64
@@ -190,9 +162,7 @@ types:
         type: integer
         format: int64
 
-  API_DateVariable:
-    type: API_VariableWithValues
-    discriminatorValue: date
+  API_DateDistributionDefaults:
     properties:
       displayRangeMin?: string
       displayRangeMax?: string
@@ -201,3 +171,24 @@ types:
       binWidth?: integer
       binWidthOverride?: integer
       binUnits?: BinUnits
+
+  API_NumberVariable:
+    type: API_VariableWithValues
+    discriminatorValue: number
+    properties:
+      distributionDefaults: API_NumberDistributionDefaults
+      units: string
+      precision: number
+
+  API_IntegerVariable:
+    type: API_VariableWithValues
+    discriminatorValue: integer
+    properties:
+      distributionDefaults: API_IntegerDistributionDefaults
+      units: string
+
+  API_DateVariable:
+    type: API_VariableWithValues
+    discriminatorValue: date
+    properties:
+      distributionDefaults: API_DateDistributionDefaults

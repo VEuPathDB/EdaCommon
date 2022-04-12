@@ -31,13 +31,7 @@ import java.util.Map;
     "isMergeKey",
     "isMultiValued",
     "imputeZero",
-    "displayRangeMin",
-    "displayRangeMax",
-    "rangeMin",
-    "rangeMax",
-    "binWidth",
-    "binWidthOverride",
-    "binUnits"
+    "distributionDefaults"
 })
 public class APIDateVariableImpl implements APIDateVariable {
   @JsonProperty("id")
@@ -94,26 +88,8 @@ public class APIDateVariableImpl implements APIDateVariable {
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
 
-  @JsonProperty("displayRangeMin")
-  private String displayRangeMin;
-
-  @JsonProperty("displayRangeMax")
-  private String displayRangeMax;
-
-  @JsonProperty("rangeMin")
-  private String rangeMin;
-
-  @JsonProperty("rangeMax")
-  private String rangeMax;
-
-  @JsonProperty("binWidth")
-  private Integer binWidth;
-
-  @JsonProperty("binWidthOverride")
-  private Integer binWidthOverride;
-
-  @JsonProperty("binUnits")
-  private BinUnits binUnits;
+  @JsonProperty("distributionDefaults")
+  private APIDateDistributionDefaults distributionDefaults;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -293,74 +269,14 @@ public class APIDateVariableImpl implements APIDateVariable {
     this.imputeZero = imputeZero;
   }
 
-  @JsonProperty("displayRangeMin")
-  public String getDisplayRangeMin() {
-    return this.displayRangeMin;
+  @JsonProperty("distributionDefaults")
+  public APIDateDistributionDefaults getDistributionDefaults() {
+    return this.distributionDefaults;
   }
 
-  @JsonProperty("displayRangeMin")
-  public void setDisplayRangeMin(String displayRangeMin) {
-    this.displayRangeMin = displayRangeMin;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public String getDisplayRangeMax() {
-    return this.displayRangeMax;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public void setDisplayRangeMax(String displayRangeMax) {
-    this.displayRangeMax = displayRangeMax;
-  }
-
-  @JsonProperty("rangeMin")
-  public String getRangeMin() {
-    return this.rangeMin;
-  }
-
-  @JsonProperty("rangeMin")
-  public void setRangeMin(String rangeMin) {
-    this.rangeMin = rangeMin;
-  }
-
-  @JsonProperty("rangeMax")
-  public String getRangeMax() {
-    return this.rangeMax;
-  }
-
-  @JsonProperty("rangeMax")
-  public void setRangeMax(String rangeMax) {
-    this.rangeMax = rangeMax;
-  }
-
-  @JsonProperty("binWidth")
-  public Integer getBinWidth() {
-    return this.binWidth;
-  }
-
-  @JsonProperty("binWidth")
-  public void setBinWidth(Integer binWidth) {
-    this.binWidth = binWidth;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public Integer getBinWidthOverride() {
-    return this.binWidthOverride;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Integer binWidthOverride) {
-    this.binWidthOverride = binWidthOverride;
-  }
-
-  @JsonProperty("binUnits")
-  public BinUnits getBinUnits() {
-    return this.binUnits;
-  }
-
-  @JsonProperty("binUnits")
-  public void setBinUnits(BinUnits binUnits) {
-    this.binUnits = binUnits;
+  @JsonProperty("distributionDefaults")
+  public void setDistributionDefaults(APIDateDistributionDefaults distributionDefaults) {
+    this.distributionDefaults = distributionDefaults;
   }
 
   @JsonAnyGetter

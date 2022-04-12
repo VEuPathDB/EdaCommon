@@ -60,41 +60,11 @@ public interface APIDateCollection extends APICollection {
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
 
-  @JsonProperty("displayRangeMin")
-  String getDisplayRangeMin();
+  @JsonProperty("distributionDefaults")
+  APIDateDistributionDefaults getDistributionDefaults();
 
-  @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(String displayRangeMin);
-
-  @JsonProperty("displayRangeMax")
-  String getDisplayRangeMax();
-
-  @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(String displayRangeMax);
-
-  @JsonProperty("rangeMin")
-  String getRangeMin();
-
-  @JsonProperty("rangeMin")
-  void setRangeMin(String rangeMin);
-
-  @JsonProperty("rangeMax")
-  String getRangeMax();
-
-  @JsonProperty("rangeMax")
-  void setRangeMax(String rangeMax);
-
-  @JsonProperty("binWidthOverride")
-  Integer getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Integer binWidthOverride);
-
-  @JsonProperty("binUnits")
-  BinUnits getBinUnits();
-
-  @JsonProperty("binUnits")
-  void setBinUnits(BinUnits binUnits);
+  @JsonProperty("distributionDefaults")
+  void setDistributionDefaults(APIDateDistributionDefaults distributionDefaults);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

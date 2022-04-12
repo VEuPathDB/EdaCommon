@@ -60,41 +60,17 @@ public interface APIIntegerCollection extends APICollection {
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
 
+  @JsonProperty("distributionDefaults")
+  APIIntegerDistributionDefaults getDistributionDefaults();
+
+  @JsonProperty("distributionDefaults")
+  void setDistributionDefaults(APIIntegerDistributionDefaults distributionDefaults);
+
   @JsonProperty("units")
   String getUnits();
 
   @JsonProperty("units")
   void setUnits(String units);
-
-  @JsonProperty("displayRangeMin")
-  Long getDisplayRangeMin();
-
-  @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(Long displayRangeMin);
-
-  @JsonProperty("displayRangeMax")
-  Long getDisplayRangeMax();
-
-  @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(Long displayRangeMax);
-
-  @JsonProperty("rangeMin")
-  Long getRangeMin();
-
-  @JsonProperty("rangeMin")
-  void setRangeMin(Long rangeMin);
-
-  @JsonProperty("rangeMax")
-  Long getRangeMax();
-
-  @JsonProperty("rangeMax")
-  void setRangeMax(Long rangeMax);
-
-  @JsonProperty("binWidthOverride")
-  Integer getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Integer binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

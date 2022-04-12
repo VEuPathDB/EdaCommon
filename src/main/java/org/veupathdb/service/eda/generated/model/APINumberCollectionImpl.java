@@ -21,13 +21,9 @@ import java.util.Map;
     "distinctValuesCount",
     "memberVariableIds",
     "imputeZero",
+    "distributionDefaults",
     "units",
-    "precision",
-    "displayRangeMin",
-    "displayRangeMax",
-    "rangeMin",
-    "rangeMax",
-    "binWidthOverride"
+    "precision"
 })
 public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("id")
@@ -54,26 +50,14 @@ public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
 
+  @JsonProperty("distributionDefaults")
+  private APINumberDistributionDefaults distributionDefaults;
+
   @JsonProperty("units")
   private String units;
 
   @JsonProperty("precision")
   private Number precision;
-
-  @JsonProperty("displayRangeMin")
-  private Number displayRangeMin;
-
-  @JsonProperty("displayRangeMax")
-  private Number displayRangeMax;
-
-  @JsonProperty("rangeMin")
-  private Number rangeMin;
-
-  @JsonProperty("rangeMax")
-  private Number rangeMax;
-
-  @JsonProperty("binWidthOverride")
-  private Number binWidthOverride;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -153,6 +137,16 @@ public class APINumberCollectionImpl implements APINumberCollection {
     this.imputeZero = imputeZero;
   }
 
+  @JsonProperty("distributionDefaults")
+  public APINumberDistributionDefaults getDistributionDefaults() {
+    return this.distributionDefaults;
+  }
+
+  @JsonProperty("distributionDefaults")
+  public void setDistributionDefaults(APINumberDistributionDefaults distributionDefaults) {
+    this.distributionDefaults = distributionDefaults;
+  }
+
   @JsonProperty("units")
   public String getUnits() {
     return this.units;
@@ -171,56 +165,6 @@ public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("precision")
   public void setPrecision(Number precision) {
     this.precision = precision;
-  }
-
-  @JsonProperty("displayRangeMin")
-  public Number getDisplayRangeMin() {
-    return this.displayRangeMin;
-  }
-
-  @JsonProperty("displayRangeMin")
-  public void setDisplayRangeMin(Number displayRangeMin) {
-    this.displayRangeMin = displayRangeMin;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public Number getDisplayRangeMax() {
-    return this.displayRangeMax;
-  }
-
-  @JsonProperty("displayRangeMax")
-  public void setDisplayRangeMax(Number displayRangeMax) {
-    this.displayRangeMax = displayRangeMax;
-  }
-
-  @JsonProperty("rangeMin")
-  public Number getRangeMin() {
-    return this.rangeMin;
-  }
-
-  @JsonProperty("rangeMin")
-  public void setRangeMin(Number rangeMin) {
-    this.rangeMin = rangeMin;
-  }
-
-  @JsonProperty("rangeMax")
-  public Number getRangeMax() {
-    return this.rangeMax;
-  }
-
-  @JsonProperty("rangeMax")
-  public void setRangeMax(Number rangeMax) {
-    this.rangeMax = rangeMax;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public Number getBinWidthOverride() {
-    return this.binWidthOverride;
-  }
-
-  @JsonProperty("binWidthOverride")
-  public void setBinWidthOverride(Number binWidthOverride) {
-    this.binWidthOverride = binWidthOverride;
   }
 
   @JsonAnyGetter

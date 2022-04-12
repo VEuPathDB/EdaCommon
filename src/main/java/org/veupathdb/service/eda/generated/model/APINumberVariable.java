@@ -120,6 +120,12 @@ public interface APINumberVariable extends APIVariableWithValues {
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
 
+  @JsonProperty("distributionDefaults")
+  APINumberDistributionDefaults getDistributionDefaults();
+
+  @JsonProperty("distributionDefaults")
+  void setDistributionDefaults(APINumberDistributionDefaults distributionDefaults);
+
   @JsonProperty("units")
   String getUnits();
 
@@ -131,42 +137,6 @@ public interface APINumberVariable extends APIVariableWithValues {
 
   @JsonProperty("precision")
   void setPrecision(Number precision);
-
-  @JsonProperty("displayRangeMin")
-  Number getDisplayRangeMin();
-
-  @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(Number displayRangeMin);
-
-  @JsonProperty("displayRangeMax")
-  Number getDisplayRangeMax();
-
-  @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(Number displayRangeMax);
-
-  @JsonProperty("rangeMin")
-  Number getRangeMin();
-
-  @JsonProperty("rangeMin")
-  void setRangeMin(Number rangeMin);
-
-  @JsonProperty("rangeMax")
-  Number getRangeMax();
-
-  @JsonProperty("rangeMax")
-  void setRangeMax(Number rangeMax);
-
-  @JsonProperty("binWidth")
-  Number getBinWidth();
-
-  @JsonProperty("binWidth")
-  void setBinWidth(Number binWidth);
-
-  @JsonProperty("binWidthOverride")
-  Number getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Number binWidthOverride);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
