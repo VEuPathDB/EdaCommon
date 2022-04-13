@@ -18,7 +18,16 @@ types:
       id: string
 
   EntityIdGetResponse:
-    type: API_Entity
+    type: object
+    properties:
+      id: string
+      idColumnName: string
+      displayName: string
+      displayNamePlural: string
+      description: string
+      isManyToOneWithParent: boolean
+      variables: API_Variable[]
+      collections: API_Collection[]
 
   API_StudyDetail:
     type: object
@@ -27,15 +36,48 @@ types:
       rootEntity: API_Entity
 
   API_Entity:
-    type: object
+    type: EntityIdGetResponse
     properties:
-      id: string
-      idColumnName: string
-      displayName: string
-      displayNamePlural: string
-      description: string
       children?: API_Entity[]
-      variables: API_Variable[]
+
+  API_Collection:
+    type: object
+    discriminator: type
+    properties: 
+      id: string
+      displayName: string
+      type: API_CollectionType
+      dataShape: API_VariableDataShape
+      vocabulary?: string[]
+      distinctValuesCount?:
+        type: integer
+        format: int64
+      memberVariableIds: string[]
+      imputeZero: boolean
+
+  API_CollectionType:
+    enum: [ 'number', 'date', 'integer' ]
+
+  API_NumberCollection:
+    type: API_Collection
+    discriminatorValue: number
+    properties:
+      distributionDefaults: API_NumberDistributionDefaults
+      units: string
+      precision: number
+
+  API_IntegerCollection:
+    type: API_Collection
+    discriminatorValue: integer
+    properties:
+      distributionDefaults: API_IntegerDistributionDefaults
+      units: string
+
+  API_DateCollection:
+    type: API_Collection
+    discriminatorValue: date
+    properties:
+      distributionDefaults: API_DateDistributionDefaults
 
   API_Variable:
     type: object
@@ -47,7 +89,9 @@ types:
       displayName: string
       definition?: string
       displayType: API_VariableDisplayType
-      displayOrder?: number
+      displayOrder?:
+        type: integer
+        format: int64
       isCategory: string
       type: API_VariableType
       hideFrom: string[]
@@ -57,11 +101,14 @@ types:
     properties:
       dataShape?: API_VariableDataShape
       vocabulary?: string[]
-      distinctValuesCount: number
+      distinctValuesCount:
+        type: integer
+        format: int64
       isTemporal: boolean
       isFeatured: boolean
       isMergeKey: boolean
       isMultiValued: boolean
+      imputeZero: boolean
 
   API_VariableType:
     enum: [ 'category', 'string', 'number', 'date', 'longitude', 'integer' ]
@@ -86,12 +133,8 @@ types:
     properties:
       precision: number
 
-  API_NumberVariable:
-    type: API_VariableWithValues
-    discriminatorValue: number
+  API_NumberDistributionDefaults:
     properties:
-      units: string
-      precision: number
       displayRangeMin?: number
       displayRangeMax?: number
       rangeMin?: number
@@ -99,38 +142,54 @@ types:
       binWidth?: number
       binWidthOverride?: number
 
-  API_IntegerVariable:
-    type: API_VariableWithValues
-    discriminatorValue: integer
+  API_IntegerDistributionDefaults:
     properties:
-      units: string
       displayRangeMin?:
-        format: int64
         type: integer
+        format: int64
       displayRangeMax?:
-        format: int64
         type: integer
+        format: int64
       rangeMin?:
-        format: int64
         type: integer
+        format: int64
       rangeMax?:
-        format: int64
         type: integer
+        format: int64
       binWidth?:
-        format: int64
         type: integer
+        format: int64
       binWidthOverride?:
-        format: int64
         type: integer
+        format: int64
 
-  API_DateVariable:
-    type: API_VariableWithValues
-    discriminatorValue: date
+  API_DateDistributionDefaults:
     properties:
       displayRangeMin?: string
       displayRangeMax?: string
       rangeMin?: string
       rangeMax?: string
-      binWidth?: number
-      binWidthOverride?: number
+      binWidth?: integer
+      binWidthOverride?: integer
       binUnits?: BinUnits
+
+  API_NumberVariable:
+    type: API_VariableWithValues
+    discriminatorValue: number
+    properties:
+      distributionDefaults: API_NumberDistributionDefaults
+      units: string
+      precision: number
+
+  API_IntegerVariable:
+    type: API_VariableWithValues
+    discriminatorValue: integer
+    properties:
+      distributionDefaults: API_IntegerDistributionDefaults
+      units: string
+
+  API_DateVariable:
+    type: API_VariableWithValues
+    discriminatorValue: date
+    properties:
+      distributionDefaults: API_DateDistributionDefaults

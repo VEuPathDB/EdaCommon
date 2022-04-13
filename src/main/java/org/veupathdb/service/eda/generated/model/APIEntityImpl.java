@@ -16,8 +16,10 @@ import java.util.Map;
     "displayName",
     "displayNamePlural",
     "description",
-    "children",
-    "variables"
+    "isManyToOneWithParent",
+    "variables",
+    "collections",
+    "children"
 })
 public class APIEntityImpl implements APIEntity {
   @JsonProperty("id")
@@ -35,11 +37,17 @@ public class APIEntityImpl implements APIEntity {
   @JsonProperty("description")
   private String description;
 
-  @JsonProperty("children")
-  private List<APIEntity> children;
+  @JsonProperty("isManyToOneWithParent")
+  private Boolean isManyToOneWithParent;
 
   @JsonProperty("variables")
   private List<APIVariable> variables;
+
+  @JsonProperty("collections")
+  private List<APICollection> collections;
+
+  @JsonProperty("children")
+  private List<APIEntity> children;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -94,14 +102,14 @@ public class APIEntityImpl implements APIEntity {
     this.description = description;
   }
 
-  @JsonProperty("children")
-  public List<APIEntity> getChildren() {
-    return this.children;
+  @JsonProperty("isManyToOneWithParent")
+  public Boolean getIsManyToOneWithParent() {
+    return this.isManyToOneWithParent;
   }
 
-  @JsonProperty("children")
-  public void setChildren(List<APIEntity> children) {
-    this.children = children;
+  @JsonProperty("isManyToOneWithParent")
+  public void setIsManyToOneWithParent(Boolean isManyToOneWithParent) {
+    this.isManyToOneWithParent = isManyToOneWithParent;
   }
 
   @JsonProperty("variables")
@@ -112,6 +120,26 @@ public class APIEntityImpl implements APIEntity {
   @JsonProperty("variables")
   public void setVariables(List<APIVariable> variables) {
     this.variables = variables;
+  }
+
+  @JsonProperty("collections")
+  public List<APICollection> getCollections() {
+    return this.collections;
+  }
+
+  @JsonProperty("collections")
+  public void setCollections(List<APICollection> collections) {
+    this.collections = collections;
+  }
+
+  @JsonProperty("children")
+  public List<APIEntity> getChildren() {
+    return this.children;
+  }
+
+  @JsonProperty("children")
+  public void setChildren(List<APIEntity> children) {
+    this.children = children;
   }
 
   @JsonAnyGetter

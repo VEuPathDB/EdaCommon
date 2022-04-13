@@ -10,10 +10,10 @@ import java.util.Map;
 
 @JsonTypeName("number")
 @JsonDeserialize(
-    as = APINumberVariableImpl.class
+    as = APINumberCollectionImpl.class
 )
-public interface APINumberVariable extends APIVariableWithValues {
-  APIVariableType _DISCRIMINATOR_TYPE_NAME = APIVariableType.NUMBER;
+public interface APINumberCollection extends APICollection {
+  APICollectionType _DISCRIMINATOR_TYPE_NAME = APICollectionType.NUMBER;
 
   @JsonProperty("id")
   String getId();
@@ -21,56 +21,14 @@ public interface APINumberVariable extends APIVariableWithValues {
   @JsonProperty("id")
   void setId(String id);
 
-  @JsonProperty("parentId")
-  String getParentId();
-
-  @JsonProperty("parentId")
-  void setParentId(String parentId);
-
-  @JsonProperty("providerLabel")
-  String getProviderLabel();
-
-  @JsonProperty("providerLabel")
-  void setProviderLabel(String providerLabel);
-
   @JsonProperty("displayName")
   String getDisplayName();
 
   @JsonProperty("displayName")
   void setDisplayName(String displayName);
 
-  @JsonProperty("definition")
-  String getDefinition();
-
-  @JsonProperty("definition")
-  void setDefinition(String definition);
-
-  @JsonProperty("displayType")
-  APIVariableDisplayType getDisplayType();
-
-  @JsonProperty("displayType")
-  void setDisplayType(APIVariableDisplayType displayType);
-
-  @JsonProperty("displayOrder")
-  Long getDisplayOrder();
-
-  @JsonProperty("displayOrder")
-  void setDisplayOrder(Long displayOrder);
-
-  @JsonProperty("isCategory")
-  String getIsCategory();
-
-  @JsonProperty("isCategory")
-  void setIsCategory(String isCategory);
-
   @JsonProperty("type")
-  APIVariableType getType();
-
-  @JsonProperty("hideFrom")
-  List<String> getHideFrom();
-
-  @JsonProperty("hideFrom")
-  void setHideFrom(List<String> hideFrom);
+  APICollectionType getType();
 
   @JsonProperty("dataShape")
   APIVariableDataShape getDataShape();
@@ -90,29 +48,11 @@ public interface APINumberVariable extends APIVariableWithValues {
   @JsonProperty("distinctValuesCount")
   void setDistinctValuesCount(Long distinctValuesCount);
 
-  @JsonProperty("isTemporal")
-  Boolean getIsTemporal();
+  @JsonProperty("memberVariableIds")
+  List<String> getMemberVariableIds();
 
-  @JsonProperty("isTemporal")
-  void setIsTemporal(Boolean isTemporal);
-
-  @JsonProperty("isFeatured")
-  Boolean getIsFeatured();
-
-  @JsonProperty("isFeatured")
-  void setIsFeatured(Boolean isFeatured);
-
-  @JsonProperty("isMergeKey")
-  Boolean getIsMergeKey();
-
-  @JsonProperty("isMergeKey")
-  void setIsMergeKey(Boolean isMergeKey);
-
-  @JsonProperty("isMultiValued")
-  Boolean getIsMultiValued();
-
-  @JsonProperty("isMultiValued")
-  void setIsMultiValued(Boolean isMultiValued);
+  @JsonProperty("memberVariableIds")
+  void setMemberVariableIds(List<String> memberVariableIds);
 
   @JsonProperty("imputeZero")
   Boolean getImputeZero();

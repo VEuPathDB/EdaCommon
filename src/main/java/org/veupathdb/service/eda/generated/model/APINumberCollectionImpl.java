@@ -14,57 +14,26 @@ import java.util.Map;
 @JsonTypeName("number")
 @JsonPropertyOrder({
     "id",
-    "parentId",
-    "providerLabel",
     "displayName",
-    "definition",
-    "displayType",
-    "displayOrder",
-    "isCategory",
     "type",
-    "hideFrom",
     "dataShape",
     "vocabulary",
     "distinctValuesCount",
-    "isTemporal",
-    "isFeatured",
-    "isMergeKey",
-    "isMultiValued",
+    "memberVariableIds",
     "imputeZero",
     "distributionDefaults",
     "units",
     "precision"
 })
-public class APINumberVariableImpl implements APINumberVariable {
+public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("id")
   private String id;
-
-  @JsonProperty("parentId")
-  private String parentId;
-
-  @JsonProperty("providerLabel")
-  private String providerLabel;
 
   @JsonProperty("displayName")
   private String displayName;
 
-  @JsonProperty("definition")
-  private String definition;
-
-  @JsonProperty("displayType")
-  private APIVariableDisplayType displayType;
-
-  @JsonProperty("displayOrder")
-  private Long displayOrder;
-
-  @JsonProperty("isCategory")
-  private String isCategory;
-
   @JsonProperty("type")
-  private final APIVariableType type = _DISCRIMINATOR_TYPE_NAME;
-
-  @JsonProperty("hideFrom")
-  private List<String> hideFrom;
+  private final APICollectionType type = _DISCRIMINATOR_TYPE_NAME;
 
   @JsonProperty("dataShape")
   private APIVariableDataShape dataShape;
@@ -75,17 +44,8 @@ public class APINumberVariableImpl implements APINumberVariable {
   @JsonProperty("distinctValuesCount")
   private Long distinctValuesCount;
 
-  @JsonProperty("isTemporal")
-  private Boolean isTemporal;
-
-  @JsonProperty("isFeatured")
-  private Boolean isFeatured;
-
-  @JsonProperty("isMergeKey")
-  private Boolean isMergeKey;
-
-  @JsonProperty("isMultiValued")
-  private Boolean isMultiValued;
+  @JsonProperty("memberVariableIds")
+  private List<String> memberVariableIds;
 
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
@@ -112,26 +72,6 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.id = id;
   }
 
-  @JsonProperty("parentId")
-  public String getParentId() {
-    return this.parentId;
-  }
-
-  @JsonProperty("parentId")
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
-  }
-
-  @JsonProperty("providerLabel")
-  public String getProviderLabel() {
-    return this.providerLabel;
-  }
-
-  @JsonProperty("providerLabel")
-  public void setProviderLabel(String providerLabel) {
-    this.providerLabel = providerLabel;
-  }
-
   @JsonProperty("displayName")
   public String getDisplayName() {
     return this.displayName;
@@ -142,59 +82,9 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.displayName = displayName;
   }
 
-  @JsonProperty("definition")
-  public String getDefinition() {
-    return this.definition;
-  }
-
-  @JsonProperty("definition")
-  public void setDefinition(String definition) {
-    this.definition = definition;
-  }
-
-  @JsonProperty("displayType")
-  public APIVariableDisplayType getDisplayType() {
-    return this.displayType;
-  }
-
-  @JsonProperty("displayType")
-  public void setDisplayType(APIVariableDisplayType displayType) {
-    this.displayType = displayType;
-  }
-
-  @JsonProperty("displayOrder")
-  public Long getDisplayOrder() {
-    return this.displayOrder;
-  }
-
-  @JsonProperty("displayOrder")
-  public void setDisplayOrder(Long displayOrder) {
-    this.displayOrder = displayOrder;
-  }
-
-  @JsonProperty("isCategory")
-  public String getIsCategory() {
-    return this.isCategory;
-  }
-
-  @JsonProperty("isCategory")
-  public void setIsCategory(String isCategory) {
-    this.isCategory = isCategory;
-  }
-
   @JsonProperty("type")
-  public APIVariableType getType() {
+  public APICollectionType getType() {
     return this.type;
-  }
-
-  @JsonProperty("hideFrom")
-  public List<String> getHideFrom() {
-    return this.hideFrom;
-  }
-
-  @JsonProperty("hideFrom")
-  public void setHideFrom(List<String> hideFrom) {
-    this.hideFrom = hideFrom;
   }
 
   @JsonProperty("dataShape")
@@ -227,44 +117,14 @@ public class APINumberVariableImpl implements APINumberVariable {
     this.distinctValuesCount = distinctValuesCount;
   }
 
-  @JsonProperty("isTemporal")
-  public Boolean getIsTemporal() {
-    return this.isTemporal;
+  @JsonProperty("memberVariableIds")
+  public List<String> getMemberVariableIds() {
+    return this.memberVariableIds;
   }
 
-  @JsonProperty("isTemporal")
-  public void setIsTemporal(Boolean isTemporal) {
-    this.isTemporal = isTemporal;
-  }
-
-  @JsonProperty("isFeatured")
-  public Boolean getIsFeatured() {
-    return this.isFeatured;
-  }
-
-  @JsonProperty("isFeatured")
-  public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-  }
-
-  @JsonProperty("isMergeKey")
-  public Boolean getIsMergeKey() {
-    return this.isMergeKey;
-  }
-
-  @JsonProperty("isMergeKey")
-  public void setIsMergeKey(Boolean isMergeKey) {
-    this.isMergeKey = isMergeKey;
-  }
-
-  @JsonProperty("isMultiValued")
-  public Boolean getIsMultiValued() {
-    return this.isMultiValued;
-  }
-
-  @JsonProperty("isMultiValued")
-  public void setIsMultiValued(Boolean isMultiValued) {
-    this.isMultiValued = isMultiValued;
+  @JsonProperty("memberVariableIds")
+  public void setMemberVariableIds(List<String> memberVariableIds) {
+    this.memberVariableIds = memberVariableIds;
   }
 
   @JsonProperty("imputeZero")

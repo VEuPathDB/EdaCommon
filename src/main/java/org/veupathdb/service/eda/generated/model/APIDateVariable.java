@@ -52,10 +52,10 @@ public interface APIDateVariable extends APIVariableWithValues {
   void setDisplayType(APIVariableDisplayType displayType);
 
   @JsonProperty("displayOrder")
-  Number getDisplayOrder();
+  Long getDisplayOrder();
 
   @JsonProperty("displayOrder")
-  void setDisplayOrder(Number displayOrder);
+  void setDisplayOrder(Long displayOrder);
 
   @JsonProperty("isCategory")
   String getIsCategory();
@@ -85,10 +85,10 @@ public interface APIDateVariable extends APIVariableWithValues {
   void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("distinctValuesCount")
-  Number getDistinctValuesCount();
+  Long getDistinctValuesCount();
 
   @JsonProperty("distinctValuesCount")
-  void setDistinctValuesCount(Number distinctValuesCount);
+  void setDistinctValuesCount(Long distinctValuesCount);
 
   @JsonProperty("isTemporal")
   Boolean getIsTemporal();
@@ -114,47 +114,17 @@ public interface APIDateVariable extends APIVariableWithValues {
   @JsonProperty("isMultiValued")
   void setIsMultiValued(Boolean isMultiValued);
 
-  @JsonProperty("displayRangeMin")
-  String getDisplayRangeMin();
+  @JsonProperty("imputeZero")
+  Boolean getImputeZero();
 
-  @JsonProperty("displayRangeMin")
-  void setDisplayRangeMin(String displayRangeMin);
+  @JsonProperty("imputeZero")
+  void setImputeZero(Boolean imputeZero);
 
-  @JsonProperty("displayRangeMax")
-  String getDisplayRangeMax();
+  @JsonProperty("distributionDefaults")
+  APIDateDistributionDefaults getDistributionDefaults();
 
-  @JsonProperty("displayRangeMax")
-  void setDisplayRangeMax(String displayRangeMax);
-
-  @JsonProperty("rangeMin")
-  String getRangeMin();
-
-  @JsonProperty("rangeMin")
-  void setRangeMin(String rangeMin);
-
-  @JsonProperty("rangeMax")
-  String getRangeMax();
-
-  @JsonProperty("rangeMax")
-  void setRangeMax(String rangeMax);
-
-  @JsonProperty("binWidth")
-  Number getBinWidth();
-
-  @JsonProperty("binWidth")
-  void setBinWidth(Number binWidth);
-
-  @JsonProperty("binWidthOverride")
-  Number getBinWidthOverride();
-
-  @JsonProperty("binWidthOverride")
-  void setBinWidthOverride(Number binWidthOverride);
-
-  @JsonProperty("binUnits")
-  BinUnits getBinUnits();
-
-  @JsonProperty("binUnits")
-  void setBinUnits(BinUnits binUnits);
+  @JsonProperty("distributionDefaults")
+  void setDistributionDefaults(APIDateDistributionDefaults distributionDefaults);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

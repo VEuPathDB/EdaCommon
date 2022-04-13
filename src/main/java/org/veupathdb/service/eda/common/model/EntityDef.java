@@ -11,7 +11,9 @@ import org.gusdb.fgputil.functional.TreeNode;
 import org.json.JSONObject;
 import org.veupathdb.service.eda.generated.model.APIVariableDataShape;
 import org.veupathdb.service.eda.generated.model.APIVariableType;
+import org.veupathdb.service.eda.generated.model.CollectionSpec;
 import org.veupathdb.service.eda.generated.model.VariableSpec;
+import org.veupathdb.service.eda.generated.model.VariableSpecImpl;
 
 public class EntityDef extends ArrayList<VariableDef> {
 
@@ -21,14 +23,16 @@ public class EntityDef extends ArrayList<VariableDef> {
   private final String _displayName;
   private final VariableDef _idColumnDef;
   private final List<VariableDef> _categories;
+  private final List<CollectionDef> _collections;
 
   public EntityDef(String id, String displayName, String idColumnName) {
     _id = id;
     _displayName = displayName;
     _idColumnDef = new VariableDef(_id, idColumnName, APIVariableType.STRING,
-        APIVariableDataShape.CONTINUOUS, false, Optional.empty(), null, VariableSource.ID);
+        APIVariableDataShape.CONTINUOUS, false, false, Optional.empty(), null, VariableSource.ID);
     add(_idColumnDef);
     _categories = new ArrayList<>();
+    _collections = new ArrayList<>();
   }
 
   public String getId() {
@@ -42,6 +46,15 @@ public class EntityDef extends ArrayList<VariableDef> {
   public Optional<VariableDef> getVariable(VariableSpec var) {
     return stream()
       .filter(v -> VariableDef.isSameVariable(v, var))
+      .findFirst();
+  }
+
+  public Optional<CollectionDef> getCollection(CollectionSpec colSpec) {
+    if (!colSpec.getEntityId().equals(_id)) {
+      return Optional.empty();
+    }
+    return _collections.stream()
+      .filter(c -> c.getCollectionId().equals(colSpec.getCollectionId()))
       .findFirst();
   }
 
@@ -59,8 +72,8 @@ public class EntityDef extends ArrayList<VariableDef> {
     Map<String, TreeNode<VariableDef>> allVarNodes = stream()
         .filter(var -> var.getSource() == VariableSource.NATIVE)
         .collect(Collectors.toMap(
-            var -> var.getVariableId(),
-            var -> new TreeNode<>(var)
+            VariableSpecImpl::getVariableId,
+            TreeNode::new
         ));
 
     // add categories for proper tree structure
@@ -96,7 +109,7 @@ public class EntityDef extends ArrayList<VariableDef> {
         // create a dummy root containing all (>1) parentless nodes
         TreeNode<VariableDef> dummyRoot = new TreeNode<>(new VariableDef(
           "dummyRoot", "dummyRoot", APIVariableType.STRING, APIVariableDataShape.CATEGORICAL,
-          false, Optional.empty(), null, VariableSource.NATIVE
+          false, false, Optional.empty(), null, VariableSource.NATIVE
         ));
         dummyRoot.addAllChildNodes(parentlessNodes);
         return dummyRoot;
@@ -115,7 +128,11 @@ public class EntityDef extends ArrayList<VariableDef> {
       .toString(2);
   }
 
-  public void addCategory(VariableDef cat) {
-    _categories.add(cat);
+  public void addCategory(VariableDef category) {
+    _categories.add(category);
+  }
+
+  public void addCollection(CollectionDef collection) {
+    _collections.add(collection);
   }
 }

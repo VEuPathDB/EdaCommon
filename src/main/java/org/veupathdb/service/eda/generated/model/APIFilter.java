@@ -18,8 +18,8 @@ import java.util.Map;
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIDateSetFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APILongitudeRangeFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIMultiFilter.class),
-    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIStringSetFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIDateRangeFilter.class),
+    @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIStringSetFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APINumberSetFilter.class),
     @JsonSubTypes.Type(org.veupathdb.service.eda.generated.model.APIFilter.class)
 })

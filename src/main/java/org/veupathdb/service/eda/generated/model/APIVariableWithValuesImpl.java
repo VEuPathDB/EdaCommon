@@ -27,7 +27,8 @@ import java.util.Map;
     "isTemporal",
     "isFeatured",
     "isMergeKey",
-    "isMultiValued"
+    "isMultiValued",
+    "imputeZero"
 })
 public class APIVariableWithValuesImpl implements APIVariableWithValues {
   @JsonProperty("id")
@@ -49,7 +50,7 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
-  private Number displayOrder;
+  private Long displayOrder;
 
   @JsonProperty("isCategory")
   private String isCategory;
@@ -67,7 +68,7 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
   private List<String> vocabulary;
 
   @JsonProperty("distinctValuesCount")
-  private Number distinctValuesCount;
+  private Long distinctValuesCount;
 
   @JsonProperty("isTemporal")
   private Boolean isTemporal;
@@ -80,6 +81,9 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
 
   @JsonProperty("isMultiValued")
   private Boolean isMultiValued;
+
+  @JsonProperty("imputeZero")
+  private Boolean imputeZero;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -145,12 +149,12 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
   }
 
   @JsonProperty("displayOrder")
-  public Number getDisplayOrder() {
+  public Long getDisplayOrder() {
     return this.displayOrder;
   }
 
   @JsonProperty("displayOrder")
-  public void setDisplayOrder(Number displayOrder) {
+  public void setDisplayOrder(Long displayOrder) {
     this.displayOrder = displayOrder;
   }
 
@@ -200,12 +204,12 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
   }
 
   @JsonProperty("distinctValuesCount")
-  public Number getDistinctValuesCount() {
+  public Long getDistinctValuesCount() {
     return this.distinctValuesCount;
   }
 
   @JsonProperty("distinctValuesCount")
-  public void setDistinctValuesCount(Number distinctValuesCount) {
+  public void setDistinctValuesCount(Long distinctValuesCount) {
     this.distinctValuesCount = distinctValuesCount;
   }
 
@@ -247,6 +251,16 @@ public class APIVariableWithValuesImpl implements APIVariableWithValues {
   @JsonProperty("isMultiValued")
   public void setIsMultiValued(Boolean isMultiValued) {
     this.isMultiValued = isMultiValued;
+  }
+
+  @JsonProperty("imputeZero")
+  public Boolean getImputeZero() {
+    return this.imputeZero;
+  }
+
+  @JsonProperty("imputeZero")
+  public void setImputeZero(Boolean imputeZero) {
+    this.imputeZero = imputeZero;
   }
 
   @JsonAnyGetter

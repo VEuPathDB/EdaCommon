@@ -52,10 +52,10 @@ public interface APIStringVariable extends APIVariableWithValues {
   void setDisplayType(APIVariableDisplayType displayType);
 
   @JsonProperty("displayOrder")
-  Number getDisplayOrder();
+  Long getDisplayOrder();
 
   @JsonProperty("displayOrder")
-  void setDisplayOrder(Number displayOrder);
+  void setDisplayOrder(Long displayOrder);
 
   @JsonProperty("isCategory")
   String getIsCategory();
@@ -85,10 +85,10 @@ public interface APIStringVariable extends APIVariableWithValues {
   void setVocabulary(List<String> vocabulary);
 
   @JsonProperty("distinctValuesCount")
-  Number getDistinctValuesCount();
+  Long getDistinctValuesCount();
 
   @JsonProperty("distinctValuesCount")
-  void setDistinctValuesCount(Number distinctValuesCount);
+  void setDistinctValuesCount(Long distinctValuesCount);
 
   @JsonProperty("isTemporal")
   Boolean getIsTemporal();
@@ -113,6 +113,12 @@ public interface APIStringVariable extends APIVariableWithValues {
 
   @JsonProperty("isMultiValued")
   void setIsMultiValued(Boolean isMultiValued);
+
+  @JsonProperty("imputeZero")
+  Boolean getImputeZero();
+
+  @JsonProperty("imputeZero")
+  void setImputeZero(Boolean imputeZero);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

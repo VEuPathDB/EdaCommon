@@ -44,7 +44,7 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   private APIVariableDisplayType displayType;
 
   @JsonProperty("displayOrder")
-  private Number displayOrder;
+  private Long displayOrder;
 
   @JsonProperty("isCategory")
   private String isCategory;
@@ -119,12 +119,12 @@ public class APIVariablesCategoryImpl implements APIVariablesCategory {
   }
 
   @JsonProperty("displayOrder")
-  public Number getDisplayOrder() {
+  public Long getDisplayOrder() {
     return this.displayOrder;
   }
 
   @JsonProperty("displayOrder")
-  public void setDisplayOrder(Number displayOrder) {
+  public void setDisplayOrder(Long displayOrder) {
     this.displayOrder = displayOrder;
   }
 
