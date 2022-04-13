@@ -1,5 +1,31 @@
 # EdaCommon
+
 Contains code, API and schema documents, and any other data needed by multiple EDA web services
+
+## Overview
+
+### Shared JSON Schema (RAML)
+
+This repo contains (in schema/url) JSON schema elements (declared in RAML) that are shared across various
+EDA services.  EdaSubsettingService produces metadata about the studies, entities, and variables available;
+those JSON objects are deserialized by the merging, data, and compute services, using the Java classes
+generated in this repo.  Meanwhile, the web client still has access to raw JSON schema information, which
+client developers use to write typescript types around metadata responses.
+
+In addition to the metadata schema elements, other schema elements shared across service repos include:
+
+- subsetting filter specs
+- variable and collection specs
+- tabular request and response types
+
+### Utility Classes (Java)
+
+This repo contains a set of utility classes meant to ease communication between services.  These include:
+
+- Client for dataset access service and utility to wrap and query response
+- Request specs and validators for subsetting and merging service tabular endpoints
+- Clients for subsetting and merging services
+- Wrappers with convenience methods for managing EDA metadata, esp. entity trees
 
 ## Release Procedure
 
