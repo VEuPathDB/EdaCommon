@@ -41,17 +41,23 @@ dependencies {
 
   // versions
   val jackson = "2.13.3"      // FasterXML Jackson version
-  val jersey  = "3.0.4"       // Jersey/JaxRS version
   val log4j   = "2.17.2"      // Log4J version
-  val fgputil = "2.5-jakarta" // FgpUtil version
+  val fgputil = "2.7-jakarta" // FgpUtil version
 
   // FgpUtil
   implementation("org.gusdb:fgputil-core:${fgputil}")
   implementation("org.gusdb:fgputil-client:${fgputil}")
 
+  // REngine Java client to RServe
+  //implementation("org.rosuda.REngine:REngine:2.1.0")
+  implementation("org.rosuda.REngine:Rserve:1.8.1")
+
   // Jackson
   implementation("com.fasterxml.jackson.core:jackson-databind:${jackson}")
   implementation("com.fasterxml.jackson.core:jackson-annotations:${jackson}")
+
+  // Jersey
+  implementation("org.glassfish.jersey.core:jersey-server:3.0.4")
 
   // Log4J
   implementation("org.apache.logging.log4j:log4j-api:${log4j}")
@@ -59,7 +65,7 @@ dependencies {
 
   // Unit Testing
   testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-  testImplementation("org.mockito:mockito-core:2.+")
+  testImplementation("org.mockito:mockito-core:4.6.1")
 }
 
 tasks.jar {

@@ -1,0 +1,29 @@
+#%RAML 1.0 Library
+
+types:
+
+  VisualizationDataElementConstraint:
+    additionalProperties: false
+    properties:
+      isRequired:
+        type: boolean
+      isTemporal:
+        type: boolean
+      minNumVars:
+        type: number
+      maxNumVars:
+        type: number
+      maxNumValues:
+        type: number
+      allowedTypes:
+        type: API_VariableType[]
+        required: false
+      allowedShapes:
+        type: API_VariableDataShape[]
+        required: false
+      description:
+        type: string
+
+  VisualizationDataElementConstraintPattern:
+    properties:
+      //: VisualizationDataElementConstraint
