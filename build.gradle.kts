@@ -1,7 +1,7 @@
 
 // Project settings
 group   = "org.veupathdb.service.eda"
-version = "9.0.0"
+version = "9.1.0"
 
 plugins {
   `java-library`
@@ -40,9 +40,9 @@ repositories {
 dependencies {
 
   // versions
-  val jackson = "2.13.3"      // FasterXML Jackson version
-  val log4j   = "2.17.2"      // Log4J version
-  val fgputil = "2.7-jakarta" // FgpUtil version
+  val jackson = "2.13.3"        // FasterXML Jackson version
+  val log4j   = "2.17.2"        // Log4J version
+  val fgputil = "2.7.1-jakarta" // FgpUtil version
 
   // FgpUtil
   implementation("org.gusdb:fgputil-core:${fgputil}")
