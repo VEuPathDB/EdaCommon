@@ -50,6 +50,10 @@ types:
     type: string
     enum: [ 'standard', 'display' ]
 
+  DataSourceType:
+    type: string
+    enum: [ 'database', 'file' ]
+
   API_TabularReportConfig:
     type: object
     properties:
@@ -57,7 +61,7 @@ types:
       paging?: API_PagingConfig
       headerFormat?: TabularHeaderFormat
       trimTimeFromDateVars?: boolean
-      useBinaryFiles?: boolean
+      dataSource?: DataSourceType
 
   BinUnits:
     type: string
