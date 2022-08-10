@@ -35,6 +35,12 @@ public interface APITabularReportConfig {
   @JsonProperty("trimTimeFromDateVars")
   void setTrimTimeFromDateVars(Boolean trimTimeFromDateVars);
 
+  @JsonProperty("useBinaryFiles")
+  Boolean getUseBinaryFiles();
+
+  @JsonProperty("useBinaryFiles")
+  void setUseBinaryFiles(Boolean useBinaryFiles);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 

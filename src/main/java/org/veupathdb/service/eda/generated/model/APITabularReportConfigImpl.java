@@ -14,7 +14,8 @@ import java.util.Map;
     "sorting",
     "paging",
     "headerFormat",
-    "trimTimeFromDateVars"
+    "trimTimeFromDateVars",
+    "useBinaryFiles"
 })
 public class APITabularReportConfigImpl implements APITabularReportConfig {
   @JsonProperty("sorting")
@@ -28,6 +29,9 @@ public class APITabularReportConfigImpl implements APITabularReportConfig {
 
   @JsonProperty("trimTimeFromDateVars")
   private Boolean trimTimeFromDateVars;
+
+  @JsonProperty("useBinaryFiles")
+  private Boolean useBinaryFiles;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -70,6 +74,16 @@ public class APITabularReportConfigImpl implements APITabularReportConfig {
   @JsonProperty("trimTimeFromDateVars")
   public void setTrimTimeFromDateVars(Boolean trimTimeFromDateVars) {
     this.trimTimeFromDateVars = trimTimeFromDateVars;
+  }
+
+  @JsonProperty("useBinaryFiles")
+  public Boolean getUseBinaryFiles() {
+    return this.useBinaryFiles;
+  }
+
+  @JsonProperty("useBinaryFiles")
+  public void setUseBinaryFiles(Boolean useBinaryFiles) {
+    this.useBinaryFiles = useBinaryFiles;
   }
 
   @JsonAnyGetter
