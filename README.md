@@ -2,7 +2,7 @@
 
 Contains code, API and schema documents, and any other data needed by multiple EDA web services
 
-See the https://veupathdb.github.io/EdaCommon/api.html[API Docs].
+See the [API Docs](https://veupathdb.github.io/EdaCommon/api.html).
 
 ## Overview
 
