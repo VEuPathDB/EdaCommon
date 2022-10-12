@@ -6,8 +6,6 @@ types:
   VariableClass:
     enum: [ 'native', 'derived', 'computed', 'collection' ]
 
-  # is it better defined as -> ComputedVariableMetadata | DerivedVariableMetadata | CollectionVariableMetadata | NativeVariableMetadata
-  # would give more control over which optional props are reqs for each
   VariableMetadata:
     additionalProperties: false
     properties:
@@ -21,6 +19,15 @@ types:
       displayRangeMax?: any # number | string
       vocabulary?: string[]
       members?: VariableSpec[]
+
+  ComputedVariableMetadataResponse:
+    additionalProperties: false
+    properties:
+      variables: VariableMetadata[]
+  
+  EmptyResponse:
+    type: object
+    additionalProperties: false
 
   VisualizationDataElementConstraint:
     additionalProperties: false
