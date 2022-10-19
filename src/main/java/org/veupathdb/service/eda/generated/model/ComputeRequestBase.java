@@ -1,13 +1,16 @@
 package org.veupathdb.service.eda.generated.model;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.List;
+import java.util.Map;
 
 @JsonDeserialize(
-    as = MergedEntityTabularPostRequestImpl.class
+    as = ComputeRequestBaseImpl.class
 )
-public interface MergedEntityTabularPostRequest {
+public interface ComputeRequestBase {
   @JsonProperty("studyId")
   String getStudyId();
 
@@ -20,27 +23,15 @@ public interface MergedEntityTabularPostRequest {
   @JsonProperty("filters")
   void setFilters(List<APIFilter> filters);
 
-  @JsonProperty("entityId")
-  String getEntityId();
-
-  @JsonProperty("entityId")
-  void setEntityId(String entityId);
-
-  @JsonProperty("outputVariables")
-  List<VariableSpec> getOutputVariables();
-
-  @JsonProperty("outputVariables")
-  void setOutputVariables(List<VariableSpec> outputVariables);
-
   @JsonProperty("derivedVariables")
   List<DerivedVariable> getDerivedVariables();
 
   @JsonProperty("derivedVariables")
   void setDerivedVariables(List<DerivedVariable> derivedVariables);
 
-  @JsonProperty("computeSpec")
-  ComputeSpecForMerging getComputeSpec();
+  @JsonAnyGetter
+  Map<String, Object> getAdditionalProperties();
 
-  @JsonProperty("computeSpec")
-  void setComputeSpec(ComputeSpecForMerging computeSpec);
+  @JsonAnySetter
+  void setAdditionalProperties(String key, Object value);
 }

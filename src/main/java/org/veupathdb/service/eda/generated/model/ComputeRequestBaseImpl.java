@@ -1,37 +1,32 @@
 package org.veupathdb.service.eda.generated.model;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "studyId",
     "filters",
-    "entityId",
-    "outputVariables",
-    "derivedVariables",
-    "computeSpec"
+    "derivedVariables"
 })
-public class MergedEntityTabularPostRequestImpl implements MergedEntityTabularPostRequest {
+public class ComputeRequestBaseImpl implements ComputeRequestBase {
   @JsonProperty("studyId")
   private String studyId;
 
   @JsonProperty("filters")
   private List<APIFilter> filters;
 
-  @JsonProperty("entityId")
-  private String entityId;
-
-  @JsonProperty("outputVariables")
-  private List<VariableSpec> outputVariables;
-
   @JsonProperty("derivedVariables")
   private List<DerivedVariable> derivedVariables;
 
-  @JsonProperty("computeSpec")
-  private ComputeSpecForMerging computeSpec;
+  @JsonIgnore
+  private Map<String, Object> additionalProperties = new ExcludingMap();
 
   @JsonProperty("studyId")
   public String getStudyId() {
@@ -53,26 +48,6 @@ public class MergedEntityTabularPostRequestImpl implements MergedEntityTabularPo
     this.filters = filters;
   }
 
-  @JsonProperty("entityId")
-  public String getEntityId() {
-    return this.entityId;
-  }
-
-  @JsonProperty("entityId")
-  public void setEntityId(String entityId) {
-    this.entityId = entityId;
-  }
-
-  @JsonProperty("outputVariables")
-  public List<VariableSpec> getOutputVariables() {
-    return this.outputVariables;
-  }
-
-  @JsonProperty("outputVariables")
-  public void setOutputVariables(List<VariableSpec> outputVariables) {
-    this.outputVariables = outputVariables;
-  }
-
   @JsonProperty("derivedVariables")
   public List<DerivedVariable> getDerivedVariables() {
     return this.derivedVariables;
@@ -83,13 +58,13 @@ public class MergedEntityTabularPostRequestImpl implements MergedEntityTabularPo
     this.derivedVariables = derivedVariables;
   }
 
-  @JsonProperty("computeSpec")
-  public ComputeSpecForMerging getComputeSpec() {
-    return this.computeSpec;
+  @JsonAnyGetter
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
   }
 
-  @JsonProperty("computeSpec")
-  public void setComputeSpec(ComputeSpecForMerging computeSpec) {
-    this.computeSpec = computeSpec;
+  @JsonAnySetter
+  public void setAdditionalProperties(String key, Object value) {
+    this.additionalProperties.put(key, value);
   }
 }

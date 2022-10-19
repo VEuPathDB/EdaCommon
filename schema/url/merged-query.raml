@@ -29,6 +29,11 @@ types:
       inputVars: VariableSpec[]
       config: object # TBD
 
+  ComputeSpecForMerging:
+    additionalProperties: false
+    properties:
+      computeName: string
+      computeConfig: object
 
   MergedEntityTabularPostRequest:
     additionalProperties: false
@@ -38,3 +43,4 @@ types:
       entityId: string
       outputVariables: VariableSpec[]
       derivedVariables: DerivedVariable[]
+      computeSpec?: ComputeSpecForMerging
