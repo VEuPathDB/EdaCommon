@@ -6,18 +6,24 @@ types:
   VariableClass:
     enum: [ 'native', 'derived', 'computed', 'collection' ]
 
+  PlotReference:
+    enum: [ 'xAxis', 'yAxis', 'zAxis', 'overlay', 'facet']
+
   VariableMetadata:
     additionalProperties: false
     properties:
       dataElement: string # xAxis, yAxis, overlay, facet ...
       class: VariableClass
       variableSpec: VariableSpec
+      plotReference: PlotReference
       dataType?: API_VariableType
       dataShape?: API_VariableDataShape
       displayName?: string
       displayRangeMin?: any # number | string
       displayRangeMax?: any # number | string
       vocabulary?: string[]
+      isCollection: boolean
+      imputeZero: boolean
       members?: VariableSpec[]
 
   ComputedVariableMetadataResponse:
