@@ -40,3 +40,19 @@ types:
         type: array
         items:
           type: DerivedVariable
+
+  PlotReference:
+    type: object
+    additionalProperties: false
+    properties:
+      id: string
+      variablePlotRef?: string
+      valuePlotRef?: string
+
+  ComputedVariableMetadata:
+    type: object
+    additionalProperties: false
+    properties:
+      computedVariables: API_VariableWithValues[]
+      computedCollections: API_Collection[]
+      plotReferences: PlotReference[]
