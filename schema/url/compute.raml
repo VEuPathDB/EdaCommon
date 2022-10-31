@@ -41,11 +41,17 @@ types:
         items:
           type: DerivedVariable
 
+  ComputeConfigBase:
+    type: object
+    additionalProperties: true
+    properties:
+      outputEntityId: string
+
   PlotReference:
     type: object
     additionalProperties: false
     properties:
-      id: string
+      computedVariableId: string
       variablePlotRef?: string
       valuePlotRef?: string
 
