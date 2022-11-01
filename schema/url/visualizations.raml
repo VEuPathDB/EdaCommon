@@ -12,12 +12,11 @@ types:
   VariableMetadata:
     additionalProperties: false
     properties:
-      dataElement: string # xAxis, yAxis, overlay, facet ...
-      class: VariableClass
+      variableClass: VariableClass
       variableSpec: VariableSpec
       plotReference: PlotReference
-      dataType?: API_VariableType
-      dataShape?: API_VariableDataShape
+      dataType: API_VariableType
+      dataShape: API_VariableDataShape
       displayName?: string
       displayRangeMin?: any # number | string
       displayRangeMax?: any # number | string
