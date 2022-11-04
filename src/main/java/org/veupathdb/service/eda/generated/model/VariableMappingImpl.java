@@ -7,26 +7,28 @@ import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "dataElement",
-    "class",
+    "variableClass",
     "variableSpec",
+    "plotReference",
     "dataType",
     "dataShape",
     "displayName",
     "displayRangeMin",
     "displayRangeMax",
     "vocabulary",
+    "isCollection",
+    "imputeZero",
     "members"
 })
-public class VariableMetadataImpl implements VariableMetadata {
-  @JsonProperty("dataElement")
-  private String dataElement;
-
-  @JsonProperty("class")
-  private VariableClass classVariable;
+public class VariableMappingImpl implements VariableMapping {
+  @JsonProperty("variableClass")
+  private VariableClass variableClass;
 
   @JsonProperty("variableSpec")
   private VariableSpec variableSpec;
+
+  @JsonProperty("plotReference")
+  private PlotReferenceValue plotReference;
 
   @JsonProperty("dataType")
   private APIVariableType dataType;
@@ -46,27 +48,23 @@ public class VariableMetadataImpl implements VariableMetadata {
   @JsonProperty("vocabulary")
   private List<String> vocabulary;
 
+  @JsonProperty("isCollection")
+  private Boolean isCollection;
+
+  @JsonProperty("imputeZero")
+  private Boolean imputeZero;
+
   @JsonProperty("members")
   private List<VariableSpec> members;
 
-  @JsonProperty("dataElement")
-  public String getDataElement() {
-    return this.dataElement;
+  @JsonProperty("variableClass")
+  public VariableClass getVariableClass() {
+    return this.variableClass;
   }
 
-  @JsonProperty("dataElement")
-  public void setDataElement(String dataElement) {
-    this.dataElement = dataElement;
-  }
-
-  @JsonProperty("class")
-  public VariableClass getClazz() {
-    return this.classVariable;
-  }
-
-  @JsonProperty("class")
-  public void setClazz(VariableClass classVariable) {
-    this.classVariable = classVariable;
+  @JsonProperty("variableClass")
+  public void setVariableClass(VariableClass variableClass) {
+    this.variableClass = variableClass;
   }
 
   @JsonProperty("variableSpec")
@@ -77,6 +75,16 @@ public class VariableMetadataImpl implements VariableMetadata {
   @JsonProperty("variableSpec")
   public void setVariableSpec(VariableSpec variableSpec) {
     this.variableSpec = variableSpec;
+  }
+
+  @JsonProperty("plotReference")
+  public PlotReferenceValue getPlotReference() {
+    return this.plotReference;
+  }
+
+  @JsonProperty("plotReference")
+  public void setPlotReference(PlotReferenceValue plotReference) {
+    this.plotReference = plotReference;
   }
 
   @JsonProperty("dataType")
@@ -137,6 +145,26 @@ public class VariableMetadataImpl implements VariableMetadata {
   @JsonProperty("vocabulary")
   public void setVocabulary(List<String> vocabulary) {
     this.vocabulary = vocabulary;
+  }
+
+  @JsonProperty("isCollection")
+  public Boolean getIsCollection() {
+    return this.isCollection;
+  }
+
+  @JsonProperty("isCollection")
+  public void setIsCollection(Boolean isCollection) {
+    this.isCollection = isCollection;
+  }
+
+  @JsonProperty("imputeZero")
+  public Boolean getImputeZero() {
+    return this.imputeZero;
+  }
+
+  @JsonProperty("imputeZero")
+  public void setImputeZero(Boolean imputeZero) {
+    this.imputeZero = imputeZero;
   }
 
   @JsonProperty("members")

@@ -10,10 +10,7 @@ public enum VariableClass {
   DERIVED("derived"),
 
   @JsonProperty("computed")
-  COMPUTED("computed"),
-
-  @JsonProperty("collection")
-  COLLECTION("collection");
+  COMPUTED("computed");
 
   private String name;
 

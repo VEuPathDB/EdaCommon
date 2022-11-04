@@ -5,26 +5,26 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.List;
 
 @JsonDeserialize(
-    as = VariableMetadataImpl.class
+    as = VariableMappingImpl.class
 )
-public interface VariableMetadata {
-  @JsonProperty("dataElement")
-  String getDataElement();
+public interface VariableMapping {
+  @JsonProperty("variableClass")
+  VariableClass getVariableClass();
 
-  @JsonProperty("dataElement")
-  void setDataElement(String dataElement);
-
-  @JsonProperty("class")
-  VariableClass getClazz();
-
-  @JsonProperty("class")
-  void setClazz(VariableClass classVariable);
+  @JsonProperty("variableClass")
+  void setVariableClass(VariableClass variableClass);
 
   @JsonProperty("variableSpec")
   VariableSpec getVariableSpec();
 
   @JsonProperty("variableSpec")
   void setVariableSpec(VariableSpec variableSpec);
+
+  @JsonProperty("plotReference")
+  PlotReferenceValue getPlotReference();
+
+  @JsonProperty("plotReference")
+  void setPlotReference(PlotReferenceValue plotReference);
 
   @JsonProperty("dataType")
   APIVariableType getDataType();
@@ -61,6 +61,18 @@ public interface VariableMetadata {
 
   @JsonProperty("vocabulary")
   void setVocabulary(List<String> vocabulary);
+
+  @JsonProperty("isCollection")
+  Boolean getIsCollection();
+
+  @JsonProperty("isCollection")
+  void setIsCollection(Boolean isCollection);
+
+  @JsonProperty("imputeZero")
+  Boolean getImputeZero();
+
+  @JsonProperty("imputeZero")
+  void setImputeZero(Boolean imputeZero);
 
   @JsonProperty("members")
   List<VariableSpec> getMembers();
