@@ -6,15 +6,15 @@ types:
   VariableClass:
     enum: [ 'native', 'derived', 'computed' ]
 
-  PlotReference:
+  PlotReferenceValue:
     enum: [ 'xAxis', 'yAxis', 'zAxis', 'overlay', 'facet1', 'facet2', 'geo', 'latitude', 'longitude']
 
-  VariableMetadata:
+  VariableMapping:
     additionalProperties: false
     properties:
       variableClass: VariableClass
       variableSpec: VariableSpec
-      plotReference: PlotReference
+      plotReference: PlotReferenceValue
       dataType: API_VariableType
       dataShape: API_VariableDataShape
       displayName?: string
@@ -25,11 +25,6 @@ types:
       imputeZero: boolean
       members?: VariableSpec[]
 
-  ComputedVariableMetadataResponse:
-    additionalProperties: false
-    properties:
-      variables: VariableMetadata[]
-  
   EmptyResponse:
     type: object
     additionalProperties: false
