@@ -1,7 +1,7 @@
 
 // Project settings
 group   = "org.veupathdb.service.eda"
-version = "9.4.0"
+version = "9.5.0pre"
 
 plugins {
   `java-library`
