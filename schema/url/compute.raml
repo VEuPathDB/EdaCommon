@@ -47,17 +47,8 @@ types:
     properties:
       outputEntityId: string
 
-  PlotReference:
-    type: object
-    additionalProperties: false
-    properties:
-      computedVariableId: string
-      variablePlotRef?: string
-
   ComputedVariableMetadata:
     type: object
     additionalProperties: false
     properties:
-      computedVariables: API_VariableWithValues[]
-      computedCollections: API_Collection[]
-      plotReferences: PlotReference[]
+      variables: VariableMapping[]

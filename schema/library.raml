@@ -7,6 +7,103 @@
 ################################################################################
 
 types:
+  VariableClass:
+    type: string
+    enum:
+      - native
+      - derived
+      - computed
+  PlotReferenceValue:
+    type: string
+    enum:
+      - xAxis
+      - yAxis
+      - zAxis
+      - overlay
+      - facet1
+      - facet2
+      - geo
+      - latitude
+      - longitude
+  VariableMapping:
+    type: object
+    additionalProperties: false
+    properties:
+      variableClass: VariableClass
+      variableSpec: VariableSpec
+      plotReference: PlotReferenceValue
+      dataType: API_VariableType
+      dataShape: API_VariableDataShape
+      displayName?: string
+      displayRangeMin?: any
+      displayRangeMax?: any
+      vocabulary?: string[]
+      isCollection: boolean
+      imputeZero: boolean
+      members?: VariableSpec[]
+  EmptyResponse:
+    type: object
+    additionalProperties: false
+  VisualizationDataElementConstraint:
+    type: object
+    additionalProperties: false
+    properties:
+      isRequired: boolean
+      isTemporal: boolean
+      minNumVars: number
+      maxNumVars: number
+      minNumValues: number
+      maxNumValues: number
+      allowedTypes:
+        type: API_VariableType[]
+        required: false
+      allowedShapes:
+        type: API_VariableDataShape[]
+        required: false
+      description: string
+  VisualizationDataElementConstraintPattern:
+    type: object
+    properties:
+      //: VisualizationDataElementConstraint
+  JobID: !include https://raw.githubusercontent.com/VEuPathDB/lib-hash-id/v1.1.0/schema/hash-id.raml
+  JobStatus:
+    type: string
+    enum:
+      - queued
+      - in-progress
+      - complete
+      - failed
+      - expired
+  JobResponse:
+    type: object
+    additionalProperties: false
+    properties:
+      jobID: JobID
+      status: JobStatus
+      queuePosition:
+        type: integer
+        required: false
+        format: int32
+  ComputeRequestBase:
+    type: object
+    properties:
+      studyId: string
+      filters:
+        type: array
+        required: false
+        items: API_Filter
+      derivedVariables:
+        type: array
+        items: DerivedVariableSpec
+  ComputeConfigBase:
+    type: object
+    properties:
+      outputEntityId: string
+  ComputedVariableMetadata:
+    type: object
+    additionalProperties: false
+    properties:
+      variables: VariableMapping[]
   API_Filter:
     type: object
     discriminator: type
@@ -436,72 +533,4 @@ types:
     discriminatorValue: date
     properties:
       distributionDefaults: API_DateDistributionDefaults
-  JobID: !include https://raw.githubusercontent.com/VEuPathDB/lib-hash-id/v1.1.0/schema/hash-id.raml
-  JobStatus:
-    type: string
-    enum:
-      - queued
-      - in-progress
-      - complete
-      - failed
-      - expired
-  JobResponse:
-    type: object
-    additionalProperties: false
-    properties:
-      jobID: JobID
-      status: JobStatus
-      queuePosition:
-        type: integer
-        required: false
-        format: int32
-  ComputeRequestBase:
-    type: object
-    properties:
-      studyId: string
-      filters:
-        type: array
-        required: false
-        items: API_Filter
-      derivedVariables:
-        type: array
-        items: DerivedVariableSpec
-  ComputeConfigBase:
-    type: object
-    properties:
-      outputEntityId: string
-  PlotReference:
-    type: object
-    additionalProperties: false
-    properties:
-      computedVariableId: string
-      variablePlotRef?: string
-  ComputedVariableMetadata:
-    type: object
-    additionalProperties: false
-    properties:
-      computedVariables: API_VariableWithValues[]
-      computedCollections: API_Collection[]
-      plotReferences: PlotReference[]
-  VisualizationDataElementConstraint:
-    type: object
-    additionalProperties: false
-    properties:
-      isRequired: boolean
-      isTemporal: boolean
-      minNumVars: number
-      maxNumVars: number
-      minNumValues: number
-      maxNumValues: number
-      allowedTypes:
-        type: API_VariableType[]
-        required: false
-      allowedShapes:
-        type: API_VariableDataShape[]
-        required: false
-      description: string
-  VisualizationDataElementConstraintPattern:
-    type: object
-    properties:
-      //: VisualizationDataElementConstraint
 
