@@ -15,16 +15,11 @@ types:
       entityId: string
       collectionId: string
 
-  DerivationType:
-    type: string
-    enum: ['transform', 'reduction']
-
-  DerivedVariable:
+  DerivedVariableSpec:
     type: VariableSpec
     properties:
-      variableType: API_VariableType
-      variableDataShape: API_VariableDataShape
-      derivationType: DerivationType
+      expectedVariableType: API_VariableType
+      expectedVariableDataShape: API_VariableDataShape
       functionName: string
       inputVars: VariableSpec[]
       config: object # TBD
@@ -42,5 +37,5 @@ types:
       filters: API_Filter[]
       entityId: string
       outputVariables: VariableSpec[]
-      derivedVariables: DerivedVariable[]
+      derivedVariables: DerivedVariableSpec[]
       computeSpec?: ComputeSpecForMerging
