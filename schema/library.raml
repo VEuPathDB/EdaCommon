@@ -7,6 +7,42 @@
 ################################################################################
 
 types:
+  VariableSpec:
+    type: object
+    additionalProperties: false
+    properties:
+      entityId: string
+      variableId: string
+  CollectionSpec:
+    type: object
+    additionalProperties: false
+    properties:
+      entityId: string
+      collectionId: string
+  DerivedVariableSpec:
+    type: VariableSpec
+    properties:
+      expectedVariableType: API_VariableType
+      expectedVariableDataShape: API_VariableDataShape
+      functionName: string
+      inputVars: VariableSpec[]
+      config: object # TBD
+  ComputeSpecForMerging:
+    type: object
+    additionalProperties: false
+    properties:
+      computeName: string
+      computeConfig: ComputeConfigBase
+  MergedEntityTabularPostRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      studyId: string
+      filters: API_Filter[]
+      entityId: string
+      outputVariables: VariableSpec[]
+      derivedVariables: DerivedVariableSpec[]
+      computeSpec?: ComputeSpecForMerging
   EntityCountPostRequest:
     type: object
     additionalProperties: false
@@ -498,40 +534,4 @@ types:
       variableId: string
       left: number
       right: number
-  VariableSpec:
-    type: object
-    additionalProperties: false
-    properties:
-      entityId: string
-      variableId: string
-  CollectionSpec:
-    type: object
-    additionalProperties: false
-    properties:
-      entityId: string
-      collectionId: string
-  DerivedVariableSpec:
-    type: VariableSpec
-    properties:
-      expectedVariableType: API_VariableType
-      expectedVariableDataShape: API_VariableDataShape
-      functionName: string
-      inputVars: VariableSpec[]
-      config: object # TBD
-  ComputeSpecForMerging:
-    type: object
-    additionalProperties: false
-    properties:
-      computeName: string
-      computeConfig: ComputeConfigBase
-  MergedEntityTabularPostRequest:
-    type: object
-    additionalProperties: false
-    properties:
-      studyId: string
-      filters: API_Filter[]
-      entityId: string
-      outputVariables: VariableSpec[]
-      derivedVariables: DerivedVariableSpec[]
-      computeSpec?: ComputeSpecForMerging
 
