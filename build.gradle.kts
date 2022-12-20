@@ -1,7 +1,7 @@
 
 // Project settings
 group   = "org.veupathdb.service.eda"
-version = "10.0.0-beta1"
+version = "10.0.0"
 
 plugins {
   `java-library`
@@ -40,9 +40,7 @@ repositories {
 dependencies {
 
   // versions
-  val jackson = "2.13.3"        // FasterXML Jackson version
-  val log4j   = "2.17.2"        // Log4J version
-  val fgputil = "2.7.4-jakarta" // FgpUtil version
+  val fgputil = "2.9.3-jakarta" // FgpUtil version
 
   // FgpUtil
   implementation("org.gusdb:fgputil-core:${fgputil}")
@@ -53,19 +51,19 @@ dependencies {
   implementation("org.rosuda.REngine:Rserve:1.8.1")
 
   // Jackson
-  implementation("com.fasterxml.jackson.core:jackson-databind:${jackson}")
-  implementation("com.fasterxml.jackson.core:jackson-annotations:${jackson}")
+  implementation("com.fasterxml.jackson.core:jackson-databind:2.14.0")
+  implementation("com.fasterxml.jackson.core:jackson-annotations:2.14.0")
 
   // Jersey
-  implementation("org.glassfish.jersey.core:jersey-server:3.0.4")
+  implementation("org.glassfish.jersey.core:jersey-server:3.1.0")
 
   // Log4J
-  implementation("org.apache.logging.log4j:log4j-api:${log4j}")
-  implementation("org.apache.logging.log4j:log4j-core:${log4j}")
+  implementation("org.apache.logging.log4j:log4j-api:2.19.0")
+  implementation("org.apache.logging.log4j:log4j-core:2.19.0")
 
   // Unit Testing
-  testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-  testImplementation("org.mockito:mockito-core:4.6.1")
+  testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
+  testImplementation("org.mockito:mockito-core:4.8.0")
 }
 
 tasks.jar {
