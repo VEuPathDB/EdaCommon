@@ -292,10 +292,6 @@ types:
       derivedVariables:
         type: array
         items: DerivedVariableSpec
-  ComputeConfigBase:
-    type: object
-    properties:
-      outputEntityId: string
   ComputedVariableMetadata:
     type: object
     additionalProperties: false
@@ -398,7 +394,7 @@ types:
     additionalProperties: false
     properties:
       computeName: string
-      computeConfig: ComputeConfigBase
+      computeConfig: object
   MergedEntityTabularPostRequest:
     type: object
     additionalProperties: false
