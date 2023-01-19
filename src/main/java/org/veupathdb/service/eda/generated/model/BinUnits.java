@@ -15,10 +15,12 @@ public enum BinUnits {
   @JsonProperty("year")
   YEAR("year");
 
-  private String name;
+  private final String value;
 
   BinUnits(String name) {
-    this.name = name;
+    this.value = name;
   }
-  public String getValue(){ return name; } 
+  public String getValue() {
+    return this.value;
+  }
 }

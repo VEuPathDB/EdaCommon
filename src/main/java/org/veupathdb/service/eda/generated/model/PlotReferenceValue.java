@@ -30,10 +30,12 @@ public enum PlotReferenceValue {
   @JsonProperty("longitude")
   LONGITUDE("longitude");
 
-  private String name;
+  private final String value;
 
   PlotReferenceValue(String name) {
-    this.name = name;
+    this.value = name;
   }
-  public String getValue(){ return name; } 
+  public String getValue() {
+    return this.value;
+  }
 }

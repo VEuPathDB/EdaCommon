@@ -1,18 +1,39 @@
-
-// Project settings
-group   = "org.veupathdb.service.eda"
-version = "10.2.2"
+import org.veupathdb.lib.gradle.container.util.Logger.Level
 
 plugins {
   `java-library`
   `maven-publish`
+  id("org.veupathdb.lib.gradle.container.container-utils") version "4.8.0"
 }
 
-apply(from = "${projectDir.absolutePath}/test-summary.gradle")
+// configure VEupathDB container plugin
+containerBuild {
+
+  // Change if debugging the build process is necessary.
+  logLevel = Level.Info
+
+  // General project level configuration.
+  project {
+
+    // Project Name
+    name = "eda-common"
+
+    // Project Group
+    group = "org.veupathdb.service.eda"
+
+    // Project Version
+    version = "10.3.0"
+
+    // Project Root Package
+    projectPackage = "org.veupathdb.service.eda"
+
+  }
+}
 
 java {
-  targetCompatibility = JavaVersion.VERSION_15
-  sourceCompatibility = JavaVersion.VERSION_15
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
   withSourcesJar()
   withJavadocJar()
 }

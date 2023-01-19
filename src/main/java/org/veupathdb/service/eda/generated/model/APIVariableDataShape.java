@@ -15,10 +15,12 @@ public enum APIVariableDataShape {
   @JsonProperty("binary")
   BINARY("binary");
 
-  private String name;
+  private final String value;
 
   APIVariableDataShape(String name) {
-    this.name = name;
+    this.value = name;
   }
-  public String getValue(){ return name; } 
+  public String getValue() {
+    return this.value;
+  }
 }

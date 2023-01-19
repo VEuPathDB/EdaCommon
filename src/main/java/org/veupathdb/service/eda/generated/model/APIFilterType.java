@@ -24,10 +24,12 @@ public enum APIFilterType {
   @JsonProperty("multiFilter")
   MULTIFILTER("multiFilter");
 
-  private String name;
+  private final String value;
 
   APIFilterType(String name) {
-    this.name = name;
+    this.value = name;
   }
-  public String getValue(){ return name; } 
+  public String getValue() {
+    return this.value;
+  }
 }

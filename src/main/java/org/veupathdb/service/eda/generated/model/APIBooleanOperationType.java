@@ -9,10 +9,12 @@ public enum APIBooleanOperationType {
   @JsonProperty("union")
   UNION("union");
 
-  private String name;
+  private final String value;
 
   APIBooleanOperationType(String name) {
-    this.name = name;
+    this.value = name;
   }
-  public String getValue(){ return name; } 
+  public String getValue() {
+    return this.value;
+  }
 }

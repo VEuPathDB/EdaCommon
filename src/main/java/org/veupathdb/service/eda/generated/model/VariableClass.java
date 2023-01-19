@@ -12,10 +12,12 @@ public enum VariableClass {
   @JsonProperty("computed")
   COMPUTED("computed");
 
-  private String name;
+  private final String value;
 
   VariableClass(String name) {
-    this.name = name;
+    this.value = name;
   }
-  public String getValue(){ return name; } 
+  public String getValue() {
+    return this.value;
+  }
 }
