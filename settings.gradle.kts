@@ -2,3 +2,5 @@
 apply {
     from("https://raw.githubusercontent.com/VEuPathDB/lib-gradle-container-utils/v4.8.0/includes/common.settings.gradle.kts")
 }
+
+rootProject.name = "eda-common"
