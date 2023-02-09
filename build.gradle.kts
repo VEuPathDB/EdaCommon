@@ -22,7 +22,7 @@ containerBuild {
     group = "org.veupathdb.service.eda"
 
     // Project Version
-    version = "10.3.1"
+    version = "10.3.2"
 
     // Project Root Package
     projectPackage = "org.veupathdb.service.eda"
@@ -61,7 +61,7 @@ repositories {
 dependencies {
 
   // versions
-  val fgputil = "2.12.0-jakarta" // FgpUtil version
+  val fgputil = "2.12.2-jakarta" // FgpUtil version
 
   // FgpUtil
   implementation("org.gusdb:fgputil-core:${fgputil}")
