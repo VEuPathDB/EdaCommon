@@ -1,0 +1,15 @@
+#%RAML 1.0 Library
+
+types:
+# Type name determines the name of the Java class that will be generated.
+
+  SingleNumericVarReductionConfig:
+    properties:
+      inputVariable: VariableSpec
+
+  ConcatenationConfig:
+    properties:
+      prefix?: string
+      delimiter?: string
+      suffix?: string
+      inputVariables: VariableSpec[]

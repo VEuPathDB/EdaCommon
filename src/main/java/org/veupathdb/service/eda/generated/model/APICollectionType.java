@@ -14,10 +14,11 @@ public enum APICollectionType {
 
   private final String value;
 
-  APICollectionType(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  APICollectionType(String name) {
+    this.value = name;
   }
 }

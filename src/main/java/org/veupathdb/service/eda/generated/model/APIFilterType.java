@@ -26,10 +26,11 @@ public enum APIFilterType {
 
   private final String value;
 
-  APIFilterType(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  APIFilterType(String name) {
+    this.value = name;
   }
 }

@@ -23,10 +23,11 @@ public enum APIVariableType {
 
   private final String value;
 
-  APIVariableType(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  APIVariableType(String name) {
+    this.value = name;
   }
 }

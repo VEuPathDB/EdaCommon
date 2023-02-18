@@ -23,10 +23,11 @@ public enum JobStatus {
 
   private final String value;
 
-  JobStatus(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  JobStatus(String name) {
+    this.value = name;
   }
 }
