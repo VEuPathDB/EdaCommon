@@ -11,10 +11,11 @@ public enum SortDirection {
 
   private final String value;
 
-  SortDirection(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  SortDirection(String name) {
+    this.value = name;
   }
 }

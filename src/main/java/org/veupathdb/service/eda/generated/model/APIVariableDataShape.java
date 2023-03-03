@@ -17,10 +17,11 @@ public enum APIVariableDataShape {
 
   private final String value;
 
-  APIVariableDataShape(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  APIVariableDataShape(String name) {
+    this.value = name;
   }
 }

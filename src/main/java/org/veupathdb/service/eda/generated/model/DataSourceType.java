@@ -11,10 +11,11 @@ public enum DataSourceType {
 
   private final String value;
 
-  DataSourceType(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  DataSourceType(String name) {
+    this.value = name;
   }
 }

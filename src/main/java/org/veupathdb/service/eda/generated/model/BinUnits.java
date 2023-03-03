@@ -17,10 +17,11 @@ public enum BinUnits {
 
   private final String value;
 
-  BinUnits(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  BinUnits(String name) {
+    this.value = name;
   }
 }

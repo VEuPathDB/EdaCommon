@@ -14,10 +14,11 @@ public enum VariableClass {
 
   private final String value;
 
-  VariableClass(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  VariableClass(String name) {
+    this.value = name;
   }
 }
