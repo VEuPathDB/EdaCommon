@@ -11,10 +11,11 @@ public enum ValueSpec {
 
   private final String value;
 
-  ValueSpec(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  ValueSpec(String name) {
+    this.value = name;
   }
 }

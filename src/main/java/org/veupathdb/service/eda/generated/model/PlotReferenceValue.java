@@ -32,10 +32,11 @@ public enum PlotReferenceValue {
 
   private final String value;
 
-  PlotReferenceValue(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  PlotReferenceValue(String name) {
+    this.value = name;
   }
 }

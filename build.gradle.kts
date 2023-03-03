@@ -3,7 +3,7 @@ import org.veupathdb.lib.gradle.container.util.Logger.Level
 plugins {
   `java-library`
   `maven-publish`
-  id("org.veupathdb.lib.gradle.container.container-utils") version "4.8.2"
+  id("org.veupathdb.lib.gradle.container.container-utils") version "4.8.3"
 }
 
 // configure VEupathDB container plugin
@@ -22,7 +22,7 @@ containerBuild {
     group = "org.veupathdb.service.eda"
 
     // Project Version
-    version = "10.3.3"
+    version = "10.3.4-BETA1"
 
     // Project Root Package
     projectPackage = "org.veupathdb.service.eda"

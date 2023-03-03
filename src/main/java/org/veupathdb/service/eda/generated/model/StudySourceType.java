@@ -11,10 +11,11 @@ public enum StudySourceType {
 
   private final String value;
 
-  StudySourceType(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  StudySourceType(String name) {
+    this.value = name;
   }
 }

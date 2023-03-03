@@ -11,10 +11,11 @@ public enum TabularHeaderFormat {
 
   private final String value;
 
-  TabularHeaderFormat(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  TabularHeaderFormat(String name) {
+    this.value = name;
   }
 }

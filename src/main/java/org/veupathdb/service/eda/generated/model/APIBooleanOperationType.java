@@ -11,10 +11,11 @@ public enum APIBooleanOperationType {
 
   private final String value;
 
-  APIBooleanOperationType(String name) {
-    this.value = name;
-  }
   public String getValue() {
     return this.value;
+  }
+
+  APIBooleanOperationType(String name) {
+    this.value = name;
   }
 }
