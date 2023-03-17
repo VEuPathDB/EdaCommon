@@ -10,37 +10,37 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "inputVariable",
-    "imputeZero"
+    "heightVariable",
+    "weightVariable"
 })
-public class SingleNumericVarReductionConfigImpl implements SingleNumericVarReductionConfig {
-  @JsonProperty("inputVariable")
-  private VariableSpec inputVariable;
+public class BodyMassIndexConfigImpl implements BodyMassIndexConfig {
+  @JsonProperty("heightVariable")
+  private VariableSpec heightVariable;
 
-  @JsonProperty("imputeZero")
-  private Boolean imputeZero;
+  @JsonProperty("weightVariable")
+  private VariableSpec weightVariable;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
 
-  @JsonProperty("inputVariable")
-  public VariableSpec getInputVariable() {
-    return this.inputVariable;
+  @JsonProperty("heightVariable")
+  public VariableSpec getHeightVariable() {
+    return this.heightVariable;
   }
 
-  @JsonProperty("inputVariable")
-  public void setInputVariable(VariableSpec inputVariable) {
-    this.inputVariable = inputVariable;
+  @JsonProperty("heightVariable")
+  public void setHeightVariable(VariableSpec heightVariable) {
+    this.heightVariable = heightVariable;
   }
 
-  @JsonProperty("imputeZero")
-  public Boolean getImputeZero() {
-    return this.imputeZero;
+  @JsonProperty("weightVariable")
+  public VariableSpec getWeightVariable() {
+    return this.weightVariable;
   }
 
-  @JsonProperty("imputeZero")
-  public void setImputeZero(Boolean imputeZero) {
-    this.imputeZero = imputeZero;
+  @JsonProperty("weightVariable")
+  public void setWeightVariable(VariableSpec weightVariable) {
+    this.weightVariable = weightVariable;
   }
 
   @JsonAnyGetter

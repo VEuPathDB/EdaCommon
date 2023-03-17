@@ -6,19 +6,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "inputVariable",
-    "imputeZero"
+    "rules",
+    "imputeZero",
+    "unmappedValue"
 })
-public class SingleNumericVarReductionConfigImpl implements SingleNumericVarReductionConfig {
+public class ContinuousNumericRecodingConfigImpl implements ContinuousNumericRecodingConfig {
   @JsonProperty("inputVariable")
   private VariableSpec inputVariable;
 
+  @JsonProperty("rules")
+  private List<ContinuousNumericRule> rules;
+
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
+
+  @JsonProperty("unmappedValue")
+  private String unmappedValue;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -33,6 +42,16 @@ public class SingleNumericVarReductionConfigImpl implements SingleNumericVarRedu
     this.inputVariable = inputVariable;
   }
 
+  @JsonProperty("rules")
+  public List<ContinuousNumericRule> getRules() {
+    return this.rules;
+  }
+
+  @JsonProperty("rules")
+  public void setRules(List<ContinuousNumericRule> rules) {
+    this.rules = rules;
+  }
+
   @JsonProperty("imputeZero")
   public Boolean getImputeZero() {
     return this.imputeZero;
@@ -41,6 +60,16 @@ public class SingleNumericVarReductionConfigImpl implements SingleNumericVarRedu
   @JsonProperty("imputeZero")
   public void setImputeZero(Boolean imputeZero) {
     this.imputeZero = imputeZero;
+  }
+
+  @JsonProperty("unmappedValue")
+  public String getUnmappedValue() {
+    return this.unmappedValue;
+  }
+
+  @JsonProperty("unmappedValue")
+  public void setUnmappedValue(String unmappedValue) {
+    this.unmappedValue = unmappedValue;
   }
 
   @JsonAnyGetter

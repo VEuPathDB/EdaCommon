@@ -4,23 +4,36 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
 import java.util.Map;
 
 @JsonDeserialize(
-    as = SingleNumericVarReductionConfigImpl.class
+    as = ContinuousNumericRecodingConfigImpl.class
 )
-public interface SingleNumericVarReductionConfig {
+public interface ContinuousNumericRecodingConfig {
   @JsonProperty("inputVariable")
   VariableSpec getInputVariable();
 
   @JsonProperty("inputVariable")
   void setInputVariable(VariableSpec inputVariable);
 
+  @JsonProperty("rules")
+  List<ContinuousNumericRule> getRules();
+
+  @JsonProperty("rules")
+  void setRules(List<ContinuousNumericRule> rules);
+
   @JsonProperty("imputeZero")
   Boolean getImputeZero();
 
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
+
+  @JsonProperty("unmappedValue")
+  String getUnmappedValue();
+
+  @JsonProperty("unmappedValue")
+  void setUnmappedValue(String unmappedValue);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

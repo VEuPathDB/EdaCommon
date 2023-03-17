@@ -6,6 +6,7 @@ types:
   SingleNumericVarReductionConfig:
     properties:
       inputVariable: VariableSpec
+      imputeZero?: boolean
 
   ConcatenationConfig:
     properties:
@@ -13,3 +14,32 @@ types:
       delimiter?: string
       suffix?: string
       inputVariables: VariableSpec[]
+
+  CategoricalRecodingRule:
+    properties:
+      inputValues: string[]
+      outputValue: string
+
+  CategoricalRecodingConfig:
+    properties:
+      inputVariable: VariableSpec
+      rules: CategoricalRecodingRule[]
+      unmappedValue?: string
+
+  ContinuousNumericRule:
+    properties:
+      minInclusive?: number
+      maxExclusive?: number
+      outputValue: string
+
+  ContinuousNumericRecodingConfig:
+    properties:
+      inputVariable: VariableSpec
+      rules: ContinuousNumericRule[]
+      imputeZero?: boolean
+      unmappedValue?: string
+
+  BodyMassIndexConfig:
+    properties:
+      heightVariable: VariableSpec
+      weightVariable: VariableSpec

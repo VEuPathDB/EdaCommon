@@ -6,19 +6,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "inputVariable",
-    "imputeZero"
+    "rules",
+    "unmappedValue"
 })
-public class SingleNumericVarReductionConfigImpl implements SingleNumericVarReductionConfig {
+public class CategoricalRecodingConfigImpl implements CategoricalRecodingConfig {
   @JsonProperty("inputVariable")
   private VariableSpec inputVariable;
 
-  @JsonProperty("imputeZero")
-  private Boolean imputeZero;
+  @JsonProperty("rules")
+  private List<CategoricalRecodingRule> rules;
+
+  @JsonProperty("unmappedValue")
+  private String unmappedValue;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -33,14 +38,24 @@ public class SingleNumericVarReductionConfigImpl implements SingleNumericVarRedu
     this.inputVariable = inputVariable;
   }
 
-  @JsonProperty("imputeZero")
-  public Boolean getImputeZero() {
-    return this.imputeZero;
+  @JsonProperty("rules")
+  public List<CategoricalRecodingRule> getRules() {
+    return this.rules;
   }
 
-  @JsonProperty("imputeZero")
-  public void setImputeZero(Boolean imputeZero) {
-    this.imputeZero = imputeZero;
+  @JsonProperty("rules")
+  public void setRules(List<CategoricalRecodingRule> rules) {
+    this.rules = rules;
+  }
+
+  @JsonProperty("unmappedValue")
+  public String getUnmappedValue() {
+    return this.unmappedValue;
+  }
+
+  @JsonProperty("unmappedValue")
+  public void setUnmappedValue(String unmappedValue) {
+    this.unmappedValue = unmappedValue;
   }
 
   @JsonAnyGetter

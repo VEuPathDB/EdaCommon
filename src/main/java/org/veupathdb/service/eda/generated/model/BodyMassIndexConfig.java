@@ -7,20 +7,20 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Map;
 
 @JsonDeserialize(
-    as = SingleNumericVarReductionConfigImpl.class
+    as = BodyMassIndexConfigImpl.class
 )
-public interface SingleNumericVarReductionConfig {
-  @JsonProperty("inputVariable")
-  VariableSpec getInputVariable();
+public interface BodyMassIndexConfig {
+  @JsonProperty("heightVariable")
+  VariableSpec getHeightVariable();
 
-  @JsonProperty("inputVariable")
-  void setInputVariable(VariableSpec inputVariable);
+  @JsonProperty("heightVariable")
+  void setHeightVariable(VariableSpec heightVariable);
 
-  @JsonProperty("imputeZero")
-  Boolean getImputeZero();
+  @JsonProperty("weightVariable")
+  VariableSpec getWeightVariable();
 
-  @JsonProperty("imputeZero")
-  void setImputeZero(Boolean imputeZero);
+  @JsonProperty("weightVariable")
+  void setWeightVariable(VariableSpec weightVariable);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
