@@ -43,3 +43,53 @@ types:
     properties:
       heightVariable: VariableSpec
       weightVariable: VariableSpec
+
+  SubsetMembershipConfig:
+    properties:
+      subsetFilters: API_Filter[]
+
+  UnitConversionConfig:
+    properties:
+      inputVariable: VariableSpec
+      outputUnits: string
+
+  VariableReference:
+    properties:
+      name: string
+      variable: VariableSpec
+
+  AdvancedSubsetInputVar:
+    type: VariableReference
+    properties:
+      trueValues?: string[]   # defaults to [ '1', 'true', 'yes' ]
+
+  SetOperation:
+    properties:
+      operation:
+        type: string
+        enum: [ 'intersect', 'union', 'minus' ]
+      # caller must pick one left and one right; needed since union types are unsupported
+      leftOperation?: SetOperation
+      leftVariable?: string
+      rightOperation?: SetOperation
+      rightVariable?: string
+
+  AdvancedSubsetConfig:
+    properties:
+      operationTree: SetOperation
+      inputVariables: AdvancedSubsetInputVar[]
+
+  EcmaScriptExpressionEvalConfig:
+    properties:
+      ecmaScriptExpression: string
+      inputVariables: VariableReference[]
+
+  RelatedObservationMinTimeIntervalConfig:
+    properties:
+      relatedObservationsSubset: API_Filter[]
+      anchorVariable: VariableSpec
+      anchorVariableTrueValues: string[]
+      targetVariable: VariableSpec
+      targetVariableTrueValues: string[]
+      timestampVariable: VariableSpec
+      minimumTimeIntervalDays: integer
