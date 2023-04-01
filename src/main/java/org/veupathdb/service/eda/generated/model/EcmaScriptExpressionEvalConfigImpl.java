@@ -12,7 +12,9 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "ecmaScriptExpression",
-    "inputVariables"
+    "inputVariables",
+    "expectedType",
+    "expectedShape"
 })
 public class EcmaScriptExpressionEvalConfigImpl implements EcmaScriptExpressionEvalConfig {
   @JsonProperty("ecmaScriptExpression")
@@ -20,6 +22,12 @@ public class EcmaScriptExpressionEvalConfigImpl implements EcmaScriptExpressionE
 
   @JsonProperty("inputVariables")
   private List<VariableReference> inputVariables;
+
+  @JsonProperty("expectedType")
+  private APIVariableType expectedType;
+
+  @JsonProperty("expectedShape")
+  private APIVariableDataShape expectedShape;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -42,6 +50,26 @@ public class EcmaScriptExpressionEvalConfigImpl implements EcmaScriptExpressionE
   @JsonProperty("inputVariables")
   public void setInputVariables(List<VariableReference> inputVariables) {
     this.inputVariables = inputVariables;
+  }
+
+  @JsonProperty("expectedType")
+  public APIVariableType getExpectedType() {
+    return this.expectedType;
+  }
+
+  @JsonProperty("expectedType")
+  public void setExpectedType(APIVariableType expectedType) {
+    this.expectedType = expectedType;
+  }
+
+  @JsonProperty("expectedShape")
+  public APIVariableDataShape getExpectedShape() {
+    return this.expectedShape;
+  }
+
+  @JsonProperty("expectedShape")
+  public void setExpectedShape(APIVariableDataShape expectedShape) {
+    this.expectedShape = expectedShape;
   }
 
   @JsonAnyGetter

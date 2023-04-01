@@ -14,9 +14,10 @@ import java.util.Map;
     "relatedObservationsSubset",
     "anchorVariable",
     "anchorVariableTrueValues",
+    "anchorTimestampVariable",
     "targetVariable",
     "targetVariableTrueValues",
-    "timestampVariable",
+    "targetTimestampVariable",
     "minimumTimeIntervalDays"
 })
 public class RelatedObservationMinTimeIntervalConfigImpl implements RelatedObservationMinTimeIntervalConfig {
@@ -29,14 +30,17 @@ public class RelatedObservationMinTimeIntervalConfigImpl implements RelatedObser
   @JsonProperty("anchorVariableTrueValues")
   private List<String> anchorVariableTrueValues;
 
+  @JsonProperty("anchorTimestampVariable")
+  private VariableSpec anchorTimestampVariable;
+
   @JsonProperty("targetVariable")
   private VariableSpec targetVariable;
 
   @JsonProperty("targetVariableTrueValues")
   private List<String> targetVariableTrueValues;
 
-  @JsonProperty("timestampVariable")
-  private VariableSpec timestampVariable;
+  @JsonProperty("targetTimestampVariable")
+  private VariableSpec targetTimestampVariable;
 
   @JsonProperty("minimumTimeIntervalDays")
   private Integer minimumTimeIntervalDays;
@@ -74,6 +78,16 @@ public class RelatedObservationMinTimeIntervalConfigImpl implements RelatedObser
     this.anchorVariableTrueValues = anchorVariableTrueValues;
   }
 
+  @JsonProperty("anchorTimestampVariable")
+  public VariableSpec getAnchorTimestampVariable() {
+    return this.anchorTimestampVariable;
+  }
+
+  @JsonProperty("anchorTimestampVariable")
+  public void setAnchorTimestampVariable(VariableSpec anchorTimestampVariable) {
+    this.anchorTimestampVariable = anchorTimestampVariable;
+  }
+
   @JsonProperty("targetVariable")
   public VariableSpec getTargetVariable() {
     return this.targetVariable;
@@ -94,14 +108,14 @@ public class RelatedObservationMinTimeIntervalConfigImpl implements RelatedObser
     this.targetVariableTrueValues = targetVariableTrueValues;
   }
 
-  @JsonProperty("timestampVariable")
-  public VariableSpec getTimestampVariable() {
-    return this.timestampVariable;
+  @JsonProperty("targetTimestampVariable")
+  public VariableSpec getTargetTimestampVariable() {
+    return this.targetTimestampVariable;
   }
 
-  @JsonProperty("timestampVariable")
-  public void setTimestampVariable(VariableSpec timestampVariable) {
-    this.timestampVariable = timestampVariable;
+  @JsonProperty("targetTimestampVariable")
+  public void setTargetTimestampVariable(VariableSpec targetTimestampVariable) {
+    this.targetTimestampVariable = targetTimestampVariable;
   }
 
   @JsonProperty("minimumTimeIntervalDays")

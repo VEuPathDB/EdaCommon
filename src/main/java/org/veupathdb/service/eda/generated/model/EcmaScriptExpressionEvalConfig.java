@@ -23,6 +23,18 @@ public interface EcmaScriptExpressionEvalConfig {
   @JsonProperty("inputVariables")
   void setInputVariables(List<VariableReference> inputVariables);
 
+  @JsonProperty("expectedType")
+  APIVariableType getExpectedType();
+
+  @JsonProperty("expectedType")
+  void setExpectedType(APIVariableType expectedType);
+
+  @JsonProperty("expectedShape")
+  APIVariableDataShape getExpectedShape();
+
+  @JsonProperty("expectedShape")
+  void setExpectedShape(APIVariableDataShape expectedShape);
+
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();
 

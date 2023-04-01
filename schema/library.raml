@@ -125,15 +125,18 @@ types:
     properties:
       ecmaScriptExpression: string
       inputVariables: VariableReference[]
+      expectedType: API_VariableType
+      expectedShape: API_VariableDataShape
   RelatedObservationMinTimeIntervalConfig:
     type: object
     properties:
       relatedObservationsSubset: API_Filter[]
       anchorVariable: VariableSpec
       anchorVariableTrueValues: string[]
+      anchorTimestampVariable: VariableSpec
       targetVariable: VariableSpec
       targetVariableTrueValues: string[]
-      timestampVariable: VariableSpec
+      targetTimestampVariable: VariableSpec
       minimumTimeIntervalDays: integer
   API_Filter:
     type: object

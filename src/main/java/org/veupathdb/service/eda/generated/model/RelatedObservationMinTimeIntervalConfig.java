@@ -29,6 +29,12 @@ public interface RelatedObservationMinTimeIntervalConfig {
   @JsonProperty("anchorVariableTrueValues")
   void setAnchorVariableTrueValues(List<String> anchorVariableTrueValues);
 
+  @JsonProperty("anchorTimestampVariable")
+  VariableSpec getAnchorTimestampVariable();
+
+  @JsonProperty("anchorTimestampVariable")
+  void setAnchorTimestampVariable(VariableSpec anchorTimestampVariable);
+
   @JsonProperty("targetVariable")
   VariableSpec getTargetVariable();
 
@@ -41,11 +47,11 @@ public interface RelatedObservationMinTimeIntervalConfig {
   @JsonProperty("targetVariableTrueValues")
   void setTargetVariableTrueValues(List<String> targetVariableTrueValues);
 
-  @JsonProperty("timestampVariable")
-  VariableSpec getTimestampVariable();
+  @JsonProperty("targetTimestampVariable")
+  VariableSpec getTargetTimestampVariable();
 
-  @JsonProperty("timestampVariable")
-  void setTimestampVariable(VariableSpec timestampVariable);
+  @JsonProperty("targetTimestampVariable")
+  void setTargetTimestampVariable(VariableSpec targetTimestampVariable);
 
   @JsonProperty("minimumTimeIntervalDays")
   Integer getMinimumTimeIntervalDays();
