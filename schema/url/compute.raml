@@ -2,6 +2,10 @@
 
 types:
 
+  ###################################################
+  ###  Compute Jobs API
+  ###################################################
+
   JobID: !include https://raw.githubusercontent.com/VEuPathDB/lib-hash-id/v1.1.0/schema/hash-id.raml
 
   JobStatus:
@@ -42,8 +46,32 @@ types:
         items:
           type: DerivedVariableSpec
 
+  ###################################################
+  ###  Computed Variable Metadata
+  ###################################################
+
+  VariableClass:
+    enum: [ 'native', 'derived', 'computed' ]
+
+  PlotReferenceValue:
+    enum: [ 'xAxis', 'yAxis', 'zAxis', 'overlay', 'facet1', 'facet2', 'geo', 'latitude', 'longitude']
+
+  VariableMapping:
+    additionalProperties: false
+    properties:
+      variableClass: VariableClass
+      variableSpec: VariableSpec
+      plotReference: PlotReferenceValue
+      dataType: API_VariableType
+      dataShape: API_VariableDataShape
+      displayName?: string
+      displayRange?: LabeledValueRange
+      vocabulary?: string[]
+      imputeZero: boolean
+      isCollection: boolean
+      members?: VariableSpec[] # populated if isCollection is true
+
   ComputedVariableMetadata:
-    type: object
     additionalProperties: false
     properties:
       variables: VariableMapping[]
