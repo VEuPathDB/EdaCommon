@@ -63,9 +63,20 @@ types:
     type: object
     additionalProperties: false
 
-  LabeledValueRange:
+  Range:
+    additionalProperties: false
+    properties:
+      min: string  # number | date
+      max: string  # number | date
+
+  LabeledRange:
+    type: Range
     additionalProperties: false
     properties:
       label: string
-      min: string  # number | date
-      max: string  # number | date
+
+  LabeledRangeWithValue:
+    type: LabeledRange
+    additionalProperties: false
+    properties:
+      value: number
