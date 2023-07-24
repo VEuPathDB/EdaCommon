@@ -61,7 +61,7 @@ repositories {
 dependencies {
 
   // versions
-  val fgputil = "2.12.6-jakarta" // FgpUtil version
+  val fgputil = "2.12.9-jakarta" // FgpUtil version
 
   // FgpUtil
   implementation("org.gusdb:fgputil-core:${fgputil}")
@@ -72,8 +72,8 @@ dependencies {
   implementation("org.rosuda.REngine:Rserve:1.8.1")
 
   // Jackson
-  implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
-  implementation("com.fasterxml.jackson.core:jackson-annotations:2.14.2")
+  implementation("com.fasterxml.jackson.core:jackson-databind:2.15.1")
+  implementation("com.fasterxml.jackson.core:jackson-annotations:2.15.1")
 
   // Jersey
   implementation("org.glassfish.jersey.core:jersey-server:3.1.1")
