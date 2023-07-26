@@ -2,6 +2,10 @@
 
 types:
 
+  ##############################################
+  ###  Subsetting Service Count Endpoint API
+  ##############################################
+
   EntityCountPostRequest:
     additionalProperties: false
     properties:
@@ -14,17 +18,9 @@ types:
         format: int64
         type: integer
 
-  EntityTabularPostRequest:
-    additionalProperties: false
-    properties:
-      filters: API_Filter[]
-      outputVariableIds: string[]
-      reportConfig?: API_TabularReportConfig
-
-  EntityTabularPostResponse:
-    additionalProperties: false
-    properties:
-      counts: string[][]
+  ##############################################
+  ###  Subsetting Service Tabular Endpoint API
+  ##############################################
 
   SortDirection:
     type: string
@@ -62,6 +58,17 @@ types:
       headerFormat?: TabularHeaderFormat
       trimTimeFromDateVars?: boolean
       dataSource?: DataSourceType
+
+  EntityTabularPostRequest:
+    additionalProperties: false
+    properties:
+      filters: API_Filter[]
+      outputVariableIds: string[]
+      reportConfig?: API_TabularReportConfig
+
+  ###################################################
+  ###  Subsetting Service Distribution Endpoint API
+  ###################################################
 
   BinUnits:
     type: string
