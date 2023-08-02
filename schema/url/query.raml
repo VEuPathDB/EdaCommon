@@ -86,22 +86,14 @@ types:
       binSpec?: BinSpecWithRange
       valueSpec: ValueSpec
 
-  VocabByStudyPostRequest:
+  VocabByRootEntityPostRequest:
     additionalProperties: false
     properties:
-      filters: API_Filter[]
       studyEntity: string
 
-  VocabByStudyPostResponse:
+  VocabByRootEntityPostResponse:
+    type: object
     additionalProperties: false
-    properties:
-      valueZeroCounts: StudyVocab[]
-
-  StudyVocab:
-    additionalProperties: false
-    properties:
-      study: string
-      vocab: string[]
 
   HistogramBin:
     additionalProperties: false

@@ -8,11 +8,11 @@ import java.util.function.Consumer;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.StreamingOutput;
 
-public class VocabByStudyPostResponseStream extends VocabByStudyPostResponseImpl implements StreamingOutput {
+public class VocabByRootEntityPostResponseStream extends VocabByRootEntityPostResponseImpl implements StreamingOutput {
 
   private final Consumer<OutputStream> _streamer;
 
-  public VocabByStudyPostResponseStream(Consumer<OutputStream> streamer) {
+  public VocabByRootEntityPostResponseStream(Consumer<OutputStream> streamer) {
     _streamer = streamer;
   }
 
