@@ -71,7 +71,7 @@ types:
       imputeZero: boolean
 
   API_CollectionType:
-    enum: [ 'number', 'date', 'integer' ]
+    enum: [ 'number', 'date', 'integer', 'string' ]
 
   API_NumberCollection:
     type: API_Collection
@@ -93,6 +93,10 @@ types:
     discriminatorValue: date
     properties:
       distributionDefaults: API_DateDistributionDefaults
+
+  API_StringCollection:
+    type: API_Collection
+    discriminatorValue: string
 
   API_Variable:
     type: object

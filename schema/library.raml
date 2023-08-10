@@ -318,6 +318,7 @@ types:
       - number
       - date
       - integer
+      - string
   API_NumberCollection:
     type: API_Collection
     discriminatorValue: number
@@ -336,6 +337,9 @@ types:
     discriminatorValue: date
     properties:
       distributionDefaults: API_DateDistributionDefaults
+  API_StringCollection:
+    type: API_Collection
+    discriminatorValue: string
   API_Variable:
     type: object
     discriminator: type
@@ -543,6 +547,14 @@ types:
       filters: API_Filter[]
       binSpec?: BinSpecWithRange
       valueSpec: ValueSpec
+  VocabByRootEntityPostRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      filters: API_Filter[]
+  VocabByRootEntityPostResponse:
+    type: EntityTabularPostResponse
+    additionalProperties: false
   HistogramBin:
     type: object
     additionalProperties: false
