@@ -86,6 +86,11 @@ types:
       binSpec?: BinSpecWithRange
       valueSpec: ValueSpec
 
+  VocabByRootEntityPostRequest:
+    additionalProperties: false
+    properties:
+      filters: API_Filter[]
+
   VocabByRootEntityPostResponse:
     type: EntityTabularPostResponse
     additionalProperties: false
