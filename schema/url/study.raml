@@ -133,7 +133,10 @@ types:
     enum: [ 'continuous', 'categorical', 'ordinal', 'binary' ]
 
   API_VariableDisplayType:
-      enum: [ 'default', 'hidden', 'multifilter', 'geoaggregator', 'latitude', 'longitude' ]
+    enum: [ 'default', 'hidden', 'multifilter', 'geoaggregator', 'latitude', 'longitude' ]
+
+  API_VariableScale:
+    enum: [ 'log', 'log2', 'ln' ]
 
   API_VariablesCategory:
     type: API_Variable
@@ -194,8 +197,9 @@ types:
     discriminatorValue: number
     properties:
       distributionDefaults: API_NumberDistributionDefaults
-      units: string
+      units?: string
       precision: number
+      scale?: API_VariableScale
 
   API_IntegerVariable:
     type: API_VariableWithValues
