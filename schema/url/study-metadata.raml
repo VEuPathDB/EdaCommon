@@ -200,16 +200,16 @@ types:
     discriminatorValue: number
     properties:
       distributionDefaults: API_NumberDistributionDefaults
-      units: string
+      units?: string
       precision: number
-      scale: API_VariableScale
+      scale?: API_VariableScale
 
   API_IntegerVariable:
     type: API_VariableWithValues
     discriminatorValue: integer
     properties:
       distributionDefaults: API_IntegerDistributionDefaults
-      units: string
+      units?: string
 
   API_DateVariable:
     type: API_VariableWithValues
