@@ -231,7 +231,7 @@ types:
     type: object
     additionalProperties: false
     properties:
-      counts: string[][]
+      tabular: string[][]
   EmptyResponse:
     type: object
     additionalProperties: false
@@ -394,6 +394,12 @@ types:
       - geoaggregator
       - latitude
       - longitude
+  API_VariableScale:
+    type: string
+    enum:
+      - log
+      - log2
+      - ln
   API_VariablesCategory:
     type: API_Variable
     discriminatorValue: category
@@ -452,6 +458,7 @@ types:
       distributionDefaults: API_NumberDistributionDefaults
       units: string
       precision: number
+      scale: API_VariableScale
   API_IntegerVariable:
     type: API_VariableWithValues
     discriminatorValue: integer
