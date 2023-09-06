@@ -120,6 +120,18 @@ public interface APILongitudeVariable extends APIVariableWithValues {
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
 
+  @JsonProperty("hasStudySpecificVocabulary")
+  Boolean getHasStudySpecificVocabulary();
+
+  @JsonProperty("hasStudySpecificVocabulary")
+  void setHasStudySpecificVocabulary(Boolean hasStudySpecificVocabulary);
+
+  @JsonProperty("variableSpecToImputeZeroesFor")
+  String getVariableSpecToImputeZeroesFor();
+
+  @JsonProperty("variableSpecToImputeZeroesFor")
+  void setVariableSpecToImputeZeroesFor(String variableSpecToImputeZeroesFor);
+
   @JsonProperty("precision")
   Number getPrecision();
 
