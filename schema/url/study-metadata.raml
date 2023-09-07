@@ -117,8 +117,6 @@ types:
       isCategory: string
       type: API_VariableType
       hideFrom: string[]
-      hasStudySpecificVocabulary?: boolean
-      variableSpecToImputeZeroesFor?: string
 
   API_VariableWithValues:
     type: API_Variable
@@ -133,6 +131,8 @@ types:
       isMergeKey: boolean
       isMultiValued: boolean
       imputeZero: boolean
+      hasStudySpecificVocabulary?: boolean
+      variableSpecToImputeZeroesFor?: VariableSpec
 
   API_VariableType:
     enum: [ 'category', 'string', 'number', 'date', 'longitude', 'integer' ]
