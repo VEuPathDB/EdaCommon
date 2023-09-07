@@ -127,10 +127,10 @@ public interface APIStringVariable extends APIVariableWithValues {
   void setHasStudySpecificVocabulary(Boolean hasStudySpecificVocabulary);
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  String getVariableSpecToImputeZeroesFor();
+  VariableSpec getVariableSpecToImputeZeroesFor();
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  void setVariableSpecToImputeZeroesFor(String variableSpecToImputeZeroesFor);
+  void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor);
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

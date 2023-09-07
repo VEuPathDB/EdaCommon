@@ -94,7 +94,7 @@ public class APIDateVariableImpl implements APIDateVariable {
   private Boolean hasStudySpecificVocabulary;
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  private String variableSpecToImputeZeroesFor;
+  private VariableSpec variableSpecToImputeZeroesFor;
 
   @JsonProperty("distributionDefaults")
   private APIDateDistributionDefaults distributionDefaults;
@@ -288,12 +288,12 @@ public class APIDateVariableImpl implements APIDateVariable {
   }
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  public String getVariableSpecToImputeZeroesFor() {
+  public VariableSpec getVariableSpecToImputeZeroesFor() {
     return this.variableSpecToImputeZeroesFor;
   }
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  public void setVariableSpecToImputeZeroesFor(String variableSpecToImputeZeroesFor) {
+  public void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor) {
     this.variableSpecToImputeZeroesFor = variableSpecToImputeZeroesFor;
   }
 

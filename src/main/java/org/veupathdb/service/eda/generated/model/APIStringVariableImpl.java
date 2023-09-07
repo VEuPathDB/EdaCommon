@@ -93,7 +93,7 @@ public class APIStringVariableImpl implements APIStringVariable {
   private Boolean hasStudySpecificVocabulary;
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  private String variableSpecToImputeZeroesFor;
+  private VariableSpec variableSpecToImputeZeroesFor;
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -284,12 +284,12 @@ public class APIStringVariableImpl implements APIStringVariable {
   }
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  public String getVariableSpecToImputeZeroesFor() {
+  public VariableSpec getVariableSpecToImputeZeroesFor() {
     return this.variableSpecToImputeZeroesFor;
   }
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  public void setVariableSpecToImputeZeroesFor(String variableSpecToImputeZeroesFor) {
+  public void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor) {
     this.variableSpecToImputeZeroesFor = variableSpecToImputeZeroesFor;
   }
 

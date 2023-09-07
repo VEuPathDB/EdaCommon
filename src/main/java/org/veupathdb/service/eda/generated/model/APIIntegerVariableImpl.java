@@ -95,7 +95,7 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
   private Boolean hasStudySpecificVocabulary;
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  private String variableSpecToImputeZeroesFor;
+  private VariableSpec variableSpecToImputeZeroesFor;
 
   @JsonProperty("distributionDefaults")
   private APIIntegerDistributionDefaults distributionDefaults;
@@ -292,12 +292,12 @@ public class APIIntegerVariableImpl implements APIIntegerVariable {
   }
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  public String getVariableSpecToImputeZeroesFor() {
+  public VariableSpec getVariableSpecToImputeZeroesFor() {
     return this.variableSpecToImputeZeroesFor;
   }
 
   @JsonProperty("variableSpecToImputeZeroesFor")
-  public void setVariableSpecToImputeZeroesFor(String variableSpecToImputeZeroesFor) {
+  public void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor) {
     this.variableSpecToImputeZeroesFor = variableSpecToImputeZeroesFor;
   }
 
