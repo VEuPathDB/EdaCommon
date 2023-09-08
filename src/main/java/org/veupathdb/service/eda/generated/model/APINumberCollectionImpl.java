@@ -21,14 +21,11 @@ import java.util.Map;
     "distinctValuesCount",
     "memberVariableIds",
     "imputeZero",
-<<<<<<< HEAD
     "hasStudyDependentVocabulary",
     "variableSpecToImputeZeroesFor",
-=======
     "normalizationMethod",
     "isCompositional",
     "isProportion",
->>>>>>> main
     "distributionDefaults",
     "units",
     "precision"
@@ -58,13 +55,12 @@ public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
 
-<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   private Boolean hasStudyDependentVocabulary;
 
   @JsonProperty("variableSpecToImputeZeroesFor")
   private VariableSpec variableSpecToImputeZeroesFor;
-=======
+
   @JsonProperty("normalizationMethod")
   private String normalizationMethod;
 
@@ -73,7 +69,6 @@ public class APINumberCollectionImpl implements APINumberCollection {
 
   @JsonProperty("isProportion")
   private Boolean isProportion;
->>>>>>> main
 
   @JsonProperty("distributionDefaults")
   private APINumberDistributionDefaults distributionDefaults;
@@ -162,7 +157,6 @@ public class APINumberCollectionImpl implements APINumberCollection {
     this.imputeZero = imputeZero;
   }
 
-<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   public Boolean getHasStudyDependentVocabulary() {
     return this.hasStudyDependentVocabulary;
@@ -181,7 +175,8 @@ public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("variableSpecToImputeZeroesFor")
   public void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor) {
     this.variableSpecToImputeZeroesFor = variableSpecToImputeZeroesFor;
-=======
+  }
+
   @JsonProperty("normalizationMethod")
   public String getNormalizationMethod() {
     return this.normalizationMethod;
@@ -210,7 +205,6 @@ public class APINumberCollectionImpl implements APINumberCollection {
   @JsonProperty("isProportion")
   public void setIsProportion(Boolean isProportion) {
     this.isProportion = isProportion;
->>>>>>> main
   }
 
   @JsonProperty("distributionDefaults")

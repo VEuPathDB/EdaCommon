@@ -133,19 +133,11 @@ public interface APIVariableWithValues extends APIVariable {
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
 
-<<<<<<< HEAD
-  @JsonProperty("hasStudyDependentVocabulary")
-  Boolean getHasStudyDependentVocabulary();
-
-  @JsonProperty("hasStudyDependentVocabulary")
-  void setHasStudyDependentVocabulary(Boolean hasStudyDependentVocabulary);
-=======
   @JsonProperty("hasStudySpecificVocabulary")
   Boolean getHasStudySpecificVocabulary();
 
   @JsonProperty("hasStudySpecificVocabulary")
   void setHasStudySpecificVocabulary(Boolean hasStudySpecificVocabulary);
->>>>>>> main
 
   @JsonProperty("variableSpecToImputeZeroesFor")
   VariableSpec getVariableSpecToImputeZeroesFor();

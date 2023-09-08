@@ -72,7 +72,6 @@ public interface APICollection {
   @JsonProperty("imputeZero")
   void setImputeZero(Boolean imputeZero);
 
-<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   Boolean getHasStudyDependentVocabulary();
 
@@ -84,7 +83,7 @@ public interface APICollection {
 
   @JsonProperty("variableSpecToImputeZeroesFor")
   void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor);
-=======
+
   @JsonProperty("normalizationMethod")
   String getNormalizationMethod();
 
@@ -102,7 +101,6 @@ public interface APICollection {
 
   @JsonProperty("isProportion")
   void setIsProportion(Boolean isProportion);
->>>>>>> main
 
   @JsonAnyGetter
   Map<String, Object> getAdditionalProperties();

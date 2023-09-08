@@ -19,14 +19,11 @@ import java.util.Map;
     "distinctValuesCount",
     "memberVariableIds",
     "imputeZero",
-<<<<<<< HEAD
     "hasStudyDependentVocabulary",
-    "variableSpecToImputeZeroesFor"
-=======
+    "variableSpecToImputeZeroesFor",
     "normalizationMethod",
     "isCompositional",
     "isProportion"
->>>>>>> main
 })
 public class APICollectionImpl implements APICollection {
   @JsonProperty("id")
@@ -53,13 +50,12 @@ public class APICollectionImpl implements APICollection {
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
 
-<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   private Boolean hasStudyDependentVocabulary;
 
   @JsonProperty("variableSpecToImputeZeroesFor")
   private VariableSpec variableSpecToImputeZeroesFor;
-=======
+
   @JsonProperty("normalizationMethod")
   private String normalizationMethod;
 
@@ -68,7 +64,6 @@ public class APICollectionImpl implements APICollection {
 
   @JsonProperty("isProportion")
   private Boolean isProportion;
->>>>>>> main
 
   @JsonIgnore
   private Map<String, Object> additionalProperties = new ExcludingMap();
@@ -148,7 +143,6 @@ public class APICollectionImpl implements APICollection {
     this.imputeZero = imputeZero;
   }
 
-<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   public Boolean getHasStudyDependentVocabulary() {
     return this.hasStudyDependentVocabulary;
@@ -167,7 +161,8 @@ public class APICollectionImpl implements APICollection {
   @JsonProperty("variableSpecToImputeZeroesFor")
   public void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor) {
     this.variableSpecToImputeZeroesFor = variableSpecToImputeZeroesFor;
-=======
+  }
+
   @JsonProperty("normalizationMethod")
   public String getNormalizationMethod() {
     return this.normalizationMethod;
@@ -196,7 +191,6 @@ public class APICollectionImpl implements APICollection {
   @JsonProperty("isProportion")
   public void setIsProportion(Boolean isProportion) {
     this.isProportion = isProportion;
->>>>>>> main
   }
 
   @JsonAnyGetter
