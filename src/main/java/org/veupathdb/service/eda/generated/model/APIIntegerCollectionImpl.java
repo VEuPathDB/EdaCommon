@@ -21,8 +21,14 @@ import java.util.Map;
     "distinctValuesCount",
     "memberVariableIds",
     "imputeZero",
+<<<<<<< HEAD
     "hasStudyDependentVocabulary",
     "variableSpecToImputeZeroesFor",
+=======
+    "normalizationMethod",
+    "isCompositional",
+    "isProportion",
+>>>>>>> main
     "distributionDefaults",
     "units"
 })
@@ -51,11 +57,22 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
 
+<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   private Boolean hasStudyDependentVocabulary;
 
   @JsonProperty("variableSpecToImputeZeroesFor")
   private VariableSpec variableSpecToImputeZeroesFor;
+=======
+  @JsonProperty("normalizationMethod")
+  private String normalizationMethod;
+
+  @JsonProperty("isCompositional")
+  private Boolean isCompositional;
+
+  @JsonProperty("isProportion")
+  private Boolean isProportion;
+>>>>>>> main
 
   @JsonProperty("distributionDefaults")
   private APIIntegerDistributionDefaults distributionDefaults;
@@ -141,6 +158,7 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
     this.imputeZero = imputeZero;
   }
 
+<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   public Boolean getHasStudyDependentVocabulary() {
     return this.hasStudyDependentVocabulary;
@@ -159,6 +177,36 @@ public class APIIntegerCollectionImpl implements APIIntegerCollection {
   @JsonProperty("variableSpecToImputeZeroesFor")
   public void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor) {
     this.variableSpecToImputeZeroesFor = variableSpecToImputeZeroesFor;
+=======
+  @JsonProperty("normalizationMethod")
+  public String getNormalizationMethod() {
+    return this.normalizationMethod;
+  }
+
+  @JsonProperty("normalizationMethod")
+  public void setNormalizationMethod(String normalizationMethod) {
+    this.normalizationMethod = normalizationMethod;
+  }
+
+  @JsonProperty("isCompositional")
+  public Boolean getIsCompositional() {
+    return this.isCompositional;
+  }
+
+  @JsonProperty("isCompositional")
+  public void setIsCompositional(Boolean isCompositional) {
+    this.isCompositional = isCompositional;
+  }
+
+  @JsonProperty("isProportion")
+  public Boolean getIsProportion() {
+    return this.isProportion;
+  }
+
+  @JsonProperty("isProportion")
+  public void setIsProportion(Boolean isProportion) {
+    this.isProportion = isProportion;
+>>>>>>> main
   }
 
   @JsonProperty("distributionDefaults")

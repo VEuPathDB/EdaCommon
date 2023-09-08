@@ -31,7 +31,11 @@ import java.util.Map;
     "isMergeKey",
     "isMultiValued",
     "imputeZero",
+<<<<<<< HEAD
     "hasStudyDependentVocabulary",
+=======
+    "hasStudySpecificVocabulary",
+>>>>>>> main
     "variableSpecToImputeZeroesFor"
 })
 public class APIStringVariableImpl implements APIStringVariable {
@@ -89,8 +93,13 @@ public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("imputeZero")
   private Boolean imputeZero;
 
+<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   private Boolean hasStudyDependentVocabulary;
+=======
+  @JsonProperty("hasStudySpecificVocabulary")
+  private Boolean hasStudySpecificVocabulary;
+>>>>>>> main
 
   @JsonProperty("variableSpecToImputeZeroesFor")
   private VariableSpec variableSpecToImputeZeroesFor;
@@ -273,6 +282,7 @@ public class APIStringVariableImpl implements APIStringVariable {
     this.imputeZero = imputeZero;
   }
 
+<<<<<<< HEAD
   @JsonProperty("hasStudyDependentVocabulary")
   public Boolean getHasStudyDependentVocabulary() {
     return this.hasStudyDependentVocabulary;
@@ -281,6 +291,16 @@ public class APIStringVariableImpl implements APIStringVariable {
   @JsonProperty("hasStudyDependentVocabulary")
   public void setHasStudyDependentVocabulary(Boolean hasStudyDependentVocabulary) {
     this.hasStudyDependentVocabulary = hasStudyDependentVocabulary;
+=======
+  @JsonProperty("hasStudySpecificVocabulary")
+  public Boolean getHasStudySpecificVocabulary() {
+    return this.hasStudySpecificVocabulary;
+  }
+
+  @JsonProperty("hasStudySpecificVocabulary")
+  public void setHasStudySpecificVocabulary(Boolean hasStudySpecificVocabulary) {
+    this.hasStudySpecificVocabulary = hasStudySpecificVocabulary;
+>>>>>>> main
   }
 
   @JsonProperty("variableSpecToImputeZeroesFor")
