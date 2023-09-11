@@ -80,7 +80,7 @@ public class ReferenceMetadata {
             entityId.equals(treeEntity.getId())
                 ? VariableSource.COMPUTED
                 : VariableSource.INHERITED,
-            false
+            computedVar.getHasStudySpecificVocabulary()
         ));
       }
     }
