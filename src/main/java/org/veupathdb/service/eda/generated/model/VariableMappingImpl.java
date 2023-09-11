@@ -18,7 +18,6 @@ import java.util.List;
     "vocabulary",
     "imputeZero",
     "hasStudySpecificVocabulary",
-    "variableSpecToImputeZeroesFor",
     "isCollection",
     "members"
 })
@@ -55,9 +54,6 @@ public class VariableMappingImpl implements VariableMapping {
 
   @JsonProperty("hasStudySpecificVocabulary")
   private Boolean hasStudySpecificVocabulary;
-
-  @JsonProperty("variableSpecToImputeZeroesFor")
-  private VariableSpec variableSpecToImputeZeroesFor;
 
   @JsonProperty("isCollection")
   private Boolean isCollection;
@@ -173,16 +169,6 @@ public class VariableMappingImpl implements VariableMapping {
   @JsonProperty("hasStudySpecificVocabulary")
   public void setHasStudySpecificVocabulary(Boolean hasStudySpecificVocabulary) {
     this.hasStudySpecificVocabulary = hasStudySpecificVocabulary;
-  }
-
-  @JsonProperty("variableSpecToImputeZeroesFor")
-  public VariableSpec getVariableSpecToImputeZeroesFor() {
-    return this.variableSpecToImputeZeroesFor;
-  }
-
-  @JsonProperty("variableSpecToImputeZeroesFor")
-  public void setVariableSpecToImputeZeroesFor(VariableSpec variableSpecToImputeZeroesFor) {
-    this.variableSpecToImputeZeroesFor = variableSpecToImputeZeroesFor;
   }
 
   @JsonProperty("isCollection")
