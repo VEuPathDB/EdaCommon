@@ -110,6 +110,9 @@ public class PluginUtil {
     return childVarsTree.findAndMap(TreeNode::isLeaf, v -> true, v -> v);
   }
 
+  public List<String> getVocabulary(VariableSpec var) {
+    return _metadata.getVariable(var).map(VariableDef::getVocabulary).orElse(null);
+  }
 
   /*****************************************************************
    *** Utilities to ease calls to RServe
