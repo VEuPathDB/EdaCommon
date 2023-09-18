@@ -102,6 +102,11 @@ public class PluginUtil {
     return collection == null ? null : _metadata.getCollection(collection).orElseThrow().getMemberVariables();
   }
 
+  public List<String> getCollectionVocabulary(CollectionSpec collection) {
+    return collection == null ? null : _metadata.getCollection(collection).orElseThrow().getVocabulary();
+
+  }
+
   //deprecated
   public List<VariableDef> getChildrenVariables(VariableSpec collectionVar) {
     EntityDef collectionVarEntityDef = _metadata.getEntity(collectionVar.getEntityId()).orElseThrow();
@@ -111,7 +116,7 @@ public class PluginUtil {
   }
 
   public List<String> getVocabulary(VariableSpec var) {
-    return _metadata.getVariable(var).map(VariableDef::getVocabulary).orElse(null);
+    return var == null ? null :_metadata.getVariable(var).map(VariableDef::getVocabulary).orElseThrow();
   }
 
   /*****************************************************************
