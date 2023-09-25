@@ -34,6 +34,9 @@ public class CollectionDef extends CollectionSpecImpl {
   private final boolean _isCompositional;
 
   @JsonIgnore
+  private final boolean _isProportion;
+
+  @JsonIgnore
   private final String _normalizationMethod;
 
   @JsonIgnore
@@ -52,6 +55,7 @@ public class CollectionDef extends CollectionSpecImpl {
       Long distinctValuesCount,
       List<String> vocabulary,
       boolean isCompositional,
+      boolean isProportion,
       String normalizationMethod,
       List<String> memberVariableIds,
       Optional<DataRanges> dataRanges) {
@@ -65,6 +69,7 @@ public class CollectionDef extends CollectionSpecImpl {
     _distinctValuesCount = distinctValuesCount;
     _vocabulary = vocabulary;
     _isCompositional = isCompositional;
+    _isProportion = isProportion;
     _normalizationMethod = normalizationMethod;
     _memberVariableIds = memberVariableIds;
     _dataRanges = dataRanges;
@@ -104,6 +109,12 @@ public class CollectionDef extends CollectionSpecImpl {
   public boolean isCompositional() {
     return _isCompositional;
   }
+
+  @JsonIgnore
+  public boolean isProportion() {
+    return _isProportion;
+  }
+
 
   @JsonIgnore
   public String getNormalizationMethod() {

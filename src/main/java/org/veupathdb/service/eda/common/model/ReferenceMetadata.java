@@ -161,6 +161,7 @@ public class ReferenceMetadata {
             col.getDistinctValuesCount(),
             col.getVocabulary(),
             col.getIsCompositional(),
+            col.getIsProportion(),
             col.getNormalizationMethod(),
             col.getMemberVariableIds(),
             DataRanges.getDataRanges(col)
