@@ -29,13 +29,13 @@ public class EntityDef {
 
   private final String _id;
   private final String _displayName;
-  private final boolean _isManyToOneWithParent;
+  private final Boolean _isManyToOneWithParent;
   private final VariableDef _idColumnDef;
   private final List<VariableDef> _variables;
   private final List<VariableDef> _categories;
   private final List<CollectionDef> _collections;
 
-  public EntityDef(String id, String displayName, String idColumnName, boolean isManyToOneWithParent) {
+  public EntityDef(String id, String displayName, String idColumnName, Boolean isManyToOneWithParent) {
     _id = id;
     _displayName = displayName;
     _idColumnDef = new VariableDef(_id, idColumnName, APIVariableType.STRING,
@@ -55,7 +55,7 @@ public class EntityDef {
     return _idColumnDef;
   }
 
-  public boolean isManyToOneWithParent() {
+  public Boolean isManyToOneWithParent() {
     return _isManyToOneWithParent;
   }
 
