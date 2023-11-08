@@ -147,6 +147,14 @@ public class PluginUtil {
 
   }
 
+  public Boolean getManyToOneWithDescendant(ReferenceMetadata metadata, EntityDef ancestor, EntityDef descendantToMatch) {
+    return metadata.getChildren(ancestor).stream()
+        .filter(child -> metadata.isEntityAncestorOf(child, descendantToMatch) || descendantToMatch.getId().equals(child.getId())) // Find child on path to descendant to match.
+        .findFirst()
+        .orElseThrow()
+        .isManyToOneWithParent();
+  }
+
   //deprecated
   public List<VariableDef> getChildrenVariables(VariableSpec collectionVar) {
     EntityDef collectionVarEntityDef = _metadata.getEntity(collectionVar.getEntityId()).orElseThrow();
