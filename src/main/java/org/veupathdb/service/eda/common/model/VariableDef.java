@@ -73,6 +73,7 @@ public class VariableDef extends VariableSpecImpl {
   @JsonIgnore
   private final VariableSpec _variableSpecToImputeZeroesFor;
 
+  @JsonIgnore
   private final List<String> _vocabulary;
 
   public VariableDef(
