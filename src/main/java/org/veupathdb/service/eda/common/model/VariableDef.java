@@ -160,6 +160,7 @@ public class VariableDef extends VariableSpecImpl {
     return _variableSpecToImputeZeroesFor;
   }
 
+  @JsonIgnore
   public List<String> getVocabulary() {
     return _vocabulary;
   }

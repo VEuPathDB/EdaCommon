@@ -60,6 +60,7 @@ repositories {
 
 dependencies {
 
+  implementation("org.junit.jupiter:junit-jupiter:5.8.1")
   // versions
   val fgputil = "2.12.9-jakarta" // FgpUtil version
 
