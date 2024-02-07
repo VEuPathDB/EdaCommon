@@ -26,7 +26,7 @@ public class NonEmptyResultStream extends BufferedInputStream {
   private boolean _foundFirstNewline = false;
   private boolean _continueChecking = true;
 
-  private List<Byte> firstLine;
+  private final List<Byte> firstLine;
 
   public NonEmptyResultStream(String streamName, InputStream in) {
     super(in);
@@ -34,7 +34,7 @@ public class NonEmptyResultStream extends BufferedInputStream {
     _streamName = streamName;
     while (_continueChecking) {
       try {
-        int nextByte = in.read();
+        int nextByte = super.read();
         if (nextByte == -1) throwException();
         byte b = ((Integer) nextByte).byteValue();
         firstLine.add(b);

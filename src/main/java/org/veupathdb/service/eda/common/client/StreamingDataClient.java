@@ -82,7 +82,7 @@ public abstract class StreamingDataClient extends ServiceClient {
     catch (Exception e) {
       cleanDataStreams(responses, dataStreams);
       // throw as a runtime exception
-      throw new RuntimeException(e);
+      throw new RuntimeException("Unable to fetch all required data", e);
     }
   }
 
