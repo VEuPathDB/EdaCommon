@@ -22,7 +22,7 @@ containerBuild {
     group = "org.veupathdb.service.eda"
 
     // Project Version
-    version = "11.6.8"
+    version = "11.7.0"
 
     // Project Root Package
     projectPackage = "org.veupathdb.service.eda"
