@@ -3,7 +3,7 @@ import org.veupathdb.lib.gradle.container.util.Logger.Level
 plugins {
   `java-library`
   `maven-publish`
-  id("org.veupathdb.lib.gradle.container.container-utils") version "4.8.9"
+  id("org.veupathdb.lib.gradle.container.container-utils") version "5.0.5"
 }
 
 // configure VEupathDB container plugin
@@ -31,9 +31,8 @@ containerBuild {
 }
 
 java {
-  toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
-  }
+  sourceCompatibility = JavaVersion.VERSION_21
+  targetCompatibility = JavaVersion.VERSION_21
   withSourcesJar()
   withJavadocJar()
 }
