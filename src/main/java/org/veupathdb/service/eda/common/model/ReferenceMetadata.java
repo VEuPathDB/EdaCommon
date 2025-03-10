@@ -9,8 +9,11 @@ import org.gusdb.fgputil.validation.ValidationException;
 import org.gusdb.fgputil.validation.ValidationLevel;
 import org.veupathdb.service.eda.generated.model.*;
 
+import com.google.common.base.Predicate;
+
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Encapsulates EDA study metadata for a single study, to be used by various services.  This includes native, computed,
@@ -358,6 +361,23 @@ public class ReferenceMetadata {
             .map(entity -> entity.getIdColumnDef().getVariableId())
             .collect(Collectors.toList()))
         .toList();
+  }
+
+  /**
+   * Given a stream of entities, returns all variables based on a predicate (ex. keep only continuous variables)
+   * Does not return id variables.
+   * 
+   * @param entities entities whose variables should be evaluated and returned
+   * @param predicate predicate used to filter variables. ID variables are always removed.
+   * @return list of variables on ancestor entities
+   */
+  public List<VariableDef> getVariablesByPredicate(Stream<EntityDef> entities, Predicate<VariableDef> predicate) {
+    return entities
+        .flatMap(entityDef -> entityDef.getVariables().stream()) // Flatten stream of var streams into a single stream of vars.
+        .filter(var -> var.getSource().isResident()) // Filter out inherited variables.
+        .filter(var -> predicate.test(var)) // Filter out variables based on predicate.
+        .filter(var -> !var.getVariableId().contains("_stable_id")) // Filter out id variables
+        .collect(Collectors.toList());
   }
 
   private static Optional<List<EntityDef>> getAncestors(EntityDef targetEntity, TreeNode<EntityDef> entityTree, List<EntityDef> ancestors) {
